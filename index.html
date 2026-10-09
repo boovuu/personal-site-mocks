@@ -1,11 +1,51 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>personal-site · Phase 0 mocks</title>
-<style>body{background:#0a0a0a;color:#ededed;font-family:ui-monospace,monospace;max-width:720px;margin:60px auto;padding:0 20px;line-height:2}
-h1{font-size:18px;letter-spacing:.02em}a{color:#8f8f8f}a:hover{color:#ededed}
-.tag{color:#6b6b6b;font-size:12px}.card{border:1px solid #222;border-radius:8px;padding:18px 22px;margin:14px 0}</style></head>
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direction mocks — round 2 (light &amp; airy)</title>
+<style>
+  :root{--paper:#faf8f3;--ink:#2b2823;--muted:#837c6c;--line:#e6e1d3}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font:16px/1.7 -apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto;padding:70px 28px 90px}
+  h1{font-size:clamp(30px,4.5vw,44px);font-weight:600;letter-spacing:-.02em;margin-bottom:14px}
+  .sub{color:var(--muted);font-size:17px;max-width:640px;margin-bottom:60px}
+  .grid{display:grid;gap:18px}
+  a.dir{display:block;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 34px;transition:transform .15s ease,box-shadow .15s ease}
+  a.dir:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(60,50,20,.08)}
+  .dir .no{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .dir h2{font-size:23px;font-weight:600;margin:8px 0 6px}
+  .dir p{color:var(--muted);font-size:15.5px}
+  .swatches{display:flex;gap:8px;margin-top:16px}
+  .sw{width:30px;height:30px;border-radius:8px;border:1px solid rgba(0,0,0,.08)}
+  .note{margin-top:48px;padding:22px 26px;background:#f1ecdd;border-radius:16px;color:#6f684f;font-size:14.5px}
+  .note a{color:#6f684f}
+</style>
+</head>
 <body>
-<h1>Phase 0 · three directions</h1>
-<p class="tag">Same copy, same structure, three skins. Toggle "reason layer" on any mock (top-left button) to see why every section exists. The only question: which one makes the rate feel high?</p>
-<div class="card"><b>v1 — Vercel precision</b> <span class="tag">black/white, one indigo accent, editorial numbering</span><br><a href="v1-vercel-precision.html">open mock →</a></div>
-<div class="card"><b>v2 — Terminal ember</b> <span class="tag">hacker-native, mono everywhere, ember accent, output-as-proof</span><br><a href="v2-terminal-ember.html">open mock →</a></div>
-<div class="card"><b>v3 — The Privateer Registry</b> <span class="tag">parchment-dark ledger, serif, wax-seal red, D.I.C.E. canon face diversified</span><br><a href="v3-privateer-registry.html">open mock →</a></div>
-</body></html>
+<div class="wrap">
+  <h1>Direction mocks — round 2</h1>
+  <p class="sub">After the verdict on round 1: no dark, no programmy fonts, breathing room everywhere. Three new light directions, same copy and structure — pure skin. Each has the reason-layer toggle (top bar of the page). The only question: which one makes the rate feel high?</p>
+  <div class="grid">
+    <a class="dir" href="v4-warm-minimal.html">
+      <div class="no">v4</div>
+      <h2>Warm Minimal</h2>
+      <p>Cream paper, serif headlines (Fraunces), terracotta accent. Editorial calm, huge air, one rounded CTA.</p>
+      <div class="swatches"><span class="sw" style="background:#faf7f0"></span><span class="sw" style="background:#33302a"></span><span class="sw" style="background:#b4552d"></span><span class="sw" style="background:#f3eee2"></span></div>
+    </a>
+    <a class="dir" href="v5-gallery.html">
+      <div class="no">v5</div>
+      <h2>Gallery</h2>
+      <p>Near-white catalogue, refined serif plates (Cormorant), deep green accent. Museum energy: numbered plates, underlined links, maximum restraint.</p>
+      <div class="swatches"><span class="sw" style="background:#fcfcfa"></span><span class="sw" style="background:#26241f"></span><span class="sw" style="background:#2d4a32"></span><span class="sw" style="background:#e8e5dc"></span></div>
+    </a>
+    <a class="dir" href="v6-editorial-sunlight.html">
+      <div class="no">v6</div>
+      <h2>Editorial Sunlight</h2>
+      <p>Warm soft panels, big display serif (Instrument Serif), amber accent. Magazine spread feel with a 3-number proof strip in the hero.</p>
+      <div class="swatches"><span class="sw" style="background:#fdfcf8"></span><span class="sw" style="background:#211f1a"></span><span class="sw" style="background:#d97b29"></span><span class="sw" style="background:#f6f3ea"></span></div>
+    </a>
+  </div>
+  <div class="note">Round 1 (v1 dark precision, v2 terminal, v3 dark ledger) is retired but still online: <a href="v1-vercel-precision.html">v1</a> · <a href="v2-terminal-ember.html">v2</a> · <a href="v3-privateer-registry.html">v3</a> — kept only for reference.</div>
+</div>
+</body>
+</html>
