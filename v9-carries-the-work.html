@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Bogdan Vučković — website growth, Webflow engineering, analytics, and CRO for B2B teams.">
+<title>Bogdan Vučković — Websites that carry the work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3efe5; --paper2:#e9e3d5; --ink:#172c2b; --teal:#244443; --rust:#a85234;
+  --gold:#b18b51; --muted:#64716a; --line:#c9c4b7;
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --mono:'SF Mono',SFMono-Regular,Consolas,'Liberation Mono',monospace;
+  --mono-size:11px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.55}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--rust)}
+.wrap{width:min(1200px,calc(100% - 64px));margin:auto}
+.topline{border-bottom:1px solid var(--line);font:var(--mono-size) var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.topline .wrap{height:38px;display:flex;align-items:center;justify-content:space-between}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:13px;font-size:17px;line-height:1.15}
+.seal{height:42px;width:42px;border:1px solid var(--teal);border-radius:50%;display:grid;place-items:center;position:relative;color:var(--teal);font-size:19px}
+.seal:after{content:"";position:absolute;inset:4px;border:1px solid var(--gold);border-radius:50%}
+.brand small{display:block;color:var(--muted);font:9px var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-top:5px}
+.navlinks{display:flex;gap:30px;font:12px var(--mono);letter-spacing:.03em}
+.navlinks a:last-child{border-bottom:1px solid var(--rust);padding-bottom:4px}
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:7vw;padding:102px 0 94px;align-items:center}
+.eyebrow,.kicker{font:var(--mono-size) var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--rust)}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(52px,7.3vw,98px);font-weight:400;line-height:.97;letter-spacing:-.045em;margin:22px 0 26px;max-width:760px}
+h1 em{font-style:italic;color:var(--teal)}
+.hero-copy{max-width:610px;color:#40504a;font-size:21px;line-height:1.55}
+.hero-actions{display:flex;align-items:center;gap:25px;margin-top:32px;font:12px var(--mono)}
+.button{display:inline-flex;align-items:center;gap:14px;background:var(--teal);color:var(--paper);padding:14px 18px}
+.button:hover{background:var(--rust);color:white}
+.textlink{border-bottom:1px solid var(--gold);padding-bottom:3px}
+.map-card{position:relative;background:var(--teal);color:var(--paper);min-height:370px;padding:26px;overflow:hidden}
+.map-card:before{content:"";position:absolute;inset:13px;border:1px solid rgba(243,239,229,.25);pointer-events:none}
+.map-head{position:relative;display:flex;justify-content:space-between;font:10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#d9d3c3}
+.map-art{width:100%;height:220px;margin:18px 0 8px}
+.map-note{position:relative;display:flex;justify-content:space-between;align-items:flex-end;font:12px var(--mono);color:#e1d9c7}
+.map-note strong{font:italic 23px var(--serif);font-weight:400;color:#fff}
+.section-label{font:var(--mono-size) var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--rust);border-top:1px solid var(--line);padding-top:18px}
+.intro{display:grid;grid-template-columns:1fr 2fr;gap:8vw;padding:62px 0 92px}
+.intro h2{font-size:clamp(34px,4vw,54px);font-weight:400;line-height:1.08;letter-spacing:-.03em;margin:0;max-width:740px}
+.intro p{font-size:20px;color:#43534c;max-width:670px;margin:0 0 17px}
+.intro p:last-child{margin:0}
+.work{background:var(--paper2);padding:82px 0 90px}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:35px}
+.section-head h2{font-size:clamp(40px,5vw,62px);font-weight:400;letter-spacing:-.04em;margin:10px 0 0}
+.section-head p{font:var(--mono-size) var(--mono);color:var(--muted);margin:0}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.project{background:var(--paper2);padding:30px;min-height:275px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.project h3{font-size:34px;font-weight:400;letter-spacing:-.03em;margin:35px 0 8px}
+.project p{max-width:540px;color:#536159;font-size:16px;margin:0}
+.project-top{display:flex;justify-content:space-between;align-items:center;font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.project-index{color:var(--rust)}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.tags span{border:1px solid #bdb8aa;padding:5px 9px;font:9px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#46554e}
+.chain{margin-top:14px;font:11px var(--mono);color:#7d7261;letter-spacing:.02em;line-height:1.7}
+.chain b{color:var(--teal);font-weight:500}
+.reason-layer .project .chain,.reason-layer .intro-notes{display:block}
+.chain,.intro-notes{display:none}
+.principles{padding:85px 0 92px}
+.principles-grid{display:grid;grid-template-columns:1fr 2fr;gap:8vw}
+.principles h2{font-size:clamp(38px,4.7vw,58px);line-height:1.06;font-weight:400;letter-spacing:-.035em;margin:8px 0}
+.principle-list{border-top:1px solid var(--line)}
+.principle{display:grid;grid-template-columns:55px 1fr;gap:18px;border-bottom:1px solid var(--line);padding:18px 0}
+.principle b{font:var(--mono-size) var(--mono);color:var(--rust);padding-top:6px}
+.principle h3{font-size:22px;font-weight:400;margin:0 0 4px}
+.principle p{font-size:15px;color:var(--muted);margin:0;max-width:550px}
+.exhibits{border-top:1px solid var(--line);padding:70px 0}
+.exhibit{display:grid;grid-template-columns:1fr 2fr;gap:8vw;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.exhibit .code{font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.exhibit h3{font-size:24px;font-weight:400;margin:6px 0}
+.exhibit p{color:#536159;font-size:16px;margin:0 0 10px;max-width:560px}
+.exhibit a{font:12px var(--mono);color:var(--rust);border-bottom:1px solid var(--rust);padding-bottom:2px}
+.contact{background:var(--teal);color:var(--paper);padding:78px 0 74px}
+.contact .kicker{color:#d1a86c}
+.contact-grid{display:grid;grid-template-columns:1fr auto;align-items:end;gap:30px}
+.contact h2{font-size:clamp(48px,7vw,84px);line-height:.98;font-weight:400;letter-spacing:-.04em;max-width:800px;margin:18px 0 15px}
+.contact p{font-size:18px;color:#d5d7c9;margin:0}
+.contact .button{background:var(--paper);color:var(--teal);white-space:nowrap;margin-bottom:4px}
+.footer{background:var(--teal);color:#d5d7c9;border-top:1px solid rgba(243,239,229,.23);font:10px var(--mono);letter-spacing:.06em}
+.footer .wrap{min-height:55px;display:flex;align-items:center;justify-content:space-between}
+.note{font-style:italic;color:var(--gold)}
+/* reason layer toggle */
+.reasonbar{position:sticky;top:0;z-index:50;background:rgba(23,44,43,.96);color:#e9e3d5;font:11px var(--mono);letter-spacing:.06em;padding:9px 24px;display:flex;gap:14px;align-items:center}
+.reasonbar button{background:var(--gold);border:0;color:#172c2b;font:700 10px var(--mono);letter-spacing:.08em;padding:5px 12px;cursor:pointer;text-transform:uppercase}
+body.reasons [data-why]{outline:1.5px dashed rgba(168,82,52,.65);outline-offset:4px;position:relative}
+body.reasons [data-why]:after{content:attr(data-why);position:absolute;left:0;top:-15px;font:10px var(--mono);color:#fff;background:var(--rust);padding:1px 7px;white-space:nowrap;max-width:96vw;overflow:hidden;text-overflow:ellipsis;z-index:9}
+@media(max-width:760px){
+  .wrap{width:min(100% - 36px,600px)}
+  .topline .wrap{font-size:9px}
+  .nav{height:70px}.navlinks{gap:14px;font-size:10px}.navlinks a:nth-child(2){display:none}
+  .hero{grid-template-columns:1fr;padding:70px 0 66px;gap:40px}.hero-copy{font-size:18px}.map-card{min-height:340px}
+  .intro,.principles-grid,.contact-grid,.exhibit{grid-template-columns:1fr;gap:24px;padding:55px 0 65px}
+  .exhibit{padding:22px 0}
+  .intro h2{font-size:38px}.intro p{font-size:17px}
+  .work{padding:62px 0}
+  .section-head{align-items:start;gap:20px;flex-direction:column}
+  .projects{grid-template-columns:1fr}
+  .project{min-height:245px;padding:23px}.project h3{font-size:30px}
+  .principles{padding:60px 0}.contact{padding:62px 0}.contact h2{font-size:55px}
+  .footer .wrap{padding:14px 0;gap:8px;flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<div class="reasonbar" title="Reason layer: why every section exists">
+  <button onclick="document.body.classList.toggle('reasons')">Reasons: off</button>
+  <span>v9 — v8 body, v7 muscles · content lives in site-content.js</span>
+</div>
+
+<div class="topline"><div class="wrap"><span data-c="identity.location"></span> · <span data-c="identity.timezone"></span><span data-c="identity.role" data-slot="right"></span></div></div>
+
+<header class="wrap nav"><a class="brand" href="#top" aria-label="home">
+  <span class="seal" data-c="identity.sealLetter"></span>
+  <span><span data-c="identity.name"></span><small data-c="identity.brandLine"></small></span>
+</a>
+<nav class="navlinks">
+  <a href="#approach" data-c-nav="approach">Approach</a>
+  <a href="#work" data-c-nav="work">Selected work</a>
+  <a href="#contact" data-c-nav="contact">Get in touch ↗</a>
+</nav></header>
+
+<main id="top">
+
+<section class="wrap hero">
+  <div>
+    <div class="eyebrow" data-c="hero.eyebrow"></div>
+    <h1 data-c="hero.lead" data-why="Positioning: the site carries the work — craft, not tech cosplay."></h1>
+    <p class="hero-copy" data-c="hero.copy"></p>
+    <div class="hero-actions">
+      <a class="button" data-c-href="hero.primaryCta" data-c="hero.primaryCta.label"></a>
+      <a class="textlink" data-c-href="hero.secondaryCta" data-c="hero.secondaryCta.label"></a>
+    </div>
+  </div>
+  <div class="map-card" data-why="The system as a route: content → platform → measure → improve. The story in one diagram.">
+    <div class="map-head"><span data-c="hero.mapCard.code"></span><span data-c="hero.mapCard.label"></span></div>
+    <svg class="map-art" viewBox="0 0 440 220" fill="none" aria-label="A route linking content, measurement, and improvement">
+      <path d="M44 154 C100 154 86 61 153 61 S219 168 278 139 323 53 393 53" stroke="#D2A969" stroke-width="1.4" stroke-dasharray="4 7"/>
+      <path d="M45 155L44 123M153 61L153 94M278 139L278 174M393 53L393 84" stroke="#F3EFE5" stroke-opacity=".35"/>
+      <circle cx="44" cy="154" r="7" fill="#F3EFE5"/><circle cx="153" cy="61" r="7" fill="#C66B48"/><circle cx="278" cy="139" r="7" fill="#D2A969"/><circle cx="393" cy="53" r="7" fill="#F3EFE5"/>
+      <text class="map-stop" x="25" y="193" fill="#F3EFE5" font-size="10" font-family="monospace"></text>
+      <text class="map-stop" x="123" y="37" fill="#F3EFE5" font-size="10" font-family="monospace"></text>
+      <text class="map-stop" x="250" y="207" fill="#F3EFE5" font-size="10" font-family="monospace"></text>
+      <text class="map-stop" x="366" y="31" fill="#F3EFE5" font-size="10" font-family="monospace"></text>
+      <path d="M220 44v18m-9-9h18M339 155v18m-9-9h18" stroke="#D2A969" stroke-width="1" opacity=".75"/>
+    </svg>
+    <div class="map-note"><span data-c="hero.mapCard.note"></span><strong data-c="hero.mapCard.strong"></strong></div>
+  </div>
+</section>
+
+<section class="wrap intro" id="approach">
+  <div class="section-label" data-c="approach.kicker"></div>
+  <div>
+    <h2 data-c="approach.heading" data-why="Reframes the site as operational infrastructure — the senior signal."></h2>
+    <div style="height:22px"></div>
+    <div class="intro-notes" data-why="Details people rarely see are the product."></div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker" data-c="work.kicker"></div><h2 data-c="work.heading"></h2></div>
+      <p data-c="work.sub"></p>
+    </div>
+    <div class="projects" id="projects" data-why="Anonymized by rule; each case carries the reasoning chain."></div>
+  </div>
+</section>
+
+<section class="wrap principles" id="principles">
+  <div class="principles-grid">
+    <div><div class="kicker" data-c="principles.kicker"></div><h2 data-c="principles.heading"></h2></div>
+    <div class="principle-list" id="principleList"></div>
+  </div>
+</section>
+
+<section class="wrap exhibits" id="exhibits">
+  <div class="principles-grid">
+    <div><div class="kicker">04 / Exhibits</div><h2 style="font-size:clamp(30px,3.6vw,44px)">Live proof, not claims.</h2></div>
+    <div id="exhibitList" data-why="Every claimed skill gets a clickable artifact."></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="kicker" data-c="contact.kicker"></div>
+      <h2 data-c="contact.heading" data-why="Final ask: a specific, honest door."></h2>
+      <p data-c="contact.body"></p>
+    </div>
+    <a class="button" data-c-href="contact.cta" data-c="contact.cta.label"></a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer"><div class="wrap">
+  <span>© <span data-c="identity.name"></span> · <span data-c="identity.location"></span></span>
+  <span class="note" data-c="footer.note"></span>
+  <a href="#top" data-c="footer.backToTop"></a> ↑
+</div></footer>
+
+<script src="site-content.js"></script>
+<script>
+// fill static fields
+document.querySelectorAll('[data-c]').forEach(el=>{
+  const path=el.getAttribute('data-c').split('.');
+  let v=window.SITE; for(const k of path) v=v&&v[k];
+  if(typeof v==='string') el.innerHTML=v;
+});
+// CTA hrefs
+document.querySelectorAll('[data-c-href]').forEach(el=>{
+  const path=el.getAttribute('data-c-href').split('.');
+  let v=window.SITE; for(const k of path) v=v&&v[k];
+  if(v&&v.href) el.setAttribute('href',v.href);
+});
+// map stops
+document.querySelectorAll('.map-stop').forEach((t,i)=>{
+  const stops=window.SITE.hero.mapCard.stops; if(stops[i]) t.textContent=stops[i];
+});
+// nav labels from content
+const navMap={approach:'Approach',work:'Selected work',contact:'Get in touch ↗'};
+document.querySelectorAll('[data-c-nav]').forEach(a=>{
+  const k=a.getAttribute('data-c-nav');
+  if(window.SITE.nav&&window.SITE.nav[k]) a.textContent=window.SITE.nav[k];
+});
+// approach body paragraphs
+(function(){
+  const host=document.querySelector('.intro-notes'); if(!host) return;
+  window.SITE.approach.body.forEach(p=>{
+    const el=document.createElement('p'); el.textContent=p; host.appendChild(el);
+  });
+})();
+// projects
+(function(){
+  const host=document.getElementById('projects'); if(!host) return;
+  window.SITE.work.cases.forEach((c,i)=>{
+    const art=document.createElement('article'); art.className='project';
+    art.innerHTML=`<div class="project-top"><span></span><span class="project-index">${String(i+1).padStart(2,'0')}</span></div>
+      <div><h3></h3><p></p><div class="chain"></div><div class="tags"></div></div>`;
+    art.querySelector('.project-top span').textContent=c.industry;
+    art.querySelector('h3').textContent=c.title;
+    art.querySelector('p').textContent=c.body;
+    const chain=art.querySelector('.chain');
+    chain.innerHTML='problem → <b>move</b> → result → <b>limits</b><br>'+c.chain;
+    c.tags.forEach(t=>{const s=document.createElement('span');s.textContent=t;art.querySelector('.tags').appendChild(s);});
+    host.appendChild(art);
+  });
+})();
+// principles
+(function(){
+  const host=document.getElementById('principleList'); if(!host) return;
+  window.SITE.principles.items.forEach((p,i)=>{
+    const art=document.createElement('article'); art.className='principle';
+    art.innerHTML=`<b>${String(i+1).padStart(2,'0')}</b><div><h3></h3><p></p></div>`;
+    art.querySelector('h3').textContent=p.title;
+    art.querySelector('p').textContent=p.body;
+    host.appendChild(art);
+  });
+})();
+// exhibits
+(function(){
+  const host=document.getElementById('exhibitList'); if(!host) return;
+  window.SITE.exhibits.forEach(x=>{
+    const div=document.createElement('div'); div.className='exhibit';
+    div.innerHTML=`<div class="code"></div><div><h3></h3><p></p><a></a></div>`;
+    div.querySelector('.code').textContent=x.code;
+    div.querySelector('h3').textContent=x.title;
+    div.querySelector('p').textContent=x.body;
+    const a=div.querySelector('a'); a.textContent=x.linkLabel; a.href=x.href;
+    host.appendChild(div);
+  });
+})();
+// reason toggle label
+(function(){
+  const btn=document.querySelector('.reasonbar button');
+  btn.addEventListener('click',()=>{ btn.textContent=document.body.classList.contains('reasons')?'Reasons: on':'Reasons: off'; });
+})();
+</script>
+</body>
+</html>
