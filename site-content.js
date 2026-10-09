@@ -67,28 +67,40 @@ window.SITE = {
         title:    "Website operations, end to end",
         body:     "Webflow, analytics, consent, hiring flows, structured data, and ongoing performance work — one owner across the whole surface.",
         chain:    "problem: no owner across seams → move: single-operator coverage → result: site holds shape between teams → limits: numbers shared on request",
-        tags:     ["Webflow", "Analytics", "Growth systems"]
+        tags:     ["Webflow", "Analytics", "Growth systems"],
+        disclosure: "anonymized",        // GPT: disclosure-level po slučaju
+        attribution: "sole operator: platform, analytics, consent, schema",  // GPT: proof.attribution
+        proofId:  "proof.chain-visible"
       },
       {
         industry: "Contract management",
         title:    "Marketing site and campaigns",
         body:     "Campaign pages with attention to consent, embedded video, and the details that keep measurement intact.",
         chain:    "problem: measurement broke at the edges → move: consent + embed discipline → result: clean data survives campaigns → limits: baseline pre-dates tooling",
-        tags:     ["CMS", "Campaigns", "Measurement"]
+        tags:     ["CMS", "Campaigns", "Measurement"],
+        disclosure: "anonymized",
+        attribution: "sole operator: consent architecture, tracking QA",
+        proofId:  "proof.chain-visible"
       },
       {
         industry: "Travel operator · at scale",
         title:    "1,500 records, one system",
         body:     "A property CMS rebuilt as architecture, with schema and answer-shaped content that search and AI engines parse.",
         chain:    "problem: one-off pages decayed → move: CMS as system + schema @graph → result: machine-quotable structure → limits: quoted volume still accruing",
-        tags:     ["CMS architecture", "Schema", "AEO"]
+        tags:     ["CMS architecture", "Schema", "AEO"],
+        disclosure: "anonymized-strict",   // GPT: 1,500 + travel = identifiyability risk
+        attribution: "sole operator: CMS architecture, schema design",
+        proofId:  "proof.case-scale"
       },
       {
         industry: "SaaS marketing",
         title:    "From 38 styles to one",
         body:     "A marketing site rebuilt on tokens and a section library. Pages stopped being designed twice.",
         chain:    "problem: 38 ad-hoc styles → move: token law + section library → result: new page costs an afternoon → limits: library still grows",
-        tags:     ["Design systems", "Tokens", "Delivery"]
+        tags:     ["Design systems", "Tokens", "Delivery"],
+        disclosure: "anonymized",
+        attribution: "sole operator: token system, section library",
+        proofId:  "proof.case-tokens"
       }
     ]
   },
@@ -124,22 +136,23 @@ window.SITE = {
   /* ---- 8. eksponati (živi dokazi, u izradi) --------------- */
   exhibits: [
     { code: "Exhibit A · this site", title: "The system, with reasons on",
-      body: "Toggle the reason layer: every section carries its why.", href: "#", linkLabel: "Toggle reasons", proofId: "proof.reason-layer" },
-    { code: "Exhibit B · the engine", title: "D.I.C.E. — randomness you can audit",
-      body: "Same seed, same draw, forever. Deterministic creative engine with real hashes.", href: "#", linkLabel: "Coming soon", proofId: "proof.dice" }
+      body: "Toggle the reason layer: every section carries its why.", href: "v9-carries-the-work.html", linkLabel: "Toggle reasons on this page", proofId: "proof.reason-layer" },
+    { code: "Exhibit B · the engine", title: "D.I.C.E. — deterministic by design",
+      body: "Same seed, same draw, forever. The JS port of the engine is in build — link goes live with the artifact, not before.", href: "", linkLabel: "In build — no live link yet", proofId: "proof.dice" }
   ],
 
   /* ---- 8b. PROOF REGISTER (GPT enforcement: proofId → dokaz) --
      Svaka tvrdnja sa proofId mora imati unos ovde. Lint proverava.
-     level: artifact (klikljivo) | example (imenovan slučaj) | metric (broj) | none (još nema) -------------------------------------------------- */
+     level: artifact (klikljivo) | example (imenovan slučaj) | metric (broj) | none (još nema)
+     public: true + href required za objavu (GPT: level none / "#" blokira ship) -- */
   proofs: {
-    "proof.map-card":     { level: "artifact", what: "The operating-map card itself + the reason layer on this page", where: "hero map card / reasons toggle" },
-    "proof.reason-layer": { level: "artifact", what: "Reasons toggle annotates every section with its why",  where: "top bar of this page" },
-    "proof.dice":         { level: "none",     what: "D.I.C.E. deterministic engine (JS port planned)",       where: "/dice — not yet built" },
-    "proof.chain-visible":{ level: "artifact", what: "Every work case ships with problem → move → result → limits", where: "Selected work section" },
-    "proof.case-scale":   { level: "metric",   what: "1,500+ CMS records moved into one system",              where: "Travel operator case" },
-    "proof.case-tokens":  { level: "metric",   what: "38 styles collapsed into one token law",                where: "SaaS marketing case" },
-    "proof.anonymized":   { level: "example",  what: "All cases anonymized by rule; details shared privately on request", where: "Selected work + on request" }
+    "proof.map-card":     { level: "artifact", public: true,  href: "v9-carries-the-work.html", what: "The operating-map card itself + the reason layer on this page", where: "hero map card / reasons toggle" },
+    "proof.reason-layer": { level: "artifact", public: true,  href: "v9-carries-the-work.html", what: "Reasons toggle annotates every section with its why",  where: "top bar of this page" },
+    "proof.dice":         { level: "none",     public: false, href: null, what: "D.I.C.E. deterministic engine (JS port planned)",       where: "/dice — not yet built", blocksShip: true },
+    "proof.chain-visible":{ level: "artifact", public: true,  href: "v9-carries-the-work.html", what: "Every work case ships with problem → move → result → limits", where: "Selected work section" },
+    "proof.case-scale":   { level: "metric",   public: false, href: null, what: "1,500+ CMS records moved into one system",              where: "Travel operator case — public redacted proof pending", blocksShip: true },
+    "proof.case-tokens":  { level: "metric",   public: false, href: null, what: "38 styles collapsed into one token law",                where: "SaaS marketing case — public redacted proof pending", blocksShip: true },
+    "proof.anonymized":   { level: "example",  public: true,  href: "v9-carries-the-work.html", what: "All cases anonymized by rule; details shared privately on request", where: "Selected work + on request" }
   },
 
   /* ============================================================
@@ -228,9 +241,23 @@ window.SITE = {
       ]
     },
 
-    /* -- 9b. ICP (ko je idealan klijent — Canopy ICP format) - */
+    /* -- 9b. ICP (razdvojene putanje — GPT reality check) ---- */
     icp: {
       summary: "B2B teams whose website is a revenue surface and who have outgrown one-off fixes: they need an operator who owns the whole surface — platform, measurement, conversion — as one system.",
+      paths: [
+        {
+          path: "Direct buyer",
+          who: "CMO / VP Marketing / Growth Lead at a B2B SaaS or established services firm",
+          context: "site feeds pipeline, active campaigns depend on it, ownership split across marketing/agency/engineering",
+          note: "primary conversation; buys an operator, not a project"
+        },
+        {
+          path: "Agency channel",
+          who: "Agency principal or delivery lead (Webflow ecosystem)",
+          context: "needs a reliable operator for Webflow, analytics, technical delivery on client work",
+          note: "different conversation, different budget; a channel — not the same ICP. White-label rules: client-safe law doubles"
+        }
+      ],
       priority: [
         {
           tier: "ICP 1 · best fit",
@@ -297,7 +324,22 @@ window.SITE = {
         "single landing page, price shopping",
         "want a pretty brochure with no measurement",
         "need a full-time in-house hire, not an operator"
-      ]
+      ],
+      geography: "Belgrade/Balkans is location and operating context, not a pricing lever; time-zone coverage is a service fact, not a demand proof."  // GPT
+    },
+
+    /* -- 9b2. ENGAGEMENT & COMMERCIAL (GPT gaps) ------------- */
+    engagement: {
+      modes: [
+        { mode: "Paid consult",        when: "diagnosis first: what to measure, build, and what it should be worth", note: "the one public door" },
+        { mode: "Embedded engagement", when: "ongoing operator ownership of the whole surface",       note: "scoped after a consult" },
+        { mode: "Limited project",     when: "one defined build (CMS architecture, schema layer, token system)", note: "fixed scope, fixed price" },
+        { mode: "Full-time role",      when: "not a public path — routes through the same consult door, discussed privately", note: "GPT: one public conversion; hiring is private" }
+      ],
+      rateSignal: {
+        rule: "Rate anchored before Phase 1 ships (open decision in PLAN.md). Public signal = selectivity, not a number: limited slots, fit-first.",
+        status: "anchor not yet set — blocks Phase 1 ship"
+      }
     },
 
     /* -- 9c. MESSAGING (Canopy messaging-architecture format)  */

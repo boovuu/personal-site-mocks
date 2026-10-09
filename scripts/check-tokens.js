@@ -136,10 +136,52 @@ function walkObj(obj, pathStr) {
   if (typeof obj === 'string') checkString(obj, pathStr);
 }
 function checkProofId(id, where) {
-  if (!SITE.proofs || !SITE.proofs[id]) {
+  const p = SITE.proofs && SITE.proofs[id];
+  if (!p) {
     problems.push(`site-content.js:${where} proofId "${id}" — no entry in SITE.proofs`);
+    return;
+  }
+  // GPT rule: proof must be public + have a working href to count as proof
+  if (p.level === 'none' || p.public !== true || !p.href || p.href === '#') {
+    const tag = p.blocksShip ? 'BLOCKS SHIP' : 'warning';
+    problems.push(`site-content.js:${where} proof "${id}" not publicly verifiable (level:${p.level} public:${p.public} href:${p.href}) — ${tag}`);
   }
 }
+// GPT rule: exhibits must not have href="#" — but an honest "in build" exhibit with empty href is allowed (not fake proof)
+(function(){
+  (SITE.exhibits||[]).forEach((x,i)=>{
+    if(x.href==='#') problems.push(`site-content.js:exhibits[${i}] "${x.title}" href="#" — dead exhibit link (GPT: not proof until it leads somewhere)`);
+    if((x.linkLabel||'').match(/coming soon/i)) problems.push(`site-content.js:exhibits[${i}] linkLabel "${x.linkLabel}" — do not label stubs as "coming soon"; say what state they are in`);
+  });
+  // placeholder email blocks ship
+  if((SITE.identity.email||'').includes('example.com')) problems.push('site-content.js:identity.email placeholder (example.com) — BLOCKS SHIP');
+  if(((SITE.contact||{}).cta||{}).href && SITE.contact.cta.href.includes('example.com')) problems.push('site-content.js:contact.cta.href placeholder email — BLOCKS SHIP');
+})();
+// GPT rule: required section-token bindings — a section MUST declare its strategic tokens
+const REQUIRED_BINDINGS = [
+  { selector: 'section.hero',            mustInclude: ['copy.promise', 'copy.audience'] },
+  { selector: '#approach',               mustInclude: ['copy.problem'] },
+  { selector: '#work',                   mustInclude: ['copy.positioning'] },
+  { selector: '#contact',                mustInclude: ['copy.cta'] },
+];
+function checkRequiredBindings(html, file) {
+  for (const req of REQUIRED_BINDINGS) {
+    const isId = req.selector.startsWith('#');
+    const key = isId ? req.selector.slice(1) : req.selector.replace('section.', '').split(/[\s.]/)[0];
+    const re = isId
+      ? new RegExp(`<section[^>]*id="${key}"[^>]*>([\\s\\S]*?)</section>`)
+      : new RegExp(`<section[^>]*class="[^"]*${key}[^"]*"[^>]*>([\\s\\S]*?)</section>`);
+    const m = html.match(re);
+    if (!m) { problems.push(`${file}: required-bound section ${req.selector} not found`); continue; }
+    const block = m[0];
+    for (const tok of req.mustInclude) {
+      if (!block.includes(`data-copy-token="${tok}"`)) {
+        problems.push(`${file}: ${req.selector} missing required copy token "${tok}" (GPT binding rule)`);
+      }
+    }
+  }
+}
+checkRequiredBindings(fs.readFileSync(path.join(DIR, 'v9-carries-the-work.html'), 'utf8'), 'v9-carries-the-work.html');
 walkObj(SITE, 'SITE');
 
 // 5. unused tokens (informational)
@@ -152,9 +194,18 @@ for (const group of tokens.groups) {
 
 /* ---- report ---- */
 if (notes.length) console.log('NOTES:\n' + notes.map(n => '  · ' + n).join('\n'));
-if (problems.length) {
-  console.log('\nERRORS (' + problems.length + '):\n' + problems.map(p => '  ✗ ' + p).join('\n'));
-  process.exit(1);
-} else {
-  console.log('\nTOKEN LINT: clean.');
+// GPT ship-gate: BLOCKS SHIP problems do not fail draft CI but are the publish gate.
+const shipBlockers = problems.filter(p => p.includes('BLOCKS SHIP'));
+const draftIssues  = problems.filter(p => !p.includes('BLOCKS SHIP'));
+if (draftIssues.length) {
+  console.log('\nERRORS (' + draftIssues.length + '):\n' + draftIssues.map(p => '  ✗ ' + p).join('\n'));
 }
+if (shipBlockers.length) {
+  console.log('\nSHIP GATE — blocked until resolved (' + shipBlockers.length + '):\n' + shipBlockers.map(p => '  ⛔ ' + p).join('\n'));
+  console.log('\nDRAFT STATE: lint passes for draft work. RESOLVE SHIP GATE BEFORE PUBLISHING.');
+  if (process.env.STRICT === 'publish') process.exit(1); // STRICT=publish node check-tokens.js → publish gate
+  process.exit(0);
+}
+if (draftIssues.length) process.exit(1);
+console.log('\nTOKEN LINT: clean. SHIP GATE: clear. Ready to publish.');
+

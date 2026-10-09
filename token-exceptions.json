@@ -1,31 +1,181 @@
 {
   "comment": "Justified exceptions. Every entry needs file+value+reason. Entries without a reason fail review by rule.",
   "colors": [
-    { "file": "v9-carries-the-work.html", "value": "#D2A969", "reason": "SVG route line inside teal map card — gold-on-teal readable variant; CSS var cannot reach SVG attrs without class refactor (planned v10)" },
-    { "file": "v9-carries-the-work.html", "value": "#C66B48", "reason": "SVG 'you are here' marker on route — deliberate one-off highlight of the MEASURE stop" },
-    { "file": "v9-carries-the-work.html", "value": "#F3EFE5", "reason": "SVG stops/text on teal — same value as --paper, kept literal because SVG attrs can't use var() inline" },
-    { "file": "v9-carries-the-work.html", "value": "#40504a", "reason": "hero-copy body tint — ink/teal mix, candidate for token promotion in v10" },
-    { "file": "v9-carries-the-work.html", "value": "#43534c", "reason": "intro body tint — same family as above" },
-    { "file": "v9-carries-the-work.html", "value": "#536159", "reason": "project body tint — same family" },
-    { "file": "v9-carries-the-work.html", "value": "#7d7261", "reason": "reasoning-chain caption tint" },
-    { "file": "v9-carries-the-work.html", "value": "#bdb8aa", "reason": "tag hairline border" },
-    { "file": "v9-carries-the-work.html", "value": "#46554e", "reason": "tag text tint" },
-    { "file": "v9-carries-the-work.html", "value": "#d9d3c3", "reason": "map-card header text on teal" },
-    { "file": "v9-carries-the-work.html", "value": "#e1d9c7", "reason": "map-card note text on teal" },
-    { "file": "v9-carries-the-work.html", "value": "#d5d7c9", "reason": "footer/contact body text on teal" },
-    { "file": "v9-carries-the-work.html", "value": "#d1a86c", "reason": "contact kicker gold variant on teal" },
-    { "file": "v9-carries-the-work.html", "value": "#172c2b", "reason": "reasonbar text bg matches --ink value, used as rgba()" },
-    { "file": "v9-carries-the-work.html", "value": "#fff", "reason": "pure white: hover states on teal buttons + map-note strong — deliberate max contrast, not a brand tone" },
-    { "file": "v9-carries-the-work.html", "value": "#e9e3d5", "reason": "reasonbar text — same value as --paper2, used inside rgba-free rule where var() works; pending v10 class refactor" },
-    { "file": "v9-carries-the-work.html", "value": "rgba(243,239,229,.25)", "reason": "paper at 25% alpha as inner frame on teal — alpha variants of tokens, no separate token yet" },
-    { "file": "v9-carries-the-work.html", "value": "rgba(243,239,229,.23)", "reason": "footer hairline on teal — same family" },
-    { "file": "v9-carries-the-work.html", "value": "rgba(23,44,43,.96)", "reason": "reasonbar bg = --ink at 96%" },
-    { "file": "v9-carries-the-work.html", "value": "rgba(168,82,52,.65)", "reason": "reason-layer dashed outline = --rust at 65%" },
-    { "file": "index.html", "value": "#fff", "reason": "mock index cards on cream — pure white card surface, mock-only file" },
-    { "file": "index.html", "value": "#f1ecdd", "reason": "mock index note background — mock-only file" },
-    { "file": "index.html", "value": "#6f684f", "reason": "mock index note text — mock-only file" },
-    { "file": "index.html", "value": "rgba(60,50,20,.08)", "reason": "mock card hover shadow — mock-only file" },
-    { "file": "index.html", "value": "rgba(0,0,0,.08)", "reason": "swatch border — mock-only file" }
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#D2A969",
+      "reason": "SVG route line inside teal map card — gold-on-teal readable variant; CSS var cannot reach SVG attrs without class refactor (planned v10)",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#C66B48",
+      "reason": "SVG 'you are here' marker on route — deliberate one-off highlight of the MEASURE stop",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#F3EFE5",
+      "reason": "SVG stops/text on teal — same value as --paper, kept literal because SVG attrs can't use var() inline",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#40504a",
+      "reason": "hero-copy body tint — ink/teal mix, candidate for token promotion in v10",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#43534c",
+      "reason": "intro body tint — same family as above",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#536159",
+      "reason": "project body tint — same family",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#7d7261",
+      "reason": "reasoning-chain caption tint",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#bdb8aa",
+      "reason": "tag hairline border",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#46554e",
+      "reason": "tag text tint",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#d9d3c3",
+      "reason": "map-card header text on teal",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#e1d9c7",
+      "reason": "map-card note text on teal",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#d5d7c9",
+      "reason": "footer/contact body text on teal",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#d1a86c",
+      "reason": "contact kicker gold variant on teal",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#172c2b",
+      "reason": "reasonbar text bg matches --ink value, used as rgba()",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#fff",
+      "reason": "pure white: hover states on teal buttons + map-note strong — deliberate max contrast, not a brand tone",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#e9e3d5",
+      "reason": "reasonbar text — same value as --paper2, used inside rgba-free rule where var() works; pending v10 class refactor",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "rgba(243,239,229,.25)",
+      "reason": "paper at 25% alpha as inner frame on teal — alpha variants of tokens, no separate token yet",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "rgba(243,239,229,.23)",
+      "reason": "footer hairline on teal — same family",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "rgba(23,44,43,.96)",
+      "reason": "reasonbar bg = --ink at 96%",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "rgba(168,82,52,.65)",
+      "reason": "reason-layer dashed outline = --rust at 65%",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#fff",
+      "reason": "mock index cards on cream — pure white card surface, mock-only file",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#f1ecdd",
+      "reason": "mock index note background — mock-only file",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#6f684f",
+      "reason": "mock index note text — mock-only file",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "rgba(60,50,20,.08)",
+      "reason": "mock card hover shadow — mock-only file",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "rgba(0,0,0,.08)",
+      "reason": "swatch border — mock-only file",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    }
   ],
   "absolutes": []
 }
