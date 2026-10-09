@@ -124,7 +124,7 @@ body.reasons [data-why]:after{content:attr(data-why);position:absolute;left:0;to
 
 <header class="wrap nav"><a class="brand" href="#top" aria-label="home">
   <span class="seal" data-c="identity.sealLetter"></span>
-  <span><span data-c="identity.name"></span><small data-c="identity.brandLine"></small></span>
+  <span data-copy-token="copy.category"><span data-c="identity.name"></span><small data-c="identity.brandLine"></small></span>
 </a>
 <nav class="navlinks">
   <a href="#approach" data-c-nav="approach">Approach</a>
@@ -134,17 +134,17 @@ body.reasons [data-why]:after{content:attr(data-why);position:absolute;left:0;to
 
 <main id="top">
 
-<section class="wrap hero">
+<section class="wrap hero" data-token="surface.page"
   <div>
     <div class="eyebrow" data-c="hero.eyebrow"></div>
-    <h1 data-c="hero.lead" data-why="Positioning: the site carries the work — craft, not tech cosplay."></h1>
-    <p class="hero-copy" data-c="hero.copy"></p>
+    <h1 data-c="hero.lead" data-copy-token="copy.promise" data-why="Positioning: the site carries the work — craft, not tech cosplay."></h1>
+    <p class="hero-copy" data-c="hero.copy" data-copy-token="copy.audience"</p>
     <div class="hero-actions">
-      <a class="button" data-c-href="hero.primaryCta" data-c="hero.primaryCta.label"></a>
+      <a class="button" data-c-href="hero.primaryCta" data-token="accent.teal" data-c="hero.primaryCta.label"></a>
       <a class="textlink" data-c-href="hero.secondaryCta" data-c="hero.secondaryCta.label"></a>
     </div>
   </div>
-  <div class="map-card" data-why="The system as a route: content → platform → measure → improve. The story in one diagram.">
+  <div class="map-card" data-token="accent.teal" data-why="The system as a route: content → platform → measure → improve. The story in one diagram.">
     <div class="map-head"><span data-c="hero.mapCard.code"></span><span data-c="hero.mapCard.label"></span></div>
     <svg class="map-art" viewBox="0 0 440 220" fill="none" aria-label="A route linking content, measurement, and improvement">
       <path d="M44 154 C100 154 86 61 153 61 S219 168 278 139 323 53 393 53" stroke="#D2A969" stroke-width="1.4" stroke-dasharray="4 7"/>
@@ -163,17 +163,17 @@ body.reasons [data-why]:after{content:attr(data-why);position:absolute;left:0;to
 <section class="wrap intro" id="approach">
   <div class="section-label" data-c="approach.kicker"></div>
   <div>
-    <h2 data-c="approach.heading" data-why="Reframes the site as operational infrastructure — the senior signal."></h2>
+    <h2 data-c="approach.heading" data-copy-token="copy.problem" data-why="Reframes the site as operational infrastructure — the senior signal."></h2>
     <div style="height:22px"></div>
     <div class="intro-notes" data-why="Details people rarely see are the product."></div>
   </div>
 </section>
 
-<section class="work" id="work">
+<section class="work" id="work" data-token="surface.alt"
   <div class="wrap">
     <div class="section-head">
       <div><div class="kicker" data-c="work.kicker"></div><h2 data-c="work.heading"></h2></div>
-      <p data-c="work.sub"></p>
+      <p data-c="work.sub" data-copy-token="copy.positioning"></p>
     </div>
     <div class="projects" id="projects" data-why="Anonymized by rule; each case carries the reasoning chain."></div>
   </div>
@@ -193,14 +193,14 @@ body.reasons [data-why]:after{content:attr(data-why);position:absolute;left:0;to
   </div>
 </section>
 
-<section class="contact" id="contact">
+<section class="contact" id="contact" data-token="accent.teal"
   <div class="wrap contact-grid">
     <div>
       <div class="kicker" data-c="contact.kicker"></div>
       <h2 data-c="contact.heading" data-why="Final ask: a specific, honest door."></h2>
       <p data-c="contact.body"></p>
     </div>
-    <a class="button" data-c-href="contact.cta" data-c="contact.cta.label"></a>
+    <a class="button" data-c-href="contact.cta" data-copy-token="copy.cta" data-c="contact.cta.label"></a>
   </div>
 </section>
 
