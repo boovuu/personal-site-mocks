@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOCK v2 — Terminal ember — Bogdan Vuckovic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0e11; --panel:#11151a; --border:#1d242c; --border-2:#2b3540;
+    --ink:#d7dde3; --bright:#f2f5f7; --muted:#6b7683; --comment:#465059;
+    --ember:#ff6b35; --ember-dim:#b34824; --green:#3ddc84;
+    --mono:'JetBrains Mono',ui-monospace,monospace; --max:960px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:14px;line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+  a{color:var(--ink)}
+  /* mock banner */
+  .mockbar{background:#160d07;border-bottom:1px solid #3a2214;padding:10px 22px;font-size:11.5px;color:#e08a5f;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .mockbar b{color:#ffb08a}
+  .mockbar button{background:var(--ember);border:0;color:#160d07;font:700 11px var(--mono);padding:4px 10px;border-radius:3px;cursor:pointer}
+  body.show-reasons [data-reason]{outline:1px dashed rgba(255,107,53,.5);outline-offset:3px;position:relative}
+  body.show-reasons [data-reason]::after{content:attr(data-reason);position:absolute;left:0;top:-13px;font-size:9.5px;color:var(--ember);background:#160d07;padding:0 5px;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis;z-index:9}
+  /* terminal chrome */
+  .term{border:1px solid var(--border);border-radius:8px;background:var(--panel);overflow:hidden}
+  .term-head{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid var(--border);background:#0d1116}
+  .term-head i{width:10px;height:10px;border-radius:50%;background:var(--border-2)}
+  .term-head span{margin-left:8px;font-size:11px;color:var(--comment)}
+  .term-body{padding:22px}
+  nav{padding:18px 0;border-bottom:1px solid var(--border)}
+  .nav{display:flex;justify-content:space-between;align-items:center;font-size:12.5px}
+  .nav .who{color:var(--bright)}
+  .nav .who b{color:var(--ember)}
+  .nav .cmds{display:flex;gap:20px}
+  .nav .cmds a{text-decoration:none;color:var(--muted)}
+  .nav .cmds a:hover{color:var(--bright)}
+  .nav .cmds a::before{content:"/";color:var(--ember-dim)}
+  .nav .book{color:var(--ember)!important;border:1px solid var(--ember-dim);padding:4px 12px;border-radius:4px}
+  /* hero as terminal session */
+  .hero{padding:64px 0 56px}
+  .prompt{color:var(--green)}
+  .prompt::before{content:"➜ ";color:var(--ember)}
+  .path{color:var(--comment)}
+  .cmd{color:var(--bright)}
+  .flag{color:var(--ember)}
+  h1{font-size:clamp(24px,4.6vw,40px);font-weight:700;color:var(--bright);letter-spacing:-.01em;line-height:1.25;margin:14px 0 10px}
+  h1 .hl{color:var(--ember)}
+  .cursor{display:inline-block;width:9px;height:1.1em;background:var(--ember);vertical-align:text-bottom;animation:blink 1.1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .out{color:var(--muted);max-width:640px;margin:8px 0 24px}
+  .out b{color:var(--ink);font-weight:500}
+  .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+  .btn{text-decoration:none;font-size:13px;padding:9px 18px;border-radius:4px;border:1px solid var(--ember-dim);color:var(--ember)}
+  .btn.solid{background:var(--ember);color:#160d07;font-weight:700;border-color:var(--ember)}
+  .btn:hover{border-color:var(--ember)}
+  /* proof as env output */
+  .proof{padding:0 0 56px}
+  .proof .term-body{display:grid;gap:6px;font-size:13px}
+  .kv{display:flex;gap:10px}
+  .kv .k{color:var(--comment);min-width:210px}
+  .kv .v{color:var(--ink)}
+  .kv .v em{color:var(--green);font-style:normal}
+  /* method as man page */
+  section{padding:64px 0;border-top:1px solid var(--border)}
+  .sec-head{color:var(--comment);font-size:12px;margin-bottom:26px}
+  .sec-head b{color:var(--ember)}
+  .man{display:grid;gap:26px}
+  .man .row{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:start}
+  .man .flag-name{color:var(--ember);font-weight:700}
+  .man .flag-name small{display:block;color:var(--comment);font-weight:400;font-size:11px}
+  .man p{color:var(--muted)}
+  .man p b{color:var(--bright);font-weight:500}
+  .man code{color:var(--green);font-size:12.5px}
+  /* cases as git log */
+  .log{display:grid;gap:0}
+  .commit{padding:18px 0;border-top:1px dashed var(--border)}
+  .commit:first-child{border-top:0}
+  .commit .hash{color:var(--ember);font-size:12px}
+  .commit .msg{color:var(--bright);font-weight:700;margin:2px 0 6px}
+  .commit .diff{color:var(--muted);font-size:13px}
+  .commit .diff .plus{color:var(--green)}
+  .commit .diff .minus{color:#e35555}
+  /* panels row */
+  .panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .panel{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:20px}
+  .panel h3{color:var(--bright);font-size:14px;margin-bottom:8px}
+  .panel h3::before{content:"$ ";color:var(--ember)}
+  .panel p{color:var(--muted);font-size:13px;margin-bottom:14px}
+  .panel a{color:var(--ember);text-decoration:none;font-size:12.5px}
+  /* final cta */
+  .final{text-align:left;padding:80px 0}
+  .final h2{color:var(--bright);font-size:clamp(20px,3.6vw,30px);font-weight:700;max-width:620px;line-height:1.4}
+  .final p{color:var(--muted);margin:14px 0 26px;max-width:560px}
+  footer{border-top:1px solid var(--border);padding:20px 0;color:var(--comment);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  footer a{color:var(--muted);text-decoration:none}
+  @media(max-width:720px){
+    .man .row{grid-template-columns:1fr;gap:6px}
+    .panels{grid-template-columns:1fr}
+    .kv .k{min-width:140px}
+    .nav .cmds a:not(.book){display:none}
+  }
+</style>
+</head>
+<body>
+<div class="mockbar" data-reason="Mock chrome, ships never. Judges one question: does this make the rate feel high?">
+  <b>MOCK v2 — TERMINAL EMBER</b><span>hacker-native, mono everywhere, ember accent, output-as-proof</span>
+  <button onclick="document.body.classList.toggle('show-reasons')">Toggle reason layer</button>
+</div>
+
+<nav data-reason="Nav reads as commands: the aesthetic IS the positioning.">
+  <div class="wrap nav">
+    <div class="who"><b>bogdan</b>@growth:~$</div>
+    <div class="cmds">
+      <a href="#work">work</a>
+      <a href="#system">system</a>
+      <a href="/dice">dice</a>
+      <a class="book" href="#book">book --consult</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap term" data-reason="Hero as a terminal session: the visitor watches positioning execute.">
+    <div class="term-head"><i></i><i></i><i></i><span>bogdan@growth — zsh</span></div>
+    <div class="term-body">
+      <div><span class="prompt">growth</span> <span class="path">webflow-ops</span> <span class="cmd">whoami --verbose</span></div>
+      <h1 data-reason="Positioning one-liner. Verbs and outcomes, zero fluff adjectives.">I make Webflow sites <span class="hl">measurably</span> grow<span class="cursor"></span></h1>
+      <p class="out" data-reason="Three rare skills, one breath, agency anchor for instant credibility.">Growth engineer at <b>Edgar Allan</b>. Measurement you can trust, <b>content AI engines quote</b>, and <b>systems agents build on</b>. The stack: GA4/GTM, AEO/schema, design tokens, agent pipelines.</p>
+      <div class="ctas">
+        <a class="btn solid" href="#book" data-reason="Single conversion goal.">run consult --book</a>
+        <a class="btn" href="#work">cat proof/</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap proof">
+  <div class="term" data-reason="Proof as environment output: facts, not claims. Qualitative until numbers pass anonymization.">
+    <div class="term-body">
+      <div class="kv"><span class="k">employer</span><span class="v">Edgar Allan · enterprise Webflow agency · 3+ yrs</span></div>
+      <div class="kv"><span class="k">measurement</span><span class="v"><em>GA4 · GTM · Consent Mode v2</em> · client-grade, audit-proof</span></div>
+      <div class="kv"><span class="k">ai_visibility</span><span class="v">Profound benchmarking · answer-shaped content · schema @graph</span></div>
+      <div class="kv"><span class="k">agents</span><span class="v">multi-agent build loops in production · human holds the pen</span></div>
+      <div class="kv"><span class="k">base</span><span class="v">Zemun, Serbia · UTC+1 · works remote-first teams</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head" data-reason="Method framed as man page flags: rules of the tool, readable by buyers who ship."><b>MAN</b> bogdan-method(1) — three flags, always in this order</div>
+    <div class="man">
+      <div class="row" data-reason="Rule 1: unmeasured work cannot be defended, so it cannot be expensive.">
+        <div class="flag-name">--measure-first<small>default: on</small></div>
+        <p>Instruments before opinions. If a number cannot survive an audit, it does not make decisions. <code>trust the instrument</code></p>
+      </div>
+      <div class="row" data-reason="Rule 2: systems compound, pages decay. The Canopy principle as a flag.">
+        <div class="flag-name">--systems-not-pages<small>default: on</small></div>
+        <p>Tokens → sections → pages. A new page costs an afternoon because the factory already exists. <b>build the factory once</b></p>
+      </div>
+      <div class="row" data-reason="Rule 3: agents as crew, human-gated. Rare today: ship it while it is rare.">
+        <div class="flag-name">--agents-as-crew<small>default: on</small></div>
+        <p>Agent sessions draft, check, and ship the repeatable. Humans keep the pen on anything client-facing. <b>entropy does the boring parts</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head" data-reason="Cases as git commits: each one is a change with a reasoning diff."><b>LOG</b> — selected work, anonymized by rule · full chains on click</div>
+    <div class="log">
+      <div class="commit" data-reason="Case 1: measurement + conversion rebuild. Diff shows what changed.">
+        <div class="hash">a3f9c1e</div>
+        <div class="msg">fix(attribution): rebuild lead tracking for B2B SaaS</div>
+        <div class="diff"><span class="minus">- forms nobody trusted, routing nobody believed</span><br><span class="plus">+ clean capture layer, attribution that survives audits</span></div>
+      </div>
+      <div class="commit" data-reason="Case 2: CMS architecture + AEO at scale.">
+        <div class="hash">7d21b04</div>
+        <div class="msg">feat(cms): 1.5k-record property architecture + AEO layer</div>
+        <div class="diff"><span class="minus">- pages built twice, schema an afterthought</span><br><span class="plus">+ answer-shaped system AI engines parse and quote</span></div>
+      </div>
+      <div class="commit" data-reason="Case 3: design system rebuild. 38 one-off styles to token law.">
+        <div class="hash">e88f5a2</div>
+        <div class="msg">refactor(ds): 38 one-off styles → token system + section library</div>
+        <div class="diff"><span class="minus">- every page designed from scratch</span><br><span class="plus">+ pages assembled in an afternoon</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="system">
+  <div class="wrap">
+    <div class="sec-head" data-reason="Proof of craft: runnable artifacts beat badges."><b>LS</b> artifacts/ — live, not screenshots</div>
+    <div class="panels">
+      <div class="panel" data-reason="The site exhibits itself with reasons on.">
+        <h3>./system --explain</h3>
+        <p>This site with its reasons exposed: every token, section, and rule annotated with why it exists.</p>
+        <a href="/system">open /system →</a>
+      </div>
+      <div class="panel" data-reason="D.I.C.E. as working determinism demo. Function before lore.">
+        <h3>./dice --seed "five words"</h3>
+        <p>A deterministic creative engine. Same seed, same draw, forever. Real hashes, auditable randomness.</p>
+        <a href="/dice">run /dice →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="book">
+  <div class="wrap">
+    <h2 data-reason="Final ask: expensive and specific.">Your Webflow operation should be growing faster. One conversation will tell you why it is not.</h2>
+    <p data-reason="Qualifying filter: buyers with an operation, not a hobby.">I will tell you what I would measure first, what I would build, and what it should be worth. If the fit is not there, I will say so.</p>
+    <div class="ctas">
+      <a class="btn solid" href="mailto:boovuu@hotmail.com?subject=Consult" data-reason="Consult door.">exec consult --book</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:8px">
+    <span>© 2026 bogdan vuckovic · zemun, serbia</span>
+    <span><a href="mailto:boovuu@hotmail.com">boovuu@hotmail.com</a> · <a href="https://github.com/boovuu">github/boovuu</a></span>
+  </div>
+</footer>
+</body>
+</html>

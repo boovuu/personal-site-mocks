@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOCK v1 — Vercel precision — Bogdan Vuckovic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000000; --surface:#0a0a0a; --border:#1f1f1f; --border-2:#2e2e2e;
+    --ink:#ededed; --muted:#8f8f8f; --accent:#4f46e5; --accent-ink:#ffffff;
+    --max:1080px; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  /* mock banner (chrome, not design) */
+  .mockbar{background:#1a1200;border-bottom:1px solid #3a2c00;padding:10px 24px;font:12px var(--mono);color:#d4b45a;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .mockbar b{color:#ffe9a8}
+  .mockbar button{background:#d4b45a;border:0;color:#1a1200;font:600 11px var(--mono);padding:4px 10px;border-radius:4px;cursor:pointer}
+  body.show-reasons [data-reason]{outline:1px dashed rgba(212,180,90,.55);outline-offset:3px;position:relative}
+  body.show-reasons [data-reason]::after{content:attr(data-reason);position:absolute;left:0;top:-14px;font:10px var(--mono);color:#d4b45a;background:#1a1200;padding:1px 6px;border-radius:3px;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis;z-index:9}
+  /* nav */
+  nav{border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .mark{font:600 14px var(--mono);letter-spacing:.02em}
+  .mark span{color:var(--muted)}
+  .links{display:flex;gap:26px;align-items:center}
+  .links a{color:var(--muted);text-decoration:none;font-size:13.5px;transition:color .15s}
+  .links a:hover{color:var(--ink)}
+  .links a.cta{color:var(--accent-ink);background:var(--accent);padding:7px 14px;border-radius:6px;font-weight:500}
+  /* hero */
+  .hero{padding:96px 0 80px;border-bottom:1px solid var(--border)}
+  .kicker{font:12px var(--mono);color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px}
+  .kicker em{color:var(--accent);font-style:normal}
+  h1{font-size:clamp(38px,6.5vw,66px);line-height:1.06;font-weight:600;letter-spacing:-.035em;max-width:800px}
+  h1 .dim{color:var(--muted)}
+  .sub{margin-top:26px;font-size:17px;color:var(--muted);max-width:560px}
+  .sub strong{color:var(--ink);font-weight:500}
+  .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:11px 20px;border-radius:6px;font-size:14px;font-weight:500;text-decoration:none;transition:transform .12s,background .15s}
+  .btn:active{transform:scale(.98)}
+  .btn-primary{background:var(--accent);color:var(--accent-ink)}
+  .btn-primary:hover{background:#5b52f0}
+  .btn-ghost{color:var(--ink);border:1px solid var(--border-2)}
+  .btn-ghost:hover{border-color:var(--muted)}
+  /* proof strip */
+  .proof{border-bottom:1px solid var(--border);padding:26px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .proof div{font:13px var(--mono);color:var(--muted)}
+  .proof b{display:block;color:var(--ink);font-size:14.5px;font-weight:500;margin-bottom:3px}
+  /* sections */
+  section{padding:84px 0;border-bottom:1px solid var(--border)}
+  .sec-label{font:12px var(--mono);color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+  h2{font-size:clamp(26px,4vw,36px);letter-spacing:-.025em;font-weight:600;margin-bottom:14px}
+  .sec-sub{color:var(--muted);font-size:15.5px;max-width:520px;margin-bottom:44px}
+  /* method: numbered vertical editorial list (NOT equal cards) */
+  .method{display:flex;flex-direction:column}
+  .step{display:grid;grid-template-columns:72px 1fr;gap:20px;padding:26px 0;border-top:1px solid var(--border)}
+  .step:first-child{border-top:0;padding-top:0}
+  .step .n{font:500 13px var(--mono);color:var(--accent);padding-top:5px}
+  .step h3{font-size:18px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:15px;max-width:560px}
+  .step p code{font:12.5px var(--mono);background:var(--surface);border:1px solid var(--border);padding:1px 6px;border-radius:4px;color:var(--ink)}
+  /* case studies: stacked rows */
+  .case{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:30px 0;border-top:1px solid var(--border);align-items:start}
+  .case:first-of-type{border-top:0;padding-top:0}
+  .case h3{font-size:19px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+  .case .chain{font:12.5px var(--mono);color:var(--muted);line-height:2}
+  .case .chain b{color:var(--ink);font-weight:500}
+  .case p{color:var(--muted);font-size:15px}
+  /* system + dice teasers */
+  .duo{display:grid;grid-template-columns:1.4fr 1fr;gap:48px}
+  .duo .panel{border:1px solid var(--border);border-radius:10px;padding:28px;background:var(--surface)}
+  .duo .panel h3{font-size:17px;font-weight:600;margin-bottom:10px}
+  .duo .panel p{color:var(--muted);font-size:14.5px;margin-bottom:16px}
+  .duo .panel a{color:var(--accent);font:500 13.5px var(--mono);text-decoration:none}
+  .tokens{display:flex;gap:8px;margin:14px 0}
+  .tokens i{width:26px;height:26px;border-radius:6px;border:1px solid var(--border-2)}
+  /* final cta */
+  .final{padding:110px 0;border-bottom:0}
+  .final h2{font-size:clamp(30px,5vw,48px);max-width:640px}
+  .final p{color:var(--muted);margin:18px 0 34px;max-width:480px;font-size:16px}
+  footer{border-top:1px solid var(--border);padding:26px 0;font:12.5px var(--mono);color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer a{color:var(--muted);text-decoration:none}
+  @media(max-width:760px){
+    .proof{grid-template-columns:1fr}
+    .case{grid-template-columns:1fr;gap:10px}
+    .duo{grid-template-columns:1fr}
+    .links a:not(.cta){display:none}
+    .hero{padding:64px 0 56px}
+  }
+</style>
+</head>
+<body>
+<div class="mockbar" data-reason="Mock chrome, ships never. Judges one question: does this page make the rate feel high?">
+  <b>MOCK v1 — VERCEL PRECISION</b><span>black/white, one indigo accent, editorial numbering</span>
+  <button onclick="document.body.classList.toggle('show-reasons')">Toggle reason layer</button>
+</div>
+
+<nav data-reason="Persistent quiet nav: the page sells, the nav never shouts.">
+  <div class="wrap nav">
+    <div class="mark">BOGDAN VUCKOVIC <span>· growth engineering</span></div>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#system">System</a>
+      <a href="/dice">Dice</a>
+      <a class="cta" href="#book" data-reason="One conversion goal only: the consult door.">Book a consult</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker" data-reason="Specialist frame up top: stack + discipline, no job title leading.">WEBFLOW STACK <em>·</em> MEASUREMENT <em>·</em> AEO <em>·</em> AGENT-BUILT SYSTEMS</div>
+    <h1 data-reason="Positioning one-liner: what, for whom, in plain words. No adjectives that need proving.">I make Webflow sites <span class="dim">measurably</span> grow.</h1>
+    <p class="sub" data-reason="Sub: the three rare skills in one breath, anchored by the agency name for instant credibility.">Growth engineering for teams that run serious Webflow operations: <strong>measurement you can trust</strong>, <strong>content engines AI engines quote</strong>, and <strong>systems agents can build on</strong>. Website Growth Lead at Edgar Allan.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#book" data-reason="Primary CTA repeats the single goal.">Book a consult</a>
+      <a class="btn btn-ghost" href="#work">See the proof</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="proof" data-reason="Proof strip: qualitative-first until numbers pass anonymization. Honest by law, no fake metrics.">
+    <div data-reason="Depth signal: enterprise agency tenure."><b>Enterprise Webflow</b>3+ years at Edgar Allan, Atlanta + Serbia</div>
+    <div data-reason="Measurement craft signal."><b>GA4 · GTM · Consent Mode v2</b>measurement stacks in production, client-grade</div>
+    <div data-reason="Edge signal: AEO benchmarking tool + agent workflows."><b>Profound · agent pipelines</b>AI-visibility work with agents as crew</div>
+  </div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-label">Method</div>
+    <h2 data-reason="Section thesis: the discipline is the product.">Three rules. Same order, every project.</h2>
+    <p class="sec-sub" data-reason="Reason layer stated in public: this is the judgment they are buying.">The order is the point. Each rule makes the next one cheaper.</p>
+    <div class="method">
+      <div class="step" data-reason="Rule 1 exists because unmeasured work cannot be defended, so it cannot be expensive.">
+        <div class="n">01</div>
+        <div><h3>Measurement before opinions</h3>
+        <p>GA4, GTM, Consent Mode v2, server-side where it matters. If a number cannot survive an audit, it does not make decisions. <code>trust the instrument</code></p></div>
+      </div>
+      <div class="step" data-reason="Rule 2: systems compound, one-off pages decay. This is the Canopy principle stated as law.">
+        <div class="n">02</div>
+        <div><h3>Systems, not pages</h3>
+        <p>Tokens to sections to pages, assembled like a style guide, extended like a product. A new page should cost an afternoon, not a sprint. <code>build the factory</code></p></div>
+      </div>
+      <div class="step" data-reason="Rule 3: agents as crew, human-gated. Rare skill today, table stakes tomorrow: ship it while it is rare.">
+        <div class="n">03</div>
+        <div><h3>Agents as crew</h3>
+        <p>Agent sessions and custom tooling inside the build loop: drafting, checking, shipping the repeatable. Humans keep the pen on anything that faces a client. <code>entropy does the boring parts</code></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-label">Selected work</div>
+    <h2 data-reason="Case studies lead with the reasoning chain: problem to hypothesis to result. The reasoning is the senior signal.">The thinking, then the receipt.</h2>
+    <p class="sec-sub">Anonymized by rule. Full reasoning on each case page.</p>
+    <div class="case">
+      <div data-reason="Case 1: B2B SaaS, measurement + conversion. Chain preview only, depth on click.">
+        <h3>B2B SaaS: lead tracking rebuilt</h3>
+        <p>Forms nobody trusted, attribution nobody believed. Rebuilt the capture and routing layer, then proved the fix with clean before/after attribution.</p>
+      </div>
+      <div class="chain">problem → <b>instrument</b> → hypothesis → <b>intervention</b> → result → <b>limits stated</b></div>
+    </div>
+    <div class="case">
+      <div data-reason="Case 2: travel operator, CMS + schema architecture.">
+        <h3>Travel operator: CMS architecture + AEO</h3>
+        <p>1,500+ property records, schema that search engines and AI engines both parse, answer-shaped content structure shipped as a system.</p>
+      </div>
+      <div class="chain">problem → <b>schema @graph</b> → hypothesis → <b>content shape</b> → result → <b>limits stated</b></div>
+    </div>
+    <div class="case">
+      <div data-reason="Case 3: design system rebuild, the Canopy principle in production.">
+        <h3>SaaS marketing: design system rebuild</h3>
+        <p>From 38 one-off styles to a token system with a section library. Pages assembled, not designed twice.</p>
+      </div>
+      <div class="chain">problem → <b>token law</b> → hypothesis → <b>section library</b> → result → <b>limits stated</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="system">
+  <div class="wrap">
+    <div class="sec-label">Proof of craft</div>
+    <div class="duo">
+      <div class="panel" data-reason="The site exhibits itself: tokens visible, every choice annotated. Canopy bones made public.">
+        <h3>/system — this site, with the reasons on</h3>
+        <p>Every token, section, and rule on this site carries its why. The same system discipline I ship for clients, turned on my own site.</p>
+        <div class="tokens"><i style="background:#000"></i><i style="background:#4f46e5"></i><i style="background:#ededed"></i><i style="background:#8f8f8f"></i></div>
+        <a href="/system">Open the system →</a>
+      </div>
+      <div class="panel" data-reason="D.I.C.E.: a working deterministic engine, not a badge. Function before lore.">
+        <h3>/dice — determinism, live</h3>
+        <p>A creative engine where the same seed always draws the same cards. Real code, auditable randomness. Try it.</p>
+        <a href="/dice">Run the engine →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="book">
+  <div class="wrap">
+    <h2 data-reason="Final ask: expensive and specific. Consultations anchor the day rate.">Bring me a Webflow operation that should be growing faster.</h2>
+    <p data-reason="Qualifying line: filters for buyers who have an operation, not a hobby.">One conversation. I will tell you what I would measure first, what I would build, and what it should be worth. If the fit is not there, I will say so.</p>
+    <a class="btn btn-primary" href="mailto:boovuu@hotmail.com?subject=Consult" data-reason="Consult door: email first, calendar link when volume justifies it.">Book a consult</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:10px">
+    <span>© 2026 Bogdan Vuckovic · Zemun, Serbia</span>
+    <span><a href="mailto:boovuu@hotmail.com">boovuu@hotmail.com</a> · <a href="https://github.com/boovuu">github</a></span>
+  </div>
+</footer>
+</body>
+</html>
