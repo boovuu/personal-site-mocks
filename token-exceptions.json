@@ -3,23 +3,9 @@
   "colors": [
     {
       "file": "v9-carries-the-work.html",
-      "value": "#D2A969",
-      "reason": "SVG route line inside teal map card — gold-on-teal readable variant; CSS var cannot reach SVG attrs without class refactor (planned v10)",
-      "reviewed": "2026-10-09",
-      "reviewOwner": "Hermes"
-    },
-    {
-      "file": "v9-carries-the-work.html",
       "value": "#C66B48",
-      "reason": "SVG 'you are here' marker on route — deliberate one-off highlight of the MEASURE stop",
-      "reviewed": "2026-10-09",
-      "reviewOwner": "Hermes"
-    },
-    {
-      "file": "v9-carries-the-work.html",
-      "value": "#F3EFE5",
-      "reason": "SVG stops/text on teal — same value as --paper, kept literal because SVG attrs can't use var() inline",
-      "reviewed": "2026-10-09",
+      "reason": "SVG 'you are here' marker on route — deliberate one-off highlight of the MEASURE stop, applied via .map-stop-here class",
+      "reviewed": "2026-10-11",
       "reviewOwner": "Hermes"
     },
     {
@@ -174,6 +160,20 @@
       "value": "rgba(0,0,0,.08)",
       "reason": "swatch border — mock-only file",
       "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#f3efe5",
+      "reason": "map svg class rules (.map-stop-dot/.map-glow/.map-stop) — paper-on-teal route stops; SVG attrs cannot take var(), colors centralized in classes",
+      "reviewed": "2026-10-11",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "v9-carries-the-work.html",
+      "value": "#c66b48",
+      "reason": ".map-stop-here 'you are here' marker — deliberate one-off highlight of the MEASURE stop",
+      "reviewed": "2026-10-11",
       "reviewOwner": "Hermes"
     }
   ],

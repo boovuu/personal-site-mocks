@@ -1,5 +1,5 @@
 /* ============================================================
-   SITE CONTENT — JEDINI FAJL KOJI MENJAŠ ZA IDENTITET SAJTA
+   SITE CONTENT, JEDINI FAJL KOJI MENJAŠ ZA IDENTITET SAJTA
    ============================================================
    Sve što se na sajtu vidi kao "ko si ja, šta radim, kako me
    se kontaktira" je OVDE. Dizajn (v9.html) samo čita ova polja.
@@ -20,16 +20,16 @@ window.SITE = {
     location:    "Belgrade, Serbia",
     timezone:    "Working across time zones",
     brandLine:   "Websites · systems · growth",
-    sealLetter:  "B",                     // slovo u pečatu
-    email:       "hello@example.com",     // PLACEHOLDER — zameni pre objave
+    sealLetter:  "B",                    // slovo u pečatu
+    email:       "hello@example.com",    // PLACEHOLDER, zameni pre objave
     github:      "https://github.com/boovuu"
   },
 
   /* ---- 2. hero (prvi ekran) ------------------------------- */
   hero: {
     eyebrow:    "The work behind the website",
-    lead:       "A website should <em>carry</em> the work.",
-    copy:       "I help B2B teams build and run websites that hold together — from Webflow and CMS to analytics, conversion, consent, and launch.",
+    lead:       "A website should <em>carry</em> the work of your business.",
+    copy:       "I help B2B teams whose site has outgrown one-off fixes: I build and run the whole surface, from Webflow and CMS to analytics, conversion, consent, and launch.",
     primaryCta: { label: "See how I work", href: "#work" },
     secondaryCta:{ label: "A little about my approach", href: "#approach" },
     mapCard: {
@@ -37,7 +37,7 @@ window.SITE = {
       label: "Web system",
       stops: ["CONTENT", "PLATFORM", "MEASURE", "IMPROVE"],
       note:  "One connected system.",
-      strong:"Every part accountable.",      // proofId: proof.system-view (GPT: 'Nothing left to chance' = nedokazljiv apsolut)
+      strong:"Every part accountable.",     // proofId: proof.system-view (GPT: 'Nothing left to chance' = nedokazljiv apsolut)
       proofId: "proof.map-card"
     }
   },
@@ -65,11 +65,11 @@ window.SITE = {
       {
         industry: "Enterprise software",
         title:    "Website operations, end to end",
-        body:     "Webflow, analytics, consent, hiring flows, structured data, and ongoing performance work — one owner across the whole surface.",
+        body:     "Webflow, analytics, consent, hiring flows, structured data, and ongoing performance work, with one owner across the whole surface.",
         chain:    "problem: no owner across seams → move: single-operator coverage → result: site holds shape between teams → limits: numbers shared on request",
         tags:     ["Webflow", "Analytics", "Growth systems"],
-        disclosure: "anonymized",        // GPT: disclosure-level po slučaju
-        attribution: "sole operator: platform, analytics, consent, schema",  // GPT: proof.attribution
+        disclosure: "anonymized",       // GPT: disclosure-level po slučaju
+        attribution: "sole operator: platform, analytics, consent, schema", // GPT: proof.attribution
         proofId:  "proof.chain-visible"
       },
       {
@@ -88,7 +88,7 @@ window.SITE = {
         body:     "A property CMS rebuilt as architecture, with schema and answer-shaped content that search and AI engines parse.",
         chain:    "problem: one-off pages decayed → move: CMS as system + schema @graph → result: machine-quotable structure → limits: quoted volume still accruing",
         tags:     ["CMS architecture", "Schema", "AEO"],
-        disclosure: "anonymized-strict",   // GPT: 1,500 + travel = identifiyability risk
+        disclosure: "anonymized-strict",  // GPT: 1,500 + travel = identifiyability risk
         attribution: "sole operator: CMS architecture, schema design",
         proofId:  "proof.case-scale"
       },
@@ -137,8 +137,8 @@ window.SITE = {
   exhibits: [
     { code: "Exhibit A · this site", title: "The system, with reasons on",
       body: "Toggle the reason layer: every section carries its why.", href: "v9-carries-the-work.html", linkLabel: "Toggle reasons on this page", proofId: "proof.reason-layer" },
-    { code: "Exhibit B · the engine", title: "D.I.C.E. — deterministic by design",
-      body: "Same seed, same draw, forever. The JS port of the engine is in build — link goes live with the artifact, not before.", href: "", linkLabel: "In build — no live link yet", proofId: "proof.dice" }
+    { code: "Exhibit B · the engine", title: "D.I.C.E., deterministic by design",
+      body: "Same seed, same draw, forever. The JS port of the engine is in build; the link goes live with the artifact, not before.", href: "", linkLabel: "In build, no live link yet", proofId: "proof.dice" }
   ],
 
   /* ---- 8b. PROOF REGISTER (GPT enforcement: proofId → dokaz) --
@@ -146,17 +146,17 @@ window.SITE = {
      level: artifact (klikljivo) | example (imenovan slučaj) | metric (broj) | none (još nema)
      public: true + href required za objavu (GPT: level none / "#" blokira ship) -- */
   proofs: {
-    "proof.map-card":     { level: "artifact", public: true,  href: "v9-carries-the-work.html", what: "The operating-map card itself + the reason layer on this page", where: "hero map card / reasons toggle" },
-    "proof.reason-layer": { level: "artifact", public: true,  href: "v9-carries-the-work.html", what: "Reasons toggle annotates every section with its why",  where: "top bar of this page" },
-    "proof.dice":         { level: "none",     public: false, href: null, what: "D.I.C.E. deterministic engine (JS port planned)",       where: "/dice — not yet built", blocksShip: true },
-    "proof.chain-visible":{ level: "artifact", public: true,  href: "v9-carries-the-work.html", what: "Every work case ships with problem → move → result → limits", where: "Selected work section" },
-    "proof.case-scale":   { level: "metric",   public: false, href: null, what: "1,500+ CMS records moved into one system",              where: "Travel operator case — public redacted proof pending", blocksShip: true },
-    "proof.case-tokens":  { level: "metric",   public: false, href: null, what: "38 styles collapsed into one token law",                where: "SaaS marketing case — public redacted proof pending", blocksShip: true },
-    "proof.anonymized":   { level: "example",  public: true,  href: "v9-carries-the-work.html", what: "All cases anonymized by rule; details shared privately on request", where: "Selected work + on request" }
+    "proof.map-card":     { level: "artifact", public: true, href: "v9-carries-the-work.html", what: "The operating-map card itself + the reason layer on this page", where: "hero map card / reasons toggle" },
+    "proof.reason-layer": { level: "artifact", public: true, href: "v9-carries-the-work.html", what: "Reasons toggle annotates every section with its why", where: "top bar of this page" },
+    "proof.dice":         { level: "none",    public: false, href: null, what: "D.I.C.E. deterministic engine (JS port planned)",      where: "/dice, not yet built", blocksShip: true },
+    "proof.chain-visible":{ level: "artifact", public: true, href: "v9-carries-the-work.html", what: "Every work case ships with problem → move → result → limits", where: "Selected work section" },
+    "proof.case-scale":   { level: "metric",  public: false, href: null, what: "1,500+ CMS records moved into one system",             where: "Travel operator case, public redacted proof pending", blocksShip: true },
+    "proof.case-tokens":  { level: "metric",  public: false, href: null, what: "38 styles collapsed into one token law",               where: "SaaS marketing case, public redacted proof pending", blocksShip: true },
+    "proof.anonymized":   { level: "example", public: true, href: "v9-carries-the-work.html", what: "All cases anonymized by rule; details shared privately on request", where: "Selected work + on request" }
   },
 
   /* ============================================================
-     9. STRATEGIJSKI SLOJ (Canopy model — context tokens)
+     9. STRATEGIJSKI SLOJ (Canopy model, context tokens)
      Ovo je "mozak" ispod teksta: svaka rečenica na sajtu mora
      da pokazuje na bar jedan token odavde. Menjaš ovde → celo
      mesto poruke se pomera skupa. STRATEGE: edituj slobodno;
@@ -167,7 +167,7 @@ window.SITE = {
     /* -- 9a. CONTEXT TOKENS (4 sloja, Canopy hijerarhija) ---- */
     contextTokens: {
 
-      /* SLOJ 1 — FOUNDATION: uzvodne istine. Ako se ovo menja,
+      /* SLOJ 1, FOUNDATION: uzvodne istine. Ako se ovo menja,
          pregleda se CEO sajt (hero, ICP, messaging). */
       foundation: [
         { token: "category.core",
@@ -180,11 +180,11 @@ window.SITE = {
           value: "Websites fray at the seams: broken tracking, one-off pages, consent drift, measurement nobody trusts",
           note:  "Bol koju rešavaš. Bez nje nema urgencije." },
         { token: "promise.carries-the-work",
-          value: "A website that holds together — and carries the work behind it to revenue",
+          value: "A website that holds together, and carries the work behind it to revenue",
           note:  "Obećanje u jednoj rečenici. Hero pokazuje ovaj token." }
       ],
 
-      /* SLOJ 2 — NARRATIVE: kako se priča priča. */
+      /* SLOJ 2, NARRATIVE: kako se priča priča. */
       narrative: [
         { token: "message.operator-first",
           value: "Speak as the one operator who owns the whole surface, not a vendor list of services",
@@ -200,18 +200,18 @@ window.SITE = {
           note:  "Gde stojiš na tržištu i zašto si skup." }
       ],
 
-      /* SLOJ 3 — EXPERIENCE: kako narativ postaje dizajn. */
+      /* SLOJ 3, EXPERIENCE: kako narativ postaje dizajn. */
       experience: [
         { token: "design.proof-first",
           value: "Show the work early; keep proof close to every claim",
           note:  "Redosled sekcija: rad pre priče o sebi.",
           proofId: "proof.chain-visible" },
         { token: "design.editorial-craft",
-          value: "Serif voice, warm paper, generous air — built to feel made by a person who thinks, not a template",
+          value: "Serif voice, warm paper, generous air, built to feel made by a person who thinks, not a template",
           note:  "Vizuelni identitet (v9). Menja se samo uz ovaj token.",
           proofId: "proof.reason-layer" },
         { token: "visual.restrained-premium",
-          value: "Premium through control, whitespace, and disciplined typography — not through decoration",
+          value: "Premium through control, whitespace, and disciplined typography, not through decoration",
           note:  "Skupoća dolazi iz urednosti.",
           proofId: "proof.reason-layer" },
         { token: "motion.subtle-refinement",
@@ -220,14 +220,14 @@ window.SITE = {
           proofId: "proof.reason-layer" }
       ],
 
-      /* SLOJ 4 — CONVERSION: ponašanje stranice i akcija. */
+      /* SLOJ 4, CONVERSION: ponašanje stranice i akcija. */
       conversion: [
         { token: "cta.primary-consult",
           value: "The one door: a paid consult conversation. Everything else routes around it",
           note:  "Jedna konverzija. Role interest ide kroz ista vrata.",
           proofId: "proof.anonymized" },
         { token: "cta.honest-exit",
-          value: "If the fit is not there, the site says so — trust filters better than persuasion",
+          value: "If the fit is not there, the site says so; trust filters better than persuasion",
           note:  "Iskrenost kao filter: odbija loše fitove jeftino.",
           proofId: "proof.anonymized" },
         { token: "guardrail.claim-backed",
@@ -241,9 +241,9 @@ window.SITE = {
       ]
     },
 
-    /* -- 9b. ICP (razdvojene putanje — GPT reality check) ---- */
+    /* -- 9b. ICP (razdvojene putanje, GPT reality check) ---- */
     icp: {
-      summary: "B2B teams whose website is a revenue surface and who have outgrown one-off fixes: they need an operator who owns the whole surface — platform, measurement, conversion — as one system.",
+      summary: "B2B teams whose website is a revenue surface and who have outgrown one-off fixes: they need an operator who owns the whole surface, platform, measurement, conversion, as one system.",
       paths: [
         {
           path: "Direct buyer",
@@ -255,7 +255,7 @@ window.SITE = {
           path: "Agency channel",
           who: "Agency principal or delivery lead (Webflow ecosystem)",
           context: "needs a reliable operator for Webflow, analytics, technical delivery on client work",
-          note: "different conversation, different budget; a channel — not the same ICP. White-label rules: client-safe law doubles"
+          note: "different conversation, different budget; a channel, not the same ICP. White-label rules: client-safe law doubles"
         }
       ],
       priority: [
@@ -276,14 +276,14 @@ window.SITE = {
         {
           tier: "ICP 3 · adjacent",
           who: "Founders needing full site rebuilds from zero",
-          why:  ["welcome work, but weakest proof fit", "keeps the story less sharp — secondary"]
+          why:  ["welcome work, but weakest proof fit", "keeps the story less sharp, secondary"]
         }
       ],
       buyerCommittee: [
-        { role: "Economic buyer",      who: "Founder / CEO / CMO",                 concern: "Will the site carry more revenue, not just look better?" },
-        { role: "Operational champion",who: "Head of Marketing / Growth lead",     concern: "Will this remove the weekly site-ops drag from my plate?" },
-        { role: "Analytical champion", who: "Performance / analytics lead",        concern: "Will the numbers finally survive an audit?" },
-        { role: "Technical stakeholder",who: "Web/ops engineer",                   concern: "Will it connect to our stack without disruption?" }
+        { role: "Economic buyer",     who: "Founder / CEO / CMO",                concern: "Will the site carry more revenue, not just look better?" },
+        { role: "Operational champion",who: "Head of Marketing / Growth lead",    concern: "Will this remove the weekly site-ops drag from my plate?" },
+        { role: "Analytical champion", who: "Performance / analytics lead",       concern: "Will the numbers finally survive an audit?" },
+        { role: "Technical stakeholder",who: "Web/ops engineer",                  concern: "Will it connect to our stack without disruption?" }
       ],
       jobs: {
         functional: [
@@ -309,10 +309,10 @@ window.SITE = {
         "consent/privacy pressure from legal"
       ],
       objections: [
-        { objection: "we already have an agency",            answer: "I am not a replacement — I own the seams agencies leave open: tracking, schema, systems, QA" },
-        { objection: "we have dashboards",                   answer: "Dashboards show what happened; I make the instrumentation trustworthy first" },
-        { objection: "sounds like more tooling",             answer: "Fewer moving parts, one owner — the opposite of tool sprawl" },
-        { objection: "AI search is overhyped",               answer: "Structured, answer-shaped sites get quoted; that is measurable, not hype" }
+        { objection: "we already have an agency",           answer: "I am not a replacement; I own the seams agencies leave open: tracking, schema, systems, QA" },
+        { objection: "we have dashboards",                  answer: "Dashboards show what happened; I make the instrumentation trustworthy first" },
+        { objection: "sounds like more tooling",            answer: "Fewer moving parts, one owner, the opposite of tool sprawl" },
+        { objection: "AI search is overhyped",              answer: "Structured, answer-shaped sites get quoted; that is measurable, not hype" }
       ],
       bestFitSignals: [
         "revenue depends on the site and they know it",
@@ -331,38 +331,38 @@ window.SITE = {
     /* -- 9b2. ENGAGEMENT & COMMERCIAL (GPT gaps) ------------- */
     engagement: {
       modes: [
-        { mode: "Paid consult",        when: "diagnosis first: what to measure, build, and what it should be worth", note: "the one public door" },
-        { mode: "Embedded engagement", when: "ongoing operator ownership of the whole surface",       note: "scoped after a consult" },
-        { mode: "Limited project",     when: "one defined build (CMS architecture, schema layer, token system)", note: "fixed scope, fixed price" },
-        { mode: "Full-time role",      when: "not a public path — routes through the same consult door, discussed privately", note: "GPT: one public conversion; hiring is private" }
+        { mode: "Paid consult",       when: "diagnosis first: what to measure, build, and what it should be worth", note: "the one public door" },
+        { mode: "Embedded engagement", when: "ongoing operator ownership of the whole surface",      note: "scoped after a consult" },
+        { mode: "Limited project",    when: "one defined build (CMS architecture, schema layer, token system)", note: "fixed scope, fixed price" },
+        { mode: "Full-time role",     when: "not a public path, routes through the same consult door, discussed privately", note: "GPT: one public conversion; hiring is private" }
       ],
       rateSignal: {
         rule: "Rate anchored before Phase 1 ships (open decision in PLAN.md). Public signal = selectivity, not a number: limited slots, fit-first.",
-        status: "anchor not yet set — blocks Phase 1 ship"
+        status: "anchor not yet set, blocks Phase 1 ship"
       }
     },
 
     /* -- 9c. MESSAGING (Canopy messaging-architecture format)  */
     messaging: {
-      goal: "Make Bogdan immediately legible as the operator whose websites carry real business work — premium, precise, provable.",
+      goal: "Make Bogdan immediately legible as the operator whose websites carry real business work, premium, precise, provable.",
       core: "I build and run websites that hold together: Webflow and CMS architecture, measurement that survives audits, consent that behaves, and conversion work with visible reasoning.",
       oneLiner: "Websites that carry the work.",
-      elevator: "B2B teams come to me when their site has outgrown one-off fixes. I own the whole surface — platform, content system, analytics, consent, conversion — as one connected system, and every claim on my own site is backed by something you can click.",
+      elevator: "B2B teams come to me when their site has outgrown one-off fixes. I own the whole surface, platform, content system, analytics, consent, conversion, as one connected system, and every claim on my own site is backed by something you can click.",
       heroRoutes: [
-        { headline: "A website should carry the work.",                        note: "current — craft-first" },
-        { headline: "The operator your website outgrew.",                      note: "pain-first" },
-        { headline: "One owner. Every seam. Measured.",                        note: "systems-first" }
+        { headline: "A website should carry the work.",                       note: "current, craft-first" },
+        { headline: "The operator your website outgrew.",                     note: "pain-first" },
+        { headline: "One owner. Every seam. Measured.",                       note: "systems-first" }
       ],
       pillars: [
         { pillar: "Systems over one-off pages",
-          support: "Tokens, section libraries, CMS architecture — a new page should cost an afternoon, not a redesign.",
+          support: "Tokens, section libraries, CMS architecture: a new page should cost an afternoon, not a redesign.",
           proofTypes: ["38→1 case", "section library", "/system exhibit"],
           proofId: "proof.case-tokens" },
         { pillar: "Measurement that survives an audit",
-          support: "GA4, GTM, Consent Mode v2 — built like it will be audited, because it will.",
+          support: "GA4, GTM, Consent Mode v2, built like it will be audited, because it will.",
           proofTypes: ["clean before/after attribution case", "consent discipline case"] },
         { pillar: "Quoted by machines",
-          support: "Schema, unified @graph, answer-shaped content — search and AI engines parse and quote the site correctly.",
+          support: "Schema, unified @graph, answer-shaped content, so search and AI engines parse and quote the site correctly.",
           proofTypes: ["1,500-record CMS case", "AEO layer of this very site"] },
         { pillar: "Agents draft. Humans sign.",
           support: "Agent-built systems do the repeatable; judgment stays with the person who signs.",
@@ -373,29 +373,29 @@ window.SITE = {
     /* -- 9d. ARTIFACT BINDINGS (koji token drži koji deo) ---- */
     bindings: [
       { artifact: "Hero (eyebrow + lead + copy)", needs: "promise.carries-the-work · category.core", keeps: "strategic center of gravity" },
-      { artifact: "Operating map card",           needs: "position.systems-gap · message.operator-first", keeps: "the system story in one diagram" },
-      { artifact: "Approach section",             needs: "problem.site-decay · design.proof-first", keeps: "why details matter" },
-      { artifact: "Selected work cases",          needs: "proof.chain-visible · guardrail.client-safe", keeps: "anonymized reasoning chains" },
-      { artifact: "Principles",                   needs: "message.operator-first · visual.restrained-premium", keeps: "the operating posture" },
-      { artifact: "Exhibits",                     needs: "proof.live-artifacts · guardrail.claim-backed", keeps: "clickable proof" },
-      { artifact: "Contact block",                needs: "cta.primary-consult · cta.honest-exit", keeps: "the one door, honest exit" },
-      { artifact: "Whole design skin",            needs: "design.editorial-craft · visual.restrained-premium · motion.subtle-refinement", keeps: "editorial craft identity" }
+      { artifact: "Operating map card",          needs: "position.systems-gap · message.operator-first", keeps: "the system story in one diagram" },
+      { artifact: "Approach section",            needs: "problem.site-decay · design.proof-first", keeps: "why details matter" },
+      { artifact: "Selected work cases",         needs: "proof.chain-visible · guardrail.client-safe", keeps: "anonymized reasoning chains" },
+      { artifact: "Principles",                  needs: "message.operator-first · visual.restrained-premium", keeps: "the operating posture" },
+      { artifact: "Exhibits",                    needs: "proof.live-artifacts · guardrail.claim-backed", keeps: "clickable proof" },
+      { artifact: "Contact block",               needs: "cta.primary-consult · cta.honest-exit", keeps: "the one door, honest exit" },
+      { artifact: "Whole design skin",           needs: "design.editorial-craft · visual.restrained-premium · motion.subtle-refinement", keeps: "editorial craft identity" }
     ],
 
     /* -- 9e. CHANGE CASCADE (šta se pregleda kad token menjaš) */
     cascade: [
       { if: "category.core or audience.primary changes", review: ["hero language", "ICP section", "messaging one-liner", "meta description"] },
-      { if: "promise.carries-the-work changes",          review: ["hero lead", "contact heading", "footer note"] },
-      { if: "proof.chain-visible changes",               review: ["all work cases", "exhibits"] },
-      { if: "cta.primary-consult changes",               review: ["hero CTA", "nav CTA", "contact block"] },
-      { if: "design.editorial-craft changes",            review: ["DESIGN.md", "fonts", "palette", "v9 skin"] }
+      { if: "promise.carries-the-work changes",         review: ["hero lead", "contact heading", "footer note"] },
+      { if: "proof.chain-visible changes",              review: ["all work cases", "exhibits"] },
+      { if: "cta.primary-consult changes",              review: ["hero CTA", "nav CTA", "contact block"] },
+      { if: "design.editorial-craft changes",           review: ["DESIGN.md", "fonts", "palette", "v9 skin"] }
     ],
 
     /* -- 9f. OPERATING TEST (Canopy working rule) ------------ */
     operatingTest: [
       "Which token does this section inherit?",
       "Which token does it prove?",
-      "If the answers are fuzzy, the section is drifting — cut it or register its token."
+      "If the answers are fuzzy, the section is drifting, cut it or register its token."
     ]
   }
 };
