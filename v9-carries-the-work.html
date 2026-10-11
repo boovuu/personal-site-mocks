@@ -34,7 +34,7 @@ a:hover{color:var(--rust)}
 .hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:7vw;padding:102px 0 94px;align-items:center}
 .eyebrow,.kicker{font:var(--mono-size) var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--rust)}
 h1,h2,h3,p{margin-top:0}
-h1{font-size:clamp(52px,7.3vw,98px);font-weight:400;line-height:.97;letter-spacing:-.045em;margin:22px 0 32px;max-width:760px}
+h1{font-size:clamp(52px,7.3vw,98px);font-weight:400;line-height:.97;letter-spacing:-.055em;margin:22px 0 32px;max-width:760px}
 h1 em{font-style:italic;color:var(--teal)}
 .hero-copy{max-width:610px;color:#40504a;font-size:21px;line-height:1.55}
 .hero-actions{display:flex;align-items:center;gap:25px;margin-top:32px;font:12px var(--mono)}
@@ -64,6 +64,7 @@ h1 em{font-style:italic;color:var(--teal)}
 .section-head h2{font-size:clamp(40px,5vw,62px);font-weight:400;letter-spacing:-.04em;margin:10px 0 0}
 .section-head p{font:var(--mono-size) var(--mono);color:var(--muted);margin:0}
 .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.project-wide{grid-column:1/-1;min-height:180px}
 .project{background:var(--paper2);padding:30px;min-height:275px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
 .project h3{font-size:34px;font-weight:400;letter-spacing:-.03em;margin:35px 0 32px}
 .project p{max-width:540px;color:#536159;font-size:16px;margin:0}
@@ -254,7 +255,7 @@ document.querySelectorAll('[data-c-nav]').forEach(a=>{
 (function(){
   const host=document.getElementById('projects'); if(!host) return;
   window.SITE.work.cases.forEach((c,i)=>{
-    const art=document.createElement('article'); art.className='project';
+    const art=document.createElement('article'); art.className='project'+(c.wide?' project-wide':'');
     art.innerHTML=`<div class="project-top"><span></span><span class="project-index">${String(i+1).padStart(2,'0')}</span></div>
       <div><h3></h3><p></p><div class="chain"></div><div class="tags"></div></div>`;
     art.querySelector('.project-top span').textContent=c.industry;

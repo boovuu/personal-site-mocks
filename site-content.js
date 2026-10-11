@@ -101,6 +101,16 @@ window.SITE = {
         disclosure: "anonymized",
         attribution: "sole operator: token system, section library",
         proofId:  "proof.case-tokens"
+      },
+      {
+        industry: "What I bring",
+        title:    "One owner across the seams.",
+        body:     "Strategy, implementation, tracking, QA, and coordination, joined up so the site does not lose its shape between teams.",
+        chain:    "problem: handoffs drop details → move: one owner across the seams → result: site holds its shape between teams → limits: scoped to the surfaces I run",
+        tags:     ["Technical ownership", "CRO", "Delivery"],
+        disclosure: "anonymized",
+        attribution: "sole operator across the named surfaces",
+        wide: true
       }
     ]
   },
