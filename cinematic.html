@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Marketing direction, a considered website, and the organisation that carries the work. Perspective, experience, notes, and D.I.C.E. by Bogdan Vučković.">
+<title>Bogdan Vučković · Cinematic bearing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3efe5; --paper2:#e9e3d5; --ink:#172c2b; --teal:#244443; --rust:#9c4a2e;
+  --gold:#b18b51; --muted:#576459; --line:#c9c4b7;
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --mono:'SF Mono',SFMono-Regular,Consolas,'Liberation Mono',monospace;
+  --mono-size:11px;--gold-on-teal:#D2A969;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.55}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--rust)}
+.wrap{width:min(1200px,calc(100% - 64px));margin:auto}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:13px;font-size:17px;line-height:1.15}
+.seal{height:42px;width:42px;display:block;flex-shrink:0;color:var(--teal)}
+.seal svg{display:block;width:100%;height:100%}
+.brand small{display:block;color:var(--muted);font:9px var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-top:5px}
+.navlinks{display:flex;gap:30px;font:12px var(--mono);letter-spacing:.03em}
+.navlinks a:last-child{border-bottom:1px solid var(--rust);padding-bottom:4px}
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:7vw;padding:102px 0 94px;align-items:center}
+.eyebrow,.kicker{font:var(--mono-size) var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--rust)}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(52px,7.3vw,98px);font-weight:400;line-height:.97;letter-spacing:-.055em;margin:22px 0 32px;max-width:760px}
+h1 em{font-style:italic;color:var(--teal)}
+.hero-copy{max-width:610px;color:#40504a;font-size:21px;line-height:1.55}
+.hero-actions{display:flex;align-items:center;gap:25px;margin-top:32px;font:12px var(--mono)}
+.button{display:inline-flex;align-items:center;gap:14px;background:var(--teal);color:var(--paper);padding:14px 18px}
+.button:hover{background:var(--rust);color:white}
+.textlink{border-bottom:1px solid var(--gold);padding-bottom:3px}
+.map-card{position:relative;background:var(--teal);color:var(--paper);min-height:370px;padding:26px;overflow:hidden}
+.map-card:before{content:"";position:absolute;inset:13px;border:1px solid rgba(243,239,229,.25);pointer-events:none}
+.map-head{position:relative;display:flex;justify-content:space-between;font:10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#d9d3c3}
+.map-art{width:100%;height:220px;margin:18px 0 8px}
+.map-route{stroke:var(--gold-on-teal);stroke-width:1.4;stroke-dasharray:4 7;fill:none}
+.map-tick{stroke:var(--gold-on-teal);stroke-width:1;opacity:.75;fill:none}
+.map-glow{stroke:#f3efe5;stroke-opacity:.35;fill:none}
+.map-stop-dot{fill:#f3efe5}
+.map-stop-here{fill:#c66b48}
+.map-stop-dot-gold{fill:var(--gold-on-teal)}
+.map-stop{fill:#f3efe5;font-size:10px;font-family:var(--mono)}
+.map-note{position:relative;display:flex;justify-content:space-between;align-items:flex-end;font:12px var(--mono);color:#e1d9c7}
+.map-note strong{font:italic 23px var(--serif);font-weight:400;color:#fff}
+.section-label{font:var(--mono-size) var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--rust);border-top:1px solid var(--line);padding-top:18px}
+.intro{display:grid;grid-template-columns:1fr 2fr;gap:8vw;padding:62px 0 92px}
+.intro h2{font-size:clamp(34px,4vw,54px);font-weight:400;line-height:1.08;letter-spacing:-.03em;margin:0;max-width:740px}
+.intro p{font-size:20px;color:#43534c;max-width:670px;margin:0 0 17px}
+.intro p:last-child{margin:0}
+.work{background:var(--paper2);padding:82px 0 90px}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:35px}
+.section-head h2{font-size:clamp(40px,5vw,62px);font-weight:400;letter-spacing:-.04em;margin:10px 0 0}
+.section-head p{font:var(--mono-size) var(--mono);color:var(--muted);margin:0}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.project-wide{grid-column:1/-1;min-height:180px}
+.project{background:var(--paper2);padding:30px;min-height:275px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.project h3{font-size:34px;font-weight:400;letter-spacing:-.03em;margin:35px 0 32px}
+.project p{max-width:540px;color:#536159;font-size:16px;margin:0}
+.project-top{display:flex;justify-content:space-between;align-items:center;font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.project-index{color:var(--rust)}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.tags span{border:1px solid #bdb8aa;padding:5px 9px;font:9px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#46554e}
+.chain{margin-top:14px;font:11px var(--mono);color:#7d7261;letter-spacing:.02em;line-height:1.7}
+.chain b{color:var(--teal);font-weight:500}
+.reason-layer .project .chain,.reason-layer .intro-notes{display:block}
+.chain{display:none}
+.intro-notes{display:block}
+.principles{padding:85px 0 92px}
+.principles-grid{display:grid;grid-template-columns:1fr 2fr;gap:8vw}
+.principles h2{font-size:clamp(38px,4.7vw,58px);line-height:1.06;font-weight:400;letter-spacing:-.035em;margin:8px 0}
+.principle-list{border-top:1px solid var(--line)}
+.principle{display:grid;grid-template-columns:55px 1fr;gap:18px;border-bottom:1px solid var(--line);padding:18px 0}
+.principle b{font:var(--mono-size) var(--mono);color:var(--rust);padding-top:6px}
+.principle h3{font-size:22px;font-weight:400;margin:0 0 18px}
+.principle p{font-size:15px;color:var(--muted);margin:0;max-width:550px}
+.exhibits{border-top:1px solid var(--line);padding:70px 0}
+.exhibit{display:grid;grid-template-columns:1fr 2fr;gap:8vw;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.exhibit .code{font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.exhibit h3{font-size:24px;font-weight:400;margin:6px 0 22px}
+.exhibit p{color:#536159;font-size:16px;margin:0 0 10px;max-width:560px}
+.exhibit a{font:12px var(--mono);color:var(--rust);border-bottom:1px solid var(--rust);padding-bottom:2px}
+.contact{background:var(--teal);color:var(--paper);padding:78px 0 74px}
+.contact .kicker{color:#d1a86c}
+.contact-grid{display:grid;grid-template-columns:1fr auto;align-items:end;gap:30px}
+.contact h2{font-size:clamp(48px,7vw,84px);line-height:.98;font-weight:400;letter-spacing:-.04em;max-width:800px;margin:18px 0 32px}
+.contact p{font-size:18px;color:#d5d7c9;margin:0}
+.contact .button{background:var(--paper);color:var(--teal);white-space:nowrap;margin-bottom:4px}
+.footer{background:var(--teal);color:#d5d7c9;border-top:1px solid rgba(243,239,229,.23);font:10px var(--mono);letter-spacing:.06em}
+.footer .wrap{min-height:55px;display:flex;align-items:center;justify-content:space-between}
+.note{font-style:italic;color:var(--gold)}
+/* reason layer toggle */
+.reasonbar{position:sticky;top:0;z-index:50;background:rgba(23,44,43,.96);color:#e9e3d5;font:11px var(--mono);letter-spacing:.06em;padding:9px 24px;display:flex;gap:14px;align-items:center}
+.reasonbar button{background:var(--gold);border:0;color:#172c2b;font:700 10px var(--mono);letter-spacing:.08em;padding:5px 12px;cursor:pointer;text-transform:uppercase}
+body.reasons [data-why]{outline:1.5px dashed rgba(168,82,52,.65);outline-offset:4px;position:relative}
+body.reasons [data-why]:after{content:attr(data-why);position:absolute;left:0;top:-15px;font:10px var(--mono);color:#fff;background:var(--rust);padding:1px 7px;white-space:nowrap;max-width:96vw;overflow:hidden;text-overflow:ellipsis;z-index:9}
+@media(max-width:760px){
+  .wrap{width:min(100% - 36px,600px)}
+  .topline .wrap{font-size:9px}
+  .nav{height:70px}.navlinks{gap:14px;font-size:10px}.navlinks a:nth-child(2){display:none}
+  .hero{grid-template-columns:1fr;padding:70px 0 66px;gap:40px}.hero-copy{font-size:18px}.map-card{min-height:340px}
+  .intro,.principles-grid,.contact-grid,.exhibit{grid-template-columns:1fr;gap:24px;padding:55px 0 65px}
+  .exhibit{padding:22px 0}
+  .intro h2{font-size:38px}.intro p{font-size:17px}
+  .work{padding:62px 0}
+  .section-head{align-items:start;gap:20px;flex-direction:column}
+  .projects{grid-template-columns:1fr}
+  .project{min-height:245px;padding:23px}.project h3{font-size:30px}
+  .principles{padding:60px 0}.contact{padding:62px 0}.contact h2{font-size:55px}
+  .footer .wrap{padding:14px 0;gap:8px;flex-direction:column;align-items:flex-start}
+}
+.engine-note{font-size:12px;color:var(--muted);margin-top:18px}
+
+/* Editorial hierarchy: experience, ideas, independent work. */
+.constellation-line{stroke:var(--gold-on-teal);stroke-width:1;fill:none;opacity:.65}
+.navlinks,.brand small,.hero-actions,.map-head,.map-note,.kicker,.eyebrow,.section-label,.section-head p,.project-top,.footer,.textlink{font-family:var(--serif)}
+.brand small{font-size:11px;letter-spacing:.09em}.navlinks{font-size:14px}
+.hero-actions{font-size:15px;flex-wrap:wrap}.hero h1{max-width:680px;font-size:clamp(60px,7vw,94px);line-height:1.02;letter-spacing:-.04em}
+.intro h2{margin-bottom:26px}.intro-notes{display:block}
+.projects{display:block;background:transparent;border:0;border-top:1px solid var(--line)}
+.project{display:grid;grid-template-columns:230px 1fr;gap:32px;min-height:0;padding:32px 0;border-bottom:1px solid var(--line)}
+.project-top{align-items:baseline;justify-content:flex-start;gap:18px;font-size:12px}.project-index{order:-1}
+.project h3{margin:0 0 12px;font-size:30px}.project p{max-width:680px;font-size:18px}.tags{display:none}
+.editorial{padding-top:90px;padding-bottom:90px}.editorial h2{font-size:clamp(38px,5vw,62px);font-weight:400;letter-spacing:-.035em;margin:16px 0 40px}
+.notes-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}.note-card{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direction:column;align-items:flex-start}
+.note-card .number{font-size:13px;color:var(--rust)}.note-card h3{font-weight:400;font-size:29px;line-height:1.15;margin:24px 0 18px}.note-card p{font-size:17px;color:var(--muted);margin-bottom:28px}.note-card a{margin-top:auto;font-size:15px}
+.dice-feature{background:var(--ink);color:var(--paper);padding:76px 0}.dice-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:8vw;align-items:center}.dice-art{border:1px solid var(--gold);padding:40px 25px}.dice-art svg{height:auto;margin:0}.dice-feature .kicker{color:var(--gold-on-teal)}.dice-feature h2{font-size:64px;font-weight:400;margin:18px 0}.dice-feature p{max-width:530px}.dice-lead{font-size:28px;font-style:italic}.dice-anatomy{font-size:14px;letter-spacing:.1em;color:var(--gold-on-teal)}
+.contact h2{font-size:clamp(46px,6vw,72px);line-height:1.1}.contact-grid{gap:40px}.contact p{max-width:650px;line-height:1.65}
+@media(max-width:760px){.project{grid-template-columns:1fr;gap:18px;padding:28px 0}.notes-grid,.dice-layout{grid-template-columns:1fr}.notes-grid{gap:40px}.dice-layout{gap:36px}.editorial{padding-block:60px}.navlinks{gap:12px;font-size:12px}.brand{font-size:15px}.brand small{font-size:9px}.dice-art{max-width:430px}.reasonbar{flex-wrap:wrap}.hero h1{font-size:62px}.nav{height:auto;flex-wrap:wrap;gap:20px;padding-block:20px}.navlinks{width:100%;justify-content:space-between;gap:8px}.navlinks a:nth-child(2){display:inline}}
+
+
+/* A quiet sky: the constellation rewards attention. */
+.sky-grain{fill:var(--paper)}.bearing-star{fill:var(--gold-on-teal)}
+.map-card .constellation-line{stroke:var(--gold-on-teal);stroke-width:.7;opacity:.38}
+.map-card{padding:24px;min-height:370px;display:flex;flex-direction:column;justify-content:center}
+.map-card .night-sky{width:100%;height:auto;margin:0 0 22px}
+.map-card .map-note{justify-content:center;text-align:center}
+.map-card .map-note strong{font-size:20px;line-height:1.45;font-style:italic;color:var(--paper);max-width:260px}
+.principle{padding:30px 0}.principle h3{font-size:25px;margin-bottom:12px;line-height:1.25}
+.principle p{font-size:17px;line-height:1.75;max-width:550px}.principle b{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--muted)}
+@media(max-width:760px){.map-card{min-height:340px}.principle h3{font-size:24px}}
+
+.map-note blockquote{margin:0;max-width:290px}.map-note blockquote p{font:italic 22px/1.35 var(--serif);color:var(--paper);margin:0 0 13px}.map-note cite{font:11px/1.5 var(--serif);letter-spacing:.05em;color:var(--paper);opacity:.75}.map-note cite a:hover{color:var(--gold-on-teal)}
+
+/* A separate cinematic direction, preserving the editorial homepage. */
+body{background:#f3efe5}
+body>header.nav{position:absolute;top:0;left:0;right:0;z-index:3;color:#f3efe5;border-color:rgba(243,239,229,.22);height:94px}
+.nav .seal,.nav .brand small{color:#e0ddd1}.nav a:hover{color:#d2a969}.navlinks a:last-child{border-color:#d2a969}
+.cinematic-hero{position:relative;min-height:680px;height:100svh;max-height:1200px;overflow:hidden;background:#102829;color:#f3efe5;display:flex;align-items:center}
+.sea-scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:95% center;animation:sea-breath 32s ease-in-out infinite alternate;transform:scale(1.035)}
+.sea-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,23,25,.77),rgba(7,23,25,.42) 43%,rgba(7,23,25,.04) 76%),linear-gradient(0deg,rgba(7,23,25,.7),transparent 28%,transparent 75%,rgba(7,23,25,.35))}
+.cinematic-copy{position:relative;padding-top:40px;padding-bottom:110px}.cinematic-copy .eyebrow{color:#d5ba8d;letter-spacing:.17em;font-size:11px}
+.cinematic-copy h1{max-width:690px;font-size:clamp(66px,7.5vw,108px);line-height:1.04;letter-spacing:-.045em;margin:26px 0 30px;text-wrap:balance}.cinematic-copy h1 em{color:#f3efe5}
+.cinematic-copy .hero-copy{color:#e4e5dd;max-width:500px;font-size:19px;line-height:1.65}.cinematic-copy .hero-actions{font-family:var(--serif);font-size:15px;gap:32px}.cinematic-copy .textlink{border-color:rgba(213,186,141,.6)}
+.horizon-note{position:absolute;bottom:38px;left:0;right:0;display:flex;align-items:end;justify-content:space-between;font-size:13px;color:#dfdfd4}.horizon-note span{text-align:right;font-style:italic;font-size:19px}.horizon-note small{display:block;font-style:normal;font-size:10px;letter-spacing:.08em;margin-top:6px}
+@keyframes sea-breath{from{transform:scale(1.035) translateX(0)}to{transform:scale(1.07) translateX(-.6%)}}
+@media(prefers-reduced-motion:reduce){.sea-scene{animation:none}html{scroll-behavior:auto}}
+@media(max-width:760px){body>header.nav{height:auto;padding-top:20px;padding-bottom:18px;gap:18px}.cinematic-hero{min-height:850px;height:100svh}.sea-scene{object-position:95% center}.sea-shade{background:linear-gradient(90deg,rgba(7,23,25,.75),rgba(7,23,25,.3)),linear-gradient(0deg,rgba(7,23,25,.8),transparent 50%)}.cinematic-copy{padding-top:100px;padding-bottom:90px}.cinematic-copy h1{font-size:64px;max-width:450px}.cinematic-copy .hero-copy{font-size:17px;max-width:380px}.cinematic-copy .hero-actions{gap:20px;flex-wrap:wrap}.horizon-note{bottom:26px}.horizon-note span{font-size:15px;max-width:210px}.horizon-note small{font-size:9px}}
+
+
+.preview-switch{display:flex;gap:4px;width:max-content;border:1px solid var(--line);border-radius:30px;padding:4px;font:12px var(--serif);position:relative;z-index:4;margin:22px auto 0}
+.preview-switch a{padding:7px 16px;border-radius:24px}.preview-switch a[aria-current="page"]{background:var(--ink);color:var(--paper)}
+
+
+body{background:#102829;color:#f3efe5;--paper2:#132f30;--line:rgba(230,233,221,.2);--muted:#b8c6c0;--rust:#d2a969}
+body>.preview-switch{position:absolute;top:110px;left:0;right:0;margin:auto;border-color:rgba(243,239,229,.3);background:rgba(10,30,32,.55);color:#f3efe5}.preview-switch a[aria-current="page"]{background:#e6e4d9;color:#172c2b}
+.cinematic-copy{padding-top:100px}.cinematic-copy h1{font-size:clamp(60px,6.8vw,98px);max-width:860px}.cinematic-copy .hero-copy{max-width:515px}
+.intro{padding-top:110px;padding-bottom:110px}.intro p,.project p,.note-card p{color:#b8c6c0}.intro h2,.principles h2,.section-head h2{color:#f3efe5}
+.work{padding-block:110px;background:linear-gradient(135deg,#183738,#102829)}.project{background:transparent}.project h3{color:#f3efe5}.project-top{color:#b8c6c0}
+.principles{padding-block:110px}.principle{padding-block:30px}.principle p{color:#b8c6c0}
+#notes{padding-block:100px}.note-card{padding-top:28px}.note-card h3{color:#f3efe5}.note-card a{margin-top:auto}
+.dice-feature{position:relative;overflow:hidden;padding-block:120px;background:radial-gradient(ellipse at 20% 40%,#315452 0,#132e31 35%,#091d21 85%)}.dice-art{border:0;filter:drop-shadow(0 0 25px rgba(210,169,105,.15))}.dice-feature:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;background-image:radial-gradient(#e7e5d5 .7px,transparent 1px),radial-gradient(#d2a969 .8px,transparent 1px);background-size:83px 97px,137px 151px;background-position:20px 10px,70px 50px}.dice-layout{position:relative}
+.contact{padding-block:130px;background:linear-gradient(90deg,rgba(7,23,25,.94),rgba(7,23,25,.68)),url('assets/cinematic-sea.png') center 70%/cover}.contact h2{font-size:clamp(58px,7vw,96px)}.contact p{max-width:580px}.footer{background:#091d21}
+@media(max-width:760px){body>.preview-switch{top:145px}.cinematic-copy{padding-top:180px}.cinematic-copy h1{font-size:50px}.cinematic-hero{min-height:950px}.intro,.principles,#notes{padding-block:70px}.work,.dice-feature,.contact{padding-block:80px}}
+
+</style>
+<link rel="icon" type="image/svg+xml" href="assets/coin.svg">
+</head>
+<body>
+
+
+
+<header class="wrap nav"><a class="brand" href="#top" aria-label="home">
+  <span class="seal" data-why="The coin’s Bearing face, simplified to a needle and star for small sizes."><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+    <circle cx="16" cy="16" r="14.4" fill="none" stroke="currentColor" stroke-width="2.1"/>
+    <g transform="rotate(22.5 16 16)">
+      <path d="M16 10.4 L18.3 16 L16 24.2 L13.7 16 Z" fill="currentColor"/>
+      <circle cx="16" cy="6.8" r="2.25" style="fill:var(--star,currentColor)"/>
+    </g>
+  </svg></span>
+  <span data-copy-token="copy.category"><span data-c="identity.name"></span><small data-c="identity.brandLine"></small></span>
+</a>
+<nav class="navlinks">
+  <a href="#approach" data-c-nav="approach">Approach</a>
+  <a href="#work" data-c-nav="work">Selected work</a>
+  <a href="#notes">Notes</a><a href="#dice">D.I.C.E.</a>
+  <a href="#contact" data-c-nav="contact">Get in touch ↗</a>
+</nav></header>
+<nav class="preview-switch" aria-label="Visual preview"><a href="index.html">Vector preview</a><a href="cinematic.html" aria-current="page">Cinematic preview</a></nav>
+
+<main id="top">
+
+<section class="cinematic-hero" aria-label="A sailing ship beneath a guiding star on a vast sea">
+ <img class="sea-scene" src="assets/cinematic-sea.png" alt="A small sailing ship continues across a vast dark sea beneath an immense sky and one guiding star." fetchpriority="high">
+ <div class="sea-shade"></div>
+ <div class="wrap cinematic-copy">
+  
+  <h1 data-c="hero.lead"></h1>
+  <p class="hero-copy" data-c="hero.copy"></p>
+  <div class="hero-actions"><a class="textlink" href="#approach">Perspective ↗</a><a class="textlink" href="#work">Experience ↗</a></div>
+ </div>
+ <div class="wrap horizon-note"><a href="#approach" aria-label="Continue to perspective">Continue ↓</a><span>“and a star to steer her by” <small>John Masefield · Sea-Fever</small></span></div>
+</section>
+
+<section class="wrap intro" id="approach">
+  <div class="section-label" data-c="approach.kicker"></div>
+  <div>
+    <h2 data-c="approach.heading" data-copy-token="copy.problem" data-why="The perspective begins with decisions and shared purpose."></h2>
+    <div style="height:22px"></div>
+    <div class="intro-notes" data-why="Details people rarely see are the product."></div>
+  </div>
+</section>
+
+<section class="work" id="work" data-token="surface.alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker" data-c="work.kicker"></div><h2 data-c="work.heading"></h2></div>
+      <p data-c="work.sub" data-copy-token="copy.positioning"></p>
+    </div>
+    <div class="projects" id="projects" data-why="Selected responsibilities, without implying unverified commercial results."></div>
+  </div>
+</section>
+
+<section class="wrap principles" id="principles">
+  <div class="principles-grid">
+    <div><div class="kicker" data-c="principles.kicker"></div><h2 data-c="principles.heading"></h2></div>
+    <div class="principle-list" id="principleList"></div>
+  </div>
+</section>
+
+
+
+<section class="editorial wrap" id="notes" data-why="The essays demonstrate judgement through researched arguments, rather than a list of services.">
+<div class="kicker">04 / Notes on direction</div><h2>Questions before answers.</h2><div class="notes-grid" id="notesList"></div>
+</section>
+<section class="dice-feature" id="dice"><div class="wrap dice-layout"><div class="dice-art"><svg class="map-art" viewBox="0 0 440 220" role="img" aria-label="Cassiopeia: five stars forming a point of orientation">
+<path class="constellation-line" d="M56 51 L129 142 L220 133 L279 195 L375 115"/>
+<path class="map-tick" d="M220 115V25" stroke-dasharray="2 7"/>
+<circle class="map-stop-dot-gold" cx="56" cy="51" r="4"/><circle class="map-stop-dot-gold" cx="129" cy="142" r="6"/><circle class="map-stop-dot" cx="220" cy="133" r="8"/><circle class="map-stop-dot-gold" cx="279" cy="195" r="7"/><circle class="map-stop-dot-gold" cx="375" cy="115" r="7"/>
+</svg></div><div><div class="kicker">05 / An independent project</div><h2>D.I.C.E.</h2><p class="dice-lead">Chance opens. The bearing is yours.</p><p>An object, a condition, a constraint. D.I.C.E. begins with a random seed and follows what happens when someone gives it meaning.</p><p class="dice-anatomy">Seed &nbsp; / &nbsp; Reading &nbsp; / &nbsp; Result</p><a class="textlink" href="dice.html">Explore D.I.C.E. ↗</a></div></div></section>
+<section class="contact" id="contact" data-token="accent.teal">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="kicker" data-c="contact.kicker"></div>
+      <h2 data-c="contact.heading" data-why="Final ask: a specific, honest door."></h2>
+      <p data-c="contact.body"></p>
+    </div>
+    <a class="button" href="mailto:hello@example.com" data-c-href="contact.cta" data-copy-token="copy.cta" data-c="contact.cta.label"></a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer"><div class="wrap">
+  <span>© <span data-c="identity.name"></span></span>
+  <span class="note" data-c="footer.note"></span>
+  <a href="workbench.html">Behind the site ↗</a>
+  <a href="#top" data-c="footer.backToTop"></a> ↑
+</div></footer>
+<div class="wrap" style="padding:16px 0;font-size:13px"><a href="index.html">Editorial version ↗</a></div>
+
+<script src="site-content.js"></script>
+<script>
+
+// Editorial notes
+const notesHost=document.getElementById('notesList');
+if(notesHost) window.SITE.notes.forEach(n=>{
+ const card=document.createElement('article');card.className='note-card';
+ card.innerHTML='<span class="number"></span><h3></h3><p></p><a class="textlink"></a>';
+ card.querySelector('.number').textContent=n.number;card.querySelector('h3').textContent=n.title;card.querySelector('p').textContent=n.body;
+ const a=card.querySelector('a');a.href=n.href;a.textContent=n.label;notesHost.appendChild(card);
+});
+
+// fill static fields
+document.querySelectorAll('[data-c]').forEach(el=>{
+  const path=el.getAttribute('data-c').split('.');
+  let v=window.SITE; for(const k of path) v=v&&v[k];
+  if(typeof v==='string') el.innerHTML=v;
+});
+// CTA hrefs
+document.querySelectorAll('[data-c-href]').forEach(el=>{
+  const path=el.getAttribute('data-c-href').split('.');
+  let v=window.SITE; for(const k of path) v=v&&v[k];
+  if(v&&v.href) el.setAttribute('href',v.href);
+});
+// map stops
+document.querySelectorAll('.map-stop').forEach((t,i)=>{
+  const stops=window.SITE.hero.mapCard.stops; if(stops[i]) t.textContent=stops[i];
+});
+// nav labels from content
+const navMap={approach:'Approach',work:'Selected work',contact:'Get in touch ↗'};
+document.querySelectorAll('[data-c-nav]').forEach(a=>{
+  const k=a.getAttribute('data-c-nav');
+  if(window.SITE.nav&&window.SITE.nav[k]) a.textContent=window.SITE.nav[k];
+});
+// approach body paragraphs
+(function(){
+  const host=document.querySelector('.intro-notes'); if(!host) return;
+  window.SITE.approach.body.forEach(p=>{
+    const el=document.createElement('p'); el.textContent=p; host.appendChild(el);
+  });
+})();
+// projects
+(function(){
+  const host=document.getElementById('projects'); if(!host) return;
+  window.SITE.work.cases.forEach((c,i)=>{
+    const art=document.createElement('article'); art.className='project'+(c.wide?' project-wide':'');
+    art.innerHTML=`<div class="project-top"><span></span><span class="project-index">${String(i+1).padStart(2,'0')}</span></div>
+      <div><h3></h3><p></p><div class="chain"></div><div class="tags"></div></div>`;
+    art.querySelector('.project-top span').textContent=c.industry;
+    art.querySelector('h3').textContent=c.title;
+    art.querySelector('p').textContent=c.body;
+    const chain=art.querySelector('.chain');
+    chain.innerHTML='problem → <b>move</b> → result → <b>limits</b><br>'+c.chain;
+    c.tags.forEach(t=>{const s=document.createElement('span');s.textContent=t;art.querySelector('.tags').appendChild(s);});
+    host.appendChild(art);
+  });
+})();
+// principles
+(function(){
+  const host=document.getElementById('principleList'); if(!host) return;
+  window.SITE.principles.items.forEach((p,i)=>{
+    const art=document.createElement('article'); art.className='principle';
+    art.innerHTML=`<b>${String(i+1).padStart(2,'0')}</b><div><h3></h3><p></p></div>`;
+    art.querySelector('h3').textContent=p.title;
+    art.querySelector('p').textContent=p.body;
+    host.appendChild(art);
+  });
+})();
+// exhibits
+(function(){
+  const host=document.getElementById('exhibitList'); if(!host) return;
+  window.SITE.exhibits.forEach(x=>{
+    const div=document.createElement('div'); div.className='exhibit';
+    div.innerHTML=`<div class="code"></div><div><h3></h3><p></p><a></a></div>`;
+    div.querySelector('.code').textContent=x.code;
+    div.querySelector('h3').textContent=x.title;
+    div.querySelector('p').textContent=x.body;
+    const a=div.querySelector('a'); a.textContent=x.linkLabel; a.href=x.href;
+    host.appendChild(div);
+  });
+})();
+
+</script>
+</body>
+</html>

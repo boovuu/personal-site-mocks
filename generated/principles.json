@@ -1,5 +1,5 @@
 [
-	{"to_json(t)":{"id":1,"title":"Know what the site needs to do.","body":"Start with the job, the audience, and the constraints. Then choose the right build."}},
-	{"to_json(t)":{"id":2,"title":"Make the invisible parts dependable.","body":"Forms, data, consent, redirects, accessibility, and performance get the same checks as the page."}},
-	{"to_json(t)":{"id":3,"title":"Leave the team in a better position.","body":"Build for the next edit, the next campaign, and the person who has to maintain it."}}
+	{"to_json(t)":{"id":1,"title":"Clarity of purpose.","body":"A shared understanding of the ambition, the choices it requires, and the authority to act."}},
+	{"to_json(t)":{"id":2,"title":"Judgement in context.","body":"Each decision considered in relation to the brand, the buyer, and the business it serves."}},
+	{"to_json(t)":{"id":3,"title":"Room to grow.","body":"A common foundation that allows more teams and markets to build on the work."}}
 ]

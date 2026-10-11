@@ -4,28 +4,28 @@
     {
       "file": "v9-carries-the-work.html",
       "value": "#C66B48",
-      "reason": "SVG 'you are here' marker on route — deliberate one-off highlight of the MEASURE stop, applied via .map-stop-here class",
+      "reason": "SVG 'you are here' marker on route \u2014 deliberate one-off highlight of the MEASURE stop, applied via .map-stop-here class",
       "reviewed": "2026-10-11",
       "reviewOwner": "Hermes"
     },
     {
       "file": "v9-carries-the-work.html",
       "value": "#40504a",
-      "reason": "hero-copy body tint — ink/teal mix, candidate for token promotion in v10",
+      "reason": "hero-copy body tint \u2014 ink/teal mix, candidate for token promotion in v10",
       "reviewed": "2026-10-09",
       "reviewOwner": "Hermes"
     },
     {
       "file": "v9-carries-the-work.html",
       "value": "#43534c",
-      "reason": "intro body tint — same family as above",
+      "reason": "intro body tint \u2014 same family as above",
       "reviewed": "2026-10-09",
       "reviewOwner": "Hermes"
     },
     {
       "file": "v9-carries-the-work.html",
       "value": "#536159",
-      "reason": "project body tint — same family",
+      "reason": "project body tint \u2014 same family",
       "reviewed": "2026-10-09",
       "reviewOwner": "Hermes"
     },
@@ -88,28 +88,28 @@
     {
       "file": "v9-carries-the-work.html",
       "value": "#fff",
-      "reason": "pure white: hover states on teal buttons + map-note strong — deliberate max contrast, not a brand tone",
+      "reason": "pure white: hover states on teal buttons + map-note strong \u2014 deliberate max contrast, not a brand tone",
       "reviewed": "2026-10-09",
       "reviewOwner": "Hermes"
     },
     {
       "file": "v9-carries-the-work.html",
       "value": "#e9e3d5",
-      "reason": "reasonbar text — same value as --paper2, used inside rgba-free rule where var() works; pending v10 class refactor",
+      "reason": "reasonbar text \u2014 same value as --paper2, used inside rgba-free rule where var() works; pending v10 class refactor",
       "reviewed": "2026-10-09",
       "reviewOwner": "Hermes"
     },
     {
       "file": "v9-carries-the-work.html",
       "value": "rgba(243,239,229,.25)",
-      "reason": "paper at 25% alpha as inner frame on teal — alpha variants of tokens, no separate token yet",
+      "reason": "paper at 25% alpha as inner frame on teal \u2014 alpha variants of tokens, no separate token yet",
       "reviewed": "2026-10-09",
       "reviewOwner": "Hermes"
     },
     {
       "file": "v9-carries-the-work.html",
       "value": "rgba(243,239,229,.23)",
-      "reason": "footer hairline on teal — same family",
+      "reason": "footer hairline on teal \u2014 same family",
       "reviewed": "2026-10-09",
       "reviewOwner": "Hermes"
     },
@@ -130,49 +130,189 @@
     {
       "file": "index.html",
       "value": "#fff",
-      "reason": "mock index cards on cream — pure white card surface, mock-only file",
+      "reason": "mock index cards on cream \u2014 pure white card surface, mock-only file",
       "reviewed": "2026-10-09",
       "reviewOwner": "Hermes"
     },
     {
       "file": "index.html",
       "value": "#f1ecdd",
-      "reason": "mock index note background — mock-only file",
+      "reason": "mock index note background \u2014 mock-only file",
       "reviewed": "2026-10-09",
       "reviewOwner": "Hermes"
     },
     {
       "file": "index.html",
       "value": "#6f684f",
-      "reason": "mock index note text — mock-only file",
+      "reason": "mock index note text \u2014 mock-only file",
       "reviewed": "2026-10-09",
       "reviewOwner": "Hermes"
     },
     {
       "file": "index.html",
       "value": "rgba(60,50,20,.08)",
-      "reason": "mock card hover shadow — mock-only file",
+      "reason": "mock card hover shadow \u2014 mock-only file",
       "reviewed": "2026-10-09",
       "reviewOwner": "Hermes"
     },
     {
       "file": "index.html",
       "value": "rgba(0,0,0,.08)",
-      "reason": "swatch border — mock-only file",
+      "reason": "swatch border \u2014 mock-only file",
       "reviewed": "2026-10-09",
       "reviewOwner": "Hermes"
     },
     {
       "file": "v9-carries-the-work.html",
       "value": "#f3efe5",
-      "reason": "map svg class rules (.map-stop-dot/.map-glow/.map-stop) — paper-on-teal route stops; SVG attrs cannot take var(), colors centralized in classes",
+      "reason": "map svg class rules (.map-stop-dot/.map-glow/.map-stop) \u2014 paper-on-teal route stops; SVG attrs cannot take var(), colors centralized in classes",
       "reviewed": "2026-10-11",
       "reviewOwner": "Hermes"
     },
     {
       "file": "v9-carries-the-work.html",
       "value": "#c66b48",
-      "reason": ".map-stop-here 'you are here' marker — deliberate one-off highlight of the MEASURE stop",
+      "reason": ".map-stop-here 'you are here' marker \u2014 deliberate one-off highlight of the MEASURE stop",
+      "reviewed": "2026-10-11",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#C66B48",
+      "reason": "SVG 'you are here' marker on route \u2014 deliberate one-off highlight of the MEASURE stop, applied via .map-stop-here class",
+      "reviewed": "2026-10-11",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#40504a",
+      "reason": "hero-copy body tint \u2014 ink/teal mix, candidate for token promotion in v10",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#43534c",
+      "reason": "intro body tint \u2014 same family as above",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#536159",
+      "reason": "project body tint \u2014 same family",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#7d7261",
+      "reason": "reasoning-chain caption tint",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#bdb8aa",
+      "reason": "tag hairline border",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#46554e",
+      "reason": "tag text tint",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#d9d3c3",
+      "reason": "map-card header text on teal",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#e1d9c7",
+      "reason": "map-card note text on teal",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#d5d7c9",
+      "reason": "footer/contact body text on teal",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#d1a86c",
+      "reason": "contact kicker gold variant on teal",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#172c2b",
+      "reason": "reasonbar text bg matches --ink value, used as rgba()",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#fff",
+      "reason": "pure white: hover states on teal buttons + map-note strong \u2014 deliberate max contrast, not a brand tone",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#e9e3d5",
+      "reason": "reasonbar text \u2014 same value as --paper2, used inside rgba-free rule where var() works; pending v10 class refactor",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "rgba(243,239,229,.25)",
+      "reason": "paper at 25% alpha as inner frame on teal \u2014 alpha variants of tokens, no separate token yet",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "rgba(243,239,229,.23)",
+      "reason": "footer hairline on teal \u2014 same family",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "rgba(23,44,43,.96)",
+      "reason": "reasonbar bg = --ink at 96%",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "rgba(168,82,52,.65)",
+      "reason": "reason-layer dashed outline = --rust at 65%",
+      "reviewed": "2026-10-09",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#f3efe5",
+      "reason": "map svg class rules (.map-stop-dot/.map-glow/.map-stop) \u2014 paper-on-teal route stops; SVG attrs cannot take var(), colors centralized in classes",
+      "reviewed": "2026-10-11",
+      "reviewOwner": "Hermes"
+    },
+    {
+      "file": "index.html",
+      "value": "#c66b48",
+      "reason": ".map-stop-here 'you are here' marker \u2014 deliberate one-off highlight of the MEASURE stop",
       "reviewed": "2026-10-11",
       "reviewOwner": "Hermes"
     }

@@ -1,76 +1,340 @@
-<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Direction mocks, round 2 (light &amp; airy)</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Marketing direction, a considered website, and the organisation that carries the work. Perspective, experience, notes, and D.I.C.E. by Bogdan Vučković.">
+<title>Bogdan Vučković · Ambition, with a bearing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{--paper:#faf8f3;--ink:#2b2823;--muted:#837c6c;--line:#e6e1d3}
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--paper);color:var(--ink);font:16px/1.7 -apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:900px;margin:0 auto;padding:70px 28px 90px}
-  h1{font-size:clamp(30px,4.5vw,44px);font-weight:600;letter-spacing:-.02em;margin-bottom:14px}
-  .sub{color:var(--muted);font-size:17px;max-width:640px;margin-bottom:60px}
-  .grid{display:grid;gap:18px}
-  a.dir{display:block;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 34px;transition:transform .15s ease,box-shadow .15s ease}
-  a.dir:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(60,50,20,.08)}
-  .dir .no{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-  .dir h2{font-size:23px;font-weight:600;margin:8px 0 6px}
-  .dir p{color:var(--muted);font-size:15.5px}
-  .swatches{display:flex;gap:8px;margin-top:16px}
-  .sw{width:30px;height:30px;border-radius:8px;border:1px solid rgba(0,0,0,.08)}
-  .note{margin-top:48px;padding:22px 26px;background:#f1ecdd;border-radius:16px;color:#6f684f;font-size:14.5px}
-  .note a{color:#6f684f}
+:root{
+  --paper:#f3efe5; --paper2:#e9e3d5; --ink:#172c2b; --teal:#244443; --rust:#9c4a2e;
+  --gold:#b18b51; --muted:#576459; --line:#c9c4b7;
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --mono:'SF Mono',SFMono-Regular,Consolas,'Liberation Mono',monospace;
+  --mono-size:11px;--gold-on-teal:#D2A969;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.55}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--rust)}
+.wrap{width:min(1200px,calc(100% - 64px));margin:auto}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:13px;font-size:17px;line-height:1.15}
+.seal{height:42px;width:42px;display:block;flex-shrink:0;color:var(--teal)}
+.seal svg{display:block;width:100%;height:100%}
+.brand small{display:block;color:var(--muted);font:9px var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-top:5px}
+.navlinks{display:flex;gap:30px;font:12px var(--mono);letter-spacing:.03em}
+.navlinks a:last-child{border-bottom:1px solid var(--rust);padding-bottom:4px}
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:7vw;padding:102px 0 94px;align-items:center}
+.eyebrow,.kicker{font:var(--mono-size) var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--rust)}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(52px,7.3vw,98px);font-weight:400;line-height:.97;letter-spacing:-.055em;margin:22px 0 32px;max-width:760px}
+h1 em{font-style:italic;color:var(--teal)}
+.hero-copy{max-width:610px;color:#40504a;font-size:21px;line-height:1.55}
+.hero-actions{display:flex;align-items:center;gap:25px;margin-top:32px;font:12px var(--mono)}
+.button{display:inline-flex;align-items:center;gap:14px;background:var(--teal);color:var(--paper);padding:14px 18px}
+.button:hover{background:var(--rust);color:white}
+.textlink{border-bottom:1px solid var(--gold);padding-bottom:3px}
+.map-card{position:relative;background:var(--teal);color:var(--paper);min-height:370px;padding:26px;overflow:hidden}
+.map-card:before{content:"";position:absolute;inset:13px;border:1px solid rgba(243,239,229,.25);pointer-events:none}
+.map-head{position:relative;display:flex;justify-content:space-between;font:10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#d9d3c3}
+.map-art{width:100%;height:220px;margin:18px 0 8px}
+.map-route{stroke:var(--gold-on-teal);stroke-width:1.4;stroke-dasharray:4 7;fill:none}
+.map-tick{stroke:var(--gold-on-teal);stroke-width:1;opacity:.75;fill:none}
+.map-glow{stroke:#f3efe5;stroke-opacity:.35;fill:none}
+.map-stop-dot{fill:#f3efe5}
+.map-stop-here{fill:#c66b48}
+.map-stop-dot-gold{fill:var(--gold-on-teal)}
+.map-stop{fill:#f3efe5;font-size:10px;font-family:var(--mono)}
+.map-note{position:relative;display:flex;justify-content:space-between;align-items:flex-end;font:12px var(--mono);color:#e1d9c7}
+.map-note strong{font:italic 23px var(--serif);font-weight:400;color:#fff}
+.section-label{font:var(--mono-size) var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--rust);border-top:1px solid var(--line);padding-top:18px}
+.intro{display:grid;grid-template-columns:1fr 2fr;gap:8vw;padding:62px 0 92px}
+.intro h2{font-size:clamp(34px,4vw,54px);font-weight:400;line-height:1.08;letter-spacing:-.03em;margin:0;max-width:740px}
+.intro p{font-size:20px;color:#43534c;max-width:670px;margin:0 0 17px}
+.intro p:last-child{margin:0}
+.work{background:var(--paper2);padding:82px 0 90px}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:35px}
+.section-head h2{font-size:clamp(40px,5vw,62px);font-weight:400;letter-spacing:-.04em;margin:10px 0 0}
+.section-head p{font:var(--mono-size) var(--mono);color:var(--muted);margin:0}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.project-wide{grid-column:1/-1;min-height:180px}
+.project{background:var(--paper2);padding:30px;min-height:275px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.project h3{font-size:34px;font-weight:400;letter-spacing:-.03em;margin:35px 0 32px}
+.project p{max-width:540px;color:#536159;font-size:16px;margin:0}
+.project-top{display:flex;justify-content:space-between;align-items:center;font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.project-index{color:var(--rust)}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.tags span{border:1px solid #bdb8aa;padding:5px 9px;font:9px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#46554e}
+.chain{margin-top:14px;font:11px var(--mono);color:#7d7261;letter-spacing:.02em;line-height:1.7}
+.chain b{color:var(--teal);font-weight:500}
+.reason-layer .project .chain,.reason-layer .intro-notes{display:block}
+.chain{display:none}
+.intro-notes{display:block}
+.principles{padding:85px 0 92px}
+.principles-grid{display:grid;grid-template-columns:1fr 2fr;gap:8vw}
+.principles h2{font-size:clamp(38px,4.7vw,58px);line-height:1.06;font-weight:400;letter-spacing:-.035em;margin:8px 0}
+.principle-list{border-top:1px solid var(--line)}
+.principle{display:grid;grid-template-columns:55px 1fr;gap:18px;border-bottom:1px solid var(--line);padding:18px 0}
+.principle b{font:var(--mono-size) var(--mono);color:var(--rust);padding-top:6px}
+.principle h3{font-size:22px;font-weight:400;margin:0 0 18px}
+.principle p{font-size:15px;color:var(--muted);margin:0;max-width:550px}
+.exhibits{border-top:1px solid var(--line);padding:70px 0}
+.exhibit{display:grid;grid-template-columns:1fr 2fr;gap:8vw;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.exhibit .code{font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.exhibit h3{font-size:24px;font-weight:400;margin:6px 0 22px}
+.exhibit p{color:#536159;font-size:16px;margin:0 0 10px;max-width:560px}
+.exhibit a{font:12px var(--mono);color:var(--rust);border-bottom:1px solid var(--rust);padding-bottom:2px}
+.contact{background:var(--teal);color:var(--paper);padding:78px 0 74px}
+.contact .kicker{color:#d1a86c}
+.contact-grid{display:grid;grid-template-columns:1fr auto;align-items:end;gap:30px}
+.contact h2{font-size:clamp(48px,7vw,84px);line-height:.98;font-weight:400;letter-spacing:-.04em;max-width:800px;margin:18px 0 32px}
+.contact p{font-size:18px;color:#d5d7c9;margin:0}
+.contact .button{background:var(--paper);color:var(--teal);white-space:nowrap;margin-bottom:4px}
+.footer{background:var(--teal);color:#d5d7c9;border-top:1px solid rgba(243,239,229,.23);font:10px var(--mono);letter-spacing:.06em}
+.footer .wrap{min-height:55px;display:flex;align-items:center;justify-content:space-between}
+.note{font-style:italic;color:var(--gold)}
+/* reason layer toggle */
+.reasonbar{position:sticky;top:0;z-index:50;background:rgba(23,44,43,.96);color:#e9e3d5;font:11px var(--mono);letter-spacing:.06em;padding:9px 24px;display:flex;gap:14px;align-items:center}
+.reasonbar button{background:var(--gold);border:0;color:#172c2b;font:700 10px var(--mono);letter-spacing:.08em;padding:5px 12px;cursor:pointer;text-transform:uppercase}
+body.reasons [data-why]{outline:1.5px dashed rgba(168,82,52,.65);outline-offset:4px;position:relative}
+body.reasons [data-why]:after{content:attr(data-why);position:absolute;left:0;top:-15px;font:10px var(--mono);color:#fff;background:var(--rust);padding:1px 7px;white-space:nowrap;max-width:96vw;overflow:hidden;text-overflow:ellipsis;z-index:9}
+@media(max-width:760px){
+  .wrap{width:min(100% - 36px,600px)}
+  .topline .wrap{font-size:9px}
+  .nav{height:70px}.navlinks{gap:14px;font-size:10px}.navlinks a:nth-child(2){display:none}
+  .hero{grid-template-columns:1fr;padding:70px 0 66px;gap:40px}.hero-copy{font-size:18px}.map-card{min-height:340px}
+  .intro,.principles-grid,.contact-grid,.exhibit{grid-template-columns:1fr;gap:24px;padding:55px 0 65px}
+  .exhibit{padding:22px 0}
+  .intro h2{font-size:38px}.intro p{font-size:17px}
+  .work{padding:62px 0}
+  .section-head{align-items:start;gap:20px;flex-direction:column}
+  .projects{grid-template-columns:1fr}
+  .project{min-height:245px;padding:23px}.project h3{font-size:30px}
+  .principles{padding:60px 0}.contact{padding:62px 0}.contact h2{font-size:55px}
+  .footer .wrap{padding:14px 0;gap:8px;flex-direction:column;align-items:flex-start}
+}
+.engine-note{font-size:12px;color:var(--muted);margin-top:18px}
+
+/* Editorial hierarchy: experience, ideas, independent work. */
+.constellation-line{stroke:var(--gold-on-teal);stroke-width:1;fill:none;opacity:.65}
+.navlinks,.brand small,.hero-actions,.map-head,.map-note,.kicker,.eyebrow,.section-label,.section-head p,.project-top,.footer,.textlink{font-family:var(--serif)}
+.brand small{font-size:11px;letter-spacing:.09em}.navlinks{font-size:14px}
+.hero-actions{font-size:15px;flex-wrap:wrap}.hero h1{max-width:680px;font-size:clamp(60px,7vw,94px);line-height:1.02;letter-spacing:-.04em}
+.intro h2{margin-bottom:26px}.intro-notes{display:block}
+.projects{display:block;background:transparent;border:0;border-top:1px solid var(--line)}
+.project{display:grid;grid-template-columns:230px 1fr;gap:32px;min-height:0;padding:32px 0;border-bottom:1px solid var(--line)}
+.project-top{align-items:baseline;justify-content:flex-start;gap:18px;font-size:12px}.project-index{order:-1}
+.project h3{margin:0 0 12px;font-size:30px}.project p{max-width:680px;font-size:18px}.tags{display:none}
+.editorial{padding-top:90px;padding-bottom:90px}.editorial h2{font-size:clamp(38px,5vw,62px);font-weight:400;letter-spacing:-.035em;margin:16px 0 40px}
+.notes-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}.note-card{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direction:column;align-items:flex-start}
+.note-card .number{font-size:13px;color:var(--rust)}.note-card h3{font-weight:400;font-size:29px;line-height:1.15;margin:24px 0 18px}.note-card p{font-size:17px;color:var(--muted);margin-bottom:28px}.note-card a{margin-top:auto;font-size:15px}
+.dice-feature{background:var(--ink);color:var(--paper);padding:76px 0}.dice-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:8vw;align-items:center}.dice-art{border:1px solid var(--gold);padding:40px 25px}.dice-art svg{height:auto;margin:0}.dice-feature .kicker{color:var(--gold-on-teal)}.dice-feature h2{font-size:64px;font-weight:400;margin:18px 0}.dice-feature p{max-width:530px}.dice-lead{font-size:28px;font-style:italic}.dice-anatomy{font-size:14px;letter-spacing:.1em;color:var(--gold-on-teal)}
+.contact h2{font-size:clamp(46px,6vw,72px);line-height:1.1}.contact-grid{gap:40px}.contact p{max-width:650px;line-height:1.65}
+@media(max-width:760px){.project{grid-template-columns:1fr;gap:18px;padding:28px 0}.notes-grid,.dice-layout{grid-template-columns:1fr}.notes-grid{gap:40px}.dice-layout{gap:36px}.editorial{padding-block:60px}.navlinks{gap:12px;font-size:12px}.brand{font-size:15px}.brand small{font-size:9px}.dice-art{max-width:430px}.reasonbar{flex-wrap:wrap}.hero h1{font-size:62px}.nav{height:auto;flex-wrap:wrap;gap:20px;padding-block:20px}.navlinks{width:100%;justify-content:space-between;gap:8px}.navlinks a:nth-child(2){display:inline}}
+
+
+/* A quiet sky: the constellation rewards attention. */
+.sky-grain{fill:var(--paper)}.bearing-star{fill:var(--gold-on-teal)}
+.map-card .constellation-line{stroke:var(--gold-on-teal);stroke-width:.7;opacity:.38}
+.map-card{padding:24px;min-height:370px;display:flex;flex-direction:column;justify-content:center}
+.map-card .night-sky{width:100%;height:auto;margin:0 0 22px}
+.map-card .map-note{justify-content:center;text-align:center}
+.map-card .map-note strong{font-size:20px;line-height:1.45;font-style:italic;color:var(--paper);max-width:260px}
+.principle{padding:30px 0}.principle h3{font-size:25px;margin-bottom:12px;line-height:1.25}
+.principle p{font-size:17px;line-height:1.75;max-width:550px}.principle b{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--muted)}
+@media(max-width:760px){.map-card{min-height:340px}.principle h3{font-size:24px}}
+
+.map-note blockquote{margin:0;max-width:290px}.map-note blockquote p{font:italic 22px/1.35 var(--serif);color:var(--paper);margin:0 0 13px}.map-note cite{font:11px/1.5 var(--serif);letter-spacing:.05em;color:var(--paper);opacity:.75}.map-note cite a:hover{color:var(--gold-on-teal)}
+
+.preview-switch{display:flex;gap:4px;width:max-content;border:1px solid var(--line);border-radius:30px;padding:4px;font:12px var(--serif);position:relative;z-index:4;margin:22px auto 0}
+.preview-switch a{padding:7px 16px;border-radius:24px}.preview-switch a[aria-current="page"]{background:var(--ink);color:var(--paper)}
+
 </style>
+<link rel="icon" type="image/svg+xml" href="assets/coin.svg">
 </head>
 <body>
-<div class="wrap">
-  <h1>Direction mocks</h1>
-  <p class="sub">Round 2: light directions, serif voices, breathing room everywhere. Same copy and structure, pure skin. Each has the reason-layer toggle (top bar of the page). The only question: which one makes the rate feel high?</p>
-  <div class="grid">
-    <a class="dir" href="v9-carries-the-work.html">
-      <div class="no">v9 · working draft, content separated</div>
-      <h2>Websites that carry the work (v9)</h2>
-      <p>The working draft. Anonymized cases with reasoning chains and a wide capability card, evidence-first copy, reason toggle. Copy law: site-soul.md + sell-by-camouflage.md. Content lives in a DuckDB CMS (content.duckdb) with a drift check against site-content.js.</p>
-      <div class="swatches"><span class="sw" style="background:#f3efe5"></span><span class="sw" style="background:#172c2b"></span><span class="sw" style="background:#244443"></span><span class="sw" style="background:#a85234"></span><span class="sw" style="background:#b18b51"></span></div>
-    </a>
-    <a class="dir" href="identity-studies/reckoning-coin-cassiopeia.html">
-      <div class="no">identity study · GPT + Claude, filed</div>
-      <h2>The Reckoning Coin (Cassiopeia)</h2>
-      <p>Coin = chance as a starting condition, compass = chosen bearing, Cassiopeia = orientation. Evidence-row homepage concept, DICE anatomy (Seed → Reading → Result), Killick/Metis canon preserved. Candidates for v10: palette, evidence rows, two-door contact.</p>
-      <div class="swatches"><span class="sw" style="background:#F3E8D0"></span><span class="sw" style="background:#142827"></span><span class="sw" style="background:#1F3A3D"></span><span class="sw" style="background:#C0A16A"></span><span class="sw" style="background:#A75336"></span></div>
-    </a>
-    <a class="dir" href="v8-gpt-concept.html">
-      <div class="no">v8 · GPT concept, the starting point</div>
-      <h2>Websites that carry the work</h2>
-      <p>Bogdan's pick from GPT: cream paper, deep teal, Georgia serif with mono labels, a circular seal mark, a route-map SVG card, numbered sections, hairline-divided project grid. Editorial craft, zero SaaS.</p>
-      <div class="swatches"><span class="sw" style="background:#f3efe5"></span><span class="sw" style="background:#172c2b"></span><span class="sw" style="background:#244443"></span><span class="sw" style="background:#a85234"></span><span class="sw" style="background:#b18b51"></span></div>
-    </a>
-    <a class="dir" href="v7-the-chart.html">
-      <div class="no">v7 · latest, built to spec</div>
-      <h2>The Chart</h2>
-      <p>Editorial craft identity: Source Serif 4 as the voice, warm paper cream, deep teal + rust, tiny brass touches. Margin notes with figures, an astrolabe mark, degree-tick rules. Proof over decoration.</p>
-      <div class="swatches"><span class="sw" style="background:#f6f1e6"></span><span class="sw" style="background:#23211b"></span><span class="sw" style="background:#1f4e48"></span><span class="sw" style="background:#a5492a"></span><span class="sw" style="background:#96793f"></span></div>
-    </a>
-    <a class="dir" href="v4-warm-minimal.html">
-      <div class="no">v4</div>
-      <h2>Warm Minimal</h2>
-      <p>Cream paper, serif headlines (Fraunces), terracotta accent. Editorial calm, huge air, one rounded CTA.</p>
-      <div class="swatches"><span class="sw" style="background:#faf7f0"></span><span class="sw" style="background:#33302a"></span><span class="sw" style="background:#b4552d"></span><span class="sw" style="background:#f3eee2"></span></div>
-    </a>
-    <a class="dir" href="v5-gallery.html">
-      <div class="no">v5</div>
-      <h2>Gallery</h2>
-      <p>Near-white catalogue, refined serif plates (Cormorant), deep green accent. Museum energy: numbered plates, underlined links, maximum restraint.</p>
-      <div class="swatches"><span class="sw" style="background:#fcfcfa"></span><span class="sw" style="background:#26241f"></span><span class="sw" style="background:#2d4a32"></span><span class="sw" style="background:#e8e5dc"></span></div>
-    </a>
-    <a class="dir" href="v6-editorial-sunlight.html">
-      <div class="no">v6</div>
-      <h2>Editorial Sunlight</h2>
-      <p>Warm soft panels, big display serif (Instrument Serif), amber accent. Magazine spread feel with a 3-number proof strip in the hero.</p>
-      <div class="swatches"><span class="sw" style="background:#fdfcf8"></span><span class="sw" style="background:#211f1a"></span><span class="sw" style="background:#d97b29"></span><span class="sw" style="background:#f6f3ea"></span></div>
-    </a>
+
+
+
+<header class="wrap nav"><a class="brand" href="#top" aria-label="home">
+  <span class="seal" data-why="The coin’s Bearing face, simplified to a needle and star for small sizes."><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+    <circle cx="16" cy="16" r="14.4" fill="none" stroke="currentColor" stroke-width="2.1"/>
+    <g transform="rotate(22.5 16 16)">
+      <path d="M16 10.4 L18.3 16 L16 24.2 L13.7 16 Z" fill="currentColor"/>
+      <circle cx="16" cy="6.8" r="2.25" style="fill:var(--star,currentColor)"/>
+    </g>
+  </svg></span>
+  <span data-copy-token="copy.category"><span data-c="identity.name"></span><small data-c="identity.brandLine"></small></span>
+</a>
+<nav class="navlinks">
+  <a href="#approach" data-c-nav="approach">Approach</a>
+  <a href="#work" data-c-nav="work">Selected work</a>
+  <a href="#notes">Notes</a><a href="#dice">D.I.C.E.</a>
+  <a href="#contact" data-c-nav="contact">Get in touch ↗</a>
+</nav></header>
+<nav class="preview-switch" aria-label="Visual preview"><a href="index.html" aria-current="page">Vector preview</a><a href="cinematic.html">Cinematic preview</a></nav>
+
+<main id="top">
+
+<section class="wrap hero" data-token="surface.page">
+  <div>
+    
+    <h1 data-c="hero.lead" data-copy-token="copy.promise" data-why="Business direction is the opening idea; technical capabilities support the work below."></h1>
+    <p class="hero-copy" data-c="hero.copy" data-copy-token="copy.audience"></p>
+    <div class="hero-actions">
+      <a class="button" href="#work" data-c-href="hero.primaryCta" data-token="accent.teal" data-c="hero.primaryCta.label"></a>
+      <a class="textlink" href="#approach" data-c-href="hero.secondaryCta" data-c="hero.secondaryCta.label"></a>
+    </div>
   </div>
-  <p style="margin-top:26px"><a href="workbench.html" style="color:#2b2823;font-weight:600">The Workbench →</a> <span style="color:var(--muted)">the back study: identity, brand, CMS, laws, and live system state, all connected.</span></p>
-  <div class="note">Round 1 (v1 dark precision, v2 terminal, v3 dark ledger) is retired but still online: <a href="v1-vercel-precision.html">v1</a> · <a href="v2-terminal-ember.html">v2</a> · <a href="v3-privateer-registry.html">v3</a>, kept only for reference.</div>
-</div>
+  <div class="map-card" data-token="accent.teal" data-why="The five-star Cassiopeia figure ties the homepage to the coin and D.I.C.E. Orientation is a metaphor; the business claims live in the work.">
+    <svg class="map-art night-sky" viewBox="0 0 440 290" role="img" aria-label="A field of stars with Cassiopeia quietly traced among them"><g class="sky-grain"><circle cx="402.8" cy="226.8" r="1.01" opacity="0.24"/><circle cx="172.5" cy="188.9" r="0.44" opacity="0.22"/><circle cx="204.0" cy="217.8" r="0.47" opacity="0.36"/><circle cx="10.2" cy="30.3" r="0.62" opacity="0.36"/><circle cx="391.9" cy="136.3" r="0.42" opacity="0.47"/><circle cx="305.9" cy="38.3" r="0.84" opacity="0.41"/><circle cx="311.7" cy="48.3" r="0.75" opacity="0.45"/><circle cx="398.5" cy="84.2" r="0.70" opacity="0.58"/><circle cx="128.8" cy="278.1" r="0.56" opacity="0.58"/><circle cx="21.1" cy="230.7" r="1.03" opacity="0.44"/><circle cx="120.6" cy="15.7" r="0.72" opacity="0.51"/><circle cx="96.9" cy="99.6" r="1.15" opacity="0.64"/><circle cx="299.9" cy="251.5" r="1.03" opacity="0.35"/><circle cx="50.9" cy="193.3" r="0.65" opacity="0.64"/><circle cx="180.8" cy="21.8" r="0.98" opacity="0.42"/><circle cx="379.2" cy="28.2" r="0.63" opacity="0.37"/><circle cx="177.4" cy="70.4" r="0.55" opacity="0.30"/><circle cx="265.4" cy="28.7" r="0.75" opacity="0.25"/><circle cx="98.9" cy="82.9" r="0.78" opacity="0.38"/><circle cx="403.6" cy="110.0" r="0.84" opacity="0.55"/><circle cx="221.7" cy="143.8" r="1.13" opacity="0.46"/><circle cx="26.3" cy="122.4" r="0.68" opacity="0.24"/><circle cx="257.7" cy="183.5" r="0.58" opacity="0.41"/><circle cx="32.0" cy="74.6" r="0.86" opacity="0.50"/><circle cx="337.3" cy="33.8" r="0.58" opacity="0.38"/><circle cx="49.2" cy="85.2" r="0.54" opacity="0.27"/><circle cx="377.1" cy="10.0" r="0.71" opacity="0.55"/><circle cx="406.5" cy="255.6" r="0.59" opacity="0.61"/><circle cx="309.1" cy="64.6" r="0.73" opacity="0.34"/><circle cx="256.0" cy="24.8" r="1.19" opacity="0.34"/><circle cx="258.2" cy="41.2" r="1.00" opacity="0.53"/><circle cx="10.8" cy="145.5" r="0.77" opacity="0.48"/><circle cx="379.2" cy="174.7" r="0.54" opacity="0.52"/><circle cx="33.8" cy="231.1" r="0.67" opacity="0.52"/><circle cx="264.6" cy="29.8" r="1.05" opacity="0.44"/><circle cx="16.9" cy="250.6" r="0.49" opacity="0.24"/><circle cx="365.0" cy="260.7" r="1.17" opacity="0.27"/><circle cx="398.4" cy="136.5" r="1.12" opacity="0.60"/><circle cx="118.8" cy="80.2" r="1.10" opacity="0.43"/><circle cx="405.2" cy="101.8" r="1.21" opacity="0.38"/><circle cx="86.0" cy="49.6" r="0.57" opacity="0.41"/><circle cx="222.2" cy="61.9" r="0.80" opacity="0.56"/><circle cx="330.5" cy="29.3" r="0.40" opacity="0.52"/><circle cx="375.9" cy="65.4" r="1.07" opacity="0.29"/><circle cx="331.2" cy="210.0" r="0.50" opacity="0.63"/><circle cx="163.5" cy="28.7" r="1.14" opacity="0.40"/><circle cx="302.9" cy="152.1" r="0.81" opacity="0.30"/><circle cx="424.3" cy="14.8" r="0.41" opacity="0.49"/><circle cx="170.8" cy="257.2" r="0.63" opacity="0.22"/><circle cx="180.9" cy="259.6" r="1.10" opacity="0.49"/><circle cx="325.2" cy="262.8" r="0.93" opacity="0.58"/><circle cx="406.9" cy="49.6" r="0.96" opacity="0.49"/><circle cx="187.1" cy="149.3" r="1.13" opacity="0.49"/><circle cx="376.4" cy="97.7" r="0.82" opacity="0.56"/><circle cx="73.2" cy="240.5" r="0.89" opacity="0.35"/><circle cx="225.1" cy="119.8" r="0.76" opacity="0.23"/><circle cx="100.6" cy="232.7" r="0.98" opacity="0.42"/><circle cx="297.2" cy="89.2" r="0.67" opacity="0.37"/><circle cx="143.1" cy="223.5" r="0.61" opacity="0.30"/><circle cx="45.1" cy="82.8" r="0.53" opacity="0.52"/><circle cx="415.0" cy="39.3" r="0.54" opacity="0.48"/><circle cx="250.3" cy="219.8" r="1.07" opacity="0.23"/><circle cx="266.2" cy="241.9" r="0.66" opacity="0.49"/><circle cx="204.0" cy="83.3" r="0.64" opacity="0.55"/><circle cx="253.3" cy="178.5" r="0.41" opacity="0.50"/><circle cx="407.8" cy="161.4" r="0.94" opacity="0.25"/><circle cx="415.0" cy="89.0" r="0.66" opacity="0.42"/><circle cx="267.8" cy="174.1" r="0.47" opacity="0.41"/><circle cx="127.3" cy="165.5" r="0.73" opacity="0.44"/><circle cx="317.7" cy="186.2" r="0.53" opacity="0.51"/><circle cx="97.9" cy="158.5" r="0.82" opacity="0.42"/><circle cx="215.8" cy="110.2" r="0.97" opacity="0.22"/><circle cx="102.7" cy="155.8" r="0.67" opacity="0.30"/><circle cx="430.5" cy="24.5" r="0.55" opacity="0.30"/><circle cx="345.9" cy="152.0" r="0.64" opacity="0.35"/><circle cx="48.1" cy="165.5" r="0.45" opacity="0.31"/><circle cx="51.1" cy="200.2" r="1.12" opacity="0.27"/><circle cx="162.4" cy="55.4" r="0.45" opacity="0.59"/><circle cx="53.6" cy="259.6" r="1.03" opacity="0.61"/><circle cx="280.9" cy="79.1" r="1.01" opacity="0.28"/><circle cx="209.1" cy="229.5" r="1.19" opacity="0.41"/><circle cx="354.8" cy="182.4" r="0.81" opacity="0.40"/><circle cx="115.6" cy="26.2" r="0.53" opacity="0.35"/><circle cx="414.2" cy="166.8" r="0.63" opacity="0.27"/><circle cx="403.6" cy="226.7" r="0.87" opacity="0.26"/><circle cx="274.9" cy="193.6" r="0.56" opacity="0.37"/><circle cx="32.0" cy="144.8" r="1.20" opacity="0.63"/><circle cx="256.9" cy="10.8" r="0.55" opacity="0.35"/><circle cx="90.9" cy="58.1" r="0.64" opacity="0.48"/><circle cx="192.2" cy="59.2" r="1.22" opacity="0.64"/><circle cx="308.8" cy="138.8" r="1.03" opacity="0.43"/><circle cx="304.9" cy="43.7" r="0.48" opacity="0.38"/><circle cx="402.5" cy="19.2" r="0.63" opacity="0.35"/><circle cx="297.7" cy="107.0" r="0.45" opacity="0.46"/><circle cx="303.3" cy="76.1" r="0.80" opacity="0.27"/><circle cx="335.1" cy="154.2" r="0.83" opacity="0.55"/><circle cx="205.4" cy="78.1" r="1.17" opacity="0.34"/><circle cx="235.4" cy="243.6" r="0.57" opacity="0.42"/><circle cx="242.1" cy="205.6" r="0.99" opacity="0.58"/><circle cx="403.4" cy="137.4" r="1.22" opacity="0.32"/><circle cx="242.9" cy="76.6" r="0.88" opacity="0.48"/><circle cx="351.9" cy="237.9" r="1.00" opacity="0.40"/><circle cx="103.4" cy="196.4" r="0.68" opacity="0.55"/><circle cx="378.0" cy="150.1" r="1.06" opacity="0.35"/><circle cx="144.8" cy="145.7" r="0.58" opacity="0.53"/><circle cx="415.4" cy="232.5" r="0.85" opacity="0.34"/><circle cx="215.0" cy="224.5" r="1.23" opacity="0.45"/><circle cx="306.4" cy="54.9" r="1.15" opacity="0.59"/><circle cx="175.4" cy="175.4" r="0.50" opacity="0.42"/><circle cx="124.5" cy="111.6" r="0.67" opacity="0.54"/><circle cx="108.3" cy="220.0" r="0.42" opacity="0.54"/><circle cx="298.5" cy="113.8" r="0.84" opacity="0.54"/><circle cx="396.8" cy="20.0" r="1.21" opacity="0.63"/><circle cx="275.8" cy="208.0" r="0.79" opacity="0.44"/><circle cx="32.5" cy="95.3" r="0.65" opacity="0.32"/><circle cx="127.3" cy="181.5" r="0.97" opacity="0.35"/><circle cx="34.0" cy="191.1" r="0.89" opacity="0.33"/><circle cx="398.0" cy="90.1" r="1.06" opacity="0.25"/><circle cx="88.1" cy="261.4" r="1.14" opacity="0.24"/><circle cx="191.3" cy="54.3" r="1.14" opacity="0.36"/><circle cx="344.7" cy="124.9" r="0.89" opacity="0.22"/><circle cx="416.2" cy="234.6" r="1.12" opacity="0.23"/><circle cx="333.5" cy="169.5" r="0.63" opacity="0.63"/><circle cx="291.3" cy="91.3" r="0.63" opacity="0.56"/><circle cx="133.1" cy="90.2" r="0.78" opacity="0.45"/><circle cx="31.9" cy="190.0" r="0.54" opacity="0.58"/><circle cx="238.2" cy="110.9" r="0.88" opacity="0.65"/><circle cx="325.8" cy="50.6" r="0.96" opacity="0.39"/><circle cx="263.0" cy="11.9" r="0.66" opacity="0.44"/><circle cx="39.6" cy="87.2" r="0.75" opacity="0.41"/><circle cx="118.9" cy="35.3" r="0.60" opacity="0.56"/><circle cx="310.4" cy="122.5" r="0.45" opacity="0.48"/><circle cx="234.8" cy="87.0" r="0.45" opacity="0.47"/><circle cx="106.5" cy="223.3" r="1.19" opacity="0.61"/><circle cx="71.0" cy="135.0" r="0.49" opacity="0.59"/><circle cx="222.3" cy="155.3" r="0.54" opacity="0.41"/><circle cx="300.6" cy="103.4" r="0.65" opacity="0.44"/><circle cx="398.0" cy="280.3" r="0.79" opacity="0.55"/><circle cx="253.0" cy="250.5" r="0.52" opacity="0.64"/><circle cx="391.2" cy="24.5" r="1.09" opacity="0.29"/><circle cx="125.9" cy="196.2" r="0.94" opacity="0.26"/><circle cx="289.2" cy="49.3" r="1.19" opacity="0.59"/><circle cx="221.5" cy="127.8" r="1.21" opacity="0.58"/><circle cx="185.0" cy="23.0" r="1.01" opacity="0.27"/><circle cx="54.4" cy="164.3" r="1.06" opacity="0.48"/><circle cx="102.8" cy="241.1" r="0.64" opacity="0.39"/><circle cx="70.2" cy="105.1" r="0.83" opacity="0.27"/><circle cx="193.2" cy="36.2" r="1.21" opacity="0.29"/><circle cx="180.0" cy="111.9" r="1.05" opacity="0.65"/><circle cx="72.0" cy="87.2" r="1.04" opacity="0.47"/><circle cx="264.9" cy="107.8" r="0.77" opacity="0.43"/><circle cx="413.1" cy="210.3" r="0.94" opacity="0.29"/><circle cx="119.8" cy="226.7" r="1.17" opacity="0.59"/><circle cx="119.3" cy="70.5" r="0.77" opacity="0.48"/><circle cx="213.4" cy="262.2" r="0.62" opacity="0.35"/><circle cx="171.2" cy="169.0" r="0.80" opacity="0.33"/><circle cx="103.4" cy="75.9" r="0.71" opacity="0.49"/><circle cx="307.2" cy="224.3" r="1.20" opacity="0.23"/><circle cx="252.4" cy="23.5" r="1.15" opacity="0.60"/><circle cx="49.8" cy="12.2" r="1.04" opacity="0.63"/><circle cx="298.9" cy="152.5" r="0.65" opacity="0.23"/><circle cx="261.7" cy="132.4" r="0.83" opacity="0.44"/><circle cx="263.7" cy="110.1" r="0.64" opacity="0.39"/><circle cx="32.7" cy="144.3" r="0.80" opacity="0.23"/><circle cx="148.3" cy="53.5" r="0.43" opacity="0.29"/><circle cx="69.3" cy="237.1" r="1.10" opacity="0.34"/><circle cx="127.4" cy="23.4" r="1.15" opacity="0.29"/><circle cx="164.3" cy="241.5" r="0.51" opacity="0.46"/><circle cx="108.8" cy="81.3" r="0.42" opacity="0.24"/><circle cx="264.7" cy="200.4" r="0.51" opacity="0.25"/><circle cx="184.5" cy="163.4" r="0.94" opacity="0.30"/><circle cx="396.5" cy="95.5" r="0.72" opacity="0.58"/><circle cx="234.4" cy="251.4" r="1.00" opacity="0.47"/><circle cx="205.6" cy="147.3" r="1.04" opacity="0.64"/><circle cx="26.8" cy="206.6" r="1.09" opacity="0.25"/><circle cx="394.9" cy="159.6" r="0.64" opacity="0.58"/><circle cx="178.4" cy="215.8" r="1.03" opacity="0.51"/><circle cx="280.4" cy="92.6" r="0.82" opacity="0.26"/><circle cx="424.2" cy="79.8" r="0.61" opacity="0.48"/><circle cx="279.7" cy="189.2" r="0.86" opacity="0.40"/><circle cx="392.6" cy="279.6" r="1.19" opacity="0.39"/><circle cx="223.4" cy="262.8" r="0.85" opacity="0.29"/><circle cx="402.2" cy="124.8" r="1.20" opacity="0.36"/><circle cx="407.7" cy="46.0" r="0.49" opacity="0.27"/><circle cx="419.5" cy="130.5" r="0.99" opacity="0.49"/><circle cx="386.3" cy="278.6" r="0.77" opacity="0.34"/><circle cx="126.1" cy="216.0" r="0.41" opacity="0.41"/><circle cx="315.7" cy="222.6" r="0.66" opacity="0.30"/><circle cx="426.8" cy="60.1" r="0.84" opacity="0.55"/><circle cx="243.2" cy="263.5" r="0.92" opacity="0.38"/><circle cx="205.7" cy="35.0" r="0.91" opacity="0.38"/><circle cx="19.0" cy="61.4" r="0.60" opacity="0.60"/><circle cx="24.9" cy="153.4" r="0.41" opacity="0.35"/><circle cx="176.4" cy="94.9" r="0.81" opacity="0.39"/><circle cx="145.9" cy="221.0" r="0.48" opacity="0.36"/><circle cx="309.2" cy="206.3" r="0.64" opacity="0.51"/><circle cx="64.3" cy="239.9" r="0.74" opacity="0.43"/><circle cx="408.5" cy="11.8" r="1.03" opacity="0.50"/><circle cx="141.5" cy="44.1" r="0.75" opacity="0.39"/><circle cx="146.3" cy="206.2" r="0.64" opacity="0.41"/><circle cx="152.4" cy="162.9" r="0.98" opacity="0.50"/><circle cx="198.6" cy="232.7" r="0.67" opacity="0.29"/><circle cx="201.3" cy="93.8" r="0.84" opacity="0.36"/><circle cx="421.2" cy="271.1" r="0.82" opacity="0.26"/><circle cx="302.5" cy="107.7" r="0.83" opacity="0.47"/><circle cx="232.6" cy="105.8" r="1.19" opacity="0.23"/><circle cx="272.3" cy="245.5" r="0.95" opacity="0.32"/><circle cx="303.2" cy="234.1" r="0.62" opacity="0.53"/><circle cx="36.6" cy="148.5" r="0.71" opacity="0.47"/><circle cx="32.2" cy="21.9" r="0.47" opacity="0.27"/><circle cx="248.2" cy="142.4" r="0.67" opacity="0.64"/><circle cx="151.8" cy="162.8" r="0.71" opacity="0.48"/><circle cx="211.1" cy="65.8" r="0.88" opacity="0.47"/><circle cx="359.3" cy="256.1" r="0.96" opacity="0.44"/><circle cx="209.9" cy="51.4" r="0.66" opacity="0.63"/><circle cx="169.0" cy="163.1" r="0.90" opacity="0.52"/><circle cx="18.4" cy="280.5" r="0.68" opacity="0.44"/><circle cx="211.5" cy="265.3" r="0.42" opacity="0.57"/><circle cx="398.5" cy="114.0" r="0.93" opacity="0.34"/><circle cx="215.8" cy="199.8" r="1.21" opacity="0.50"/><circle cx="153.8" cy="260.3" r="0.42" opacity="0.47"/><circle cx="322.3" cy="272.5" r="0.52" opacity="0.27"/><circle cx="136.4" cy="243.0" r="0.92" opacity="0.25"/><circle cx="58.2" cy="228.8" r="0.82" opacity="0.65"/><circle cx="369.3" cy="55.4" r="1.15" opacity="0.46"/><circle cx="306.8" cy="257.5" r="1.10" opacity="0.27"/><circle cx="26.7" cy="24.6" r="0.70" opacity="0.56"/><circle cx="201.0" cy="40.2" r="1.01" opacity="0.60"/><circle cx="131.5" cy="189.0" r="1.18" opacity="0.26"/><circle cx="23.4" cy="87.7" r="0.50" opacity="0.48"/><circle cx="423.5" cy="227.9" r="0.89" opacity="0.25"/><circle cx="243.2" cy="193.6" r="0.74" opacity="0.62"/><circle cx="57.7" cy="63.7" r="1.16" opacity="0.44"/><circle cx="382.6" cy="193.7" r="0.54" opacity="0.36"/><circle cx="238.8" cy="122.8" r="1.03" opacity="0.53"/><circle cx="380.7" cy="190.3" r="1.12" opacity="0.57"/><circle cx="377.8" cy="129.8" r="1.16" opacity="0.23"/><circle cx="179.1" cy="83.8" r="1.22" opacity="0.29"/><circle cx="330.1" cy="66.4" r="0.68" opacity="0.57"/><circle cx="229.3" cy="133.0" r="1.21" opacity="0.60"/><circle cx="64.1" cy="9.4" r="0.80" opacity="0.40"/><circle cx="196.2" cy="79.0" r="1.17" opacity="0.25"/><circle cx="342.2" cy="267.6" r="0.62" opacity="0.43"/><circle cx="31.0" cy="229.5" r="0.54" opacity="0.29"/><circle cx="120.4" cy="230.4" r="0.65" opacity="0.37"/><circle cx="394.4" cy="128.6" r="0.68" opacity="0.53"/><circle cx="353.9" cy="135.3" r="0.72" opacity="0.64"/><circle cx="12.6" cy="244.1" r="0.67" opacity="0.25"/><circle cx="224.8" cy="227.9" r="1.00" opacity="0.55"/><circle cx="340.5" cy="225.7" r="0.48" opacity="0.57"/><circle cx="297.9" cy="143.3" r="0.46" opacity="0.62"/><circle cx="146.2" cy="222.4" r="0.48" opacity="0.42"/><circle cx="58.7" cy="188.5" r="1.02" opacity="0.34"/><circle cx="277.0" cy="259.7" r="0.64" opacity="0.30"/><circle cx="138.3" cy="114.4" r="1.23" opacity="0.34"/><circle cx="99.6" cy="106.8" r="0.47" opacity="0.46"/><circle cx="390.9" cy="251.0" r="0.44" opacity="0.32"/><circle cx="358.5" cy="158.4" r="0.61" opacity="0.43"/><circle cx="127.6" cy="253.9" r="0.80" opacity="0.53"/><circle cx="178.5" cy="128.3" r="0.47" opacity="0.37"/><circle cx="425.6" cy="215.8" r="0.88" opacity="0.23"/><circle cx="393.1" cy="161.3" r="0.53" opacity="0.34"/><circle cx="284.0" cy="24.2" r="1.03" opacity="0.40"/><circle cx="373.2" cy="82.6" r="0.72" opacity="0.40"/><circle cx="135.9" cy="232.6" r="1.21" opacity="0.34"/><circle cx="241.3" cy="54.0" r="0.61" opacity="0.33"/><circle cx="135.4" cy="8.7" r="0.96" opacity="0.33"/><circle cx="299.9" cy="76.6" r="0.65" opacity="0.43"/><circle cx="307.2" cy="91.8" r="0.81" opacity="0.55"/><circle cx="203.7" cy="160.9" r="0.56" opacity="0.30"/><circle cx="257.1" cy="43.6" r="1.12" opacity="0.58"/><circle cx="161.6" cy="49.5" r="1.24" opacity="0.43"/><circle cx="26.0" cy="69.0" r="0.54" opacity="0.30"/><circle cx="198.5" cy="195.3" r="0.75" opacity="0.42"/><circle cx="51.4" cy="188.1" r="0.55" opacity="0.45"/><circle cx="72.6" cy="20.9" r="1.19" opacity="0.34"/><circle cx="190.3" cy="17.2" r="0.91" opacity="0.33"/><circle cx="240.6" cy="159.1" r="0.62" opacity="0.61"/><circle cx="338.2" cy="275.3" r="0.52" opacity="0.41"/><circle cx="77.9" cy="225.9" r="0.51" opacity="0.39"/><circle cx="256.7" cy="187.2" r="1.19" opacity="0.26"/><circle cx="333.8" cy="153.8" r="1.06" opacity="0.32"/><circle cx="198.0" cy="228.3" r="0.71" opacity="0.54"/><circle cx="191.6" cy="168.3" r="0.51" opacity="0.63"/><circle cx="221.7" cy="190.4" r="1.16" opacity="0.37"/><circle cx="101.2" cy="155.0" r="1.17" opacity="0.59"/><circle cx="107.3" cy="10.0" r="0.77" opacity="0.28"/><circle cx="376.1" cy="192.1" r="1.22" opacity="0.39"/><circle cx="216.1" cy="224.1" r="0.61" opacity="0.53"/><circle cx="25.0" cy="256.6" r="0.99" opacity="0.53"/><circle cx="388.5" cy="239.9" r="0.64" opacity="0.30"/><circle cx="400.6" cy="13.3" r="0.98" opacity="0.57"/><circle cx="202.4" cy="235.4" r="0.54" opacity="0.60"/><circle cx="389.6" cy="114.2" r="0.94" opacity="0.23"/><circle cx="146.2" cy="233.0" r="1.24" opacity="0.37"/><circle cx="242.8" cy="74.3" r="1.04" opacity="0.47"/><circle cx="332.6" cy="244.9" r="0.77" opacity="0.48"/><circle cx="129.4" cy="62.1" r="0.94" opacity="0.65"/><circle cx="96.0" cy="225.4" r="0.50" opacity="0.37"/><circle cx="378.5" cy="29.9" r="1.25" opacity="0.36"/><circle cx="427.6" cy="233.8" r="0.75" opacity="0.52"/><circle cx="82.4" cy="234.6" r="0.83" opacity="0.53"/><circle cx="125.8" cy="179.9" r="1.18" opacity="0.32"/><circle cx="279.2" cy="136.9" r="0.84" opacity="0.37"/><circle cx="367.1" cy="203.0" r="0.61" opacity="0.23"/><circle cx="145.3" cy="176.3" r="0.54" opacity="0.39"/><circle cx="99.0" cy="75.3" r="0.72" opacity="0.63"/><circle cx="376.2" cy="119.2" r="1.01" opacity="0.44"/><circle cx="23.0" cy="185.1" r="0.85" opacity="0.34"/><circle cx="283.1" cy="106.7" r="1.05" opacity="0.55"/><circle cx="341.9" cy="26.5" r="0.72" opacity="0.48"/><circle cx="294.3" cy="41.3" r="0.46" opacity="0.58"/><circle cx="83.5" cy="150.3" r="0.48" opacity="0.25"/><circle cx="369.9" cy="195.8" r="1.03" opacity="0.57"/><circle cx="362.1" cy="152.7" r="0.42" opacity="0.37"/><circle cx="409.4" cy="42.2" r="1.11" opacity="0.53"/><circle cx="267.0" cy="127.9" r="0.99" opacity="0.42"/><circle cx="358.4" cy="162.7" r="1.24" opacity="0.43"/><circle cx="288.2" cy="43.2" r="1.14" opacity="0.62"/><circle cx="56.2" cy="73.9" r="1.15" opacity="0.26"/><circle cx="214.1" cy="75.3" r="1.21" opacity="0.64"/><circle cx="9.2" cy="200.8" r="1.20" opacity="0.35"/><circle cx="35.7" cy="36.9" r="0.68" opacity="0.33"/><circle cx="263.6" cy="36.1" r="0.41" opacity="0.54"/><circle cx="230.1" cy="23.3" r="0.51" opacity="0.50"/><circle cx="45.6" cy="120.6" r="1.14" opacity="0.62"/><circle cx="50.5" cy="275.9" r="0.59" opacity="0.27"/><circle cx="180.8" cy="184.7" r="0.40" opacity="0.56"/><circle cx="276.9" cy="227.1" r="1.06" opacity="0.25"/><circle cx="101.6" cy="60.2" r="0.44" opacity="0.28"/><circle cx="50.5" cy="195.9" r="0.87" opacity="0.65"/><circle cx="214.1" cy="182.5" r="1.01" opacity="0.35"/><circle cx="66.4" cy="51.4" r="0.94" opacity="0.39"/><circle cx="423.5" cy="214.0" r="0.41" opacity="0.50"/><circle cx="71.1" cy="196.1" r="0.87" opacity="0.24"/><circle cx="363.4" cy="203.0" r="0.77" opacity="0.49"/><circle cx="230.1" cy="41.2" r="0.68" opacity="0.28"/><circle cx="94.3" cy="35.5" r="0.76" opacity="0.36"/><circle cx="211.4" cy="164.8" r="0.84" opacity="0.52"/><circle cx="216.3" cy="44.7" r="0.45" opacity="0.31"/><circle cx="275.7" cy="43.2" r="0.55" opacity="0.22"/><circle cx="282.7" cy="28.5" r="1.04" opacity="0.57"/><circle cx="192.2" cy="226.5" r="0.85" opacity="0.31"/><circle cx="175.0" cy="203.5" r="0.75" opacity="0.62"/><circle cx="385.5" cy="79.9" r="0.68" opacity="0.46"/><circle cx="206.9" cy="98.4" r="2.03" opacity="0.90"/><circle cx="86.4" cy="212.8" r="1.66" opacity="0.66"/><circle cx="303.3" cy="131.7" r="1.83" opacity="0.71"/><circle cx="349.9" cy="23.0" r="2.10" opacity="0.51"/><circle cx="375.6" cy="203.0" r="2.15" opacity="0.57"/><circle cx="107.5" cy="114.9" r="1.91" opacity="0.69"/><circle cx="286.1" cy="197.8" r="2.01" opacity="0.53"/><circle cx="132.7" cy="160.5" r="2.13" opacity="0.55"/><circle cx="432.0" cy="176.1" r="1.40" opacity="0.57"/><circle cx="128.0" cy="182.0" r="1.43" opacity="0.54"/><circle cx="87.2" cy="66.2" r="1.70" opacity="0.55"/><circle cx="114.2" cy="145.6" r="1.88" opacity="0.66"/><circle cx="137.1" cy="236.1" r="2.13" opacity="0.82"/><circle cx="19.2" cy="278.4" r="2.04" opacity="0.56"/><circle cx="117.2" cy="272.4" r="1.88" opacity="0.63"/><circle cx="315.6" cy="70.0" r="2.04" opacity="0.72"/><circle cx="64.2" cy="263.8" r="2.03" opacity="0.70"/><circle cx="84.2" cy="82.7" r="1.93" opacity="0.62"/><circle cx="384.0" cy="33.6" r="1.85" opacity="0.55"/><circle cx="396.1" cy="154.3" r="1.75" opacity="0.71"/><circle cx="191.5" cy="268.2" r="2.08" opacity="0.57"/><circle cx="253.0" cy="19.8" r="1.78" opacity="0.57"/><circle cx="143.3" cy="77.1" r="2.21" opacity="0.57"/><circle cx="138.5" cy="217.5" r="1.26" opacity="0.53"/><circle cx="94.6" cy="270.0" r="1.49" opacity="0.53"/><circle cx="359.8" cy="181.7" r="1.58" opacity="0.65"/><circle cx="356.6" cy="233.2" r="1.78" opacity="0.56"/><circle cx="260.3" cy="103.4" r="2.06" opacity="0.81"/><circle cx="333.5" cy="38.0" r="1.79" opacity="0.76"/><circle cx="253.7" cy="149.6" r="1.44" opacity="0.59"/><circle cx="111.9" cy="119.4" r="2.20" opacity="0.82"/><circle cx="176.9" cy="46.9" r="1.83" opacity="0.59"/><circle cx="406.0" cy="148.1" r="1.67" opacity="0.61"/><circle cx="419.9" cy="75.3" r="2.01" opacity="0.88"/><circle cx="219.9" cy="65.6" r="1.45" opacity="0.82"/><circle cx="143.5" cy="79.4" r="1.67" opacity="0.90"/><circle cx="191.9" cy="40.1" r="2.19" opacity="0.71"/><circle cx="74.8" cy="278.4" r="1.89" opacity="0.64"/><circle cx="305.2" cy="198.2" r="2.12" opacity="0.73"/><circle cx="272.8" cy="244.5" r="1.75" opacity="0.82"/><circle cx="262.0" cy="207.9" r="1.60" opacity="0.86"/><circle cx="79.5" cy="233.7" r="1.43" opacity="0.57"/><circle cx="152.8" cy="78.8" r="1.50" opacity="0.78"/><circle cx="408.8" cy="203.4" r="1.39" opacity="0.89"/><circle cx="45.8" cy="130.2" r="1.75" opacity="0.67"/><circle cx="108.2" cy="157.3" r="1.61" opacity="0.85"/><circle cx="12.7" cy="232.0" r="1.29" opacity="0.81"/><circle cx="278.7" cy="45.4" r="2.01" opacity="0.82"/><circle cx="283.3" cy="39.2" r="1.52" opacity="0.62"/><circle cx="320.3" cy="211.8" r="1.81" opacity="0.67"/><circle cx="281.0" cy="12.5" r="1.95" opacity="0.50"/><circle cx="346.5" cy="266.7" r="1.96" opacity="0.87"/><circle cx="206.1" cy="9.9" r="1.72" opacity="0.60"/><circle cx="159.5" cy="232.9" r="1.77" opacity="0.81"/><circle cx="237.5" cy="211.1" r="1.83" opacity="0.75"/><circle cx="251.1" cy="56.9" r="2.04" opacity="0.77"/><circle cx="275.9" cy="235.4" r="2.19" opacity="0.70"/><circle cx="66.7" cy="161.8" r="2.17" opacity="0.58"/><circle cx="108.1" cy="66.7" r="1.59" opacity="0.76"/><circle cx="352.2" cy="66.3" r="1.61" opacity="0.54"/><circle cx="396.0" cy="142.6" r="2.03" opacity="0.61"/><circle cx="32.3" cy="44.2" r="2.07" opacity="0.84"/><circle cx="25.5" cy="184.0" r="2.23" opacity="0.63"/><circle cx="9.1" cy="213.3" r="1.41" opacity="0.55"/><circle cx="177.4" cy="147.0" r="1.81" opacity="0.58"/><circle cx="315.6" cy="155.9" r="2.04" opacity="0.55"/><circle cx="81.2" cy="233.5" r="1.72" opacity="0.55"/><circle cx="238.9" cy="210.3" r="2.24" opacity="0.77"/><circle cx="168.5" cy="194.1" r="2.16" opacity="0.52"/><circle cx="110.1" cy="265.6" r="1.44" opacity="0.77"/><circle cx="416.4" cy="14.5" r="2.20" opacity="0.85"/><circle cx="141.6" cy="20.1" r="2.11" opacity="0.72"/><circle cx="425.2" cy="197.3" r="1.81" opacity="0.55"/><circle cx="150.0" cy="73.4" r="1.85" opacity="0.69"/><circle cx="366.3" cy="89.7" r="1.48" opacity="0.68"/></g><g transform="translate(20 62) scale(.9)"><path class="constellation-line" d="M56 51 L129 142 L220 133 L279 195 L375 115"/><circle class="bearing-star" cx="56" cy="51" r="2.5"/><circle class="bearing-star" cx="129" cy="142" r="3.4"/><circle class="bearing-star" cx="220" cy="133" r="4.5"/><circle class="bearing-star" cx="279" cy="195" r="4"/><circle class="bearing-star" cx="375" cy="115" r="4"/></g></svg>
+    <div class="map-note"><blockquote><p data-c="hero.mapCard.strong"></p><cite><a href="https://www.poetryfoundation.org/poems/54932/sea-fever-56d235e0d871e"><span data-c="hero.mapCard.quoteAuthor"></span> · <span data-c="hero.mapCard.quoteWork"></span></a></cite></blockquote></div>
+  </div>
+</section>
+
+<section class="wrap intro" id="approach">
+  <div class="section-label" data-c="approach.kicker"></div>
+  <div>
+    <h2 data-c="approach.heading" data-copy-token="copy.problem" data-why="The perspective begins with decisions and shared purpose."></h2>
+    <div style="height:22px"></div>
+    <div class="intro-notes" data-why="Details people rarely see are the product."></div>
+  </div>
+</section>
+
+<section class="work" id="work" data-token="surface.alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker" data-c="work.kicker"></div><h2 data-c="work.heading"></h2></div>
+      <p data-c="work.sub" data-copy-token="copy.positioning"></p>
+    </div>
+    <div class="projects" id="projects" data-why="Selected responsibilities, without implying unverified commercial results."></div>
+  </div>
+</section>
+
+<section class="wrap principles" id="principles">
+  <div class="principles-grid">
+    <div><div class="kicker" data-c="principles.kicker"></div><h2 data-c="principles.heading"></h2></div>
+    <div class="principle-list" id="principleList"></div>
+  </div>
+</section>
+
+
+
+<section class="editorial wrap" id="notes" data-why="The essays demonstrate judgement through researched arguments, rather than a list of services.">
+<div class="kicker">04 / Notes on direction</div><h2>Questions before answers.</h2><div class="notes-grid" id="notesList"></div>
+</section>
+<section class="dice-feature" id="dice"><div class="wrap dice-layout"><div class="dice-art"><svg class="map-art" viewBox="0 0 440 220" role="img" aria-label="Cassiopeia: five stars forming a point of orientation">
+<path class="constellation-line" d="M56 51 L129 142 L220 133 L279 195 L375 115"/>
+<path class="map-tick" d="M220 115V25" stroke-dasharray="2 7"/>
+<circle class="map-stop-dot-gold" cx="56" cy="51" r="4"/><circle class="map-stop-dot-gold" cx="129" cy="142" r="6"/><circle class="map-stop-dot" cx="220" cy="133" r="8"/><circle class="map-stop-dot-gold" cx="279" cy="195" r="7"/><circle class="map-stop-dot-gold" cx="375" cy="115" r="7"/>
+</svg></div><div><div class="kicker">05 / An independent project</div><h2>D.I.C.E.</h2><p class="dice-lead">Chance opens. The bearing is yours.</p><p>An object, a condition, a constraint. D.I.C.E. begins with a random seed and follows what happens when someone gives it meaning.</p><p class="dice-anatomy">Seed &nbsp; / &nbsp; Reading &nbsp; / &nbsp; Result</p><a class="textlink" href="dice.html">Explore D.I.C.E. ↗</a></div></div></section>
+<section class="contact" id="contact" data-token="accent.teal">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="kicker" data-c="contact.kicker"></div>
+      <h2 data-c="contact.heading" data-why="Final ask: a specific, honest door."></h2>
+      <p data-c="contact.body"></p>
+    </div>
+    <a class="button" href="mailto:hello@example.com" data-c-href="contact.cta" data-copy-token="copy.cta" data-c="contact.cta.label"></a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer"><div class="wrap">
+  <span>© <span data-c="identity.name"></span></span>
+  <span class="note" data-c="footer.note"></span>
+  <a href="workbench.html">Behind the site ↗</a>
+  <a href="#top" data-c="footer.backToTop"></a> ↑
+</div></footer>
+
+<script src="site-content.js"></script>
+<script>
+
+// Editorial notes
+const notesHost=document.getElementById('notesList');
+if(notesHost) window.SITE.notes.forEach(n=>{
+ const card=document.createElement('article');card.className='note-card';
+ card.innerHTML='<span class="number"></span><h3></h3><p></p><a class="textlink"></a>';
+ card.querySelector('.number').textContent=n.number;card.querySelector('h3').textContent=n.title;card.querySelector('p').textContent=n.body;
+ const a=card.querySelector('a');a.href=n.href;a.textContent=n.label;notesHost.appendChild(card);
+});
+
+// fill static fields
+document.querySelectorAll('[data-c]').forEach(el=>{
+  const path=el.getAttribute('data-c').split('.');
+  let v=window.SITE; for(const k of path) v=v&&v[k];
+  if(typeof v==='string') el.innerHTML=v;
+});
+// CTA hrefs
+document.querySelectorAll('[data-c-href]').forEach(el=>{
+  const path=el.getAttribute('data-c-href').split('.');
+  let v=window.SITE; for(const k of path) v=v&&v[k];
+  if(v&&v.href) el.setAttribute('href',v.href);
+});
+// map stops
+document.querySelectorAll('.map-stop').forEach((t,i)=>{
+  const stops=window.SITE.hero.mapCard.stops; if(stops[i]) t.textContent=stops[i];
+});
+// nav labels from content
+const navMap={approach:'Approach',work:'Selected work',contact:'Get in touch ↗'};
+document.querySelectorAll('[data-c-nav]').forEach(a=>{
+  const k=a.getAttribute('data-c-nav');
+  if(window.SITE.nav&&window.SITE.nav[k]) a.textContent=window.SITE.nav[k];
+});
+// approach body paragraphs
+(function(){
+  const host=document.querySelector('.intro-notes'); if(!host) return;
+  window.SITE.approach.body.forEach(p=>{
+    const el=document.createElement('p'); el.textContent=p; host.appendChild(el);
+  });
+})();
+// projects
+(function(){
+  const host=document.getElementById('projects'); if(!host) return;
+  window.SITE.work.cases.forEach((c,i)=>{
+    const art=document.createElement('article'); art.className='project'+(c.wide?' project-wide':'');
+    art.innerHTML=`<div class="project-top"><span></span><span class="project-index">${String(i+1).padStart(2,'0')}</span></div>
+      <div><h3></h3><p></p><div class="chain"></div><div class="tags"></div></div>`;
+    art.querySelector('.project-top span').textContent=c.industry;
+    art.querySelector('h3').textContent=c.title;
+    art.querySelector('p').textContent=c.body;
+    const chain=art.querySelector('.chain');
+    chain.innerHTML='problem → <b>move</b> → result → <b>limits</b><br>'+c.chain;
+    c.tags.forEach(t=>{const s=document.createElement('span');s.textContent=t;art.querySelector('.tags').appendChild(s);});
+    host.appendChild(art);
+  });
+})();
+// principles
+(function(){
+  const host=document.getElementById('principleList'); if(!host) return;
+  window.SITE.principles.items.forEach((p,i)=>{
+    const art=document.createElement('article'); art.className='principle';
+    art.innerHTML=`<b>${String(i+1).padStart(2,'0')}</b><div><h3></h3><p></p></div>`;
+    art.querySelector('h3').textContent=p.title;
+    art.querySelector('p').textContent=p.body;
+    host.appendChild(art);
+  });
+})();
+// exhibits
+(function(){
+  const host=document.getElementById('exhibitList'); if(!host) return;
+  window.SITE.exhibits.forEach(x=>{
+    const div=document.createElement('div'); div.className='exhibit';
+    div.innerHTML=`<div class="code"></div><div><h3></h3><p></p><a></a></div>`;
+    div.querySelector('.code').textContent=x.code;
+    div.querySelector('h3').textContent=x.title;
+    div.querySelector('p').textContent=x.body;
+    const a=div.querySelector('a'); a.textContent=x.linkLabel; a.href=x.href;
+    host.appendChild(div);
+  });
+})();
+
+</script>
 </body>
 </html>

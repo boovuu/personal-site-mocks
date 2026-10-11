@@ -3,14 +3,10 @@
     {
       "id": 1,
       "industry": "Enterprise software",
-      "title": "Website operations, end to end",
-      "body": "Webflow, analytics, consent, hiring flows, structured data, and ongoing performance work, with one owner across the whole surface.",
+      "title": "A continuing responsibility",
+      "body": "Ongoing responsibility for the website within an enterprise marketing environment, across launches, campaigns, and the systems that support them.",
       "chain": "problem: no owner across seams → move: single-operator coverage → result: site holds shape between teams → limits: numbers shared on request",
-      "tags": [
-        "Webflow",
-        "Analytics",
-        "Growth systems"
-      ],
+      "tags": [],
       "disclosure": "anonymized",
       "attribution": "sole operator: platform, analytics, consent, schema",
       "proof_id": "proof.chain-visible",
@@ -20,103 +16,61 @@
     {
       "id": 2,
       "industry": "Contract management",
-      "title": "Marketing site and campaigns",
-      "body": "Campaign pages with attention to consent, embedded video, and the details that keep measurement intact.",
-      "chain": "problem: measurement broke at edges → move: consent-safe tracking layer → result: clean data through campaigns → limits: baseline pre-dates tooling",
-      "tags": [
-        "CMS",
-        "Campaigns",
-        "Measurement"
-      ],
+      "title": "A campaign, in context",
+      "body": "Work on the marketing website and campaign delivery for a contract-management business, including the reliability of its measurement.",
+      "chain": "problem: measurement broke at the edges → move: consent + embed discipline → result: clean data survives campaigns → limits: baseline pre-dates tooling",
+      "tags": [],
       "disclosure": "anonymized",
-      "attribution": "sole operator: tracking, consent, video embeds",
+      "attribution": "sole operator: consent architecture, tracking QA",
       "proof_id": "proof.chain-visible",
       "wide": false,
       "position": 2
     },
     {
       "id": 3,
-      "industry": "Travel operator",
-      "title": "1,500 records, one system",
-      "body": "Property content rebuilt as architecture, with schema and answer-shaped content that search and AI engines parse.",
-      "chain": "problem: pages built twice, schema an afterthought → move: CMS architecture + schema @graph → result: one system, machine-readable → limits: citation volume accruing",
-      "tags": [
-        "CMS architecture",
-        "Schema",
-        "AEO"
-      ],
+      "industry": "Travel operator · at scale",
+      "title": "A portfolio with a common structure",
+      "body": "A shared publishing structure for a property portfolio, bringing consistency to how information is maintained and presented.",
+      "chain": "problem: one-off pages decayed → move: CMS as system + schema @graph → result: machine-quotable structure → limits: quoted volume still accruing",
+      "tags": [],
       "disclosure": "anonymized-strict",
-      "attribution": "sole operator: CMS structure, schema design",
-      "proof_id": "proof.case-scale",
+      "attribution": "sole operator: CMS architecture, schema design",
+      "proof_id": "proof.chain-visible",
       "wide": false,
       "position": 3
-    },
-    {
-      "id": 4,
-      "industry": "SaaS marketing",
-      "title": "From 38 styles to one",
-      "body": "Marketing site rebuilt on tokens and a section library. Pages stopped being designed twice.",
-      "chain": "problem: 38 one-off styles → move: token law + section library → result: pages assembled, not redesigned → limits: library still grows",
-      "tags": [
-        "Design systems",
-        "Tokens",
-        "Delivery"
-      ],
-      "disclosure": "anonymized",
-      "attribution": "sole operator: token system, section library",
-      "proof_id": "proof.case-tokens",
-      "wide": false,
-      "position": 4
-    },
-    {
-      "id": 5,
-      "industry": "What I bring",
-      "title": "One owner across the seams.",
-      "body": "Strategy, implementation, tracking, QA, and coordination, joined up so the site does not lose its shape between teams.",
-      "chain": "problem: handoffs drop details → move: one owner across the seams → result: site holds its shape between teams → limits: scoped to the surfaces I run",
-      "tags": [
-        "Technical ownership",
-        "CRO",
-        "Delivery"
-      ],
-      "disclosure": "anonymized",
-      "attribution": "sole operator across the named surfaces",
-      "proof_id": null,
-      "wide": true,
-      "position": 5
     }
   ],
   "principles": [
     {
       "id": 1,
-      "title": "Know what the site needs to do.",
-      "body": "Start with the job, the audience, and the constraints. Then choose the right build."
+      "title": "Clarity of purpose.",
+      "body": "A shared understanding of the ambition, the choices it requires, and the authority to act."
     },
     {
       "id": 2,
-      "title": "Make the invisible parts dependable.",
-      "body": "Forms, data, consent, redirects, accessibility, and performance get the same checks as the page."
+      "title": "Judgement in context.",
+      "body": "Each decision considered in relation to the brand, the buyer, and the business it serves."
     },
     {
       "id": 3,
-      "title": "Leave the team in a better position.",
-      "body": "Build for the next edit, the next campaign, and the person who has to maintain it."
+      "title": "Room to grow.",
+      "body": "A common foundation that allows more teams and markets to build on the work."
     }
   ],
   "exhibits": [
     {
       "code": "Exhibit A · this site",
       "title": "The system, with reasons on",
-      "body": "Every token, section, and rule on this site carries its why. The same system discipline I ship for clients, turned on my own site.",
-      "link_label": "Open /system →",
-      "href": "#system"
+      "body": "Toggle the reason layer: every section carries its why.",
+      "link_label": "Toggle reasons on this page",
+      "href": "v9-carries-the-work.html"
     },
     {
       "code": "Exhibit B · the engine",
-      "title": "D.I.C.E., deterministic by design",
-      "body": "Same seed, same draw, forever. A working deterministic creative engine with real hashes.",
-      "link_label": "Run /dice →",
-      "href": "#"
+      "title": "D.I.C.E. · seed study",
+      "body": "An interactive seed study, with a repeatable draw. The original engine port and published logbook remain separate work.",
+      "link_label": "Explore the seed study",
+      "href": "dice.html"
     }
   ]
 }

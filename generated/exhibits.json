@@ -1,4 +1,4 @@
 [
-	{"to_json(t)":{"code":"Exhibit A · this site","title":"The system, with reasons on","body":"Every token, section, and rule on this site carries its why. The same system discipline I ship for clients, turned on my own site.","link_label":"Open /system →","href":"#system"}},
-	{"to_json(t)":{"code":"Exhibit B · the engine","title":"D.I.C.E., deterministic by design","body":"Same seed, same draw, forever. A working deterministic creative engine with real hashes.","link_label":"Run /dice →","href":"#"}}
+	{"to_json(t)":{"code":"Exhibit A · this site","title":"The system, with reasons on","body":"Toggle the reason layer: every section carries its why.","link_label":"Toggle reasons on this page","href":"v9-carries-the-work.html"}},
+	{"to_json(t)":{"code":"Exhibit B · the engine","title":"D.I.C.E. · seed study","body":"An interactive seed study, with a repeatable draw. The original engine port and published logbook remain separate work.","link_label":"Explore the seed study","href":"dice.html"}}
 ]

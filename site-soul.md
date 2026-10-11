@@ -29,3 +29,10 @@ Job search, employer politics, client names, "WebOps positioning" stay implicit.
 - Approach: the spine story compressed; mechanisms, not adjectives.
 - Cases: problem → move → result → limits. Ownership stated ("I owned X"), numbers when public, limits always.
 - Contact: one honest door; selectivity is the signal, never a hard sell.
+
+
+## Author revision · 2026-10-11 (takes precedence over the earlier story spine)
+The homepage speaks to VP Marketing, CMO, and CEO readers. Begin with business direction, judgement, shared decisions, and the organisation of delivery. Technical competence is evidenced in work, not enumerated in the opening. Composed, precise English; no ornamental status claims. The quartermaster metaphor may appear in a researched essay, with its historical limits stated. D.I.C.E. remains a distinct independent project. Remove the rejected 38-styles case and the location from the footer. Keep “A good place to start.”
+
+## Research essays: academic register
+Use analytical exposition, precise concepts, and attributed evidence. Develop the argument directly. Remove diary framing such as “I find”, “I would”, and “the idea I keep”. Identify the distinction between historical findings and contemporary application in a concise source note. This governs research essays rather than the personal homepage introduction.

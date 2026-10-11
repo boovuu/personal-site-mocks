@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Workbench · back study for the Bogdan Vuckovic identity</title>
+<title>Behind the site · Bogdan Vučković</title>
 <style>
   :root{
     --paper:#f3efe5; --paper2:#e9e3d5; --ink:#172c2b; --muted:#576459;
@@ -19,6 +19,14 @@
   .sub b{color:var(--ink);font-weight:400}
   h2{font-size:24px;font-weight:400;margin:52px 0 6px;letter-spacing:-.01em}
   .h-sub{color:var(--muted);font-size:14.5px;margin-bottom:18px}
+  .site-nav,.section-nav{display:flex;flex-wrap:wrap;gap:20px;font:13px/1.5 ui-monospace,monospace;margin-bottom:32px}
+  .section-nav{border-block:1px solid var(--line);padding:16px 0}
+  .entry-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  .entry-grid a{padding:20px;border:1px solid var(--line);text-decoration:none;background:var(--paper2)}
+  .entry-grid strong{display:block;font-weight:400;font-size:19px}
+  .entry-grid span{display:block;font-size:14px;color:var(--muted);margin-top:10px}
+  h2{scroll-margin-top:24px} a:focus-visible{outline:2px solid var(--rust);outline-offset:4px}
+  @media(max-width:700px){.entry-grid{grid-template-columns:1fr}.layer{grid-template-columns:1fr}.layer .what{border-right:0}.row{grid-template-columns:18px 1fr}.row .note,.row .gate{grid-column:2}.laws{grid-template-columns:1fr}table{display:block;overflow-x:auto}}
   /* layer map */
   .map{border:1px solid var(--line);background:var(--paper2)}
   .layer{display:grid;grid-template-columns:210px 1fr;gap:0;border-bottom:1px solid var(--line)}
@@ -63,53 +71,55 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="kicker">Back study · identity &amp; brand · connected to everything shipped</div>
-  <h1>The Workbench</h1>
-  <p class="sub">The brain of the site, made visible on purpose. Every layer that decides what the site says and looks like, with its <b>file</b>, its <b>why</b>, and its <b>state</b>. The public site shows the work; this page shows the discipline that produces it. It is itself an exhibit: same laws, same tokens, zero decoration.</p>
+  <nav class="site-nav" aria-label="Site navigation"><a href="index.html">← Homepage</a><a href="archive.html">Design archive ↗</a></nav><div class="kicker">The Workbench · supporting the homepage</div>
+  <h1>Behind the site</h1>
+  <p class="sub">I keep the reasoning behind the homepage here: its audience, the editorial choices, the research behind the essays, and the system that carries them.</p>
+<nav class="section-nav" aria-label="On this page"><a href="#start">Start here</a><a href="#structure">Structure</a><a href="#tokens">Design system</a><a href="#laws">Writing rules</a><a href="#status">Open decisions</a></nav>
+<section id="start"><h2>Start here</h2><div class="entry-grid"><a href="v9-carries-the-work.html"><strong>Why the homepage looks this way ↗</strong><span>Open the annotated page and switch on its reasons.</span></a><a href="identity-studies/reckoning-coin-cassiopeia.html"><strong>Identity study ↗</strong><span>The coin, compass, and Cassiopeia. Candidate ideas, awaiting a decision.</span></a><a href="archive.html"><strong>Earlier directions ↗</strong><span>Versions 1–8 and the development history of the current page.</span></a></div></section>
 
-  <h2>The stack, back to front</h2>
+  <section id="editorial"><h2>The editorial direction</h2><p class="h-sub">The homepage addresses VP Marketing, CMO, and CEO readers. It begins with commercial direction and judgement. Experience provides context; the essays demonstrate the reasoning. Technical detail remains available in the supporting layers.</p><p class="h-sub">The offer is carried by the substance of the work, without urgency or a list of services. The quartermaster is an organisational analogy developed in a researched essay. It is not a claimed job title or proof of marketing performance.</p><div class="entry-grid"><a href="notes/quartermaster.html"><strong>The quartermaster’s place ↗</strong><span>Leeson’s historical research; the modern application is the author’s analogy.</span></a><a href="notes/brand-and-website.html"><strong>Brand and website ↗</strong><span>IPA, NN/g, and Edelman–LinkedIn. Sources and research limits appear beside the argument.</span></a><a href="notes/website-purpose.html"><strong>The website purpose guide ↗</strong><span>A working synthesis of experience and research, with a reusable decision brief.</span></a></div><p class="h-sub" style="margin-top:20px"><a href="dice.html">D.I.C.E. seed study ↗</a> · <a href="strategy-history.json">Previous strategy notes, historical ↗</a></p></section><h2 id="structure">The stack, back to front</h2>
   <p class="h-sub">Six layers. Each one can only be changed at its own level; everything downstream inherits.</p>
   <div class="map">
     <div class="layer"><div class="what"><div class="n">Layer 1 · canon</div><div class="t">Identity &amp; voice law</div></div>
-      <div class="detail"><div class="file">site-soul.md · sell-by-camouflage.md</div>
+      <div class="detail"><div class="file"><a href="site-soul.md">site-soul.md</a> · <a href="sell-by-camouflage.md">sell-by-camouflage.md</a></div>
       <div class="whyline">How every sentence is written and what selling is allowed to look like: voice mix, spine story, banned list; and the seven sourced rules for hiding intent (Cialdini, Sandler, Greene, Klaff, Enns, Bettger, fair chase).</div></div></div>
     <div class="layer"><div class="what"><div class="n">Layer 2 · truth</div><div class="t">Content database</div></div>
       <div class="detail"><div class="file">content.duckdb · render-json.sql · build-from-duckdb.js</div>
       <div class="whyline">Cases, principles, exhibits as rows with disclosure and attribution. The drift check fails the build when the site and the database disagree; cases without a disclosure level cannot publish.</div></div></div>
     <div class="layer"><div class="what"><div class="n">Layer 3 · system</div><div class="t">Design tokens</div></div>
-      <div class="detail"><div class="file">tokens.json · token-exceptions.json · scripts/check-tokens.js</div>
+      <div class="detail"><div class="file"><a href="tokens.json">tokens.json</a> · <a href="token-exceptions.json">token-exceptions.json</a> · <a href="scripts/check-tokens.js">scripts/check-tokens.js</a></div>
       <div class="whyline">Seventeen tokens, each carrying a why. Exceptions exist only with a filed reason and review date. The lint runs in CI on every push.</div></div></div>
     <div class="layer"><div class="what"><div class="n">Layer 4 · copy</div><div class="t">Single source of text</div></div>
-      <div class="detail"><div class="file">site-content.js</div>
-      <div class="whyline">Every rendered word. Hero, approach, work, principles, contact, footer, exhibits, plus the internal strategy notes. Nothing is hardcoded in markup.</div></div></div>
+      <div class="detail"><div class="file"><a href="site-content.js">site-content.js</a></div>
+      <div class="whyline">Shared homepage copy: hero, approach, work, principles, contact, footer, and exhibits. Supporting pages carry their own explanatory text.</div></div></div>
     <div class="layer"><div class="what"><div class="n">Layer 5 · surface</div><div class="t">The page itself</div></div>
-      <div class="detail"><div class="file">v9-carries-the-work.html (+ v1&ndash;v8 studies, retained)</div>
-      <div class="whyline">Skin over the stack: binds SITE, honors tokens, carries the reason toggle. Studies stay online as decision history, not options.</div></div></div>
+      <div class="detail"><div class="file"><a href="index.html">Homepage</a></div>
+      <div class="whyline">The homepage presents the work. Its annotated companion explains the choices. Earlier studies live in the archive.</div></div></div>
     <div class="layer"><div class="what"><div class="n">Layer 6 · proof</div><div class="t">Identity explorations</div></div>
       <div class="detail"><div class="file">identity-studies/reckoning-coin-cassiopeia.html</div>
       <div class="whyline">GPT + Claude study: coin, compass, Cassiopeia; DICE anatomy Seed → Reading → Result. Filed as candidate material for v10, adopted only through the gates below.</div></div></div>
   </div>
 
-  <h2>How a change travels</h2>
+  <h2 id="changes">How a change travels</h2>
   <p class="h-sub">One direction only. Editing downstream by hand is what the drift check exists to catch.</p>
   <div class="flow">
     <span class="step">canon law</span><span class="arr">→</span>
     <span class="step">content.duckdb</span><span class="arr">→</span>
     <span class="step">build-from-duckdb.js</span><span class="arr">→</span>
-    <span class="step">site-content.js</span><span class="arr">→</span>
+    <span class="step"><a href="site-content.js">site-content.js</a></span><span class="arr">→</span>
     <span class="step">tokens + lint</span><span class="arr">→</span>
-    <span class="step">v9 page</span><span class="arr">→</span>
+    <span class="step">homepage + annotated page</span><span class="arr">→</span>
     <span class="step">live verify</span>
   </div>
 
-  <h2>Token register</h2>
-  <p class="h-sub">The values the site is allowed to use, with the reason each exists. Full machine copy: tokens.json.</p>
+  <h2 id="tokens">Token register</h2>
+  <p class="h-sub">The values the site is allowed to use, with the reason each exists. Full machine copy: <a href="tokens.json">tokens.json</a>.</p>
   <table id="tok-table">
     <thead><tr><th>Token</th><th>CSS</th><th>Value</th><th>Why</th></tr></thead>
     <tbody></tbody>
   </table>
 
-  <h2>The laws</h2>
+  <h2 id="laws">The laws</h2>
   <p class="h-sub">Short list. The full text lives in the canon files; these are the ones that decide arguments.</p>
   <div class="laws">
     <div class="law"><div class="no">LAW 1</div><div class="t">Check first, define the change, verify it</div><p>Nothing ships on a claim. Bindings resolve, lint passes, live URL greps clean. Done means walked.</p></div>
@@ -120,19 +130,19 @@
     <div class="law"><div class="no">LAW 6</div><div class="t">One idea per surface</div><p>The homepage sells one thesis. Studies and explorations live beside it, clearly labeled, never blended in.</p></div>
   </div>
 
-  <h2>State of the system</h2>
-  <p class="h-sub">Live status. Anything red is a gate that has not been walked.</p>
+  <h2 id="status">State of the system</h2>
+  <p class="h-sub">Recorded draft status. These notes are maintained by hand; they are not a live build monitor.</p>
   <div class="status">
-    <div class="row"><span class="dot ok"></span><span class="what">Copy, tokens, CMS, page in sync</span><span class="note">drift check green, lint green</span><span class="gate done">verified</span></div>
+    <div class="row"><span class="dot ok"></span><span class="what">Editorial revision, content, and CMS checked</span><span class="note">Draft checks passed 11 October 2026</span><span class="gate done">draft checked</span></div>
     <div class="row"><span class="dot warn"></span><span class="what">Contact email still placeholder</span><span class="note">hello@example.com blocks ship</span><span class="gate open">ship gate</span></div>
-    <div class="row"><span class="dot warn"></span><span class="what">D.I.C.E. exhibit has no live link</span><span class="note">deterministic port of engine.py in build</span><span class="gate open">ship gate</span></div>
-    <div class="row"><span class="dot hold"></span><span class="what">Consult rate anchor undecided</span><span class="note">needed before Phase 1 publishes</span><span class="gate open">decision</span></div>
-    <div class="row"><span class="dot hold"></span><span class="what">Coin study adoption for v10</span><span class="note">palette / evidence rows / two-door contact are candidates</span><span class="gate open">decision</span></div>
+    <div class="row"><span class="dot warn"></span><span class="what">D.I.C.E. seed study is available</span><span class="note">Original engine port and published logbook remain unfinished</span><span class="gate open">ship gate</span></div>
+    <div class="row"><span class="dot hold"></span><span class="what">Consult rate anchor undecided</span><span class="note">Whether pricing belongs on the public site remains a decision</span><span class="gate open">decision</span></div>
+    <div class="row"><span class="dot hold"></span><span class="what">Remaining identity choices</span><span class="note">Coin header and five stars adopted; further palette changes remain candidates</span><span class="gate open">decision</span></div>
   </div>
 
   <footer>
     <div>The Workbench · part of the personal-site system · <span class="mono">github.com/boovuu/personal-site-mocks</span></div>
-    <div style="margin-top:4px">This page reads tokens.json at build time. If a value here and the file disagree, the file wins and this page is stale.</div>
+    <div style="margin-top:4px">This page reads <a href="tokens.json">tokens.json</a> at build time. If a value here and the file disagree, the file wins and this page is stale.</div>
   </footer>
 </div>
 <script src="tokens-data.js"></script>
@@ -148,7 +158,7 @@
         + '<td class="whycell">' + (t.why||'') + '</td>';
       tb.appendChild(tr);
     });});
-  }catch(e){ tb.innerHTML = '<tr><td colspan="4" class="whycell">Live read failed; the source of truth is tokens.json in the repo.</td></tr>'; }
+  }catch(e){ tb.innerHTML = '<tr><td colspan="4" class="whycell">Live read failed; the source of truth is <a href="tokens.json">tokens.json</a> in the repo.</td></tr>'; }
 })();
 </script>
 </body>
