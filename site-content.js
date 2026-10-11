@@ -45,9 +45,9 @@ window.SITE = {
   /* ---- 3. sekcija "how I see it" -------------------------- */
   approach: {
     kicker:  "01 / How I see it",
-    heading: "The site is not a poster. It is part of how the business works.",
+    heading: "Your website is an operating system half the company shares.",
     body: [
-      "Good work lives in the details people rarely see: a form that reaches the right place, a CMS that stays usable, consent that behaves properly, analytics that can be trusted.",
+      "I came in to build pages. Then the tracking broke, then consent affected tracking, then CRM routing mattered, then schema mattered. Good work lives in those details: a form that reaches the right place, a CMS that stays usable, analytics that can be trusted.",
       "I work across those details and the bigger picture. The aim is a site the team can rely on after launch, not a beautiful handoff that starts to fray."
     ]
   },
@@ -122,8 +122,8 @@ window.SITE = {
   /* ---- 6. kontakt (konsultacije = jedra vrata) ------------ */
   contact: {
     kicker:  "A good place to start",
-    heading: "Where is your website getting stuck?",
-    body:    "Tell me what is not working. We can work out what it needs next.",
+    heading: "Tell me where the numbers stop matching the site.",
+    body:    "One conversation: what I would measure first, what I would fix, and what it should be worth. If the fit is not there, I will say so.",
     cta:     { label: "Start a conversation", href: "mailto:hello@example.com" }  // PLACEHOLDER email
   },
 
