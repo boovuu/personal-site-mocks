@@ -1,0 +1,5 @@
+[
+	{"to_json(t)":{"id":1,"title":"Know what the site needs to do.","body":"Start with the job, the audience, and the constraints. Then choose the right build."}},
+	{"to_json(t)":{"id":2,"title":"Make the invisible parts dependable.","body":"Forms, data, consent, redirects, accessibility, and performance get the same checks as the page."}},
+	{"to_json(t)":{"id":3,"title":"Leave the team in a better position.","body":"Build for the next edit, the next campaign, and the person who has to maintain it."}}
+]
