@@ -7,6 +7,10 @@ const { execSync } = require("child_process");
 // 1. regenerate JSON straight from the database
 execSync(`duckdb content.duckdb < render-json.sql`, { stdio: "inherit" });
 
+// 1b. regenerate the workbench token data
+const tokens = JSON.parse(fs.readFileSync("tokens.json", "utf8"));
+fs.writeFileSync("tokens-data.js", "window.TOKENS=" + JSON.stringify(tokens) + ";");
+
 // 2. unwrap the {to_json(t): ...} wrapper
 const unw = f => JSON.parse(fs.readFileSync(`generated/${f}`, "utf8")).map(x => x["to_json(t)"]);
 const db = {
