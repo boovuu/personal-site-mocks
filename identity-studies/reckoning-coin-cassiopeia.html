@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="An identity study joining a two-sided coin, Cassiopeia, navigation, chance, and DICE.">
+<title>The Reckoning Coin — Cassiopeia Identity Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: a ship's-register proposal — one left-aligned column of ruled entries, eight sections keyed to the eight principal compass points, mocks set as plates. */
+:root{
+  --ink:#1A2827; --teal:#1F3A3D; --cream:#F2EBDD; --brass:#C0A16A; --rust:#A75336;
+  --brass-deep:#7E6535; --paper-2:#E9E0CC;
+  --bg:var(--cream); --surface:var(--paper-2); --fg:var(--ink); --muted:#4E5E5C;
+  --rule:rgba(26,40,39,.2); --rule-strong:rgba(26,40,39,.55);
+  --mark:var(--teal); --accent-text:var(--rust); --plate:#F7F2E7;
+  --f-display:"Libre Caslon Display","Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --f-body:"Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --f-label:"Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .1  0 0 0 0 .16  0 0 0 0 .15  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.28'/></svg>");
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#152221; --surface:#1A2827; --fg:var(--cream); --muted:#A7B1AA;
+    --rule:rgba(242,235,221,.16); --rule-strong:rgba(242,235,221,.45);
+    --mark:var(--brass); --accent-text:var(--brass); --plate:#1C2D2C; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#152221; --surface:#1A2827; --fg:var(--cream); --muted:#A7B1AA;
+  --rule:rgba(242,235,221,.16); --rule-strong:rgba(242,235,221,.45);
+  --mark:var(--brass); --accent-text:var(--brass); --plate:#1C2D2C; color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.62;padding-inline:20px;padding-block:0;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;line-height:1.08}
+p{margin:0}
+.prose{max-width:64ch}
+.prose p+p{margin-top:.9em}
+.label{font-family:var(--f-label);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+.num{font-variant-numeric:tabular-nums lining-nums}
+a{color:inherit}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--accent-text);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+svg.sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ---------- Hero ---------- */
+.hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;align-items:center;padding-block:56px 48px;border-bottom:1px solid var(--rule-strong)}
+.hero .eyebrow{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+.hero h1{font-size:clamp(46px,7vw,88px);letter-spacing:-.01em;margin-bottom:22px}
+.hero .thesis{font-family:var(--f-display);font-size:clamp(24px,2.8vw,32px);line-height:1.2;color:var(--accent-text);margin-bottom:18px}
+.hero .support{font-style:italic;max-width:46ch;color:var(--fg)}
+.toss-col{display:flex;flex-direction:column;align-items:center;gap:18px}
+.stage{width:min(300px,72vw);aspect-ratio:1;perspective:1000px;max-width:100%}
+.arc{width:100%;height:100%}
+.arc.up{animation:arc 1.4s}
+@keyframes arc{0%{transform:translateY(0);animation-timing-function:cubic-bezier(.2,.7,.4,1)}45%{transform:translateY(-64px);animation-timing-function:cubic-bezier(.6,0,.8,.4)}100%{transform:translateY(0)}}
+.coin{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 1.4s cubic-bezier(.22,.65,.3,1)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face svg{width:100%;height:100%;display:block}
+.face.rev{transform:rotateX(180deg)}
+.shadow{width:58%;height:12px;border-radius:50%;background:var(--fg);opacity:.12;filter:blur(4px);margin-top:-6px}
+.toss-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;text-align:center}
+.btn{font-family:var(--f-label);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--fg);background:transparent;color:var(--fg);padding:10px 18px;border-radius:2px;cursor:pointer}
+.btn:hover{background:var(--fg);color:var(--bg)}
+.caption{font-style:italic;color:var(--muted);font-size:15px;min-height:1.6em;text-align:center}
+
+.contents{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-bottom:1px solid var(--rule-strong)}
+.contents a{display:flex;gap:10px;align-items:baseline;padding:14px 12px 14px 0;text-decoration:none;border-bottom:1px solid var(--rule)}
+.contents a:hover .t{text-decoration:underline}
+.contents .b{font-family:var(--f-label);font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--accent-text);min-width:58px}
+.contents .t{font-size:15px}
+
+/* ---------- Sections ---------- */
+section.entry{padding-block:72px 24px}
+.sec-head{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:20px;align-items:baseline;border-top:1px solid var(--rule-strong);padding-top:14px;margin-bottom:40px}
+.sec-head .b{font-family:var(--f-label);font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--accent-text)}
+.sec-head h2{font-size:clamp(30px,4vw,46px)}
+.sec-head .n{font-family:var(--f-label);font-size:11px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.sub{font-family:var(--f-display);font-size:26px;margin:52px 0 18px}
+.lede{font-size:20px;line-height:1.55;max-width:60ch}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+.tag{display:inline-block;font-family:var(--f-label);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:3px 7px;border:1px solid currentColor;border-radius:2px;line-height:1.3}
+.tag.canon{color:var(--muted)}
+.tag.new{color:var(--accent-text)}
+.tag.opt{color:var(--muted);border-style:dashed}
+
+/* concept */
+.faces-def{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:36px}
+.meaning-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:34px}
+.meaning-grid article{border-top:1px solid var(--rule-strong);padding-top:13px}
+.meaning-grid h3{font-size:23px;margin:10px 0 7px}
+.meaning-grid p{font-size:15px;color:var(--muted);line-height:1.55}
+.source-note{border-left:2px solid var(--brass);padding:10px 0 10px 14px;margin-top:22px;max-width:92ch;font-size:13.5px;line-height:1.55;color:var(--muted)}
+.source-note a{color:var(--fg);text-underline-offset:3px}
+.facecard{display:grid;grid-template-columns:88px minmax(0,1fr);gap:18px;align-items:start;padding:20px 0;border-top:1px solid var(--rule)}
+.facecard svg{width:88px;height:88px;color:var(--mark)}
+.facecard h3{font-size:24px;margin-bottom:6px}
+.facecard p{font-size:15.5px;color:var(--muted)}
+
+.family{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--rule-strong);margin-top:8px}
+.fam{padding:20px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:10px;min-width:0}
+.fam:last-child{border-right:0;background:var(--surface)}
+.fam svg{width:72px;height:72px;color:var(--brass-deep)}
+:root[data-theme="dark"] .fam svg{color:var(--brass)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .fam svg{color:var(--brass)}}
+.fam:last-child svg{color:var(--mark)}
+.fam h4{font-size:20px}
+.fam p{font-size:14px;color:var(--muted);line-height:1.5}
+.fam .assoc{font-family:var(--f-label);font-size:11px;letter-spacing:.08em;color:var(--fg)}
+.note{font-size:14px;color:var(--muted);font-style:italic;margin-top:12px}
+.optional{margin-top:28px;border:1px dashed var(--rule-strong);padding:22px 24px;display:grid;grid-template-columns:96px minmax(0,1fr);gap:22px;align-items:start}
+.optional svg{width:96px;height:96px;color:var(--mark)}
+.optional h4{font-size:22px;margin:8px 0 8px}
+.optional p{font-size:15.5px}
+.optional dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:12px 0 0;font-size:15px}
+.optional dt{font-family:var(--f-label);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:4px}
+.optional dd{margin:0}
+
+/* plates */
+.plate{background:var(--plate);border:1px solid var(--rule);padding:36px 28px 22px;position:relative}
+.plate .corner{position:absolute;font-family:var(--f-label);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.plate .tl{top:10px;left:12px}.plate .tr{top:10px;right:12px}
+.catalog{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);gap:28px;align-items:center;max-width:760px;margin:0 auto}
+.catalog figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px}
+.catalog svg{width:100%;max-width:280px;height:auto;color:var(--fg)}
+.catalog .edge svg{width:30px;height:auto}
+.catalog figcaption{font-family:var(--f-label);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center}
+.anatomy{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:28px}
+.anatomy div{border-top:1px solid var(--rule);padding-top:12px;font-size:15px}
+.anatomy b{display:block;font-family:var(--f-label);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:4px;color:var(--fg)}
+.struck-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:28px}
+.struck-row figure{margin:0;padding:22px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.struck-row svg{width:120px;height:120px}
+.struck-row figcaption{font-family:var(--f-label);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+
+/* small mark */
+.sizes{display:flex;flex-wrap:wrap;align-items:flex-end;gap:28px;padding:28px;}
+.sizes figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:8px}
+.sizes figcaption{font-family:var(--f-label);font-size:10px;letter-spacing:.1em}
+.on-cream{background:var(--cream);color:var(--teal)}
+.on-cream figcaption{color:#4E5E5C}
+.on-ink{background:var(--ink);color:var(--brass)}
+.on-ink figcaption{color:#A7B1AA}
+.on-teal{background:var(--teal);color:var(--cream)}
+.on-brass{background:var(--brass);color:var(--ink)}
+.construct{display:grid;grid-template-columns:260px minmax(0,1fr);gap:36px;align-items:center;margin-top:28px}
+.construct svg{width:100%;max-width:260px;height:auto;color:var(--fg)}
+.construct ol{margin:0;padding-left:1.2em;font-size:16px}
+.construct li+li{margin-top:8px}
+
+/* system */
+.swatches{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border:1px solid var(--rule-strong)}
+.sw{min-width:0}
+.sw .chip{height:120px;display:flex;align-items:flex-end;padding:10px 12px;font-family:var(--f-label);font-size:11px;letter-spacing:.08em}
+.sw .meta{padding:14px 12px 16px;border-top:1px solid var(--rule)}
+.sw h4{font-size:19px;margin-bottom:2px}
+.sw .hex{font-family:var(--f-label);font-size:12px;letter-spacing:.06em;color:var(--muted)}
+.sw p{font-size:14px;line-height:1.45;margin-top:8px}
+.sw .ratio{font-family:var(--f-label);font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
+.sw+.sw .meta,.sw+.sw .chip{border-left:1px solid var(--rule)}
+.prop{margin-top:22px;display:grid;gap:10px}
+.prop .row{display:grid;grid-template-columns:140px minmax(0,1fr);gap:16px;align-items:center}
+.prop .bar{display:flex;height:18px;border:1px solid var(--rule)}
+.prop .bar span{display:block;height:100%}
+
+.typespec{display:grid;gap:0;border-top:1px solid var(--rule-strong)}
+.ts{display:grid;grid-template-columns:180px minmax(0,1fr);gap:24px;padding:22px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.ts .spec{font-family:var(--f-label);font-size:11px;letter-spacing:.06em;color:var(--muted);line-height:1.6}
+.ts .spec b{display:block;color:var(--fg);letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.ts-display{font-family:var(--f-display);font-size:clamp(36px,5.4vw,64px);line-height:1.04}
+.ts-h2{font-family:var(--f-display);font-size:34px;line-height:1.12}
+.ts-h3{font-family:var(--f-body);font-size:22px;font-weight:700;line-height:1.25}
+.ts-body{font-size:18px;line-height:1.62;max-width:62ch}
+.ts-label{font-family:var(--f-label);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.ts-nav{font-family:var(--f-label);font-size:14px;font-weight:500;display:flex;gap:22px;flex-wrap:wrap}
+.ts-nav span:first-child{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.cell{border-top:1px solid var(--rule-strong);padding-top:14px;min-width:0}
+.cell h4{font-size:20px;margin:12px 0 6px}
+.cell p{font-size:15px;color:var(--muted);line-height:1.5}
+.cell .demo{height:120px;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.cell .demo svg{max-width:100%}
+.tex-grain{background-color:var(--cream);background-image:var(--grain)}
+.tex-graticule{background-color:var(--teal);background-image:linear-gradient(rgba(192,161,106,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(192,161,106,.22) 1px,transparent 1px);background-size:24px 24px}
+.tex-milled{background-color:var(--cream);background-image:repeating-linear-gradient(90deg,var(--brass-deep) 0 1px,transparent 1px 5px);background-size:100% 10px;background-repeat:no-repeat;background-position:0 50%}
+.register{border:1px solid var(--ink);color:var(--ink);background:var(--cream);padding:24px 16px 14px;position:relative;width:86%;font-size:13px}
+.register .rt{position:absolute;top:-8px;left:10px;background:var(--cream);padding:0 6px;font-family:var(--f-label);font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+.register .rb{position:absolute;bottom:-8px;right:10px;background:var(--cream);padding:0 6px;font-family:var(--f-label);font-size:9px;letter-spacing:.1em}
+.dodont{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:8px}
+.dodont ul{margin:8px 0 0;padding-left:1.1em;font-size:15.5px}
+.dodont li+li{margin-top:6px}
+
+/* ---------- Mocks ---------- */
+.browser{border:1px solid var(--rule-strong);overflow:hidden;background:var(--cream);color:var(--ink)}
+.browser .chrome{display:flex;align-items:center;gap:10px;padding:9px 12px;background:#E3D9C4;border-bottom:1px solid rgba(26,40,39,.18);font-family:var(--f-label);font-size:12px;color:#4E5E5C}
+.browser .chrome .tab{display:flex;align-items:center;gap:8px;background:var(--cream);padding:5px 12px;border-radius:5px 5px 0 0;color:var(--ink)}
+.browser .chrome svg{width:16px;height:16px;color:var(--teal)}
+.browser.dark{background:var(--teal);color:var(--cream)}
+.browser.dark .chrome{background:var(--ink);color:#A7B1AA;border-bottom-color:rgba(242,235,221,.12)}
+.browser.dark .chrome .tab{background:var(--teal);color:var(--cream)}
+.browser.dark .chrome svg{color:var(--brass)}
+.site{padding:28px clamp(18px,4vw,48px) 36px}
+.site-nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid rgba(26,40,39,.2)}
+.wordmark{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-size:24px;text-decoration:none}
+.wordmark svg{width:28px;height:28px;color:var(--teal)}
+.site-nav nav{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--f-label);font-size:14px;font-weight:500}
+.site-nav nav span.on{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.site-hero{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:36px;padding:44px 0 36px;align-items:end}
+.site-hero h3{font-family:var(--f-display);font-size:clamp(30px,4vw,48px);line-height:1.08;text-wrap:balance}
+.site-hero p{font-size:16.5px;color:#3B4A48}
+.site-hero .lbl{font-family:var(--f-label);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin-bottom:14px}
+.worklist{border-top:1px solid var(--ink)}
+.worklist .w{display:grid;grid-template-columns:64px minmax(0,1fr) 180px 110px;gap:16px;padding:14px 0;border-bottom:1px solid rgba(26,40,39,.18);align-items:baseline}
+.worklist .y{font-family:var(--f-label);font-size:13px;font-variant-numeric:tabular-nums;color:#4E5E5C}
+.worklist .ti{font-size:18px}
+.worklist .ro{font-family:var(--f-label);font-size:12.5px;color:#4E5E5C}
+.worklist .ev{font-family:var(--f-label);font-size:12.5px;font-weight:600;text-align:right;color:var(--teal)}
+.routes{display:grid;grid-template-columns:1.25fr 1fr;gap:1px;background:rgba(26,40,39,.2);border:1px solid rgba(26,40,39,.2);margin-top:26px}
+.route{padding:18px 20px;background:var(--cream)}
+.route.primary{background:var(--teal);color:var(--cream)}
+.route .rk{font-family:var(--f-label);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust)}
+.route.primary .rk{color:var(--brass)}
+.route h4{font-size:23px;margin:8px 0 6px}
+.route p{font-size:14px;line-height:1.45;max-width:45ch;color:#4E5E5C}
+.route.primary p{color:#D9D2C2}
+.route .action{display:inline-block;margin-top:10px;font-family:var(--f-label);font-size:12px;font-weight:700;text-underline-offset:3px}
+.bridge{margin-top:30px;display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:18px;align-items:center;background:var(--teal);color:var(--cream);padding:18px 20px}
+.bridge svg{width:72px;height:72px;color:var(--brass)}
+.bridge .k{font-family:var(--f-label);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.bridge .h{font-family:var(--f-display);font-size:22px;line-height:1.2;margin-top:4px}
+.bridge .go{font-family:var(--f-label);font-size:12.5px;font-weight:600;letter-spacing:.06em}
+.site-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:28px;font-family:var(--f-label);font-size:12px;color:#4E5E5C}
+.samplenote{font-family:var(--f-label);font-size:11px;letter-spacing:.06em;color:var(--muted);margin-top:10px}
+
+/* DICE */
+.dice{background:var(--teal) var(--grain);color:var(--cream)}
+.dice .site-nav{border-bottom-color:rgba(242,235,221,.18)}
+.dice .wordmark{letter-spacing:.24em;font-size:22px}
+.dice .wordmark svg{color:var(--brass);width:30px;height:30px}
+.dice nav span{color:#D9D2C2}
+.dice nav span.on{color:var(--cream)}
+.dice-hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:36px;padding:44px 0 30px;align-items:center}
+.dice-hero h3{font-family:var(--f-display);font-size:clamp(34px,4.6vw,56px);line-height:1.04}
+.dice-hero h3 em{color:var(--brass);font-style:italic;font-family:var(--f-body);font-weight:400}
+.dice-hero p{color:#D9D2C2;margin-top:14px;max-width:46ch;font-size:16.5px}
+.dice-hero svg.big{width:100%;max-width:260px;height:auto;color:var(--brass);justify-self:center}
+.seedcard{border:1px solid rgba(192,161,106,.6);position:relative;padding:28px 22px 20px;margin-top:8px}
+.seedcard .rt{position:absolute;top:-9px;left:14px;background:var(--teal);padding:0 8px;font-family:var(--f-label);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.seedcard .rb{position:absolute;bottom:-9px;right:14px;background:var(--teal);padding:0 8px;font-family:var(--f-label);font-size:10.5px;letter-spacing:.1em;color:#D9D2C2;font-variant-numeric:tabular-nums}
+.srr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.srr .k{font-family:var(--f-label);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.srr .k i{font-style:normal;color:#D9D2C2;font-weight:500}
+.srr dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;font-size:15.5px}
+.srr dt{font-family:var(--f-label);font-size:11.5px;color:#BFC4B9;padding-top:3px}
+.srr dd{margin:0}
+.srr .reading{font-style:italic;font-size:16px;line-height:1.5}
+.srr .reading.empty{color:#BFC4B9}
+.srr .result h5{font-family:var(--f-display);font-size:22px;font-weight:400;margin:0 0 4px;line-height:1.15}
+.srr .result p{font-size:14px;color:#D9D2C2}
+.dice-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.btn-brass{font-family:var(--f-label);font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:var(--brass);color:var(--ink);border:0;padding:11px 18px;border-radius:2px;cursor:pointer}
+.btn-brass:hover{background:#D1B582}
+.dice-actions .hint{font-style:italic;font-size:14.5px;color:#D9D2C2}
+.seed-repeat{font-size:13.5px;color:#D9D2C2;margin-top:12px;max-width:78ch}
+.seed-repeat code{font-family:inherit;border-bottom:1px solid rgba(192,161,106,.7)}
+.logbook{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:34px}
+.lb{border-top:1px solid rgba(242,235,221,.25);padding-top:12px}
+.lb .art{height:110px;margin-bottom:12px;background:var(--ink);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.lb .art svg{width:100%;height:100%}
+.lb .no{font-family:var(--f-label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass)}
+.lb h5{font-family:var(--f-display);font-weight:400;font-size:20px;margin:4px 0 2px}
+.lb p{font-size:13.5px;color:#BFC4B9}
+
+/* narrative */
+.headline-main{font-family:var(--f-display);font-size:clamp(38px,6vw,72px);line-height:1.03;margin-bottom:16px}
+.alts{display:flex;flex-direction:column;gap:6px;margin-top:22px}
+.alts div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;font-size:19px;font-family:var(--f-display)}
+.alts span.label{padding-top:7px}
+.labels{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.labels span{font-family:var(--f-label);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;border:1px solid var(--rule-strong)}
+.labels span small{font-weight:400;letter-spacing:.04em;text-transform:none;color:var(--muted);margin-left:6px;font-size:12px}
+.micro{width:100%;border-collapse:collapse;font-size:16px}
+.micro th{font-family:var(--f-label);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 16px 10px 0;border-bottom:1px solid var(--rule-strong)}
+.micro td{padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.micro td:first-child{font-family:var(--f-label);font-size:13px;color:var(--muted);width:200px}
+.tablewrap{overflow-x:auto}
+
+/* usage */
+.contexts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--rule-strong)}
+.contexts figure{margin:0;padding:26px 18px 16px;display:flex;flex-direction:column;align-items:center;gap:16px;min-width:0}
+.contexts .pair{display:flex;align-items:center;gap:18px}
+.contexts .pair svg.full{width:92px;height:92px}
+.contexts .pair svg.sm{width:40px;height:40px}
+.contexts figcaption{font-family:var(--f-label);font-size:11px;letter-spacing:.06em;text-align:center;line-height:1.5}
+.rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:8px}
+.clear{display:flex;align-items:center;justify-content:center;height:180px;border:1px solid var(--rule)}
+.clear .box{border:1px dashed var(--accent-text);padding:22px;position:relative}
+.clear .box svg{width:88px;height:88px;display:block;color:var(--mark)}
+.clear .box span{position:absolute;font-family:var(--f-label);font-size:10px;color:var(--accent-text)}
+.thresholds{width:100%;border-collapse:collapse;font-size:15px}
+.thresholds td{padding:9px 10px 9px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.thresholds td:first-child{font-family:var(--f-label);font-size:12.5px;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--accent-text);font-weight:600}
+.donts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.donts figure{margin:0}
+.donts .d{height:130px;display:flex;align-items:center;justify-content:center;position:relative;border:1px solid var(--rule)}
+.donts .d::after{content:"";position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - 1px),var(--rust) calc(50% - 1px),var(--rust) calc(50% + 1px),transparent calc(50% + 1px));opacity:.55}
+.donts svg{width:72px;height:72px}
+.donts figcaption{font-size:14px;margin-top:8px;color:var(--muted);line-height:1.45}
+.tabs-mock{display:flex;gap:2px;background:#D9CFBA;padding:8px 8px 0;overflow-x:auto}
+.tabs-mock div{display:flex;align-items:center;gap:8px;padding:8px 14px;font-family:var(--f-label);font-size:12.5px;color:#4E5E5C;background:#E6DDCA;border-radius:6px 6px 0 0;white-space:nowrap}
+.tabs-mock div.on{background:var(--cream);color:var(--ink)}
+.tabs-mock svg{width:16px;height:16px;color:var(--teal);flex:none}
+.tabs-mock.dk{background:#0F1918}
+.tabs-mock.dk div{background:#1A2827;color:#A7B1AA}
+.tabs-mock.dk div.on{background:#24302F;color:var(--cream)}
+.tabs-mock.dk svg{color:var(--brass)}
+.social{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card{aspect-ratio:1200/630;max-width:100%;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:6% 6.5%}
+.card .top{display:flex;justify-content:space-between;align-items:center;font-family:var(--f-label);font-size:clamp(9px,1.1vw,12px);font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.card .top svg{width:clamp(22px,3vw,34px);height:clamp(22px,3vw,34px)}
+.card h4{font-family:var(--f-display);font-size:clamp(20px,3vw,34px);line-height:1.08;max-width:15ch}
+.card .bot{font-family:var(--f-label);font-size:clamp(9px,1vw,11.5px);letter-spacing:.08em}
+.card .ghost{position:absolute;right:-12%;bottom:-38%;width:62%;height:auto;opacity:.16}
+.card.c1{background:var(--cream) var(--grain);color:var(--ink)}
+.card.c1 .top{color:var(--teal)}
+.card.c1 .ghost{color:var(--teal)}
+.card.c2{background:var(--teal);color:var(--cream)}
+.card.c2 .top{color:var(--brass)}
+.card.c2 .ghost{color:var(--brass);opacity:.28}
+.card.c2 .bot{color:#D9D2C2}
+.card.c1 .bot{color:#4E5E5C}
+
+footer.end{border-top:1px solid var(--rule-strong);margin-top:72px;padding-block:22px 48px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--f-label);font-size:12px;color:var(--muted)}
+footer.end svg{width:22px;height:22px;color:var(--mark);vertical-align:middle;margin-right:8px}
+
+@media (max-width:900px){
+  .hero,.two,.site-hero,.dice-hero,.construct{grid-template-columns:minmax(0,1fr)}
+  .routes{grid-template-columns:minmax(0,1fr)}
+  .contents{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .family,.contexts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fam:nth-child(2){border-right:0}
+  .fam:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .swatches{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sw+.sw .meta,.sw+.sw .chip{border-left:0}
+  .struck-row,.donts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid3,.rules,.anatomy,.logbook,.srr{grid-template-columns:minmax(0,1fr)}
+  .worklist .w{grid-template-columns:52px minmax(0,1fr)}
+  .worklist .ro,.worklist .ev{grid-column:2;text-align:left}
+  .social{grid-template-columns:minmax(0,1fr)}
+  .faces-def,.dodont,.meaning-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  body{padding-inline:16px;font-size:16.5px}
+  .sec-head{grid-template-columns:minmax(0,1fr);gap:4px}
+  .sec-head .n{display:none}
+  .ts{grid-template-columns:minmax(0,1fr);gap:8px}
+  .catalog{grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:10px}
+  .optional{grid-template-columns:minmax(0,1fr)}
+  .family,.contexts,.swatches{grid-template-columns:minmax(0,1fr)}
+  .fam{border-right:0;border-bottom:1px solid var(--rule)}
+  .bridge{grid-template-columns:56px minmax(0,1fr)}
+  .bridge svg{width:56px;height:56px}
+  .bridge .go{grid-column:2}
+  .alts div{grid-template-columns:minmax(0,1fr);gap:0}
+  .facecard{grid-template-columns:64px minmax(0,1fr)}
+  .facecard svg{width:64px;height:64px}
+}
+@media (prefers-reduced-motion:reduce){
+  .coin{transition:none}
+  .arc.up{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ Mark sprite ============ -->
+<svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <g id="g-rim">
+      <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="3"/>
+      <circle cx="100" cy="100" r="86.5" fill="none" stroke="currentColor" stroke-width="1"/>
+      <circle cx="100" cy="100" r="82" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="0.9 6.256" stroke-dashoffset="0.45" transform="rotate(-90 100 100)"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" stroke-width="9" stroke-dasharray="1.4 62.999" stroke-dashoffset="0.7" transform="rotate(-90 100 100)"/>
+      <circle cx="100" cy="100" r="74" fill="none" stroke="currentColor" stroke-width=".6"/>
+    </g>
+  </defs>
+
+  <!-- Obverse: Bearing -->
+  <symbol id="m-obv" viewBox="0 0 200 200">
+    <use href="#g-rim"/>
+    <g stroke="currentColor" stroke-width=".8" fill="none">
+      <line x1="100" y1="100" x2="128.3" y2="71.7"/><line x1="100" y1="100" x2="128.3" y2="128.3"/>
+      <line x1="100" y1="100" x2="71.7" y2="128.3"/><line x1="100" y1="100" x2="71.7" y2="71.7"/>
+    </g>
+    <g stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" fill="none">
+      <path d="M100 30 L107 93 L100 100 L93 93 Z"/>
+      <path d="M152 100 L107 107 L100 100 L107 93 Z"/>
+      <path d="M100 152 L93 107 L100 100 L107 107 Z"/>
+      <path d="M48 100 L93 93 L100 100 L93 107 Z"/>
+    </g>
+    <g fill="currentColor">
+      <path d="M100 30 L93 93 L100 100 Z"/>
+      <path d="M152 100 L107 93 L100 100 Z"/>
+      <path d="M100 152 L107 107 L100 100 Z"/>
+      <path d="M48 100 L93 107 L100 100 Z"/>
+    </g>
+    <line x1="104.6" y1="88.9" x2="124.1" y2="41.8" stroke="currentColor" stroke-width="1.1" stroke-dasharray="3 3"/>
+    <circle cx="126.8" cy="35.3" r="5" style="fill:var(--star,currentColor)"/>
+    <circle cx="100" cy="100" r="2.6" fill="currentColor"/>
+  </symbol>
+
+  <!-- Reverse: Seed — Cassiopeia, gnomonic projection of J2000 positions, north up, east left; dot radius by magnitude -->
+  <symbol id="m-rev" viewBox="0 0 200 200">
+    <use href="#g-rim"/>
+    <line x1="101.4" y1="90" x2="101.4" y2="31" stroke="currentColor" stroke-width=".8" stroke-dasharray="1.5 4"/>
+    <circle cx="101.4" cy="29" r="2.2" fill="none" stroke="currentColor" stroke-width=".8"/>
+    <path d="M46.6 67.6 L70.8 100.8 L101.4 97.7 L121.2 132.4 L153.4 105.4" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+    <g fill="currentColor">
+      <circle cx="46.6" cy="67.6" r="3.4"/>
+      <circle cx="70.8" cy="100.8" r="5.4"/>
+      <circle cx="101.4" cy="97.7" r="7" style="fill:var(--star,currentColor)"/>
+      <circle cx="121.2" cy="132.4" r="6.7"/>
+      <circle cx="153.4" cy="105.4" r="6.6"/>
+    </g>
+  </symbol>
+
+  <!-- Small mark: Needle & Star -->
+  <symbol id="m-small" viewBox="0 0 32 32">
+    <circle cx="16" cy="16" r="14.4" fill="none" stroke="currentColor" stroke-width="2.1"/>
+    <g transform="rotate(22.5 16 16)">
+      <path d="M16 10.4 L18.3 16 L16 24.2 L13.7 16 Z" fill="currentColor"/>
+      <circle cx="16" cy="6.8" r="2.25" style="fill:var(--star,currentColor)"/>
+    </g>
+  </symbol>
+
+  <!-- Small mark: DICE seed face -->
+  <symbol id="m-small-seed" viewBox="0 0 32 32">
+    <circle cx="16" cy="16" r="14.4" fill="none" stroke="currentColor" stroke-width="2.1"/>
+    <g fill="currentColor">
+      <circle cx="6.8" cy="10.4" r="1.45"/>
+      <circle cx="10.9" cy="16.2" r="1.9"/>
+      <circle cx="16.2" cy="15.6" r="2.4" style="fill:var(--star,currentColor)"/>
+      <circle cx="19.7" cy="21.7" r="2.2"/>
+      <circle cx="25.2" cy="17" r="2.2"/>
+    </g>
+  </symbol>
+
+  <!-- Edge -->
+  <symbol id="m-edge" viewBox="0 0 30 200">
+    <rect x="6" y="5" width="18" height="190" rx="9" fill="none" stroke="currentColor" stroke-width="2"/>
+    <line x1="15" y1="12" x2="15" y2="188" stroke="currentColor" stroke-width="12" stroke-dasharray="1 3.4"/>
+  </symbol>
+
+  <!-- Canon schematics (stand-ins only) -->
+  <symbol id="c-coin" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    <circle cx="50" cy="50" r="39" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>
+    <path d="M30 60 Q38 52 50 54 L66 50 Q71 50 70 54 L58 60 L40 64 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    <circle cx="58" cy="40" r="4" fill="currentColor"/>
+  </symbol>
+  <symbol id="c-astro" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    <ellipse cx="50" cy="50" rx="34" ry="14" fill="none" stroke="currentColor" stroke-width="1" transform="rotate(-25 50 50)"/>
+    <ellipse cx="50" cy="50" rx="34" ry="14" fill="none" stroke="currentColor" stroke-width="1" transform="rotate(35 50 50)"/>
+    <path d="M50 50 L50 14" stroke="currentColor" stroke-width="1.8"/>
+    <path d="M50 8 l2.4 5 5.4.6-4 3.6 1.1 5.3-4.9-2.7-4.9 2.7 1.1-5.3-4-3.6 5.4-.6z" fill="currentColor"/>
+    <circle cx="50" cy="50" r="3" fill="currentColor"/>
+  </symbol>
+  <symbol id="c-seed" viewBox="0 0 100 100">
+    <g fill="currentColor"><circle cx="26" cy="64" r="5"/><circle cx="40" cy="34" r="6"/><circle cx="58" cy="50" r="3.6"/><circle cx="76" cy="28" r="4.6"/><circle cx="70" cy="74" r="3.2"/></g>
+  </symbol>
+</svg>
+
+<div class="wrap">
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div>
+    <div class="eyebrow">
+      <span class="label">Identity proposal</span>
+      <span class="label">Personal site &amp; DICE</span>
+      <span class="label num">11 October 2026</span>
+    </div>
+    <h1>The Reckoning Coin</h1>
+    <p class="thesis">Chance opens. The bearing is yours.</p>
+    <p class="support">A random seed can open a door. What matters is how we read it, where we choose to go, and what we make along the way.</p>
+  </div>
+  <div class="toss-col">
+    <div class="stage">
+      <div class="arc" id="arc">
+        <div class="coin" id="coin">
+          <div class="face obv"><svg viewBox="0 0 200 200" role="img" aria-label="Coin, Bearing face: compass rose with a course line set to a star"><circle cx="100" cy="100" r="97" style="fill:var(--brass)"/><use href="#m-obv" style="color:var(--ink);--star:var(--rust)"/></svg></div>
+          <div class="face rev"><svg viewBox="0 0 200 200" role="img" aria-label="Coin, Seed face: Cassiopeia"><circle cx="100" cy="100" r="97" style="fill:var(--brass)"/><use href="#m-rev" style="color:var(--ink);--star:var(--rust)"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="shadow" aria-hidden="true"></div>
+    <div class="toss-row">
+      <button class="btn" id="tossBtn" type="button">Toss the coin</button>
+    </div>
+    <p class="caption" id="tossCap" aria-live="polite">Bearing face up. Toss it; either face can land.</p>
+  </div>
+</header>
+
+<nav class="contents" aria-label="Contents">
+  <a href="#concept"><span class="b">N 000°</span><span class="t">Concept</span></a>
+  <a href="#mark"><span class="b">NE 045°</span><span class="t">Primary mark</span></a>
+  <a href="#small"><span class="b">E 090°</span><span class="t">Small mark</span></a>
+  <a href="#system"><span class="b">SE 135°</span><span class="t">Visual system</span></a>
+  <a href="#home"><span class="b">S 180°</span><span class="t">Personal site</span></a>
+  <a href="#dice"><span class="b">SW 225°</span><span class="t">DICE</span></a>
+  <a href="#narrative"><span class="b">W 270°</span><span class="t">Narrative</span></a>
+  <a href="#usage"><span class="b">NW 315°</span><span class="t">Usage</span></a>
+</nav>
+
+<!-- ============ 1 CONCEPT ============ -->
+<section class="entry" id="concept">
+  <div class="sec-head"><span class="b">N · 000°</span><h2>Concept</h2><span class="n">1 of 8</span></div>
+  <div class="prose">
+    <p class="lede">A coin carries value, has two faces, and can be tossed. Here the toss stands for chance: it offers a starting condition, never a verdict. One face holds a compass, for ambition given a direction. The other holds Cassiopeia, a real northern-sky landmark whose five-star shape can help locate Polaris. The wider universe is your poetic frame for awareness beyond the immediate. In DICE, chance supplies a seed; the maker decides what it means and what to make from it.</p>
+    <p class="muted" style="margin-top:18px;font-size:15.5px">“Reckoning” names the work after the toss: taking bearings from what is known, choosing a course, then correcting it as new information appears. “The Turning Coin” remains a possible, more literal title if you want motion rather than judgment to lead.</p>
+  </div>
+
+  <div class="meaning-grid" aria-label="What each part of the symbol means">
+    <article><span class="label">The coin</span><h3>Value · two faces · chance</h3><p>Brass carries some of gold’s associations with value and durability. The toss introduces randomness, but it does not decide what the work means.</p></article>
+    <article><span class="label">The compass</span><h3>Direction · ambition · voyage</h3><p>A bearing is a chosen direction, not a promise of arrival. It gives the personal identity a sense of intent and forward movement.</p></article>
+    <article><span class="label">Cassiopeia</span><h3>Orientation · perspective · cosmos</h3><p>Its familiar W shape helps point toward Polaris. The larger-consciousness meaning belongs to your personal symbolism, not to an astronomical claim.</p></article>
+  </div>
+  <p class="source-note">Historical grounding: the Met catalogs a Roman bronze coin dated 225–217 BCE with Janus on one face and a ship’s prow on the other. NASA’s guide describes Cassiopeia as one of the constellations used to find the Pole Star; Royal Museums Greenwich describes Polaris as a navigational reference and the mariner’s astrolabe as a way to measure celestial altitude for latitude. These are visual and navigational precedents, not evidence that this coin was historically tossed to decide outcomes. <a href="https://www.metmuseum.org/art/collection/search/254565" target="_blank" rel="noreferrer">The Met: Roman bronze coin</a> · <a href="https://pwg.gsfc.nasa.gov/stargaze/Lpolaris.htm" target="_blank" rel="noreferrer">NASA: finding the Pole Star</a> · <a href="https://www.rmg.co.uk/stories/space-astronomy/ursa-minor-little-bear-polaris" target="_blank" rel="noreferrer">Royal Museums Greenwich: Polaris</a> · <a href="https://www.rmg.co.uk/stories/space-astronomy/what-mariners-astrolabe" target="_blank" rel="noreferrer">Royal Museums Greenwich: mariner’s astrolabe</a> · <a href="https://heasarc.gsfc.nasa.gov/W3Browse/catalog/vstars.html" target="_blank" rel="noreferrer">NASA HEASARC: variable-star catalog</a></p>
+
+  <div class="faces-def">
+    <div class="facecard">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><use href="#m-obv"/></svg>
+      <div><span class="label">Obverse</span><h3>Bearing</h3><p>Compass rose, eight points. The course line runs to 022.5° (NNE), not to north. Direction, ambition, and the nerve to set out. The personal site leads with this face.</p></div>
+    </div>
+    <div class="facecard">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><use href="#m-rev"/></svg>
+      <div><span class="label">Reverse</span><h3>Seed</h3><p>Cassiopeia, drawn from real star positions, with a dashed line toward Polaris. It gives a point of orientation; the Bearing face chooses where to go. DICE leads with this face. Same coin, other side up.</p></div>
+    </div>
+  </div>
+
+  <h3 class="sub">The family</h3>
+  <div class="family">
+    <div class="fam">
+      <span class="tag canon">Canon</span>
+      <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#c-coin"/></svg>
+      <h4>Quartermaster’s Coin</h4>
+      <span class="assoc">Killick</span>
+      <p>Warm brass, giving-hand engraving. Unchanged.</p>
+    </div>
+    <div class="fam">
+      <span class="tag canon">Canon</span>
+      <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#c-astro"/></svg>
+      <h4>Navigator’s Astrolabe</h4>
+      <span class="assoc">Metis</span>
+      <p>Brass instrument, star-pointer, orbit rings. Unchanged.</p>
+    </div>
+    <div class="fam">
+      <span class="tag canon">Canon</span>
+      <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#c-seed"/></svg>
+      <h4>Captain’s Seed</h4>
+      <span class="assoc">Five irregular dots</span>
+      <p>No crown, no face. Unchanged.</p>
+    </div>
+    <div class="fam">
+      <span class="tag new">Proposed</span>
+      <svg viewBox="0 0 200 200" aria-hidden="true"><use href="#m-obv"/></svg>
+      <h4>Reckoning Coin</h4>
+      <span class="assoc">Personal site · DICE</span>
+      <p>Two faces: Bearing and Seed. Joins the family through brass, rim, and five stars (Cassiopeia).</p>
+    </div>
+  </div>
+  <p class="note">The three canon drawings above are schematic stand-ins to show position in the family. Use the supplied artwork in production. The Quartermaster’s Coin remains Killick’s mark; this proposed coin represents the personal-site/DICE method. Keep their names and use distinct. The Captain’s Seed also remains its own canonical mark; Cassiopeia is the new proposed DICE constellation.</p>
+
+  <div class="optional">
+    <svg viewBox="0 0 200 200" aria-hidden="true"><use href="#m-rev"/></svg>
+    <div>
+      <span class="tag opt">Optional direction · not recommended yet</span>
+      <h4>Align the Captain’s Seed with Cassiopeia</h4>
+      <p>Only consider this if you deliberately want the canonical five-dot sign to become Cassiopeia. Keep the two marks distinct for now: Captain’s Seed remains the existing symbolic mark; Cassiopeia is the navigational figure on the proposed coin and DICE identity.</p>
+      <dl>
+        <dt>Gains</dt><dd>One celestial figure connects both marks.</dd>
+        <dt>Costs</dt><dd>It changes the Captain’s established symbol and blurs the difference between a personal creative seed and a navigational constellation.</dd>
+        <dt>Test</dt><dd>Compare it as a separate option; adopting it would be an explicit canon revision.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 PRIMARY MARK ============ -->
+<section class="entry" id="mark">
+  <div class="sec-head"><span class="b">NE · 045°</span><h2>Primary mark</h2><span class="n">2 of 8</span></div>
+  <p class="prose" style="margin-bottom:28px">Shown as a coin catalogue shows a coin: obverse, edge, reverse. The rim and the 72-tick degree ring are identical on both faces, so the two drawings read as one struck object, not two logos.</p>
+  <div class="plate">
+    <span class="corner tl">Plate I · Reckoning Coin</span><span class="corner tr num">Ø 1 : 1 · 200 u</span>
+    <div class="catalog">
+      <figure><svg viewBox="0 0 200 200" role="img" aria-label="Obverse, Bearing face"><use href="#m-obv"/></svg><figcaption>Obv. · Bearing</figcaption></figure>
+      <figure class="edge"><svg viewBox="0 0 30 200" aria-hidden="true" style="color:var(--fg)"><use href="#m-edge"/></svg><figcaption>Edge</figcaption></figure>
+      <figure><svg viewBox="0 0 200 200" role="img" aria-label="Reverse, Seed face"><use href="#m-rev"/></svg><figcaption>Rev. · Seed</figcaption></figure>
+    </div>
+  </div>
+  <div class="anatomy">
+    <div><b>Shared rim</b>Heavy outer rim, hairline inner rim, 72 ticks at 5° with the eight principal points lengthened. The one element both faces always keep.</div>
+    <div><b>Course line</b>Dashed, from the pivot to a single star at 022.5°. North is given by the world; the course is chosen. The star is the only element allowed to take Rust.</div>
+    <div><b>Seed</b>Cassiopeia, with dot sizes set by each star’s brightness and a dashed line toward the pole. Lines drop out below 96 px; the dots remain.</div>
+  </div>
+
+  <h3 class="sub">The Seed face, star by star</h3>
+  <div class="two">
+    <div class="plate" style="padding:36px 20px 18px">
+      <span class="corner tl">Plate II · Cassiopeia</span><span class="corner tr">N ↑ · E ←</span>
+      <svg viewBox="20 20 160 160" role="img" aria-label="Cassiopeia as drawn on the Seed face, stars labelled" style="width:100%;max-width:340px;display:block;margin:0 auto;color:var(--fg)">
+        <line x1="101.4" y1="90" x2="101.4" y2="31" stroke="currentColor" stroke-width=".7" stroke-dasharray="1.5 4"/>
+        <circle cx="101.4" cy="29" r="2.2" fill="none" stroke="currentColor" stroke-width=".7"/>
+        <path d="M46.6 67.6 L70.8 100.8 L101.4 97.7 L121.2 132.4 L153.4 105.4" fill="none" stroke="currentColor" stroke-width=".8"/>
+        <g fill="currentColor"><circle cx="46.6" cy="67.6" r="3.4"/><circle cx="70.8" cy="100.8" r="5.4"/><circle cx="121.2" cy="132.4" r="6.7"/><circle cx="153.4" cy="105.4" r="6.6"/></g>
+        <circle cx="101.4" cy="97.7" r="7" style="fill:var(--accent-text)"/>
+        <g font-family="'Libre Caslon Text', Georgia, serif" font-size="6.4" fill="currentColor" style="fill:var(--muted)" letter-spacing=".4">
+          <text x="46.6" y="58" text-anchor="middle">ε Segin</text>
+          <text x="66" y="115" text-anchor="middle">δ Ruchbah</text>
+          <text x="101.4" y="114.5" text-anchor="middle">γ Cas</text>
+          <text x="121.2" y="148.5" text-anchor="middle">α Schedar</text>
+          <text x="153.4" y="94" text-anchor="middle">β Caph</text>
+          <text x="108" y="31" >toward Polaris</text>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <div class="tablewrap">
+        <table class="thresholds">
+          <tbody>
+            <tr><td>γ Cas</td><td>Magnitude about 2.2 and classified as an irregular variable. Rust marks it as a poetic accent for chance; the astronomy is a reference, not a claim about fate.</td></tr>
+            <tr><td>α Schedar</td><td>Magnitude 2.2</td></tr>
+            <tr><td>β Caph</td><td>Magnitude 2.3</td></tr>
+            <tr><td>δ Ruchbah</td><td>Magnitude 2.7</td></tr>
+            <tr><td>ε Segin</td><td>Magnitude 3.4, the faintest, so the smallest dot.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Positions are J2000 coordinates projected flat, north up and east left, as you see the sky looking up. The figure turns around the pole through the night, so any rotation of it is still true; this one is fixed for the mark. Cassiopeia sits opposite the Big Dipper across Polaris, and either can be used to find north. The myth is left out on purpose.</p>
+    </div>
+  </div>
+  <div class="struck-row">
+    <figure class="on-brass" style="background:var(--cream)"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="97" style="fill:var(--brass)"/><use href="#m-obv" style="color:var(--ink);--star:var(--rust)"/></svg><figcaption style="color:#4E5E5C">Struck · on cream</figcaption></figure>
+    <figure class="on-ink"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="97" style="fill:var(--brass)"/><use href="#m-rev" style="color:var(--ink);--star:var(--rust)"/></svg><figcaption>Struck · on ink</figcaption></figure>
+    <figure class="on-teal"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#m-obv" style="color:var(--brass)"/></svg><figcaption>Line · brass on teal</figcaption></figure>
+    <figure class="on-cream"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#m-rev" style="color:var(--teal)"/></svg><figcaption>Line · teal on cream</figcaption></figure>
+  </div>
+</section>
+
+<!-- ============ 3 SMALL MARK ============ -->
+<section class="entry" id="small">
+  <div class="sec-head"><span class="b">E · 090°</span><h2>Small mark: Needle &amp; Star</h2><span class="n">3 of 8</span></div>
+  <p class="prose" style="margin-bottom:28px">Below 64 px the coin is reduced to three parts: the rim, the needle from the Bearing face, and one star from the Seed face. The needle is set at 022.5°, so even at favicon size it points somewhere chosen rather than due north. DICE gets a sibling that keeps the five stars.</p>
+  <div class="sizes on-cream">
+    <figure><svg width="16" height="16" aria-hidden="true"><use href="#m-small"/></svg><figcaption class="num">16</figcaption></figure>
+    <figure><svg width="20" height="20" aria-hidden="true"><use href="#m-small"/></svg><figcaption class="num">20</figcaption></figure>
+    <figure><svg width="24" height="24" aria-hidden="true"><use href="#m-small"/></svg><figcaption class="num">24</figcaption></figure>
+    <figure><svg width="32" height="32" aria-hidden="true"><use href="#m-small"/></svg><figcaption class="num">32</figcaption></figure>
+    <figure><svg width="48" height="48" aria-hidden="true"><use href="#m-small" style="--star:var(--rust)"/></svg><figcaption class="num">48 · rust star</figcaption></figure>
+    <figure><svg width="96" height="96" aria-hidden="true"><use href="#m-small" style="--star:var(--rust)"/></svg><figcaption class="num">96</figcaption></figure>
+  </div>
+  <div class="sizes on-ink">
+    <figure><svg width="16" height="16" aria-hidden="true"><use href="#m-small-seed"/></svg><figcaption class="num">16 · avoid</figcaption></figure>
+    <figure><svg width="24" height="24" aria-hidden="true"><use href="#m-small-seed"/></svg><figcaption class="num">24 · DICE min.</figcaption></figure>
+    <figure><svg width="32" height="32" aria-hidden="true"><use href="#m-small-seed"/></svg><figcaption class="num">32</figcaption></figure>
+    <figure><svg width="48" height="48" aria-hidden="true"><use href="#m-small-seed"/></svg><figcaption class="num">48</figcaption></figure>
+    <figure><svg width="96" height="96" aria-hidden="true"><use href="#m-small-seed" style="--star:var(--cream)"/></svg><figcaption class="num">96 · DICE avatar</figcaption></figure>
+    <figure><svg width="96" height="96" aria-hidden="true"><use href="#m-small"/></svg><figcaption class="num">96 · personal, brass</figcaption></figure>
+  </div>
+  <div class="construct">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <g stroke="currentColor" stroke-width=".08" opacity=".45" fill="none">
+        <path d="M0 4h32M0 8h32M0 12h32M0 16h32M0 20h32M0 24h32M0 28h32M4 0v32M8 0v32M12 0v32M16 0v32M20 0v32M24 0v32M28 0v32"/>
+        <line x1="16" y1="16" x2="16" y2="1" stroke-dasharray=".5 .5"/>
+        <line x1="16" y1="16" x2="21.7" y2="2.2" stroke-dasharray=".5 .5"/>
+      </g>
+      <use href="#m-small" style="--star:var(--rust)"/>
+    </svg>
+    <ol>
+      <li>Drawn on a 32-unit grid, so the 16 px favicon lands every edge on a half pixel at worst.</li>
+      <li>Rim stroke is 2.1 units: thick enough to survive 16 px, thin enough that the ring reads as a coin edge, not a button.</li>
+      <li>Needle and star share one axis, rotated 22.5° (one compass point) clockwise from north.</li>
+      <li>Gap between star and rim is never under 1.5 units. That gap is what keeps the star separate at small sizes.</li>
+      <li>Rust on the star only from 48 px up. Smaller, the whole mark is one colour.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 4 VISUAL SYSTEM ============ -->
+<section class="entry" id="system">
+  <div class="sec-head"><span class="b">SE · 135°</span><h2>Visual system</h2><span class="n">4 of 8</span></div>
+
+  <h3 class="sub" style="margin-top:0">Palette and roles</h3>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#1A2827;color:#F2EBDD">Aa</div><div class="meta"><h4>Night ink</h4><div class="hex">#1A2827</div><p>Text on light. Ground for dark pages and the DICE night side.</p><div class="ratio num">12.8 : 1 on Sail cream</div></div></div>
+    <div class="sw"><div class="chip" style="background:#1F3A3D;color:#C0A16A">Aa</div><div class="meta"><h4>Deep teal</h4><div class="hex">#1F3A3D</div><p>The personal mark’s colour. Ground for DICE. Headers, bands.</p><div class="ratio num">10.2 : 1 with Sail cream</div></div></div>
+    <div class="sw"><div class="chip" style="background:#F2EBDD;color:#1A2827;border-bottom:1px solid rgba(26,40,39,.15)">Aa</div><div class="meta"><h4>Sail cream</h4><div class="hex">#F2EBDD</div><p>Paper. The personal site’s ground, and text on dark.</p><div class="ratio num">Base for all light pairings</div></div></div>
+    <div class="sw"><div class="chip" style="background:#C0A16A;color:#1A2827">Aa</div><div class="meta"><h4>Brass</h4><div class="hex">#C0A16A</div><p>The coin itself. Marks and rules on teal or ink. Never text or small marks on cream.</p><div class="ratio num">4.9 : 1 on teal · 6.2 : 1 on ink · 2.1 : 1 on cream</div></div></div>
+    <div class="sw"><div class="chip" style="background:#A75336;color:#F2EBDD">Aa</div><div class="meta"><h4>Rust</h4><div class="hex">#A75336</div><p>The one star. One action or highlight per view, never a ground.</p><div class="ratio num">4.4 : 1 on cream, so 18 px+ or marks only</div></div></div>
+  </div>
+  <div class="prop">
+    <div class="row"><span class="label">Personal site</span><div class="bar" role="img" aria-label="Proportions: cream 56, ink 20, teal 14, brass 7, rust 3 percent"><span style="width:56%;background:#F2EBDD"></span><span style="width:20%;background:#1A2827"></span><span style="width:14%;background:#1F3A3D"></span><span style="width:7%;background:#C0A16A"></span><span style="width:3%;background:#A75336"></span></div></div>
+    <div class="row"><span class="label">DICE</span><div class="bar" role="img" aria-label="Proportions: teal 50, ink 24, brass 12, cream 11, rust 3 percent"><span style="width:50%;background:#1F3A3D"></span><span style="width:24%;background:#1A2827"></span><span style="width:12%;background:#C0A16A"></span><span style="width:11%;background:#F2EBDD"></span><span style="width:3%;background:#A75336"></span></div></div>
+  </div>
+  <p class="note">Same five colours, inverted weight. The personal site is paper with ink; DICE is the sea at night with brass. One derived tone, Brass deep (#7E6535), is allowed for hairlines on cream where Brass would vanish.</p>
+
+  <h3 class="sub">Typography</h3>
+  <p class="prose" style="margin-bottom:22px">Serif throughout: Libre Caslon Display for headings and Libre Caslon Text for body, labels, and navigation. Small labels use weight, spacing, and case for hierarchy instead of switching to a generic software-style sans. Local serif fallbacks keep the page readable if Google Fonts do not load.</p>
+  <div class="typespec">
+    <div class="ts"><div class="spec"><b>Display</b>Libre Caslon Display<br>64 / 1.04 · −0.01em</div><div class="ts-display">Chance opens. The bearing is yours.</div></div>
+    <div class="ts"><div class="spec"><b>Heading 2</b>Libre Caslon Display<br>34 / 1.12</div><div class="ts-h2">Notes from the logbook, autumn 2026</div></div>
+    <div class="ts"><div class="spec"><b>Heading 3</b>Libre Caslon Text Bold<br>22 / 1.25</div><div class="ts-h3">What the seed asked for, and what I made instead</div></div>
+    <div class="ts"><div class="spec"><b>Body</b>Libre Caslon Text<br>18 / 1.62 · max 64ch</div><p class="ts-body">The seed was a borrowed key, first frost, and a limit of three hundred words. I read the key as a permission that has to be returned, which turned a story about a door into a story about a deadline. <em>Return by Sunday</em> is the result.</p></div>
+    <div class="ts"><div class="spec"><b>Label</b>Libre Caslon Text Bold<br>11 · +0.14em · caps</div><div class="ts-label">Logbook · Seed No. 0417 · Tossed 11.10.2026</div></div>
+    <div class="ts"><div class="spec"><b>Navigation</b>Libre Caslon Text<br>14 · sentence case</div><div class="ts-nav"><span>Work</span><span>Notes</span><span>DICE</span><span>About</span><span>Contact</span></div></div>
+  </div>
+
+  <h3 class="sub">Linework, texture, framing</h3>
+  <div class="grid3">
+    <div class="cell">
+      <div class="demo on-cream"><svg viewBox="0 0 220 100" width="220" height="100" aria-hidden="true">
+        <circle cx="50" cy="50" r="38" fill="none" stroke="#1F3A3D" stroke-width="3"/>
+        <circle cx="50" cy="50" r="32" fill="none" stroke="#1F3A3D" stroke-width="1"/>
+        <g stroke="#1F3A3D" stroke-width="1"><line x1="120" y1="20" x2="210" y2="20" stroke-width="3"/><line x1="120" y1="40" x2="210" y2="40"/><line x1="120" y1="60" x2="210" y2="60" stroke-dasharray="3 3"/><line x1="120" y1="80" x2="210" y2="80" stroke-width=".6"/></g>
+      </svg></div>
+      <h4>Linework</h4>
+      <p>Four weights only, as a share of mark diameter: rim 1.5%, rule 0.5%, course dash 0.55%, hairline 0.3%. Never under 1 px rendered. No cross-hatching below 96 px.</p>
+    </div>
+    <div class="cell">
+      <div class="demo" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:0;gap:0;align-items:stretch">
+        <div class="tex-grain"></div><div class="tex-graticule"></div><div class="tex-milled"></div>
+      </div>
+      <h4>Texture</h4>
+      <p>Three, used one at a time. Paper grain at 4% on cream grounds. A brass graticule on teal for DICE charts and maps. A milled-edge rule, taken from the coin’s edge, as a section divider.</p>
+    </div>
+    <div class="cell">
+      <div class="demo on-cream" style="background:var(--cream)">
+        <div class="register"><span class="rt">Register · No. 0417</span>Entry framed with a single rule, title set into the top edge, bearing and date into the bottom.<span class="rb num">022.5° · 11.10.26</span></div>
+      </div>
+      <h4>Framing</h4>
+      <p>The register frame. One rule, labels let into the line like a ledger. Used for seeds, quotes and evidence, not for every card.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">Image direction</h3>
+  <div class="dodont">
+    <div class="cell">
+      <span class="label">Use</span>
+      <ul>
+        <li>Real materials in side light: paper, brass, wood, the actual objects a seed named.</li>
+        <li>Single-colour line drawings at the four stroke weights, one figure per image.</li>
+        <li>Charts, maps and process diagrams drawn as instruments: ticks, scales, true units.</li>
+        <li>Work shown as evidence. Screens, drafts and before/after at true size.</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="label">Avoid</span>
+      <ul>
+        <li>Nebula photography, lens flare, glowing particles, starfields as backgrounds.</li>
+        <li>Ships, anchors, skulls, flags, crowns, rope borders.</li>
+        <li>Zodiac wheels or anything that reads as fortune telling.</li>
+        <li>Gradient meshes, glassy 3D coins, crypto-style metallic renders.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 PERSONAL SITE ============ -->
+<section class="entry" id="home">
+  <div class="sec-head"><span class="b">S · 180°</span><h2>Personal site homepage</h2><span class="n">5 of 8</span></div>
+  <p class="prose" style="margin-bottom:26px">Credibility first. The mark is small and quiet; the work list does the talking, each row ending in its evidence. The coin appears once, in teal, as the door through to DICE.</p>
+  <div class="browser">
+    <div class="chrome"><span class="tab"><svg aria-hidden="true"><use href="#m-small"/></svg>Bogdan · Work and notes</span></div>
+    <div class="site">
+      <div class="site-nav">
+        <span class="wordmark"><svg aria-hidden="true"><use href="#m-small"/></svg>Bogdan</span>
+        <nav aria-label="Mock site navigation"><span class="on">Work</span><span>Notes</span><span>DICE</span><span>About</span><span>Contact</span></nav>
+      </div>
+      <div class="site-hero">
+        <div>
+          <div class="lbl">Webflow · digital operations</div>
+          <h3>I build marketing sites and keep the systems around them working.</h3>
+        </div>
+        <p>From Webflow and CMS architecture to analytics, consent, performance, and launch QA, I work across the details that shape a site after it goes live.</p>
+      </div>
+      <div class="worklist">
+        <div class="w"><span class="y">01</span><span class="ti">Webflow builds and CMS architecture</span><span class="ro">Structure · implementation</span><span class="ev">Evidence →</span></div>
+        <div class="w"><span class="y">02</span><span class="ti">Analytics, consent, and measurement</span><span class="ro">GA4 · GTM · privacy</span><span class="ev">Evidence →</span></div>
+        <div class="w"><span class="y">03</span><span class="ti">Launch operations and ongoing QA</span><span class="ro">Performance · SEO · releases</span><span class="ev">Evidence →</span></div>
+        <div class="w"><span class="y">04</span><span class="ti">DICE: chance as a creative starting point</span><span class="ro">Seeds · readings · work</span><span class="ev">Open logbook →</span></div>
+      </div>
+      <div class="routes" aria-label="Two ways to work together">
+        <div class="route primary"><div class="rk">Long-term ownership</div><h4>Build with a team</h4><p>I’m interested in an in-house role where I can own the web operation over time and work closely with the people behind it.</p><a class="action" href="#">Talk about a role →</a></div>
+        <div class="route"><div class="rk">Focused engagement</div><h4>Solve a defined problem</h4><p>For a scoped need in Webflow, analytics, consent, migration, or launch quality.</p><a class="action" href="#">Discuss a project →</a></div>
+      </div>
+      <div class="bridge">
+        <svg viewBox="0 0 200 200" aria-hidden="true"><use href="#m-rev"/></svg>
+        <div><div class="k">From the DICE logbook</div><div class="h">Seed No. 0417: a borrowed key, first frost, under 300 words.</div></div>
+        <span class="go">Read the result →</span>
+      </div>
+      <div class="site-foot"><span>Set in Libre Caslon. Evidence links belong beside real case studies.</span><span class="num">Direction study · 11.10.2026</span></div>
+    </div>
+  </div>
+  <p class="samplenote">This is a content direction, not a claim that these four entries are finished case studies. Publish each item only when its evidence link is ready.</p>
+</section>
+
+<!-- ============ 6 DICE ============ -->
+<section class="entry" id="dice">
+  <div class="sec-head"><span class="b">SW · 225°</span><h2>DICE direction</h2><span class="n">6 of 8</span></div>
+  <p class="prose" style="margin-bottom:26px">Same coin, other side up. DICE inverts the palette to teal and brass, leads with the Seed face, and gives every entry the same three-part anatomy: <strong>Seed</strong> (what chance handed over), <strong>Reading</strong> (how the maker interpreted it), <strong>Result</strong> (what got made). Try the toss below.</p>
+  <div class="browser dark">
+    <div class="chrome"><span class="tab"><svg aria-hidden="true"><use href="#m-small-seed"/></svg>DICE · Logbook</span></div>
+    <div class="site dice">
+      <div class="site-nav">
+        <span class="wordmark"><svg aria-hidden="true"><use href="#m-small-seed"/></svg>DICE</span>
+        <nav aria-label="Mock DICE navigation"><span class="on">Logbook</span><span>Seeds</span><span>Method</span><span>Back to Bogdan</span></nav>
+      </div>
+      <div class="dice-hero">
+        <div>
+          <h3>Chance opens. <em>The bearing is yours.</em></h3>
+          <p>Every piece here starts from a random seed: an object, a condition, a limit. The seed opens the door. What the piece becomes is decided after.</p>
+        </div>
+        <svg class="big" viewBox="0 0 200 200" aria-hidden="true"><use href="#m-rev" style="--star:var(--rust)"/></svg>
+      </div>
+
+      <div class="seedcard">
+        <span class="rt" id="seedNo">Seed No. 0417</span>
+        <div class="srr">
+          <div>
+            <div class="k">Seed <i>· chance</i></div>
+            <dl>
+              <dt>Object</dt><dd id="sObj">a borrowed key</dd>
+              <dt>Light</dt><dd id="sLight">first frost, early</dd>
+              <dt>Limit</dt><dd id="sLimit">under 300 words</dd>
+              <dt>Medium</dt><dd id="sMed">writing</dd>
+            </dl>
+          </div>
+          <div>
+            <div class="k">Reading <i>· the maker</i></div>
+            <p class="reading" id="sRead">I read the key as a permission that has to be returned. The story stopped being about a door and became about a deadline.</p>
+          </div>
+          <div class="result">
+            <div class="k">Result <i>· the work</i></div>
+            <h5 id="sResT">Return by Sunday</h5>
+            <p id="sResD">Short story, 280 words. Written in one sitting, revised twice.</p>
+          </div>
+        </div>
+        <span class="rb" id="seedMeta">Landed: Seed face · 11.10.2026</span>
+      </div>
+      <div class="dice-actions">
+        <button class="btn-brass" id="seedBtn" type="button">Toss for a new seed</button>
+        <span class="hint" id="seedHint" aria-live="polite">The seed is drawn at random. The reading and result are left to you.</span>
+      </div>
+      <p class="seed-repeat">A seed ID recreates the same object, light, limit, and medium. Append <code>?seed=ID</code> to return to a specific draw; on a hosted HTTPS page, each draw updates the URL. The reading and result stay yours to make.</p>
+
+      <div class="logbook">
+        <div class="lb">
+          <div class="art"><svg viewBox="0 0 240 110" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g stroke="#C0A16A" stroke-width="1" fill="none">
+            <path d="M0 80 Q60 40 120 70 T240 50"/><path d="M0 88 Q60 48 120 78 T240 58" opacity=".7"/><path d="M0 96 Q60 56 120 86 T240 66" opacity=".45"/></g><circle cx="168" cy="34" r="5" fill="#A75336"/></svg></div>
+          <span class="no num">No. 0412 · Image</span><h5>Harbour fog, three colours</h5><p>Seed: a ferry timetable · three colours only</p>
+        </div>
+        <div class="lb">
+          <div class="art"><svg viewBox="0 0 240 110" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="#F2EBDD" opacity=".9"><rect x="40" y="30" width="8" height="50"/><rect x="62" y="44" width="8" height="36"/><rect x="84" y="22" width="8" height="58"/><rect x="106" y="52" width="8" height="28"/><rect x="128" y="38" width="8" height="42"/></g><line x1="30" y1="80" x2="210" y2="80" stroke="#C0A16A"/><g stroke="#C0A16A" stroke-width="1"><line x1="44" y1="80" x2="44" y2="85"/><line x1="66" y1="80" x2="66" y2="85"/><line x1="88" y1="80" x2="88" y2="85"/><line x1="110" y1="80" x2="110" y2="85"/><line x1="132" y1="80" x2="132" y2="85"/></g></svg></div>
+          <span class="no num">No. 0409 · Experiment</span><h5>A week of one-take mornings</h5><p>Seed: a kitchen scale · one take</p>
+        </div>
+        <div class="lb">
+          <div class="art"><svg viewBox="0 0 240 110" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g stroke="#F2EBDD" stroke-width="1" opacity=".85"><line x1="70" y1="20" x2="70" y2="90"/><line x1="70" y1="20" x2="170" y2="20"/></g><g font-family="Georgia,serif" font-size="13" fill="#F2EBDD" opacity=".85"><text x="82" y="44">the umbrella</text><text x="82" y="62">kept the shape</text><text x="82" y="80">of the wind</text></g></svg></div>
+          <span class="no num">No. 0404 · Writing</span><h5>Told backwards</h5><p>Seed: a broken umbrella · told backwards</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="samplenote">Logbook entries are illustrative. A seed ID reproduces its generated conditions; its reading and finished work remain authored.</p>
+</section>
+
+<!-- ============ 7 NARRATIVE ============ -->
+<section class="entry" id="narrative">
+  <div class="sec-head"><span class="b">W · 270°</span><h2>Narrative system</h2><span class="n">7 of 8</span></div>
+  <span class="label">Headline</span>
+  <p class="headline-main" style="margin-top:10px">Chance opens. The bearing is yours.</p>
+  <div class="alts">
+    <div><span class="label">Alternate</span><span>A seed is a starting point, not a destination.</span></div>
+    <div><span class="label">Alternate</span><span>Toss for the start. Steer the rest.</span></div>
+    <div><span class="label">Short form</span><span>Chance opens.</span></div>
+  </div>
+
+  <h3 class="sub">About the idea</h3>
+  <div class="prose">
+    <p style="font-size:19px">DICE starts with chance: an object, a condition, a limit. The seed does not say what the work means. I read it, choose a direction, and make something from it. The coin carries that method: value, two faces, and a random landing. The compass stands for ambition with a bearing. Cassiopeia connects navigation to the larger sky; the idea of wider awareness is personal symbolism. Chance starts the piece. The maker carries it forward.</p>
+  </div>
+
+  <h3 class="sub">Section labels</h3>
+  <div class="labels">
+    <span>Work <small>projects with evidence</small></span>
+    <span>Notes <small>field notes, how things were made</small></span>
+    <span>Logbook <small>DICE entries</small></span>
+    <span>Seeds <small>the conditions, unedited</small></span>
+    <span>Readings <small>how a seed was interpreted</small></span>
+    <span>Method <small>how DICE works</small></span>
+    <span>Bearings <small>principles, on About</small></span>
+  </div>
+
+  <h3 class="sub">Microcopy</h3>
+  <div class="tablewrap">
+    <table class="micro">
+      <thead><tr><th>Where</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>Toss button</td><td>Toss for a seed</td></tr>
+        <tr><td>After a toss</td><td>Seed drawn. The reading is yours.</td></tr>
+        <tr><td>Unread seed</td><td>Not read yet.</td></tr>
+        <tr><td>Empty logbook</td><td>No entries yet. The first toss starts the log.</td></tr>
+        <tr><td>Entry footer</td><td>Seed · Reading · Result. Tossed 11.10.2026.</td></tr>
+        <tr><td>Newsletter</td><td>Logbook entries by email, about once a month. Unsubscribe any time.</td></tr>
+        <tr><td>404</td><td>Off the chart. This page isn’t here any more. Back to the index.</td></tr>
+        <tr><td>Footer</td><td>Set in Libre Caslon. The coin has two faces; this site shows the Bearing.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Voice: first person, plain verbs, specific nouns. Say what was made and how. No promises about outcomes, no claims that the coin or the stars mean anything beyond the method.</p>
+</section>
+
+<!-- ============ 8 USAGE ============ -->
+<section class="entry" id="usage">
+  <div class="sec-head"><span class="b">NW · 315°</span><h2>Usage</h2><span class="n">8 of 8</span></div>
+
+  <h3 class="sub" style="margin-top:0">Light and dark contexts</h3>
+  <div class="contexts">
+    <figure class="on-cream"><div class="pair"><svg class="full" viewBox="0 0 200 200" aria-hidden="true"><use href="#m-obv"/></svg><svg class="sm" viewBox="0 0 32 32" aria-hidden="true"><use href="#m-small"/></svg></div><figcaption>Teal on Sail cream<br>Default, personal site</figcaption></figure>
+    <figure class="on-ink"><div class="pair"><svg class="full" viewBox="0 0 200 200" aria-hidden="true"><use href="#m-obv"/></svg><svg class="sm" viewBox="0 0 32 32" aria-hidden="true"><use href="#m-small"/></svg></div><figcaption>Brass on Night ink<br>Dark mode</figcaption></figure>
+    <figure class="on-teal" style="color:var(--brass)"><div class="pair"><svg class="full" viewBox="0 0 200 200" aria-hidden="true"><use href="#m-rev"/></svg><svg class="sm" viewBox="0 0 32 32" aria-hidden="true"><use href="#m-small-seed"/></svg></div><figcaption style="color:#D9D2C2">Brass on Deep teal<br>DICE</figcaption></figure>
+    <figure class="on-brass"><div class="pair"><svg class="full" viewBox="0 0 200 200" aria-hidden="true"><use href="#m-obv"/></svg><svg class="sm" viewBox="0 0 32 32" aria-hidden="true"><use href="#m-small"/></svg></div><figcaption>Ink on Brass<br>Print, foil, physical coin</figcaption></figure>
+  </div>
+
+  <h3 class="sub">Size, space, thresholds</h3>
+  <div class="rules">
+    <div>
+      <div class="clear"><div class="box"><span style="top:4px;left:6px">¼ Ø</span><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#m-obv"/></svg></div></div>
+      <p class="note">Clear space: a quarter of the coin’s diameter on every side. Nothing enters it, including the wordmark.</p>
+    </div>
+    <div class="cell" style="border-top:0;padding-top:0">
+      <table class="thresholds">
+        <tbody>
+          <tr><td>≥ 96 px</td><td>Full coin, constellation lines, all 72 ticks.</td></tr>
+          <tr><td>64–95 px</td><td>Full coin. Drop constellation lines and the pole line.</td></tr>
+          <tr><td>24–63 px</td><td>Needle &amp; Star, or the DICE seed mark.</td></tr>
+          <tr><td>16–23 px</td><td>Needle &amp; Star only, single colour. Favicon.</td></tr>
+          <tr><td>Print</td><td>Full coin from 18 mm; small mark from 5 mm.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="tabs-mock" aria-hidden="true">
+        <div class="on"><svg><use href="#m-small"/></svg>Bogdan · Work</div>
+        <div><svg><use href="#m-small-seed"/></svg>DICE · Logbook</div>
+      </div>
+      <div class="tabs-mock dk" aria-hidden="true">
+        <div class="on"><svg><use href="#m-small"/></svg>Bogdan · Work</div>
+        <div><svg><use href="#m-small-seed"/></svg>DICE · Logbook</div>
+      </div>
+      <p class="note">Favicons at true 16 px in light and dark browser chrome.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">Don’t</h3>
+  <div class="donts">
+    <figure><div class="d on-cream"><svg viewBox="0 0 32 32" aria-hidden="true" style="color:var(--teal)"><circle cx="16" cy="16" r="14.4" fill="none" stroke="currentColor" stroke-width="2.1"/><path d="M16 10.4 L18.3 16 L16 24.2 L13.7 16 Z" fill="currentColor"/><circle cx="16" cy="6.8" r="2.25" fill="currentColor"/></svg></div><figcaption>Straighten the needle to north. The offset course is the idea.</figcaption></figure>
+    <figure><div class="d on-ink"><svg viewBox="0 0 200 200" aria-hidden="true" style="color:#E6C98A;filter:drop-shadow(0 0 6px #E6C98A) drop-shadow(0 0 14px #C0A16A)"><use href="#m-rev"/></svg></div><figcaption>Add glow, sparkle or bloom to the stars.</figcaption></figure>
+    <figure><div class="d on-cream"><svg viewBox="0 0 32 32" aria-hidden="true" style="color:var(--brass)"><use href="#m-small"/></svg></div><figcaption>Use Brass on cream at small sizes. It drops to 2.1 : 1.</figcaption></figure>
+    <figure><div class="d on-cream"><svg viewBox="0 0 200 200" aria-hidden="true" style="color:var(--rust)"><use href="#m-obv"/></svg></div><figcaption>Set the whole mark in Rust. Rust is for the one star.</figcaption></figure>
+  </div>
+
+  <h3 class="sub">Social cards · 1200 × 630</h3>
+  <div class="social">
+    <div class="card c1">
+      <div class="top"><span style="display:flex;align-items:center;gap:10px"><svg aria-hidden="true"><use href="#m-small" style="--star:var(--rust)"/></svg>Bogdan · Notes</span><span class="num">11.10.2026</span></div>
+      <h4>Four hundred pages, one naming rule</h4>
+      <div class="bot">Field notes · a CMS migration, step by step</div>
+      <svg class="ghost" viewBox="0 0 200 200" aria-hidden="true"><use href="#m-obv"/></svg>
+    </div>
+    <div class="card c2">
+      <div class="top"><span style="display:flex;align-items:center;gap:10px"><svg aria-hidden="true"><use href="#m-small-seed"/></svg>DICE · Logbook</span><span class="num">No. 0417</span></div>
+      <h4>Return by Sunday</h4>
+      <div class="bot">Seed: a borrowed key · first frost · under 300 words</div>
+      <svg class="ghost" viewBox="0 0 200 200" aria-hidden="true"><use href="#m-rev"/></svg>
+    </div>
+  </div>
+</section>
+
+<footer class="end">
+  <span><svg aria-hidden="true"><use href="#m-small"/></svg>The Reckoning Coin · identity proposal, first round</span>
+  <span>Canon symbols unchanged. One optional direction marked as such.</span>
+</footer>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Coin toss
+  var coin = document.getElementById('coin'), arc = document.getElementById('arc'),
+      btn = document.getElementById('tossBtn'), cap = document.getElementById('tossCap');
+  var angle = 0, face = 'obv', busy = false;
+  btn.addEventListener('click', function(){
+    if (busy) return;
+    var land = Math.random() < .5 ? 'obv' : 'rev';
+    angle += 360 * 4 + (land !== face ? 180 : 0);
+    face = land;
+    cap.textContent = '…';
+    coin.style.transform = 'rotateX(' + angle + 'deg)';
+    if (!reduce){ arc.classList.remove('up'); void arc.offsetWidth; arc.classList.add('up'); }
+    busy = true;
+    setTimeout(function(){
+      busy = false;
+      cap.textContent = land === 'obv'
+        ? 'Bearing face up. Chance opened; now choose the heading.'
+        : 'Seed face up. Chance opened; now read the stars.';
+    }, reduce ? 0 : 1400);
+  });
+
+  // DICE seed generator
+  var objs = ['a borrowed key','a ferry timetable','an unsent letter','a kitchen scale','a broken umbrella','a hand-drawn map','a second-hand coat','a jar of buttons','a library receipt','a spare bulb'];
+  var lights = ['first frost, early','low sun after rain','a power cut','harbour fog','a long summer dusk','fluorescent, 3 a.m.','overcast noon','candle, then none'];
+  var limits = ['under 300 words','three colours only','one take','made in an hour','no people shown','told backwards','one sheet of paper','eleven frames'];
+  var meds = ['writing','image','experiment'];
+  var initialSeed = new URLSearchParams(window.location.search).get('seed');
+  var no = /^\d{1,10}$/.test(initialSeed || '') ? Number(initialSeed) : 417;
+  function pad(n){ var s=String(n); return s.length<4 ? '0000'.slice(s.length)+s : s; }
+  function rngFor(seed){
+    var state = Number(seed) >>> 0;
+    return function(){
+      state += 0x6D2B79F5;
+      var t = state;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function pickFrom(a, random){ return a[Math.floor(random()*a.length)]; }
+  function renderSeed(seed){
+    var random = rngFor(seed);
+    document.getElementById('seedNo').textContent = 'Seed No. ' + pad(seed);
+    document.getElementById('sObj').textContent = pickFrom(objs, random);
+    document.getElementById('sLight').textContent = pickFrom(lights, random);
+    document.getElementById('sLimit').textContent = pickFrom(limits, random);
+    document.getElementById('sMed').textContent = pickFrom(meds, random);
+    var r = document.getElementById('sRead');
+    r.textContent = 'Not read yet.'; r.classList.add('empty');
+    document.getElementById('sResT').textContent = 'Not made yet';
+    document.getElementById('sResD').textContent = 'The result is logged when the work exists.';
+    document.getElementById('seedMeta').textContent = 'Seed ID: ' + pad(seed) + ' · ' + today();
+    document.getElementById('seedHint').textContent = 'Seed drawn. The reading and result are yours to make.';
+    if (window.location.protocol === 'http:' || window.location.protocol === 'https:'){
+      var url = new URL(window.location.href);
+      url.searchParams.set('seed', String(seed));
+      window.history.replaceState({}, '', url);
+    }
+  }
+  function today(){ var d = new Date(); return ('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.'+d.getFullYear(); }
+  document.getElementById('seedBtn').addEventListener('click', function(){
+    var bytes = new Uint32Array(1);
+    if (window.crypto && window.crypto.getRandomValues) window.crypto.getRandomValues(bytes);
+    else bytes[0] = Math.floor(Math.random()*4294967296);
+    no = bytes[0] % 1000000000;
+    renderSeed(no);
+  });
+  renderSeed(no);
+})();
+</script>
+</body>
+</html>
