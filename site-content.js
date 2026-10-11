@@ -29,7 +29,7 @@ window.SITE = {
   hero: {
     eyebrow:    "The work behind the website",
     lead:       "A website should <em>carry</em> the work of your business.",
-    copy:       "I help B2B teams whose site has outgrown one-off fixes: I build and run the whole surface, from Webflow and CMS to analytics, conversion, consent, and launch.",
+    copy:       "I work across Webflow, CMS, tracking, consent, and launches for B2B teams whose site has outgrown one-off fixes.",
     primaryCta: { label: "See how I work", href: "#work" },
     secondaryCta:{ label: "A little about my approach", href: "#approach" },
     mapCard: {
@@ -37,7 +37,7 @@ window.SITE = {
       label: "Web system",
       stops: ["CONTENT", "PLATFORM", "MEASURE", "IMPROVE"],
       note:  "One connected system.",
-      strong:"Every part accountable.",     // proofId: proof.system-view (GPT: 'Nothing left to chance' = nedokazljiv apsolut)
+      strong:"Every part shows its owner.",     // proofId: proof.system-view (GPT: 'Nothing left to chance' = nedokazljiv apsolut)
       proofId: "proof.map-card"
     }
   },
@@ -108,12 +108,12 @@ window.SITE = {
   /* ---- 5. principi rada ----------------------------------- */
   principles: {
     kicker:  "03 / Working principles",
-    heading: "Clear thinking. Careful execution.",
+    heading: "Check first. Define the change. Verify it.",
     items: [
       { title: "Know what the site needs to do.",
         body:  "Start with the job, the audience, and the constraints. Then choose the right build." },
       { title: "Make the invisible parts dependable.",
-        body:  "Forms, data, consent, redirects, accessibility, and performance deserve the same care as the page itself." },
+        body:  "Forms, data, consent, redirects, accessibility, and performance get the same checks as the page." },
       { title: "Leave the team in a better position.",
         body:  "Build for the next edit, the next campaign, and the person who has to maintain it." }
     ]
@@ -129,7 +129,7 @@ window.SITE = {
 
   /* ---- 7. futer ------------------------------------------- */
   footer: {
-    note: "Built with intent, not noise.",
+    note: "",
     backToTop: "Back to the top"
   },
 
