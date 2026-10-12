@@ -13,14 +13,14 @@ window.SITE = {
   "hero": {
     "eyebrow": "",
     "lead": "Marketing growth.<br><em>Website systems.</em>",
-    "copy": "Commercial priorities translated into brand, website, and operating decisions. A coherent system for how the business reaches its market, earns consideration, and supports growth.",
+    "copy": "The website is a revenue surface: Webflow and CMS architecture, measurement that survives an audit, consent that behaves, pages a team can ship without breaking things. I own that surface as one system.",
     "primaryCta": {
-      "label": "Perspective",
-      "href": "#approach"
+      "label": "Selected work",
+      "href": "#work"
     },
     "secondaryCta": {
-      "label": "Experience",
-      "href": "#work"
+      "label": "How I see it",
+      "href": "#approach"
     },
     "mapCard": {
       "code": "",
@@ -43,14 +43,14 @@ window.SITE = {
     ]
   },
   "work": {
-    "kicker": "02 / Selected experience",
-    "heading": "The work, in context.",
-    "sub": "Selected responsibilities across three settings.",
+    "kicker": "02 / Selected work",
+    "heading": "Built to hold together.",
+    "sub": "Three settings. Names withheld by rule. What I owned, stated.",
     "cases": [
       {
         "industry": "Enterprise software",
         "title": "A continuing responsibility",
-        "body": "Ongoing responsibility for the website within an enterprise marketing environment, across launches, campaigns, and the systems that support them.",
+        "body": "Ongoing ownership of the website inside an enterprise marketing team: Webflow and CMS across launches and campaigns, analytics that get trusted before spend, consent that behaves, schema the engines parse.",
         "chain": "problem: no owner across seams → move: single-operator coverage → result: site holds shape between teams → limits: numbers shared on request",
         "tags": [],
         "disclosure": "anonymized",
@@ -60,7 +60,7 @@ window.SITE = {
       {
         "industry": "Contract management",
         "title": "A campaign, in context",
-        "body": "Work on the marketing website and campaign delivery for a contract-management business, including the reliability of its measurement.",
+        "body": "Campaign pages for a contract-management business where measurement kept breaking at the edges: consent discipline and embed QA so the data survives the campaign.",
         "chain": "problem: measurement broke at the edges → move: consent + embed discipline → result: clean data survives campaigns → limits: baseline pre-dates tooling",
         "tags": [],
         "disclosure": "anonymized",
@@ -70,7 +70,7 @@ window.SITE = {
       {
         "industry": "Travel operator · at scale",
         "title": "A portfolio with a common structure",
-        "body": "A shared publishing structure for a property portfolio, bringing consistency to how information is maintained and presented.",
+        "body": "A property portfolio of one-off pages rebuilt as a single publishing system: shared CMS architecture with schema and answer-shaped content that search and AI engines parse.",
         "chain": "problem: one-off pages decayed → move: CMS as system + schema @graph → result: machine-quotable structure → limits: quoted volume still accruing",
         "tags": [],
         "disclosure": "anonymized-strict",
@@ -85,22 +85,22 @@ window.SITE = {
     "items": [
       {
         "title": "Clarity of purpose.",
-        "body": "A shared understanding of the ambition, the choices it requires, and the authority to act."
+        "body": "The job, the buyer, and the constraint named before anything gets built. The site knows what it is for; the team can repeat it in one sentence."
       },
       {
         "title": "Judgement in context.",
-        "body": "Each decision considered in relation to the brand, the buyer, and the business it serves."
+        "body": "Every decision tied to the brand, the buyer, and the number it is meant to move. If nothing measurable changes, the work is not done."
       },
       {
         "title": "Room to grow.",
-        "body": "A common foundation that allows more teams and markets to build on the work."
+        "body": "Tokens, sections, and CMS structure built for the next campaign and the next market, so a new page costs an afternoon instead of a redesign."
       }
     ]
   },
   "contact": {
     "kicker": "A good place to start",
-    "heading": "What comes next?",
-    "body": "A new direction, a larger ambition, or a question worth thinking through.",
+    "heading": "Where is the site getting stuck?",
+    "body": "Tell me what is not working: the tracking nobody trusts, the consent that drifts, the CMS the team avoids. We work out what it needs next.",
     "cta": {
       "label": "Start a conversation",
       "href": "mailto:hello@example.com"
@@ -184,9 +184,10 @@ window.SITE = {
   },
   "strategy": {
     "editorialDirection": {
-      "audience": "VP Marketing, CMO, CEO",
+      "audience": "Path A primary: marketing decision-maker (CMO / VP Marketing / growth lead) at a B2B company whose website is a revenue surface. Path B served, not addressed first: agency principals white-labeling a reliable operator.",
       "position": "Business judgement translated into coordinated execution",
-      "voice": "Understated, precise, composed. Evidence and reasoning carry the offer.",
+      "voice": "Composed and precise (kept from the author revision), with site-soul.md sentence laws restored: name the object, numbers over adjectives, conclusion before mechanism, limits stated. Derivation: ICP-ANALYSIS.md 2026-10-12.",
+      "icpBasis": "Evidence-scored: direct buyers proven (paid more than once, rate accepted without pushback), agency channel proven at volume; anti-ICP: one-person design+dev expectations, one-off pages, brochure sites.",
       "quartermaster": "A researched organisational analogy, developed in an essay; no invented role or rank.",
       "removedClaim": "38 styles case withdrawn by the author on 2026-10-11; not a current personal case."
     },
