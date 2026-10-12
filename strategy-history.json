@@ -392,10 +392,12 @@
     "If the answers are fuzzy, the section is drifting, cut it or register its token."
   ],
   "editorialDirection": {
-    "audience": "VP Marketing, CMO, CEO",
+    "audience": "Path A primary: marketing decision-maker (CMO / VP Marketing / growth lead) at a B2B company whose website is a revenue surface. Path B served, not addressed first: agency principals white-labeling a reliable operator.",
     "position": "Business judgement translated into coordinated execution",
-    "voice": "Understated, precise, composed. Evidence and reasoning carry the offer.",
+    "voice": "Composed and precise (kept from the author revision), with site-soul.md sentence laws restored: name the object, numbers over adjectives, conclusion before mechanism, limits stated. Derivation: ICP-ANALYSIS.md 2026-10-12.",
     "quartermaster": "A researched organisational analogy, developed in an essay; no invented role or rank.",
-    "removedClaim": "38 styles case withdrawn by the author on 2026-10-11; not a current personal case."
+    "removedClaim": "38 styles case withdrawn by the author on 2026-10-11; not a current personal case.",
+    "icpBasis": "Evidence-scored: direct buyers proven (paid more than once, rate accepted without pushback), agency channel proven at volume; anti-ICP: one-person design+dev expectations, one-off pages, brochure sites.",
+    "derivedAt": "2026-10-12"
   }
 }
