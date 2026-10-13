@@ -245,6 +245,13 @@ window.SITE = {
       "body": "A practical guide to the decisions that belong before the brief.",
       "href": "notes/website-purpose.html",
       "label": "Read the guide ↗"
+    },
+    {
+      "number": "04",
+      "title": "Sell by camouflaging intent",
+      "body": "Why a website sells more when it announces less: the sources, the rules, and the fair-chase boundary.",
+      "href": "notes/sell-by-camouflage.html",
+      "label": "Read the essay ↗"
     }
   ]
 };
