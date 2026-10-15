@@ -2,7 +2,7 @@
 window.SITE = {
   "identity": {
     "name": "Bogdan Vučković",
-    "role": "Independent website operator",
+    "role": "Website operator",
     "location": "Belgrade, Serbia",
     "timezone": "Working across time zones",
     "brandLine": "Marketing · direction · systems",
@@ -167,12 +167,12 @@ window.SITE = {
       "blocksShip": true
     },
     "proof.case-tokens": {
-      "level": "metric",
+      "level": "none",
       "public": false,
       "href": null,
-      "what": "38 styles collapsed into one token law",
-      "where": "SaaS marketing case, public redacted proof pending",
-      "blocksShip": true
+      "what": "Withdrawn 2026-10-11 by the author; the 38-styles case is not a current personal case. No proof is owed on a withdrawn claim.",
+      "where": "Not on the site",
+      "blocksShip": false
     },
     "proof.anonymized": {
       "level": "example",
