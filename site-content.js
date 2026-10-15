@@ -121,10 +121,10 @@ window.SITE = {
     },
     {
       "code": "Exhibit B · the engine",
-      "title": "D.I.C.E. · seed study",
-      "body": "An interactive seed study, with a repeatable draw. The original engine port and published logbook remain separate work.",
+      "title": "D.I.C.E. · the deterministic draw",
+      "body": "Five words become a hashed, repeatable card draw. A JavaScript port of the original engine, verified card for card against it.",
       "href": "dice.html",
-      "linkLabel": "Explore the seed study",
+      "linkLabel": "Run a draw",
       "proofId": "proof.dice"
     }
   ],
@@ -147,8 +147,8 @@ window.SITE = {
       "level": "artifact",
       "public": true,
       "href": "dice.html",
-      "what": "Working seed demo adapted from the identity study; not the original engine.",
-      "where": "D.I.C.E. seed study",
+      "what": "The draw engine itself, ported to the page and verified against the Python original: 7 of 7 seeds identical (scripts/verify-dice-port.js).",
+      "where": "D.I.C.E. exhibit",
       "blocksShip": false
     },
     "proof.chain-visible": {
