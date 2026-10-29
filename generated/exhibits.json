@@ -1,4 +1,4 @@
 [
 	{"to_json(t)":{"code":"Exhibit A · this site","title":"The system, with reasons on","body":"Toggle the reason layer: every section carries its why.","link_label":"Toggle reasons on this page","href":"v9-carries-the-work.html"}},
-	{"to_json(t)":{"code":"Exhibit B · the engine","title":"D.I.C.E. · seed study","body":"An interactive seed study, with a repeatable draw. The original engine port and published logbook remain separate work.","link_label":"Explore the seed study","href":"dice.html"}}
+	{"to_json(t)":{"code":"Exhibit B · the engine","title":"D.I.C.E. · the deterministic draw","body":"Five words become a hashed, repeatable card draw. A JavaScript port of the original engine, verified card for card against it.","link_label":"Run a draw","href":"dice.html"}}
 ]
