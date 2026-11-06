@@ -15,7 +15,7 @@ const path = require('path');
 const vm = require('vm');
 
 const DIR = path.resolve(process.argv[2] || '.');
-const HTML_FILES = ['index.html', 'v9-carries-the-work.html']; // v8 is the retired GPT concept — lint only the living surface
+const HTML_FILES = ['index.html', 'v9-carries-the-work.html', 'v10-night-canon.html']; // the living surface: light v9 (retiring) + v10 night canon (decided 2026-11-06)
 const tokens = JSON.parse(fs.readFileSync(path.join(DIR, 'tokens.json'), 'utf8'));
 const exceptions = fs.existsSync(path.join(DIR, 'token-exceptions.json'))
   ? JSON.parse(fs.readFileSync(path.join(DIR, 'token-exceptions.json'), 'utf8'))

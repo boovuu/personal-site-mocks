@@ -221,7 +221,7 @@ window.SITE = {
   },
   "nav": {
     "approach": "Perspective",
-    "work": "Experience",
+    "work": "Selected work",
     "contact": "Contact ↗"
   },
   "notes": [

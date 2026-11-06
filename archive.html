@@ -1,41 +1,52 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Design archive · Behind the site</title>
 <style>
-  :root{--paper:#faf8f3;--ink:#2b2823;--muted:#837c6c;--line:#e6e1d3}
+  :root{--paper:#f3efe5;--paper2:#e9e3d5;--ink:#172c2b;--muted:#576459;--line:#c9c4b7;--teal:#244443;--gold:#b18b51;--rust:#9c4a2e}
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--paper);color:var(--ink);font:16px/1.7 -apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:900px;margin:0 auto;padding:70px 28px 90px}
-  h1{font-size:clamp(30px,4.5vw,44px);font-weight:600;letter-spacing:-.02em;margin-bottom:14px}
-  .sub{color:var(--muted);font-size:17px;max-width:640px;margin-bottom:60px}
-  .grid{display:grid;gap:18px}
-  a.dir{display:block;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 34px;transition:transform .15s ease,box-shadow .15s ease}
-  a.dir:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(60,50,20,.08)}
-  .dir .no{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-  .dir h2{font-size:23px;font-weight:600;margin:8px 0 6px}
-  .dir p{color:var(--muted);font-size:15.5px}
-  .swatches{display:flex;gap:8px;margin-top:16px}
-  .sw{width:30px;height:30px;border-radius:8px;border:1px solid rgba(0,0,0,.08)}
-  .note{margin-top:48px;padding:22px 26px;background:#f1ecdd;border-radius:16px;color:#6f684f;font-size:14.5px}
-  .note a{color:#6f684f}
+  body{background:var(--paper);color:var(--ink);font:17px/1.7 Georgia,'Times New Roman',serif}
+  a{color:inherit;text-underline-offset:5px}a:hover{color:var(--rust)}
+  .wrap{max-width:900px;margin:0 auto;padding:60px 28px 90px}
+  nav{display:flex;gap:22px;flex-wrap:wrap;font-size:15px;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:50px}
+  .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust)}
+  h1{font-size:clamp(34px,5vw,56px);font-weight:400;letter-spacing:-.03em;margin:16px 0 14px}
+  .sub{color:var(--muted);font-size:18px;max-width:640px;margin-bottom:55px}
+  .grid{display:grid;gap:0;border-top:1px solid var(--line)}
+  a.dir{display:block;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line);padding:30px 6px}
+  a.dir:hover{background:var(--paper2)}
+  .dir .no{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .dir h2{font-size:24px;font-weight:400;margin:8px 0 6px}
+  .dir p{color:var(--muted);font-size:16px;max-width:680px}
+  .swatches{display:flex;gap:8px;margin-top:14px}
+  .sw{width:26px;height:26px;border:1px solid var(--line)}
+  .note{margin-top:48px;padding:20px 24px;border-left:2px solid var(--gold);color:var(--muted);font-size:15px}
+  .note a{color:var(--muted)}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <nav aria-label="Site navigation"><a href="index.html">Homepage</a> · <a href="workbench.html">Behind the site</a></nav><h1>Design archive</h1>
+  <nav aria-label="Site navigation"><a href="index.html">Homepage</a><a href="workbench.html">Behind the site</a><a href="notes/">Notes</a></nav>
+  <div class="kicker">Behind the site</div>
+  <h1>Design archive</h1>
   <p class="sub">Earlier directions and identity studies. The homepage is the current front; these pages record the decisions behind it.</p>
   <div class="grid">
+    <a class="dir" href="v10-night-canon.html">
+      <div class="no">Current draft · decided 6 November 2026</div>
+      <h2>The night canon (v10)</h2>
+      <p>The dark cinematic skin becomes the canon: one navigation world of ship, star, constellation, and brass instrument; the sea photograph stays a hero-only layer; the contact band returns to flat night; the variant toggle dissolves. Built with Bogdan, page by page. Index promotion waits for his go.</p>
+      <div class="swatches"><span class="sw" style="background:#142827"></span><span class="sw" style="background:#1F3A3D"></span><span class="sw" style="background:#F3E8D0"></span><span class="sw" style="background:#C0A16A"></span><span class="sw" style="background:#A75336"></span></div>
+    </a>
     <a class="dir" href="v9-carries-the-work.html">
-      <div class="no">Current annotated page</div>
+      <div class="no">Superseded 6 November 2026 · on the index until promotion</div>
       <h2>Websites that carry the work (v9)</h2>
-      <p>The annotated companion to the homepage. Anonymized cases with reasoning chains and a wide capability card, evidence-first copy, reason toggle. Copy law: site-soul.md + sell-by-camouflage.md. Content lives in a DuckDB CMS (content.duckdb) with a drift check against site-content.js.</p>
-      <div class="swatches"><span class="sw" style="background:#f3efe5"></span><span class="sw" style="background:#172c2b"></span><span class="sw" style="background:#244443"></span><span class="sw" style="background:#a85234"></span><span class="sw" style="background:#b18b51"></span></div>
+      <p>The annotated companion to the outgoing light homepage. Anonymized cases with reasoning chains and a wide capability card, evidence-first copy, reason toggle. The light paper skin retires to this archive under the night-canon decision; the workshop pages (workbench, essays) keep paper.</p>
+      <div class="swatches"><span class="sw" style="background:#f3efe5"></span><span class="sw" style="background:#172c2b"></span><span class="sw" style="background:#244443"></span><span class="sw" style="background:#9c4a2e"></span><span class="sw" style="background:#b18b51"></span></div>
     </a>
     <a class="dir" href="identity-studies/reckoning-coin-cassiopeia.html">
-      <div class="no">identity study · GPT + Claude, filed</div>
+      <div class="no">Identity study · GPT + Claude, filed</div>
       <h2>The Reckoning Coin (Cassiopeia)</h2>
-      <p>Coin = chance as a starting condition, compass = chosen bearing, Cassiopeia = orientation. Evidence-row homepage concept, DICE anatomy (Seed → Reading → Result), Killick/Metis canon preserved. Candidates for v10: palette, evidence rows, two-door contact.</p>
+      <p>Coin = chance as a starting condition, compass = chosen bearing, Cassiopeia = orientation. Adopted into v10: the night palette, the coin header and five stars, the DICE anatomy (Seed → Reading → Result). Not adopted: the two-door contact, which conflicts with the single problem-led door the site's outcome law requires.</p>
       <div class="swatches"><span class="sw" style="background:#F3E8D0"></span><span class="sw" style="background:#142827"></span><span class="sw" style="background:#1F3A3D"></span><span class="sw" style="background:#C0A16A"></span><span class="sw" style="background:#A75336"></span></div>
     </a>
     <a class="dir" href="v8-gpt-concept.html">
@@ -69,7 +80,7 @@
       <div class="swatches"><span class="sw" style="background:#fdfcf8"></span><span class="sw" style="background:#211f1a"></span><span class="sw" style="background:#d97b29"></span><span class="sw" style="background:#f6f3ea"></span></div>
     </a>
   </div>
-  <p style="margin-top:26px"><a href="workbench.html" style="color:#2b2823;font-weight:600">The Workbench →</a> <span style="color:var(--muted)">the back study: identity, brand, CMS, laws, and live system state, all connected.</span></p>
+  <p style="margin-top:26px"><a href="workbench.html" style="font-weight:700">The Workbench →</a> <span style="color:var(--muted)">the back study: identity, brand, CMS, laws, and live system state, all connected.</span></p>
   <div class="note">Round 1 (v1 dark precision, v2 terminal, v3 dark ledger) is retired but still online: <a href="v1-vercel-precision.html">v1</a> · <a href="v2-terminal-ember.html">v2</a> · <a href="v3-privateer-registry.html">v3</a>, kept only for reference.</div>
 </div>
 </body>
