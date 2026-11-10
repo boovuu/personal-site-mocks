@@ -16,10 +16,10 @@
        Source: analytics.google.com -> Admin -> Data streams -> web stream. */
     ga4: "",
 
-    /* RB2B pixel script URL, from dashboard: Script -> View Script.
-       Paste the src URL of their snippet; if their snippet is not a plain
-       script tag, wire the exact snippet here instead. */
-    rb2b: "",
+    /* RB2B account key, from dashboard: Script -> View and install script.
+       Their pixel is an inline loader script (not a plain tag), wired
+       verbatim in the RB2B section below. */
+    rb2b: "E63P0HYRYDOW",
 
     /* Any additional tracker script URLs (MoltSets needs none: it is an
        agent-side API, not a site pixel). */
@@ -54,7 +54,19 @@
     inject("https://www.googletagmanager.com/gtm.js?id=" + CONFIG.gtm);
   }
 
-  /* RB2B and any extras */
-  if (CONFIG.rb2b) inject(CONFIG.rb2b);
+  /* RB2B pixel: their official inline loader, wired verbatim from the
+     dashboard. Identifies US-traffic visitors; alerts deliver via Slack. */
+  if (CONFIG.rb2b) {
+    !function (key) {
+      if (window.reb2b) return;
+      window.reb2b = { loaded: true };
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";
+      document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);
+    }(CONFIG.rb2b);
+  }
+
+  /* any extras */
   CONFIG.extra.forEach(inject);
 })();
