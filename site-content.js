@@ -7,7 +7,7 @@ window.SITE = {
     "timezone": "Working across time zones",
     "brandLine": "Marketing · direction · systems",
     "sealLetter": "B",
-    "email": "hello@example.com",
+    "email": "hello@bogdanvuckovic.com",
     "github": "https://github.com/boovuu"
   },
   "hero": {
@@ -103,7 +103,7 @@ window.SITE = {
     "body": "Tell me what is not working: the tracking nobody trusts, the consent that drifts, the CMS the team avoids. We work out what it needs next.",
     "cta": {
       "label": "Start a conversation",
-      "href": "mailto:hello@example.com"
+      "href": "mailto:hello@bogdanvuckovic.com"
     }
   },
   "footer": {
