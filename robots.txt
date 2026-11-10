@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bogdanvuckovic.com/sitemap.xml
