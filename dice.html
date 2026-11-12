@@ -19,14 +19,37 @@ body{background:var(--ink);color:var(--paper)}.kicker{color:#D2A969}.lede{color:
 .agent-door .doorrow{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:4px}
 .agent-door .hint{margin:0}
 @media(max-width:760px){.mlinks{width:100%;justify-content:space-between;gap:10px}}
-</style><script src="/assets/trackers.js" defer></script>
-</head><body><div class="shell"><nav class="mast" aria-label="Site navigation"><a class="mbrand" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><circle cx="16" cy="16" r="14.4" fill="none" stroke="currentColor" stroke-width="2.1"/><g transform="rotate(22.5 16 16)"><path d="M16 10.4 L18.3 16 L16 24.2 L13.7 16 Z" fill="currentColor"/><circle cx="16" cy="6.8" r="2.25" fill="currentColor"/></g></svg><span>Bogdan Vučković<small>Marketing · direction · systems</small></span></a><span class="mlinks"><a href="index.html#approach">Perspective</a><a href="index.html#work">Selected work</a><a href="notes/">Notes</a><a href="dice.html" aria-current="page">D.I.C.E.</a><a href="index.html#contact">Contact ↗</a></span></nav><main><div class="dice-head"><header><div class="kicker">An independent project · a working instrument</div><h1>D.I.C.E.</h1><p class="lede">Chance opens.<br><em>The bearing is yours.</em></p><p>Direct Intuition Creative Engine. Five arbitrary words become one hash, and the hash becomes the same draw on every machine. You are looking at the actual engine, ported from the original and verified against it, card for card.</p></header><svg viewBox="0 0 200 200" aria-hidden="true"><defs><g id="g-rim">
+</style><link rel="stylesheet" href="assets/reckoning.css"><script src="/assets/trackers.js" defer></script>
+</head><body><div class="shell"><nav class="mast" aria-label="Site navigation"><a class="mbrand" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><circle cx="16" cy="16" r="14.4" fill="none" stroke="currentColor" stroke-width="2.1"/><g transform="rotate(22.5 16 16)"><path d="M16 10.4 L18.3 16 L16 24.2 L13.7 16 Z" fill="currentColor"/><circle cx="16" cy="6.8" r="2.25" fill="currentColor"/></g></svg><span>Bogdan Vučković<small>Marketing · direction · systems</small></span></a><span class="mlinks"><a href="notes/">Notes</a><a href="dice.html" aria-current="page">D.I.C.E.</a><a href="index.html#contact">Contact ↗</a></span></nav><main><svg class="coin-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+    <g id="g-rim">
       <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="3"/>
       <circle cx="100" cy="100" r="86.5" fill="none" stroke="currentColor" stroke-width="1"/>
       <circle cx="100" cy="100" r="82" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="0.9 6.256" stroke-dashoffset="0.45" transform="rotate(-90 100 100)"/>
       <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" stroke-width="9" stroke-dasharray="1.4 62.999" stroke-dashoffset="0.7" transform="rotate(-90 100 100)"/>
       <circle cx="100" cy="100" r="74" fill="none" stroke="currentColor" stroke-width=".6"/>
-    </g></defs>
+    </g>
+  </defs><symbol id="m-obv" viewBox="0 0 200 200">
+    <use href="#g-rim"/>
+    <g stroke="currentColor" stroke-width=".8" fill="none">
+      <line x1="100" y1="100" x2="128.3" y2="71.7"/><line x1="100" y1="100" x2="128.3" y2="128.3"/>
+      <line x1="100" y1="100" x2="71.7" y2="128.3"/><line x1="100" y1="100" x2="71.7" y2="71.7"/>
+    </g>
+    <g stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" fill="none">
+      <path d="M100 30 L107 93 L100 100 L93 93 Z"/>
+      <path d="M152 100 L107 107 L100 100 L107 93 Z"/>
+      <path d="M100 152 L93 107 L100 100 L107 107 Z"/>
+      <path d="M48 100 L93 93 L100 100 L93 107 Z"/>
+    </g>
+    <g fill="currentColor">
+      <path d="M100 30 L93 93 L100 100 Z"/>
+      <path d="M152 100 L107 93 L100 100 Z"/>
+      <path d="M100 152 L107 107 L100 100 Z"/>
+      <path d="M48 100 L93 107 L100 100 Z"/>
+    </g>
+    <line x1="104.6" y1="88.9" x2="124.1" y2="41.8" stroke="currentColor" stroke-width="1.1" stroke-dasharray="3 3"/>
+    <circle cx="126.8" cy="35.3" r="5" style="fill:var(--star,currentColor)"/>
+    <circle cx="100" cy="100" r="2.6" fill="currentColor"/>
+  </symbol><symbol id="m-rev" viewBox="0 0 200 200">
     <use href="#g-rim"/>
     <line x1="101.4" y1="90" x2="101.4" y2="31" stroke="currentColor" stroke-width=".8" stroke-dasharray="1.5 4"/>
     <circle cx="101.4" cy="29" r="2.2" fill="none" stroke="currentColor" stroke-width=".8"/>
@@ -34,11 +57,22 @@ body{background:var(--ink);color:var(--paper)}.kicker{color:#D2A969}.lede{color:
     <g fill="currentColor">
       <circle cx="46.6" cy="67.6" r="3.4"/>
       <circle cx="70.8" cy="100.8" r="5.4"/>
-      <circle cx="101.4" cy="97.7" r="7"/>
+      <circle cx="101.4" cy="97.7" r="7" style="fill:var(--star,currentColor)"/>
       <circle cx="121.2" cy="132.4" r="6.7"/>
       <circle cx="153.4" cy="105.4" r="6.6"/>
     </g>
-  </svg></div>
+  </symbol><symbol id="m-edge" viewBox="0 0 30 200">
+    <rect x="6" y="5" width="18" height="190" rx="9" fill="none" stroke="currentColor" stroke-width="2"/>
+    <line x1="15" y1="12" x2="15" y2="188" stroke="currentColor" stroke-width="12" stroke-dasharray="1 3.4"/>
+  </symbol></svg><div class="dice-head"><header><div class="kicker">An independent project / Direct Intuition Creative Engine</div><h1>D.I.C.E.</h1><p class="lede">Chance opens.<br><em>The bearing is yours.</em></p>
+<p>Bring a question and five words. Your chat runs the draw in its own code environment, then reads it with you.</p>
+<button id="ritualBtn" type="button">Copy “run the dice”</button>
+<p class="copy-help" id="ritualHint" role="status">Paste the command into a chat that can run code.</p>
+<p class="protocol"><a id="ritualLink" href="https://gist.githubusercontent.com/boovuu/42303606f20a52a02cd5ff5b69520ffe/raw/RITUAL.md">Read the instructions (.md)</a></p>
+<div id="manualCopy" hidden><label for="commandText">Select and copy the command:</label><textarea id="commandText" rows="4" readonly></textarea></div>
+<noscript><p>Copy this into your chat:<br>run the dice:<br><a href="https://gist.githubusercontent.com/boovuu/42303606f20a52a02cd5ff5b69520ffe/raw/RITUAL.md">https://gist.githubusercontent.com/boovuu/42303606f20a52a02cd5ff5b69520ffe/raw/RITUAL.md</a></p></noscript>
+</header><figure class="toss"><button id="tossBtn" type="button" aria-label="Toss the Reckoning Coin"><span class="stage" aria-hidden="true"><span class="arc" id="arc"><span class="coin" id="coin"><span class="face"><svg aria-hidden="true" viewBox="0 0 200 200"><circle cx="100" cy="100" r="97" fill="var(--brass)"/><use href="#m-rev" style="color:var(--coin-ink);--star:var(--coin-rust)"/></svg></span><span class="face rev"><svg aria-hidden="true" viewBox="0 0 200 200"><circle cx="100" cy="100" r="97" fill="var(--brass)"/><use href="#m-obv" style="color:var(--coin-ink);--star:var(--coin-rust)"/></svg></span></span></span></span><span class="toss-label">Toss the coin ↻</span></button><figcaption id="tossCap" aria-live="polite">Seed face up · Cassiopeia</figcaption></figure></div>
+<section class="browser-demo"><div class="kicker">In the browser</div><h2>Try the draw.</h2><p>See which cards your words select. For a reading about your question, use the chat command above.</p></section>
 <div class="console"><noscript><p class="error">The draw needs JavaScript: the engine hashes your words in the browser. The essays below still read fine without it.</p></noscript>
   <div class="rowline">
     <div><label for="seedInput">Seed · five arbitrary words, any language</label><input type="text" id="seedInput" autocomplete="off" spellcheck="false" placeholder="five words, any language"></div>
@@ -59,7 +93,11 @@ body{background:var(--ink);color:var(--paper)}.kicker{color:#D2A969}.lede{color:
   <div class="manifest" id="out" hidden></div>
 </div>
 
-<section class="agent-door"><div class="kicker">For any AI chat</div><h2>Run it with your own assistant</h2><p>The ritual is written as one page of instructions for an AI agent: one prompt, five words, the deterministic draw, a reading composed under the laws. Copy the snippet, paste it into any chat that can compute a hash, and answer its questions. The engine is the same one this page runs.</p><div class="doorrow"><button id="ritualBtn" type="button">Copy the snippet</button><span class="hint" id="ritualHint" aria-live="polite">Copies one line: the invitation and the protocol link.</span></div></section>
+<section class="coin-study"><div class="kicker">Plate I / The Reckoning Coin</div><h2>One coin, two faces.</h2><div class="coin-views">
+<figure><svg aria-hidden="true" viewBox="0 0 200 200"><circle cx="100" cy="100" r="97" fill="var(--brass)"/><use href="#m-obv" style="color:var(--coin-ink);--star:var(--coin-rust)"/></svg><figcaption><b>Bearing</b><span>The compass points to a chosen course: 022.5°.</span></figcaption></figure>
+<figure class="edge"><svg aria-hidden="true" viewBox="0 0 30 200"><use href="#m-edge"/></svg><figcaption><b>Edge</b><span>The shared rim.</span></figcaption></figure>
+<figure><svg aria-hidden="true" viewBox="0 0 200 200"><circle cx="100" cy="100" r="97" fill="var(--brass)"/><use href="#m-rev" style="color:var(--coin-ink);--star:var(--coin-rust)"/></svg><figcaption><b>Seed</b><span>Five stars in Cassiopeia. Chance gives you a starting point.</span></figcaption></figure></div>
+<div class="stages"><div><small>01 / Seed</small><p>You bring five words. They determine the draw.</p></div><div><small>02 / Reading</small><p>Your chat reads that draw against your question.</p></div><div><small>03 / Result</small><p>You choose what to do with the reading.</p></div></div></section>
 
 <div class="lore">
 <section><h2>Why the draw is deterministic</h2><p>Most randomness is a black box: you cannot check what the machine almost said. D.I.C.E. is the opposite. The five words are normalized and hashed with <a href="https://en.wikipedia.org/wiki/SHA-2">SHA-256</a>; the hash bytes select the cards and their orientation. Identical input yields an identical draw, byte for byte, on any machine that runs the rules. Nothing is simulated and nothing is remembered between runs: the draw is pure arithmetic on your words.</p><p>The lineage is short and public. Edward de Bono's <a href="https://en.wikipedia.org/wiki/Lateral_thinking">random entry</a> (1970) showed that a deliberately arbitrary input breaks a stuck line of thought. Brian Eno's <a href="https://en.wikipedia.org/wiki/Oblique_Strategies">Oblique Strategies</a> (1975) put the interruption on cards. In 2026, thirty-four field sessions turned the idea into an instrument with laws, and the laws into an engine. What Eno left to chance, this engine pins to a hash.</p></section>
@@ -206,23 +244,32 @@ body{background:var(--ink);color:var(--paper)}.kicker{color:#D2A969}.lede{color:
     if (params.get('clarifier') === '1') clarChk.checked = true;
     if (window.crypto && window.crypto.subtle) run();
   }
+})();
 </script><script>
 (function(){
   "use strict";
-  var btn=document.getElementById('ritualBtn'), hint=document.getElementById('ritualHint');
-  if(!btn) return;
-  var SNIPPET='run the dice:\nhttps://gist.githubusercontent.com/boovuu/42303606f20a52a02cd5ff5b69520ffe/raw/RITUAL.md';
-  function done(){ hint.textContent='Snippet copied. Paste it into any AI chat and answer its questions.'; }
-  function fallback(){
-    var t=document.createElement('textarea'); t.value=SNIPPET;
-    t.style.position='fixed'; t.style.opacity='0';
-    document.body.appendChild(t); t.select();
-    try{ document.execCommand('copy'); done(); }catch(e){ hint.textContent=SNIPPET; }
-    document.body.removeChild(t);
-  }
-  btn.addEventListener('click',function(){
-    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(SNIPPET).then(done,fallback); }
-    else{ fallback(); }
+  const btn=document.getElementById('ritualBtn'), status=document.getElementById('ritualHint');
+  const text='run the dice:\n'+document.getElementById('ritualLink').href;
+  btn.addEventListener('click',async()=>{
+    try{
+      await navigator.clipboard.writeText(text);
+      document.getElementById('manualCopy').hidden=true;
+      status.textContent='Copied. Paste the command into your chat.';
+    }catch{
+      document.getElementById('manualCopy').hidden=false;
+      const field=document.getElementById('commandText');field.value=text;field.focus();field.select();
+      status.textContent='Clipboard unavailable. Copy the selected command below.';
+    }
+  });
+  let angle=0,seed=true,busy=false;
+  const toss=document.getElementById('tossBtn'),coin=document.getElementById('coin'),arc=document.getElementById('arc'),cap=document.getElementById('tossCap');
+  toss.addEventListener('click',()=>{
+    if(busy)return;
+    const next=Math.random()<.5, reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    busy=true;angle+=1440+(next===seed?0:180);seed=next;
+    coin.style.transform='rotateX('+angle+'deg)';
+    if(!reduced){arc.classList.remove('up');void arc.offsetWidth;arc.classList.add('up');cap.textContent='In the air…';}
+    setTimeout(()=>{busy=false;cap.textContent=seed?'Seed face up · Cassiopeia':'Bearing face up · 022.5°';},reduced?0:1400);
   });
 })();
 </script></body></html>
