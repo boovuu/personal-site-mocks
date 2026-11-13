@@ -1,4 +1,11 @@
-const atlasSubjects = { websites: 'The personal website', making: 'The D.I.C.E. experiment' };
+// Atlas notes. Each related reading names its reason.
+const atlasSubjects = {
+  websites: 'Websites and buyers',
+  research: 'Markets and research',
+  making: 'Creative methods and stories',
+  agents: 'AI and software'
+};
+
 
 const nightSailboatStudy = ['November 6 · A star above the boat','Look to the right of “Marketing growth. Website systems.” The sailboat sits low on the water. A bright star breaks through the clouds above it. At the foot of the full scene, a line from John Masefield’s Sea-Fever puts the two together: “and a star to steer her by”.',{src:'site-editions/v10-night-canon.jpg',alt:'Cream lettering at the left of a dark sea. On the right, a small sailboat sits below a bright star in the storm clouds.',caption:'Explore the November 6 night draft',href:'site-editions/v10-night-canon.html'}];
 const hermesPortraitStudy = ['A face drawn in small marks','Bogdan remembers the visual reference coming from Hermes Agent. These two examples show the style he remembers. The exact image Petar saw is still unknown. The first is the portrait on the “Persistent Memory” card. Look at the cheek beneath the eye: short pale marks pick out the light, while the shadow beside the nose falls almost completely black.',{src:'site-editions/hermes-persistent-memory.webp',alt:'A monochrome sculpted face on black. Rows of small pale marks pick out the curls, eyes and cheek.',caption:'“Persistent Memory” artwork · Nous Research, Hermes Agent website',href:'https://hermes-agent.nousresearch.com/'}];
@@ -7,6 +14,70 @@ const dottedSailboatStudy = ['Petar applies the marks to the same sailboat','Fin
 const petarSkyStudy = ['November 9 · The dots become the opening sky','Now look at the clouds above the headline. Petar uses the same dots and crosses here, with room for the words in the middle. The browser draws this sky separately. The sailboat image itself appears one section below. Masefield’s line, once at the foot of the night scene, now sits just above the title.',{src:'personal-home-hero.jpg',alt:'Blue marks form a cloud bank around the centered headline “The work behind the website.” The Masefield quotation sits above the title.',caption:'Explore the finished homepage',href:'../index.html#top'}];
 
 const atlasIdeas = [
+  {
+    id:'website-purpose', mapPoint:[0.58,0.47], mapLabel:'Writing a website brief', trailFrom:'quartermaster', subject:'websites', kind:'Guide',
+    title:'What do you want your website to do?',
+    summary:'A website brief starts with a person and a decision. Who is visiting, and what should they be able to decide after reading?',
+    detail:'One example from the guide is an operations leader deciding whether to request a demonstration. That gives the writer something to work with. The page can show which problems the product solves, who already uses it, and what a demonstration covers.',
+    sources:[['Read the website briefing guide','../notes/website-purpose.html']],
+    related:[['camouflage','Once you know what the buyer needs to decide, consider how much of the argument the homepage should make for them.'],['brand','A buyer who already knows the brand brings something different to that same page.']]
+  },
+  {
+    id:'camouflage', mapPoint:[0.26,0.25], mapLabel:'Selling through evidence', trailFrom:'website-purpose', subject:'websites', kind:'Essay',
+    title:'What happens when a homepage stops trying so hard to sell?',
+    summary:'“Sell by camouflaging intent” began with an observation from sales. A buyer can sense when the seller needs a yes.',
+    detail:'The essay follows that observation into website copy. If a company shows its work, a prospective buyer can inspect the reasoning and reach a conclusion. The essay draws on sales records and negotiation writing to ask when explicit persuasion gets in the way.',
+    sources:[['Read “Sell by camouflaging intent”','../notes/sell-by-camouflage.html']],
+    related:[['website-purpose','The companion guide turns the essay’s question into a brief. It asks which decision belongs to the visitor.']]
+  },
+  {
+    id:'brand', mapPoint:[0.78,0.23], mapLabel:'The buyer who knows you', trailFrom:'website-purpose', subject:'websites', kind:'Essay',
+    title:'When does the brand sell? When does the website?',
+    summary:'Two buyers can visit the same page with very different starting points. One already trusts the company. The other has just heard its name.',
+    detail:'The essay asks what each buyer needs and which investment could help. Recognition may begin long before a visit. Once someone arrives, the site can give them evidence, explain the offer and make the next step clear.',
+    sources:[['Read the brand and website essay','../notes/brand-and-website.html']],
+    related:[['website-purpose','Use the distinction to decide what a specific page should help a buyer do.']]
+  },
+  {
+    id:'quartermaster', mapPoint:[0.34,0.74], mapLabel:'Who decides?', subject:'websites', kind:'Essay',
+    title:'What can a pirate quartermaster teach a marketing team?',
+    summary:'On the ships in this essay, the captain commanded in battle. The quartermaster handled provisions, distribution and disputes.',
+    detail:'The division of responsibility gives the essay its modern question. After a team agrees on a marketing objective, who can allocate resources, resolve a disagreement and answer to the people doing the work?',
+    sources:[['Read “The quartermaster’s place”','../notes/quartermaster.html']],
+    related:[['website-purpose','A website brief eventually reaches the same practical question. Who owns the decision and the outcome?']]
+  },
+  {
+    id:'healthcare', mapPoint:[0.43,0.52], mapLabel:'Comparing 60 companies', trailFrom:'market-shift', subject:'research', kind:'Research in progress',
+    title:'Which healthtech companies might need help with their websites?',
+    summary:'A market selloff prompted a question about website work. To investigate, Bogdan compared 30 selected healthtech companies with 30 cybersecurity companies.',
+    detail:'Five healthtech companies and four cybersecurity companies showed signs of website or conversion work. The researchers still need to check which companies use Webflow and whether anyone has a budget for outside help.',
+    sources:[['The comparison of 60 companies', null],['The separate list of nine pharma leads', null]],
+    related:[['market-shift','Go back to the observation that prompted the comparison.'],['vertical-method','See how the comparison led to a proposed test for other industries.'],['pharma','See why the nine pharmaceutical leads were counted separately.']]
+  },
+  {
+    id:'market-shift', mapPoint:[0.7,0.26], mapLabel:'Market selloff',subject:'research',kind:'Starting question',
+    title:'What could a market selloff tell us about future website work?',
+    summary:'The initial thought was about share prices. The more useful question was whether a change in the market would show up in the work companies needed.',
+    detail:'The research draft reconstructs this starting point. It turns the observation into things someone could look for, including hiring for a website team, asking for an outside partner, or setting money aside for a project. The original market dates and indices still need checking.',
+    sources:[['How the question was reconstructed', null]],
+    related:[['healthcare','Follow the first comparison, where researchers looked for those signs at individual companies.']]
+  },
+  {
+    id:'vertical-method', mapPoint:[0.23,0.21], mapLabel:'Testing buyer demand', trailFrom:'healthcare',subject:'research',kind:'Proposed method',
+    title:'How could you tell whether an industry will buy website services?',
+    summary:'The proposed Vertical Momentum Lab starts with a company event and asks what evidence would connect it to an actual purchase.',
+    detail:'A job listing can tell you which tools a company uses. A request for an outside partner tells you something different. The draft sets out what to check at each step and proposes testing the method in conversations with buyers.',
+    sources:[['The proposed research method', null]],
+    related:[['healthcare','The healthtech comparison exposed the gap between seeing website activity and finding a buyer.']]
+  },
+  {
+    id:'pharma', mapPoint:[0.62,0.78], mapLabel:'Nine pharma leads', trailFrom:'healthcare',subject:'research',kind:'Research note',
+    title:'Where did pharmaceutical website leads turn up?',
+    summary:'A separate search found nine leads around pharmaceuticals. Some Webflow projects appeared among companies serving the industry.',
+    detail:'The list was assembled to find leads. It used a different selection process from the healthtech and cybersecurity comparison. A project at a service provider also leaves open whether a drug manufacturer would buy the same service.',
+    sources:[['The nine-lead discovery note', null]],
+    related:[['healthcare','Return to the two groups that researchers screened in the original comparison.']]
+  },
   {
     id:'dice', mapPoint:[0.18,0.34], mapLabel:'1 · The first question',subject:'making',kind:'Working creative tool',
     title:'How do you get AI to go beyond the words you give it?',
@@ -20,7 +91,7 @@ const atlasIdeas = [
     ],
     detail:'Bogdan’s next question introduced a different source of variation. Could a three-card draw or a Celtic Cross quietly structure the answer? Could the person asking the question do something equivalent to cutting the deck? Gemini suggested a phrase or the first five words someone saw in the room (pp. 2–3). The words now had a job in the experiment. The image test would reveal what else Gemini was doing with them.',
     sources:[['Read the opening exchange (transcript excerpts)','dice-origin.txt'],['Open the D.I.C.E. coin and copy the command','../dice.html'],['Read the later rules for the draw','https://gist.githubusercontent.com/boovuu/42303606f20a52a02cd5ff5b69520ffe/raw/RITUAL.md']],
-    related:[['dice-wolf','Follow the image test: same request, same five words, different picture.']]
+    related:[['dice-wolf','Follow the image test: same request, same five words, different picture.'],['four-brothers','A proposed next experiment would have four reviewers examine what someone made with the cards.'],['trust','Read the later essay that compares a card draw with a recorded Banana Wars match.']]
   },
   {
     id:'dice-wolf', mapPoint:[0.56,0.24], mapLabel:'2 · The wolf test', trailFrom:'dice',subject:'making',kind:'Gemini experiment',
@@ -71,7 +142,7 @@ const atlasIdeas = [
     ],
     detail:'Open the homepage to see the sky at its original scale. The D.I.C.E. section farther down carries the line from the coin brief, “Chance opens. The bearing is yours.”',
     sources:[['Open the homepage','../index.html'],['See Petar’s ship-and-lighthouse engraving from the story section','personal-story-engraving.jpg'],['Read the dated archive references','dice-origin.txt'],['Open the first October 9 mockup','site-editions/v1-vercel-precision.html'],['Open the cinematic seascape','../assets/cinematic-sea.png'],['View the November 6 night draft','site-editions/v10-night-canon.html']],
-    related:[['dice-coin','Read the exchange in which the five stars became Cassiopeia.']]
+    related:[['dice-coin','Read the exchange in which the five stars became Cassiopeia.'],['website-purpose','Read the website brief that starts with the decision a visitor needs to make.']]
   },
   {
     id:'site-precision', nextStop:'site-terminal', trailFrom:'personal-site', mapPoint:[0.36,0.13], mobilePoint:[0.73,0.16], mapLabel:'V1 · Precision', subject:'websites',kind:'Homepage proposal · October 9',
@@ -135,10 +206,72 @@ const atlasIdeas = [
     comparison:[nightSailboatStudy,hermesPortraitStudy,hermesBackdropStudy,dottedSailboatStudy,petarSkyStudy],
     detail:'Petar’s Design Direction skill starts with what the reader should notice first. Here, the clouds part around the headline and leave enough white space for the words to stand out. The November 9 editorial brief supplied the final headline, “The work behind the website”, and the introduction about the people and decisions behind a site.',
     sources:[['November 6 · Source of the sailboat draft','site-editions/v10-night-canon.html'],['November 9 · The editorial homepage as it shipped','../index.html']],related:[['dice-coin','See how the idea of choosing a course appears on the compass face of the coin.']]
+  },
+  {
+    id:'four-brothers', mapPoint:[0.64,0.88], mapLabel:'Reviewing a draw', trailFrom:'dice',subject:'making',kind:'Review method',
+    title:'How would four different reviewers test the same idea?',
+    summary:'Četiri brata gives each reviewer a job. One builds the case, one challenges it, one checks it, and one draws the findings together.',
+    detail:'One suggestion was to use the four roles to evaluate the result of a D.I.C.E. experiment. The project note records the suggestion. A worked example is still missing.',
+    sources:[['The project note on the four roles', null]],
+    related:[['dice','Try the method that prompted the suggestion for a four-part review.']]
+  },
+  {
+    id:'kata-vera', mapPoint:[0.32,0.24], mapLabel:'Kata and Vera',subject:'making',kind:'Illustrated stories',
+    title:'How did Kata and Vera come to share a story?',
+    summary:'Kata’s encounter with a bird and Vera’s garden belong to separate sets of drawings. Their paths meet in “Zvono koje je zvonilo dvaput.”',
+    detail:'The story archive keeps early scenes alongside approved illustrations and finished books. Two of the drawings below come from those earlier stories. Their shared book, whose title means “The bell that rang twice,” is one of five collected in the archive.',
+    sources:[['View a drawing from Kata’s bird story','kata-bird.jpg'],['View a drawing from Vera’s garden story','vera-garden.jpg']],
+    related:[['atlas-drawings','Compare how the Atlas uses successive drawings to tell the history of a research question.']]
+  },
+  {
+    id:'atlas-drawings', mapPoint:[0.66,0.7], mapLabel:'Drawing a research question', trailFrom:'kata-vera',subject:'making',kind:'Design study',
+    title:'What makes a drawing in the Atlas grow?',
+    summary:'A first sketch can hold one question. A comparison, a source or an unanswered objection can each give the artist a reason to draw another line.',
+    detail:'The healthtech study redraws one question three times. The AI-search study uses dated documents to decide what appears in each period. In both, you can see what was added and ask what justified the addition.',
+    sources:[['The original design study', null],['How the illustrated atlas began', null]],
+    related:[['healthcare','Look at the three drawings side by side and see where the pharma question entered.'],['aeo','Open the dated drawings to see how individual documents added detail.']]
+  },
+  {
+    id:'aeo', mapPoint:[0.69,0.71], mapLabel:'An AI misreads a site',subject:'agents',kind:'Illustrated research archive',
+    title:'What happens when an AI answer disagrees with the website?',
+    summary:'In 2023, an early note recorded a mismatch between an AI answer and the site it described. The archive follows that question through ten source records from 2023 to 2026.',
+    detail:'This became a study of answer engine optimization (AEO), or how websites appear in AI-generated answers. Choose a year in the illustrated archive to see which observations and sources had been recorded by then.',
+    sources:[['Explore the drawing by year','aeo.html#plate'],['Browse the ten source records','aeo.html#inventory']],
+    related:[['agent-interfaces','The next question goes from what a system can read on a website to what it can actually do there.'],['atlas-drawings','See the design decision behind the changing illustration.']]
+  },
+  {
+    id:'banana-wars', mapPoint:[0.14,0.86], mapLabel:'Banana Wars', trailFrom:'trust',subject:'agents',kind:'Game experiment',
+    title:'Banana Wars: what did the AI player actually do?',
+    summary:'In Banana Wars, each move leaves a record. Three saved matches let a reader compare what an agent attempted with what the game recorded.',
+    detail:'The match records contain action identifiers, turn numbers and outcomes. A later draft used one of those matches alongside a D.I.C.E. draw to ask what another person could check afterward.',
+    sources:[['The match record', null],['The comparison with the card draw', null]],
+    related:[['trust','Read the draft that brought the two projects together.']]
+  },
+  {
+    id:'trust', mapPoint:[0.31,0.59], mapLabel:'A later essay about trust', trailFrom:'dice',subject:'agents',kind:'Unpublished draft',
+    title:'Could another person reconstruct what the agent did?',
+    summary:'A draft post about trust grew out of two records, a repeatable D.I.C.E. draw and a logged Banana Wars match.',
+    detail:'The proposed test is to give a second person the task of reconstructing the result, then see what they can recover after the logs are removed. The post is written. The test remains a proposal.',
+    sources:[['The draft post', null],['The proposed test', null]],
+    related:[['banana-wars','Examine the match record behind the draft.'],['dice','See how to reproduce the other half of the comparison.']]
+  },
+  {
+    id:'agent-interfaces', mapPoint:[0.28,0.3], mapLabel:'An agent uses a site', trailFrom:'aeo',subject:'agents',kind:'Research question',
+    title:'How can a person and an AI agent use the same website?',
+    summary:'A person can see a control on a page. An agent needs to discover which action is available, what it requires and whether it worked.',
+    detail:'The website research explores how a site might expose those actions. The game provides a smaller example to inspect today, because each turn has an explicit state and a recorded outcome.',
+    sources:[['The webmcp website research', null]],
+    related:[['banana-wars','Inspect an example where the available action and its result are both recorded.'],['aeo','Read the earlier question about how machines interpret website content.']]
   }
 ];
 
+
+// Each territory starts at a named idea. New notes with a trailFrom grow its coast.
 const atlasTerritories = [
-  {root:'dice', center:[0.26,0.62], mobileCenter:[0.28,0.29], title:'D.I.C.E. and the Reckoning Coin', description:'How could an AI surprise the person writing the prompt? Follow the numbered path from the first question through the wolf and field tests to the finished coin.'},
-  {root:'personal-site', center:[0.72,0.39], mobileCenter:[0.72,0.71], title:'The personal website', description:'Open the brief, explore three early proposals, then follow the sailboat through to Petar’s dotted design.'},
+  {root:'market-shift', center:[0.19,0.25], mobileCenter:[0.24,0.12], title:'Looking for website demand', description:'A market selloff led to a comparison of 60 companies and a proposed way to test whether buyers need website help.'},
+  {root:'quartermaster', center:[0.80,0.15], mobileCenter:[0.76,0.29], title:'Writing for buyers', description:'An essay about who makes decisions opens a website brief. Two companion essays ask how the site can help a buyer decide.'},
+  {root:'dice', center:[0.43,0.55], mobileCenter:[0.28,0.51], title:'D.I.C.E. and the Reckoning Coin', description:'How could an AI surprise the person writing the prompt? Follow the numbered path from the first question through the wolf and field tests to the finished coin.'},
+  {root:'aeo', center:[0.15,0.82], mobileCenter:[0.76,0.70], title:'How AI reads websites', description:'An early mistake in an AI answer raised a question about what machines can read on a website and what they can do there.'},
+  {root:'personal-site', center:[0.74,0.43], mobileCenter:[0.72,0.49], title:'The personal website', description:'Follow the sailboat through the Hermes references and Petar’s dotted drawing to the finished homepage.'},
+  {root:'kata-vera', center:[0.83,0.74], mobileCenter:[0.32,0.89], title:'Thinking in drawings', description:'Read the story illustrations alongside the Atlas design study. In both, successive drawings let you see what changed.'}
 ];

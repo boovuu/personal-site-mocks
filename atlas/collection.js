@@ -78,7 +78,8 @@
     const list = element('ul');
     for (const [label, url] of idea.sources) {
       const item = element('li');
-      item.append(link(label, url, 'source'));
+      if (url) item.append(link(label, url, 'source'));
+      else item.append(element('span', label), element('small', 'Private archive', 'access-note'));
       list.append(item);
     }
     part.append(list);
@@ -99,6 +100,24 @@
     }
     part.append(list);
     return part;
+  }
+
+  function storyArt() {
+    const gallery = element('div', '', 'story-art');
+    for (const [filename, caption, alt] of [
+      ['kata-bird.jpg', 'Kata i ptica na jednoj nozi · The meeting', 'An illustration from Kata’s encounter with the bird'],
+      ['vera-garden.jpg', 'Žirafa i tajna bašta · The seed', 'The seed scene from Vera’s garden story']
+    ]) {
+      const figure = element('figure');
+      const image = element('img');
+      image.src = filename;
+      image.alt = alt;
+      const anchor = link('', filename);
+      anchor.append(image);
+      figure.append(anchor, element('figcaption', caption));
+      gallery.append(figure);
+    }
+    return gallery;
   }
 
   function readingPassage([title, passage, illustration]) {
@@ -149,6 +168,15 @@
       reader.append(document.querySelector('#wolf-pair').content.cloneNode(true));
     }
     for (const passage of idea.sections || []) reader.append(readingPassage(passage));
+    if (idea.id === 'banana-wars') {
+      const trace = element('section', '', 'match-excerpt');
+      trace.append(element('h2', 'One move from the match record'),
+        element('p','In match bw-d7864563b4db, the game recorded the outcome “impact” for move metis-84f4f7e1. Its identifier lets you look up that same move in the original record.'),
+        link('Read why the essay compares this match with a card draw →','#idea/trust?map=dice','source'));
+      reader.append(trace);
+    }
+    if (idea.id === 'healthcare') reader.append(document.querySelector('#growth-drawings').content.cloneNode(true));
+    if (idea.id === 'kata-vera') reader.append(storyArt());
     reader.append(element('p', idea.detail, 'body-copy'));
     if (idea.id === 'dice') reader.append(link('Follow the wolf experiment →','#idea/dice-wolf?map=dice','route-next'));
     if (idea.id === 'dice-wolf') reader.append(link('Continue to the homepage, game and orchid trials →','#idea/dice-trials?map=dice','route-next'));
@@ -175,7 +203,8 @@
     const params = new URLSearchParams(query);
     const requestedMap = route.startsWith('map/') && route.slice(4);
     const region = map.territories.get(requestedMap);
-    const idea = byId.get(route.startsWith('idea/') && route.slice(5));
+    const legacy = { editions: 'healthcare', philosophy: 'atlas-drawings' };
+    const idea = byId.get(legacy[route] || (route.startsWith('idea/') && route.slice(5)));
     hero.hidden = Boolean(idea || region);
     browse.hidden = Boolean(idea);
     reader.hidden = !idea;
@@ -184,7 +213,8 @@
       readerMap = params.get('map') === map.membership.get(idea.id) ? params.get('map') : '';
       const heading = showIdea(idea, idea.id === 'personal-site' && params.get('via') === 'bearing');
       heading.focus({preventScroll:true});
-      window.scrollTo(0, 0);
+      if (route === 'editions') reader.querySelector('.growth').scrollIntoView();
+      else window.scrollTo(0, 0);
       return;
     }
     document.querySelector('.browse-heading').hidden = Boolean(region);

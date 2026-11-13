@@ -6,6 +6,7 @@ const root = path.resolve(__dirname, '..');
 const template = fs.readFileSync(path.join(root, 'assets/site-header.html'), 'utf8').trim();
 const pages = {
   'index.html': ['/', 'page'],
+  'atlas/aeo.html': ['/atlas/', 'location'],
   'atlas/index.html': ['/atlas/', 'page'],
   'dice.html': ['/dice.html', 'page'],
   'dice-story.html': ['/dice.html', 'location'],
