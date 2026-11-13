@@ -46,19 +46,8 @@ h2.serif{font-size:56px;line-height:1.04}
 .js .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
-/* header */
-header{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
-header .wrap{height:72px;display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--grid-gutter);align-items:center}
-.name{grid-column:1/5;display:flex;flex-direction:column;gap:3px}
-.name b{font:400 22px/1 "Newsreader";letter-spacing:-.01em}
-.name span{color:var(--muted);font-size:12px;white-space:nowrap}
-nav{grid-column:6/13;display:flex;justify-content:space-between}
-nav a{position:relative;padding:8px 0}
-nav a::before{content:"";position:absolute;left:-14px;top:50%;width:6px;height:6px;margin-top:-3px;background:var(--bit);opacity:0;transition:opacity .2s}
-nav a:hover::before{opacity:1}
-.menu{display:none}
-
 /* hero */
+body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
 .hero{position:relative;height:max(880px,100svh);overflow:hidden;background:var(--white)}
 .hero canvas.sky{position:absolute;inset:0}
 .hero .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:72px}
@@ -183,10 +172,7 @@ nav a:hover::before{opacity:1}
   :root{--grid-margin:20px;--grid-gutter:12px}
   body{font-size:16px}
   .grid{grid-template-columns:repeat(4,1fr)}
-  header .wrap{height:64px;grid-template-columns:1fr auto}
-  .name{grid-column:auto} nav{display:none} .menu{display:block}
   .hero{height:900px}
-  .name span{font-size:11px;letter-spacing:.04em}
   .continue{right:auto;left:50%;transform:translateX(-50%)}
   .reasons{bottom:auto;top:84px;left:20px;right:20px;white-space:normal;flex-wrap:wrap;gap:6px 12px}
   .reasons .why{flex-basis:100%}
@@ -235,21 +221,31 @@ nav a:hover::before{opacity:1}
 .notes-links{display:flex;flex-wrap:wrap;gap:12px}
 </style>
 <script src="/assets/trackers.js" defer></script>
+<link rel="stylesheet" href="/assets/site-header.css">
+<script defer src="/assets/site-header.js"></script>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <a class="name" href="#top"><b>Bogdan Vučković</b><span class="label" data-fine>Marketing · direction · systems</span></a>
-    <nav class="label">
-      <a href="#approach">Perspective</a>
-      <a href="#work">Work</a>
-      <a href="#notes">Notes</a>
-      <a href="#dice">D.I.C.E.</a>
-      <a href="#contact">Contact ↗</a>
+<!-- shared navigation -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-home" href="/" aria-current="page" aria-label="Bogdan Vučković, homepage">
+      <span class="site-name">Bogdan Vučković</span>
+      <span class="site-byline">Marketing · direction · systems</span>
+    </a>
+    <button type="button" class="site-menu-toggle" aria-expanded="false" aria-controls="site-destinations" hidden>Menu</button>
+    <nav id="site-destinations" aria-label="Main navigation">
+      <a href="/#approach">Perspective</a>
+      <a href="/#work">Work</a>
+      <a href="/notes/">Notes</a>
+      <a href="/atlas/">Digital Atlas</a>
+      <a href="/dice.html">D.I.C.E.</a>
+      <a href="/#contact">Contact</a>
     </nav>
-    <a class="menu label" href="#contact">Contact ↗</a>
   </div>
 </header>
+<!-- end shared navigation -->
+
+
 
 <main id="top">
   <!-- HERO: dithered cloud sky drawn in code; the clouds open around the message; one pixel star -->
@@ -376,6 +372,7 @@ nav a:hover::before{opacity:1}
       <div class="foot label">
         <span>© Bogdan Vučković</span>
         
+        <a href="/workbench.html">Behind the site</a>
         <a href="#top">Back to the top ↑</a>
       </div>
     </footer>

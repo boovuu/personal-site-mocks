@@ -69,10 +69,32 @@
   a{color:var(--teal)}
 </style>
 <script src="/assets/trackers.js" defer></script>
+<link rel="stylesheet" href="/assets/site-header.css">
+<script defer src="/assets/site-header.js"></script>
 </head>
 <body>
+<!-- shared navigation -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-home" href="/" aria-label="Bogdan Vučković, homepage">
+      <span class="site-name">Bogdan Vučković</span>
+      <span class="site-byline">Marketing · direction · systems</span>
+    </a>
+    <button type="button" class="site-menu-toggle" aria-expanded="false" aria-controls="site-destinations" hidden>Menu</button>
+    <nav id="site-destinations" aria-label="Main navigation">
+      <a href="/#approach">Perspective</a>
+      <a href="/#work">Work</a>
+      <a href="/notes/">Notes</a>
+      <a href="/atlas/">Digital Atlas</a>
+      <a href="/dice.html">D.I.C.E.</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<!-- end shared navigation -->
+
 <div class="wrap">
-  <nav class="site-nav" aria-label="Site navigation"><a href="index.html">← Homepage</a><a href="archive.html">Design archive ↗</a></nav><div class="kicker">The Workbench · supporting the homepage</div>
+  <div class="kicker">The Workbench · supporting the homepage</div>
   <h1>Behind the site</h1>
   <p class="sub">I keep the reasoning behind the homepage here: its audience, the editorial choices, the research behind the essays, and the system that carries them.</p>
 <nav class="section-nav" aria-label="On this page"><a href="#start">Start here</a><a href="#structure">Structure</a><a href="#tokens">Design system</a><a href="#laws">Writing rules</a><a href="#status">Open decisions</a></nav>

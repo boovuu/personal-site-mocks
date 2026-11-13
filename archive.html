@@ -24,10 +24,31 @@
   .note a{color:var(--muted)}
 </style>
 <script src="/assets/trackers.js" defer></script>
+<link rel="stylesheet" href="/assets/site-header.css">
+<script defer src="/assets/site-header.js"></script>
 </head>
 <body>
+<!-- shared navigation -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-home" href="/" aria-label="Bogdan Vučković, homepage">
+      <span class="site-name">Bogdan Vučković</span>
+      <span class="site-byline">Marketing · direction · systems</span>
+    </a>
+    <button type="button" class="site-menu-toggle" aria-expanded="false" aria-controls="site-destinations" hidden>Menu</button>
+    <nav id="site-destinations" aria-label="Main navigation">
+      <a href="/#approach">Perspective</a>
+      <a href="/#work">Work</a>
+      <a href="/notes/">Notes</a>
+      <a href="/atlas/">Digital Atlas</a>
+      <a href="/dice.html">D.I.C.E.</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<!-- end shared navigation -->
+
 <div class="wrap">
-  <nav aria-label="Site navigation"><a href="index.html">Homepage</a><a href="workbench.html">Behind the site</a><a href="notes/">Notes</a></nav>
   <div class="kicker">Behind the site</div>
   <h1>Design archive</h1>
   <p class="sub">Earlier directions and identity studies. The homepage is the current front; these pages record the decisions behind it.</p>
