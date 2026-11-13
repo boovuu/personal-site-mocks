@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://bogdanvuckovic.com/</loc><lastmod>2026-11-10</lastmod><priority>1.0</priority></url>
+  <url><loc>https://bogdanvuckovic.com/</loc><lastmod>2026-11-13</lastmod><priority>1.0</priority></url>
+  <url><loc>https://bogdanvuckovic.com/atlas/</loc><lastmod>2026-11-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://bogdanvuckovic.com/notes/</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://bogdanvuckovic.com/notes/brand-and-website.html</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://bogdanvuckovic.com/notes/quartermaster.html</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://bogdanvuckovic.com/notes/sell-by-camouflage.html</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://bogdanvuckovic.com/notes/website-purpose.html</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
-  <url><loc>https://bogdanvuckovic.com/dice.html</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://bogdanvuckovic.com/dice.html</loc><lastmod>2026-11-13</lastmod><priority>0.7</priority></url>
   <url><loc>https://bogdanvuckovic.com/dice-story.html</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
   <url><loc>https://bogdanvuckovic.com/workbench.html</loc><lastmod>2026-11-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://bogdanvuckovic.com/archive.html</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>

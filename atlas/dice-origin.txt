@@ -1,0 +1,78 @@
+D.I.C.E. | The first experiment
+Source: Creative AI Prompting Frameworks, a Gemini conversation.
+Page numbers refer to the 61-page PDF. Quotation marks preserve the
+speaker’s wording, including typing errors. Other text is a summary.
+
+THE OPENING QUESTION — pp. 1–3
+Bogdan: “Do you know some creative processes for AI to commit creative output. Basic ai is not creative enough.”
+Gemini offered five techniques, including unusual constraints and critique
+from different perspectives. Bogdan proposed a hidden tarot reading:
+the three-card draw or Celtic Cross could shape an answer, and he wanted
+something the user could do that resembled shuffling. Gemini suggested
+a four-card layout as another option and a string of characters or five
+words from the room as the user's part in the shuffle.
+
+FIRST TRIALS — pp. 5–11
+Bogdan tried a branding brief for Bloom, then prompts for game concepts.
+For the image test he wanted a prompt to paste into a fresh chat.
+Bogdan: “i want to create an image, visually striking, out of this world, never seen before, introducing new color, just beautiful”
+His five words were “blessing Wolf roof katarina vera”.
+
+THE SAME REQUEST, TWICE — pp. 11–14
+Gemini used Wolf as the animal, roof as the setting, and Katarina as
+the woman facing it. It described a new colour made of violet and teal.
+Bogdan objected that the words were too obviously combined. Gemini
+proposed translating nouns into qualities (wolf into nocturnal movement,
+roof into height) and asked for new words.
+Bogdan: “No try the same prompt but with new system”
+On the retry Gemini kept the woman and wolf and added streams of energy
+between them. Bogdan then clarified what he wanted the words to do.
+Bogdan: “Words given sre not clues and not subtle, it should be used to throw in the mix to give some other output, completely irrelevant”
+Second result: with the original brief and the same five words, Gemini
+wrote an image prompt for a white stone sanctuary with a crystalline
+fissure and a liquid-metal substance. It described using properties of
+the letters instead of the meanings of the words. The transcript shows
+the changed output; it does not verify the claimed shuffle algorithm.
+
+A TEST THAT STILL FAILED — pp. 17–19
+One of the words for a game concept was “sand”. The game used a shifting
+sand bed. Bogdan asked: “why did you use sand?” The older habit persisted.
+
+MAKING IT PORTABLE — pp. 19–24
+Bogdan asked for instructions he could paste into a document and later
+requested a fresh export to try with another model. The exported rules
+still allowed sensory properties of words to influence the result.
+These were experiments on the way to D.I.C.E., not its final specification.
+
+THE FIVE OPENING PROPOSALS — pp. 1–2
+Gemini named Oblique Strategies prompting, Multi-Perspective Critique
+(the Pixar Braintrust Model), the Re-Classification Matrix, Recursive
+Looping (the Telephone Method), and Semantic Deconstruction. The Atlas
+expands each suggestion with an explanation of what a reader could
+inspect in the resulting draft.
+
+AFTER WHITE STONE — pp. 14–24
+The homepage, advice, game and orchid trials used fresh sets of five words.
+The homepage used “pentagon, viscose, pellets, broom, saps” (pp. 14–16).
+The game used “sand, markpliers, forklift, zion, poof” (pp. 17–19).
+The orchid image used “komp, ekran, telefon, mis, tastatura” (pp. 21–22).
+The export on pp. 23–24 retains the instruction to extract properties
+from the words. The stricter rule belongs to the later D.I.C.E. SPEC,
+section 1, Law of the Invisible Spice, and section 2 on the draw.
+
+HOW THE COIN ENTERS THE RECORD — later project documents
+The founding reading (READING-part1.md, “The division of the trade” and
+“Canon flags”) assigns the giving-hand coin to Killick, the astrolabe to
+Metis and the five-dot mark to Bogdan. The later design study The Reckoning
+Coin, sections “Concept” and “The family”, presents a proposed two-sided
+object. The study identifies Cassiopeia on Seed and a 022.5° heading on
+Bearing. This connection is documented in the design study. The Gemini
+image experiment ends with a prompt for a white stone scene.
+
+PERSONAL WEBSITE AND RECKONING COIN — dated source notes
+October 9: Three homepage proposals and Bogdan’s reply from his phone.
+October 11: In the coin conversation, Bogdan asked for two faces and suggested Cassiopeia. Claude proposed the name Reckoning Coin and called the faces Bearing and Seed. The design study and cinematic seascape both entered the site archive that day.
+October 23: The D.I.C.E. story page connected the five stars to the five words.
+November 6: The night homepage paired the sailboat with a line from Sea-Fever.
+November 9: The editorial homepage used Petar’s dotted imagery. Its Perspective section carries the same sailboat, while the opening sky is drawn separately.
+November 13: Bogdan identified the Hermes Agent website or app as the inspiration for the dots. The portrait and desktop backdrop in the Atlas illustrate that style. The exact image Petar saw and the original commissioning exchange for the cinematic image have yet to be identified.

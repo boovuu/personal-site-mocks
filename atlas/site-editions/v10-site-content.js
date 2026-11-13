@@ -1,0 +1,257 @@
+/* Shared site copy. Author revision, 2026-10-11. */
+window.SITE = {
+  "identity": {
+    "name": "Bogdan Vučković",
+    "role": "Website operator",
+    "location": "Belgrade, Serbia",
+    "timezone": "Working across time zones",
+    "brandLine": "Marketing · direction · systems",
+    "sealLetter": "B",
+    "email": "hello@example.com",
+    "github": "https://github.com/boovuu"
+  },
+  "hero": {
+    "eyebrow": "",
+    "lead": "Marketing growth.<br><em>Website systems.</em>",
+    "copy": "The website is a revenue surface: Webflow and CMS architecture, measurement that survives an audit, consent that behaves, pages a team can ship without breaking things. I own that surface as one system.",
+    "primaryCta": {
+      "label": "Selected work",
+      "href": "#work"
+    },
+    "secondaryCta": {
+      "label": "How I see it",
+      "href": "#approach"
+    },
+    "mapCard": {
+      "code": "",
+      "label": "",
+      "stops": [],
+      "note": "",
+      "strong": "“and a star to steer her by”",
+      "proofId": "proof.map-card",
+      "quoteAuthor": "John Masefield",
+      "quoteWork": "Sea-Fever",
+      "quoteSource": "https://www.poetryfoundation.org/poems/54932/sea-fever-56d235e0d871e"
+    }
+  },
+  "approach": {
+    "kicker": "01 / Perspective",
+    "heading": "A shared direction gives good work its purpose.",
+    "body": [
+      "A small team and a large organisation face the same question: what are we trying to achieve, and which decisions will move us there? I begin with that question. The brand, the website, and the way the team works should follow from the answer.",
+      "My place is between the ambition and its execution. Close enough to the business to understand the choices; close enough to the work to know what those choices require."
+    ]
+  },
+  "work": {
+    "kicker": "02 / Selected work",
+    "heading": "Built to hold together.",
+    "sub": "Three settings. Names withheld by rule. What I owned, stated.",
+    "cases": [
+      {
+        "industry": "Enterprise software",
+        "title": "A continuing responsibility",
+        "body": "Ongoing ownership of the website inside an enterprise marketing team: Webflow and CMS across launches and campaigns, analytics that get trusted before spend, consent that behaves, schema the engines parse.",
+        "chain": "problem: no owner across seams → move: single-operator coverage → result: site holds shape between teams → limits: numbers shared on request",
+        "tags": [],
+        "disclosure": "anonymized",
+        "attribution": "sole operator: platform, analytics, consent, schema",
+        "proofId": "proof.chain-visible"
+      },
+      {
+        "industry": "Contract management",
+        "title": "A campaign, in context",
+        "body": "Campaign pages for a contract-management business where measurement kept breaking at the edges: consent discipline and embed QA so the data survives the campaign.",
+        "chain": "problem: measurement broke at the edges → move: consent + embed discipline → result: clean data survives campaigns → limits: baseline pre-dates tooling",
+        "tags": [],
+        "disclosure": "anonymized",
+        "attribution": "sole operator: consent architecture, tracking QA",
+        "proofId": "proof.chain-visible"
+      },
+      {
+        "industry": "Travel operator · at scale",
+        "title": "A portfolio with a common structure",
+        "body": "A property portfolio of one-off pages rebuilt as a single publishing system: shared CMS architecture with schema and answer-shaped content that search and AI engines parse.",
+        "chain": "problem: one-off pages decayed → move: CMS as system + schema @graph → result: machine-quotable structure → limits: quoted volume still accruing",
+        "tags": [],
+        "disclosure": "anonymized-strict",
+        "attribution": "sole operator: CMS architecture, schema design",
+        "proofId": "proof.chain-visible"
+      }
+    ]
+  },
+  "principles": {
+    "kicker": "03 / Working principles",
+    "heading": "Direction. Judgement. Continuity.",
+    "items": [
+      {
+        "title": "Clarity of purpose.",
+        "body": "The job, the buyer, and the constraint named before anything gets built. The site knows what it is for; the team can repeat it in one sentence."
+      },
+      {
+        "title": "Judgement in context.",
+        "body": "Every decision tied to the brand, the buyer, and the number it is meant to move. If nothing measurable changes, the work is not done."
+      },
+      {
+        "title": "Room to grow.",
+        "body": "Tokens, sections, and CMS structure built for the next campaign and the next market, so a new page costs an afternoon instead of a redesign."
+      }
+    ]
+  },
+  "contact": {
+    "kicker": "A good place to start",
+    "heading": "Where is the site getting stuck?",
+    "body": "Tell me what is not working: the tracking nobody trusts, the consent that drifts, the CMS the team avoids. We work out what it needs next.",
+    "cta": {
+      "label": "Start a conversation",
+      "href": "../../index.html#contact"
+    }
+  },
+  "footer": {
+    "note": "",
+    "backToTop": "Back to the top"
+  },
+  "exhibits": [
+    {
+      "code": "Exhibit A · this site",
+      "title": "The system, with reasons on",
+      "body": "Toggle the reason layer: every section carries its why.",
+      "href": "v9-carries-the-work.html",
+      "linkLabel": "Toggle reasons on this page",
+      "proofId": "proof.reason-layer"
+    },
+    {
+      "code": "Exhibit B · the engine",
+      "title": "D.I.C.E. · the deterministic draw",
+      "body": "Five words become a hashed, repeatable card draw. A JavaScript port of the original engine, verified card for card against it.",
+      "href": "../../dice.html",
+      "linkLabel": "Run a draw",
+      "proofId": "proof.dice"
+    }
+  ],
+  "proofs": {
+    "proof.map-card": {
+      "level": "artifact",
+      "public": true,
+      "href": "v9-carries-the-work.html",
+      "what": "The operating-map card itself + the reason layer on this page",
+      "where": "hero map card / reasons toggle"
+    },
+    "proof.reason-layer": {
+      "level": "artifact",
+      "public": true,
+      "href": "v9-carries-the-work.html",
+      "what": "Reasons toggle annotates every section with its why",
+      "where": "top bar of this page"
+    },
+    "proof.dice": {
+      "level": "artifact",
+      "public": true,
+      "href": "../../dice.html",
+      "what": "The draw engine itself, ported to the page and verified against the Python original: 7 of 7 seeds identical (scripts/verify-dice-port.js).",
+      "where": "D.I.C.E. exhibit",
+      "blocksShip": false
+    },
+    "proof.chain-visible": {
+      "level": "artifact",
+      "public": true,
+      "href": "v9-carries-the-work.html",
+      "what": "Every work case ships with problem → move → result → limits",
+      "where": "Selected work section"
+    },
+    "proof.case-scale": {
+      "level": "metric",
+      "public": false,
+      "href": null,
+      "what": "1,500+ CMS records moved into one system",
+      "where": "Travel operator case, public redacted proof pending",
+      "blocksShip": true
+    },
+    "proof.case-tokens": {
+      "level": "none",
+      "public": false,
+      "href": null,
+      "what": "Withdrawn 2026-10-11 by the author; the 38-styles case is not a current personal case. No proof is owed on a withdrawn claim.",
+      "where": "Not on the site",
+      "blocksShip": false
+    },
+    "proof.anonymized": {
+      "level": "example",
+      "public": true,
+      "href": "v9-carries-the-work.html",
+      "what": "All cases anonymized by rule; details shared privately on request",
+      "where": "Selected work + on request"
+    }
+  },
+  "strategy": {
+    "editorialDirection": {
+      "audience": "Path A primary: marketing decision-maker (CMO / VP Marketing / growth lead) at a B2B company whose website is a revenue surface. Path B served, not addressed first: agency principals white-labeling a reliable operator.",
+      "position": "Business judgement translated into coordinated execution",
+      "voice": "Composed and precise (kept from the author revision), with site-soul.md sentence laws restored: name the object, numbers over adjectives, conclusion before mechanism, limits stated. Derivation: ICP-ANALYSIS.md 2026-10-12.",
+      "icpBasis": "Evidence-scored: direct buyers proven (paid more than once, rate accepted without pushback), agency channel proven at volume; anti-ICP: one-person design+dev expectations, one-off pages, brochure sites.",
+      "quartermaster": "A researched organisational analogy, developed in an essay; no invented role or rank.",
+      "removedClaim": "38 styles case withdrawn by the author on 2026-10-11; not a current personal case."
+    },
+    "principle": "Sell through the quality of the thinking, supported evidence, and proportionate invitation. No urgency, service inventory, or self-awarded status.",
+    "surfaces": {
+      "homepage": "Perspective, selected experience, researched notes, independent project, contact",
+      "behind": "Current editorial rationale, research limits, sources, system documentation, archive"
+    },
+    "research": [
+      {
+        "subject": "Quartermaster organisation",
+        "href": "https://www.peterleeson.com/An-arrgh-chy.pdf",
+        "scope": "Historical research; modern application is an analogy."
+      },
+      {
+        "subject": "Brand and response time horizons",
+        "href": "https://ipa.co.uk/knowledge/publications-reports/the-long-and-the-short-of-it-balancing-short-and-long-term-marketing-strategies/",
+        "scope": "Publisher summary consulted; no universal website ROI or budget claim."
+      },
+      {
+        "subject": "Website credibility",
+        "href": "https://www.nngroup.com/articles/trustworthy-design/",
+        "scope": "Usability study; perceived trust is not causal revenue evidence."
+      },
+      {
+        "subject": "Hidden decision-makers",
+        "href": "https://www.edelman.com/expertise/Business-Marketing/2025-b2b-thought-leadership-report",
+        "scope": "Survey report; not causal proof of a specific article converting."
+      }
+    ]
+  },
+  "nav": {
+    "approach": "Perspective",
+    "work": "Selected work",
+    "contact": "Contact ↗"
+  },
+  "notes": [
+    {
+      "number": "01",
+      "title": "The quartermaster’s place",
+      "body": "Clear decisions, a capable crew, and the organisation that lets people do their best work.",
+      "href": "../../notes/quartermaster.html",
+      "label": "Read the essay ↗"
+    },
+    {
+      "number": "02",
+      "title": "When does the brand sell? When does the website?",
+      "body": "The relationship between being remembered, being considered, and helping a buyer decide.",
+      "href": "../../notes/brand-and-website.html",
+      "label": "Read the essay ↗"
+    },
+    {
+      "number": "03",
+      "title": "What the F do you want your website to do?",
+      "body": "A practical guide to the decisions that belong before the brief.",
+      "href": "../../notes/website-purpose.html",
+      "label": "Read the guide ↗"
+    },
+    {
+      "number": "04",
+      "title": "Sell by camouflaging intent",
+      "body": "Why a website sells more when it announces less: the sources, the rules, and the fair-chase boundary.",
+      "href": "../../notes/sell-by-camouflage.html",
+      "label": "Read the essay ↗"
+    }
+  ]
+};

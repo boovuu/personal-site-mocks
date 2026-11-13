@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOCK v5 — Gallery — Bogdan Vuckovic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#fcfcfa; --ink:#26241f; --muted:#86816f; --line:#e8e5dc; --accent:#2d4a32;
+    --serif:'Cormorant Garamond',Georgia,serif; --sans:'Work Sans',sans-serif; --max:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 48px}
+  a{color:var(--ink)}
+  /* mock bar */
+  .mockbar{background:#efede6;border-bottom:1px solid var(--line);padding:10px 24px;font:12px var(--sans);color:#8b8676;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .mockbar b{color:var(--accent)}
+  .mockbar button{background:var(--ink);border:0;color:var(--paper);font:600 11.5px var(--sans);padding:5px 12px;cursor:pointer;border-radius:99px}
+  body.show-reasons [data-reason]{outline:1.5px dashed rgba(45,74,50,.5);outline-offset:4px;position:relative}
+  body.show-reasons [data-reason]::after{content:attr(data-reason);position:absolute;left:0;top:-14px;font:10.5px var(--sans);color:var(--accent);background:var(--paper);padding:0 6px;white-space:nowrap;max-width:94vw;overflow:hidden;text-overflow:ellipsis;z-index:9}
+  /* nav */
+  nav{padding:30px 0}
+  .nav{display:flex;justify-content:space-between;align-items:baseline}
+  .brand{font:500 19px var(--serif);letter-spacing:.02em}
+  .nav .links{display:flex;gap:32px;font-size:14px}
+  .nav .links a{color:var(--muted);text-decoration:none}
+  .nav .links a:hover{color:var(--ink)}
+  .nav .links a.cta{color:var(--accent);font-weight:600}
+  /* gallery hero: asymmetric, editorial, huge air */
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;padding:90px 0 130px;border-bottom:1px solid var(--line)}
+  .hero-left .kicker{font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:28px}
+  h1{font-family:var(--serif);font-size:clamp(44px,6.5vw,76px);font-weight:500;line-height:1.05;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
+  h1 em{font-style:italic;color:var(--accent)}
+  .hero-right{padding-bottom:8px}
+  .hero-right p{font-size:19px;color:var(--muted);line-height:1.75;max-width:420px}
+  .hero-right p b{color:var(--ink);font-weight:500}
+  .hero-right .cta-row{margin-top:36px}
+  .cta{display:inline-block;color:var(--accent);text-decoration:none;font-weight:600;font-size:15px;border-bottom:1.5px solid var(--accent);padding-bottom:3px}
+  .cta:hover{opacity:.75}
+  /* numbered sections like catalogue plates */
+  section{padding:100px 0}
+  .plate{display:flex;align-items:baseline;gap:18px;margin-bottom:52px}
+  .plate .no{font:italic 400 20px var(--serif);color:var(--accent)}
+  .plate h2{font-family:var(--serif);font-size:clamp(26px,3.4vw,36px);font-weight:500;letter-spacing:.01em}
+  .plate .rule{flex:1;border-top:1px solid var(--line);transform:translateY(-6px)}
+  /* principles: catalogue entries */
+  .entry{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:36px 0;border-top:1px solid var(--line)}
+  .entry:first-of-type{border-top:0;padding-top:0}
+  .entry h3{font-family:var(--serif);font-size:26px;font-weight:500;line-height:1.3}
+  .entry p{color:var(--muted);font-size:16.5px}
+  .entry p b{color:var(--ink);font-weight:500}
+  /* work: full-bleed-feeling rows, alternating alignment */
+  .piece{padding:52px 0;border-top:1px solid var(--line)}
+  .piece:first-of-type{border-top:0;padding-top:0}
+  .piece .tag{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .piece h3{font-family:var(--serif);font-size:clamp(26px,3.2vw,34px);font-weight:500;margin:10px 0 12px;max-width:640px;line-height:1.25}
+  .piece p{color:var(--muted);font-size:17px;max-width:600px}
+  .piece p b{color:var(--ink);font-weight:500}
+  .piece .why{margin-top:16px;font:italic 400 15.5px var(--serif);color:var(--accent)}
+  /* exhibits */
+  .exh{padding:40px 0;border-top:1px solid var(--line)}
+  .exh:first-of-type{border-top:0;padding-top:0}
+  .exh .kind{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .exh h3{font-family:var(--serif);font-size:24px;font-weight:500;margin:8px 0}
+  .exh p{color:var(--muted);font-size:16px;max-width:560px;margin-bottom:12px}
+  .exh a{color:var(--accent);text-decoration:none;font-weight:600;font-size:14.5px;border-bottom:1px solid var(--accent);padding-bottom:2px}
+  /* final */
+  .final{padding:140px 0;text-align:center}
+  .final .kicker{font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:24px}
+  .final h2{font-family:var(--serif);font-size:clamp(32px,4.8vw,54px);font-weight:500;line-height:1.15;max-width:720px;margin:0 auto 20px;text-wrap:balance}
+  .final p{color:var(--muted);font-size:18.5px;max-width:520px;margin:0 auto 40px}
+  .final .cta{font-size:16px}
+  footer{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color:var(--muted)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer a{color:var(--muted);text-decoration:none}
+  @media(max-width:800px){
+    .wrap{padding:0 26px}
+    .hero{grid-template-columns:1fr;gap:36px;padding:60px 0 80px}
+    section{padding:70px 0}
+    .entry{grid-template-columns:1fr;gap:10px}
+    .nav .links a:not(.cta){display:none}
+  }
+</style>
+</head>
+<body>
+<div class="mockbar" data-reason="Mock chrome, ships never. Judges one question: does this make the rate feel high?">
+  <b>MOCK v5 — GALLERY</b><span>light gallery catalogue, serif plates, deep green accent · museum air, zero code</span>
+  <button onclick="document.body.classList.toggle('show-reasons')">Toggle reason layer</button>
+</div>
+
+<nav data-reason="Chrome as a catalogue spine: numbered plates, quiet links.">
+  <div class="wrap nav">
+    <div class="brand">Bogdan Vuckovic</div>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#exhibits">Exhibits</a>
+      <a class="cta" href="#talk" data-reason="One conversion goal: paid consult.">Book a consult</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-left">
+    <div class="kicker" data-reason="Specialist frame up top.">Growth engineering · Webflow stack</div>
+    <h1 data-reason="Positioning stated like a catalogue title: craft, not hustle.">Growth, <em>measured</em> &amp; built with reason</h1>
+  </div>
+  <div class="hero-right">
+    <p data-reason="The reason layer as creed: the sentence competitors cannot copy.">Nothing here is decoration. Every section on this site states <b>why it exists</b> — the same discipline I bring to your operation, turned on myself.</p>
+    <div class="cta-row">
+      <a class="cta" href="#talk" data-reason="Primary CTA: underlined, not boxed. The one accent element in the hero.">Book a consult →</a>
+    </div>
+  </div>
+</header>
+
+<section id="principles">
+  <div class="wrap">
+    <div class="plate"><span class="no">I.</span><h2 data-reason="Catalogue plate: the method as three entries.">The method</h2><span class="rule"></span></div>
+    <div class="entry" data-reason="Principle 1: measurement. Unmeasured work cannot be defended, so it cannot be expensive.">
+      <h3>Measure before opinions</h3>
+      <p>GA4, GTM, Consent Mode v2. A number that cannot survive an audit makes no decisions here. <b>The instrument is trusted because it is built like it will be audited.</b></p>
+    </div>
+    <div class="entry" data-reason="Principle 2: systems over pages. One-offs decay; systems compound.">
+      <h3>Systems, never one-off pages</h3>
+      <p>Tokens to sections to pages, assembled once and extended forever. <b>A new page should cost an afternoon.</b></p>
+    </div>
+    <div class="entry" data-reason="Principle 3: agents do the repeatable, humans keep judgment.">
+      <h3>Agents draft. Humans sign.</h3>
+      <p>Agent sessions handle the repeatable end to end. <b>Humans keep the pen on anything that faces a client.</b></p>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="plate"><span class="no">II.</span><h2 data-reason="Work shown as numbered pieces in an exhibition.">Selected work</h2><span class="rule"></span></div>
+    <div class="piece" data-reason="Piece 1: measurement + conversion. The reasoning chain is the senior signal.">
+      <div class="tag">B2B SaaS · Anonymized by rule</div>
+      <h3>Lead tracking, rebuilt and defended</h3>
+      <p>Forms nobody trusted, attribution nobody believed. The capture layer was rebuilt, then proven with clean before/after attribution — <b>and the limits of the proof stated on the same page.</b></p>
+      <div class="why">why it matters: work without a defensible number cannot command a defensible rate</div>
+    </div>
+    <div class="piece" data-reason="Piece 2: CMS + AEO architecture at scale.">
+      <div class="tag">Travel operator · Anonymized by rule</div>
+      <h3>1,500 records, one system, quoted by machines</h3>
+      <p>A property CMS rebuilt as architecture, with schema and answer-shaped content that search and AI engines parse — <b>shipped as a system, not a page.</b></p>
+      <div class="why">why it matters: AI engines now quote sites; only structured ones get quoted correctly</div>
+    </div>
+    <div class="piece" data-reason="Piece 3: the design system rebuild.">
+      <div class="tag">SaaS marketing · Anonymized by rule</div>
+      <h3>From thirty-eight styles to one</h3>
+      <p>A marketing site rebuilt on tokens and a section library. <b>Pages stopped being designed twice.</b></p>
+      <div class="why">why it matters: one-offs decay, systems compound; compounding is what gets billed</div>
+    </div>
+  </div>
+</section>
+
+<section id="exhibits">
+  <div class="wrap">
+    <div class="plate"><span class="no">III.</span><h2 data-reason="Exhibits: live proof beats claims.">Exhibits</h2><span class="rule"></span></div>
+    <div class="exh" data-reason="The site exhibits itself: the reason layer, open.">
+      <div class="kind">Exhibit A · this site</div>
+      <h3>The system, with reasons on</h3>
+      <p>Every token and section of this very site, annotated with why it exists. The discipline, demonstrated on the demonstrator.</p>
+      <a href="#">Inspect the system →</a>
+    </div>
+    <div class="exh" data-reason="D.I.C.E.: the deterministic engine, live. Function before lore.">
+      <div class="kind">Exhibit B · the engine</div>
+      <h3>D.I.C.E. — randomness you can audit</h3>
+      <p>Same seed, same draw, forever. A working deterministic creative engine with real hashes — try five words.</p>
+      <a href="#">Run the engine →</a>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="talk">
+  <div class="wrap">
+    <div class="kicker" data-reason="Final ask framed as an invitation, not a pitch.">Commissions open</div>
+    <h2 data-reason="Final ask: expensive and specific.">One conversation about what your site should be earning</h2>
+    <p data-reason="Qualifying filter + honesty clause.">What I would measure first, what I would build, what it should be worth. If the fit is not there, I will tell you.</p>
+    <a class="cta" href="mailto:boovuu@hotmail.com?subject=Consultation" data-reason="Consult door.">Book a consult →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Bogdan Vuckovic · Zemun, Serbia</span>
+    <span><a href="mailto:boovuu@hotmail.com">boovuu@hotmail.com</a> · <a href="https://github.com/boovuu">GitHub</a></span>
+  </div>
+</footer>
+</body>
+</html>

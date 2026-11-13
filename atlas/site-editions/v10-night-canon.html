@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Marketing direction, a considered website, and the organisation that carries the work. Perspective, selected work, notes, and D.I.C.E. by Bogdan Vučković.">
+<title>Bogdan Vučković · Ambition, with a bearing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* V10 NIGHT CANON. Decided with Bogdan 2026-11-06: the dark cinematic skin is the
+   canon; every painted color is a token (tokens.json, group "night"). The sea
+   photograph is the one exempt content layer (token-exceptions.json). */
+:root{
+  --night:#142827; --night-band:#1F3A3D; --night-deep:#091d21; --night-shade:#071719; --night-glow:#315452;
+  --night-ink:#F3E8D0; --night-muted:#b8c6c0;
+  --brass:#C0A16A; --gold-on-teal:#D2A969; --ink:#172c2b; --rust:#9c4a2e;
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --mono:'SF Mono',SFMono-Regular,Consolas,'Liberation Mono',monospace;
+  --hairline:color-mix(in srgb, var(--night-ink) 22%, transparent);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--night-ink);font-family:var(--serif);font-size:18px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--brass)}
+.wrap{width:min(1200px,calc(100% - 64px));margin:auto}
+/* reason layer */
+.reasonbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--night) 96%, transparent);color:var(--night-ink);font:11px var(--mono);letter-spacing:.06em;padding:9px 24px;display:flex;gap:14px;align-items:center}
+.reasonbar button{background:var(--brass);border:0;color:var(--night);font:700 10px var(--mono);letter-spacing:.08em;padding:5px 12px;cursor:pointer;text-transform:uppercase}
+body.reasons [data-why]{outline:1.5px dashed color-mix(in srgb, var(--rust) 80%, transparent);outline-offset:4px;position:relative}
+body.reasons [data-why]:after{content:attr(data-why);position:absolute;left:0;top:-15px;font:10px var(--mono);color:var(--night);background:var(--brass);padding:1px 7px;white-space:nowrap;max-width:96vw;overflow:hidden;text-overflow:ellipsis;z-index:9}
+/* masthead */
+.nav{height:94px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--hairline)}
+.brand{display:flex;align-items:center;gap:13px;font-size:17px;line-height:1.15}
+.seal{height:42px;width:42px;display:block;flex-shrink:0;color:var(--brass)}
+.seal svg{display:block;width:100%;height:100%}
+.brand small{display:block;color:var(--night-muted);font-size:11px;letter-spacing:.09em;text-transform:uppercase;margin-top:5px;font-family:var(--serif)}
+.navlinks{display:flex;gap:30px;font-size:14px;font-family:var(--serif);letter-spacing:.03em}
+.navlinks a:last-child{border-bottom:1px solid var(--brass);padding-bottom:4px}
+/* hero: the composed symbol. Small ship, vast sea, one guiding star. */
+.cinematic-hero{position:relative;min-height:680px;height:100svh;max-height:1200px;overflow:hidden;background:var(--night-shade);color:var(--night-ink);display:flex;align-items:center}
+.sea-scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:95% center;animation:sea-breath 32s ease-in-out infinite alternate;transform:scale(1.035)}
+.sea-shade{position:absolute;inset:0;background:linear-gradient(90deg,color-mix(in srgb,var(--night-shade) 77%,transparent),color-mix(in srgb,var(--night-shade) 42%,transparent) 43%,color-mix(in srgb,var(--night-shade) 4%,transparent) 76%),linear-gradient(0deg,color-mix(in srgb,var(--night-shade) 70%,transparent),transparent 28%,transparent 75%,color-mix(in srgb,var(--night-shade) 35%,transparent))}
+.cinematic-copy{position:relative;padding-top:100px;padding-bottom:110px}
+.cinematic-copy .eyebrow{color:var(--brass);letter-spacing:.17em;font-size:11px;font-family:var(--mono)}
+h1,h2,h3,p{margin-top:0}
+.cinematic-copy h1{max-width:860px;font-size:clamp(60px,6.8vw,98px);line-height:1.04;letter-spacing:-.045em;margin:26px 0 30px;text-wrap:balance;font-weight:400}
+.cinematic-copy h1 em{color:var(--night-ink)}
+.hero-copy{color:color-mix(in srgb, var(--night-ink) 86%, transparent);max-width:515px;font-size:19px;line-height:1.65}
+.hero-actions{display:flex;align-items:center;gap:32px;margin-top:32px;font-family:var(--serif);font-size:15px;flex-wrap:wrap}
+.textlink{border-bottom:1px solid color-mix(in srgb, var(--brass) 60%, transparent);padding-bottom:3px}
+.horizon-note{position:absolute;bottom:38px;left:0;right:0;display:flex;align-items:end;justify-content:space-between;font-size:13px;color:color-mix(in srgb, var(--night-ink) 85%, transparent)}
+.horizon-note span{text-align:right;font-style:italic;font-size:19px}
+.horizon-note small{display:block;font-style:normal;font-size:10px;letter-spacing:.08em;margin-top:6px}
+@keyframes sea-breath{from{transform:scale(1.035) translateX(0)}to{transform:scale(1.07) translateX(-.6%)}}
+@media(prefers-reduced-motion:reduce){.sea-scene{animation:none}html{scroll-behavior:auto}}
+/* sections */
+.kicker,.section-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);font-family:var(--mono)}
+.section-label{border-top:1px solid var(--hairline);padding-top:18px}
+.intro{display:grid;grid-template-columns:1fr 2fr;gap:8vw;padding:110px 0}
+.intro h2{font-size:clamp(34px,4vw,54px);font-weight:400;line-height:1.08;letter-spacing:-.03em;color:var(--night-ink);margin:0 0 26px;max-width:740px}
+.intro p{font-size:20px;color:var(--night-muted);max-width:670px;margin:0 0 17px}
+.intro p:last-child{margin:0}
+.work{padding-block:110px;background:linear-gradient(180deg,var(--night-band),var(--night))}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:35px}
+.section-head h2{font-size:clamp(40px,5vw,62px);font-weight:400;letter-spacing:-.04em;margin:10px 0 0;color:var(--night-ink)}
+.section-head p{font-size:11px;color:var(--night-muted);margin:0;font-family:var(--mono)}
+.projects{border-top:1px solid var(--hairline)}
+.project{display:grid;grid-template-columns:230px 1fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--hairline)}
+.project-top{display:flex;align-items:baseline;justify-content:flex-start;gap:18px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--night-muted);font-family:var(--mono)}
+.project-index{color:var(--brass)}
+.project h3{font-size:30px;font-weight:400;letter-spacing:-.03em;margin:0 0 12px;color:var(--night-ink)}
+.project p{max-width:680px;font-size:18px;color:var(--night-muted);margin:0}
+.chain{display:none;margin-top:14px;font:11px var(--mono);color:var(--night-muted);letter-spacing:.02em;line-height:1.7}
+.chain b{color:var(--brass);font-weight:500}
+.reason-layer .project .chain{display:block}
+.principles{padding-block:110px}
+.principles-grid{display:grid;grid-template-columns:1fr 2fr;gap:8vw}
+.principles h2{font-size:clamp(38px,4.7vw,58px);line-height:1.06;font-weight:400;letter-spacing:-.035em;margin:8px 0;color:var(--night-ink)}
+.principle-list{border-top:1px solid var(--hairline)}
+.principle{display:grid;grid-template-columns:55px 1fr;gap:18px;border-bottom:1px solid var(--hairline);padding:30px 0}
+.principle b{font-size:11px;color:var(--brass);padding-top:6px;font-family:var(--mono)}
+.principle h3{font-size:25px;font-weight:400;margin:0 0 12px;line-height:1.25;color:var(--night-ink)}
+.principle p{font-size:17px;line-height:1.75;color:var(--night-muted);margin:0;max-width:550px}
+/* notes: the garden of seeds */
+.editorial{padding-top:100px;padding-bottom:100px}
+.editorial h2{font-size:clamp(38px,5vw,62px);font-weight:400;letter-spacing:-.035em;margin:16px 0 40px;color:var(--night-ink)}
+.notes-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.notes-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.note-card{border-top:1px solid var(--hairline);padding-top:28px;display:flex;flex-direction:column;align-items:flex-start}
+.note-card .number{font-size:13px;color:var(--brass)}
+.note-card h3{font-weight:400;font-size:29px;line-height:1.15;margin:24px 0 18px;color:var(--night-ink)}
+.note-card p{font-size:17px;color:var(--night-muted);margin-bottom:28px}
+.note-card a{margin-top:auto;font-size:15px}
+/* dice: the instrument band */
+.dice-feature{position:relative;overflow:hidden;padding-block:120px;background:radial-gradient(ellipse at 20% 40%,var(--night-glow) 0,var(--night) 45%,var(--night-deep) 85%)}
+.dice-feature:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;background-image:radial-gradient(var(--night-ink) .7px,transparent 1px),radial-gradient(var(--brass) .8px,transparent 1px);background-size:83px 97px,137px 151px;background-position:20px 10px,70px 50px}
+.dice-layout{position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:8vw;align-items:center}
+.dice-art svg{width:100%;height:auto;margin:0;filter:drop-shadow(0 0 25px color-mix(in srgb, var(--brass) 15%, transparent))}
+.constellation-line{stroke:var(--gold-on-teal);stroke-width:1;fill:none;opacity:.65}
+.map-tick{stroke:var(--gold-on-teal);stroke-width:1;opacity:.75;fill:none}
+.map-stop-dot{fill:var(--night-ink)}
+.map-stop-dot-gold{fill:var(--gold-on-teal)}
+.dice-feature h2{font-size:64px;font-weight:400;margin:18px 0;color:var(--night-ink)}
+.dice-lead{font-size:28px;font-style:italic;max-width:530px}
+.dice-feature p{max-width:530px;color:var(--night-muted)}
+.dice-anatomy{font-size:14px;letter-spacing:.1em;color:var(--gold-on-teal)}
+/* contact: flat night band, no photograph */
+.contact{padding-block:130px;background:linear-gradient(180deg,var(--night),var(--night-deep))}
+.contact .kicker{color:var(--brass)}
+.contact-grid{display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px}
+.contact h2{font-size:clamp(58px,7vw,96px);line-height:1.02;font-weight:400;letter-spacing:-.04em;max-width:800px;margin:18px 0 32px;color:var(--night-ink)}
+.contact p{font-size:18px;color:var(--night-muted);max-width:580px;line-height:1.65;margin:0}
+.contact .button{display:inline-flex;align-items:center;background:var(--night-ink);color:var(--night);padding:14px 18px;white-space:nowrap;margin-bottom:4px}
+.contact .button:hover{background:var(--brass);color:var(--night)}
+/* footer */
+.footer{background:var(--night-deep);color:var(--night-muted);border-top:1px solid var(--hairline);font-size:10px;letter-spacing:.06em;font-family:var(--mono)}
+.footer .wrap{min-height:55px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.footer a:hover{color:var(--brass)}
+@media(max-width:760px){
+  .wrap{width:min(100% - 36px,600px)}
+  .reasonbar{flex-wrap:wrap}
+  .nav{height:auto;flex-wrap:wrap;gap:18px;padding-block:20px}
+  .navlinks{gap:12px;font-size:12px;width:100%;justify-content:space-between}
+  .brand{font-size:15px}.brand small{font-size:9px}
+  .cinematic-hero{min-height:850px;height:100svh}
+  .sea-scene{object-position:95% center}
+  .sea-shade{background:linear-gradient(90deg,color-mix(in srgb,var(--night-shade) 75%,transparent),color-mix(in srgb,var(--night-shade) 30%,transparent)),linear-gradient(0deg,color-mix(in srgb,var(--night-shade) 80%,transparent),transparent 50%)}
+  .cinematic-copy{padding-top:150px;padding-bottom:90px}
+  .cinematic-copy h1{font-size:50px;max-width:450px}
+  .hero-copy{font-size:17px;max-width:380px}
+  .hero-actions{gap:20px}
+  .horizon-note{bottom:26px}.horizon-note span{font-size:15px;max-width:210px}.horizon-note small{font-size:9px}
+  .intro,.principles-grid,.contact-grid,.dice-layout{grid-template-columns:1fr;gap:24px}
+  .intro,#notes,.principles{padding-block:70px}
+  .work,.dice-feature,.contact{padding-block:80px}
+  .intro h2{font-size:38px}.intro p{font-size:17px}
+  .project{grid-template-columns:1fr;gap:18px;padding:28px 0}
+  .notes-grid{grid-template-columns:1fr;gap:40px}
+  .dice-art{max-width:430px}
+  .footer .wrap{padding:14px 0;flex-direction:column;align-items:flex-start}
+}
+</style>
+<link rel="icon" type="image/svg+xml" href="../../assets/coin.svg">
+</head>
+<body>
+
+<div class="reasonbar" title="Reason layer: why every section exists">
+  <button aria-pressed="false" onclick="document.body.classList.toggle('reasons'); document.body.classList.toggle('reason-layer'); this.setAttribute('aria-pressed', document.body.classList.contains('reasons'))">Reasons: off</button>
+  <span>Every section carries its why. Toggle to see the reasoning on the page itself.</span>
+</div>
+
+<header class="wrap nav" id="top"><a class="brand" href="#top" aria-label="home">
+  <span class="seal" data-why="The coin's Bearing face, simplified to a needle and star for small sizes. The one signature mark; used once per surface."><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+    <circle cx="16" cy="16" r="14.4" fill="none" stroke="currentColor" stroke-width="2.1"/>
+    <g transform="rotate(22.5 16 16)">
+      <path d="M16 10.4 L18.3 16 L16 24.2 L13.7 16 Z" fill="currentColor"/>
+      <circle cx="16" cy="6.8" r="2.25" style="fill:var(--star,currentColor)"/>
+    </g>
+  </svg></span>
+  <span data-copy-token="copy.category"><span data-c="identity.name"></span><small data-c="identity.brandLine"></small></span>
+</a>
+<nav class="navlinks">
+  <a href="#approach" data-c-nav="approach">Perspective</a>
+  <a href="#work" data-c-nav="work">Selected work</a>
+  <a href="../../notes/">Notes</a>
+  <a href="../../dice.html">D.I.C.E.</a>
+  <a href="#contact" data-c-nav="contact">Contact ↗</a>
+</nav></header>
+
+<main>
+
+<section class="cinematic-hero" aria-label="A sailing ship beneath a guiding star on a vast sea">
+ <img class="sea-scene" src="../../assets/cinematic-sea.png" alt="A small sailing ship continues across a vast dark sea beneath an immense sky and one guiding star." fetchpriority="high">
+ <div class="sea-shade"></div>
+ <div class="wrap cinematic-copy">
+  <h1 data-c="hero.lead"></h1>
+  <p class="hero-copy" data-c="hero.copy"></p>
+  <div class="hero-actions"><a class="textlink" href="#approach">Perspective ↗</a><a class="textlink" href="#work">Selected work ↗</a></div>
+ </div>
+ <div class="wrap horizon-note"><a href="#approach" aria-label="Continue to perspective">Continue ↓</a><span>“and a star to steer her by” <small>John Masefield · Sea-Fever</small></span></div>
+</section>
+
+<section class="wrap intro" id="approach">
+  <div class="section-label" data-c="approach.kicker"></div>
+  <div>
+    <h2 data-c="approach.heading" data-copy-token="copy.problem" data-why="The perspective begins with decisions and shared purpose."></h2>
+    <div style="height:22px"></div>
+    <div class="intro-notes" data-why="Details people rarely see are the product."></div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker" data-c="work.kicker"></div><h2 data-c="work.heading"></h2></div>
+      <p data-c="work.sub" data-copy-token="copy.positioning"></p>
+    </div>
+    <div class="projects" id="projects" data-why="Selected responsibilities, without implying unverified commercial results."></div>
+  </div>
+</section>
+
+<section class="wrap principles" id="principles">
+  <div class="principles-grid">
+    <div><div class="kicker" data-c="principles.kicker"></div><h2 data-c="principles.heading"></h2></div>
+    <div class="principle-list" id="principleList"></div>
+  </div>
+</section>
+
+<section class="editorial wrap" id="notes" data-why="The essays demonstrate judgement through researched arguments, rather than a list of services.">
+<div class="notes-head"><div><div class="kicker">04 / Notes on direction</div><h2>Questions before answers.</h2></div><a class="textlink" href="../../notes/">All notes ↗</a></div>
+<div class="notes-grid" id="notesList"></div>
+</section>
+
+<section class="dice-feature" id="dice"><div class="wrap dice-layout"><div class="dice-art"><svg viewBox="0 0 440 220" role="img" aria-label="Cassiopeia: five stars forming a point of orientation">
+<path class="constellation-line" d="M56 51 L129 142 L220 133 L279 195 L375 115"/>
+<path class="map-tick" d="M220 115V25" stroke-dasharray="2 7"/>
+<circle class="map-stop-dot-gold" cx="56" cy="51" r="4"/><circle class="map-stop-dot-gold" cx="129" cy="142" r="6"/><circle class="map-stop-dot" cx="220" cy="133" r="8"/><circle class="map-stop-dot-gold" cx="279" cy="195" r="7"/><circle class="map-stop-dot-gold" cx="375" cy="115" r="7"/>
+</svg></div><div><div class="kicker">05 / An independent project</div><h2>D.I.C.E.</h2><p class="dice-lead">Chance opens. The bearing is yours.</p><p>An object, a condition, a constraint. Five arbitrary words become one hash, and the hash deals the same cards on every machine. What happens next is judgement.</p><p class="dice-anatomy">Seed &nbsp; / &nbsp; Reading &nbsp; / &nbsp; Result</p><a class="textlink" href="../../dice.html">Explore D.I.C.E. ↗</a></div></div></section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="kicker" data-c="contact.kicker"></div>
+      <h2 data-c="contact.heading" data-why="Final ask: a specific, honest door."></h2>
+      <p data-c="contact.body"></p>
+    </div>
+    <a class="button" href="../../index.html#contact" data-c-href="contact.cta" data-copy-token="copy.cta" data-c="contact.cta.label"></a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer"><div class="wrap">
+  <span>© <span data-c="identity.name"></span></span>
+  <a href="../../workbench.html">Behind the site ↗</a>
+  <a href="#top">Back to the top ↑</a>
+</div></footer>
+
+<script src="v10-site-content.js"></script>
+<script>
+
+// Editorial notes
+const notesHost=document.getElementById('notesList');
+if(notesHost) window.SITE.notes.forEach(n=>{
+ const card=document.createElement('article');card.className='note-card';
+ card.innerHTML='<span class="number"></span><h3></h3><p></p><a class="textlink"></a>';
+ card.querySelector('.number').textContent=n.number;card.querySelector('h3').textContent=n.title;card.querySelector('p').textContent=n.body;
+ const a=card.querySelector('a');a.href=new URL(n.href,new URL('../../',location.href));a.textContent=n.label;notesHost.appendChild(card);
+});
+
+// fill static fields
+document.querySelectorAll('[data-c]').forEach(el=>{
+  const path=el.getAttribute('data-c').split('.');
+  let v=window.SITE; for(const k of path) v=v&&v[k];
+  if(typeof v==='string') el.innerHTML=v;
+});
+// CTA hrefs
+document.querySelectorAll('[data-c-href]').forEach(el=>{
+  const path=el.getAttribute('data-c-href').split('.');
+  let v=window.SITE; for(const k of path) v=v&&v[k];
+  if(v&&v.href) el.setAttribute('href',v.href);
+});
+// nav labels from content
+document.querySelectorAll('[data-c-nav]').forEach(a=>{
+  const k=a.getAttribute('data-c-nav');
+  if(window.SITE.nav&&window.SITE.nav[k]) a.textContent=window.SITE.nav[k];
+});
+// approach body paragraphs
+(function(){
+  const host=document.querySelector('.intro-notes'); if(!host) return;
+  window.SITE.approach.body.forEach(p=>{
+    const el=document.createElement('p'); el.textContent=p; host.appendChild(el);
+  });
+})();
+// projects
+(function(){
+  const host=document.getElementById('projects'); if(!host) return;
+  window.SITE.work.cases.forEach((c,i)=>{
+    const art=document.createElement('article'); art.className='project'+(c.wide?' project-wide':'');
+    art.innerHTML='<div class="project-top"><span></span><span class="project-index">'+String(i+1).padStart(2,'0')+'</span></div>'
+      +'<div><h3></h3><p></p><div class="chain"></div></div>';
+    art.querySelector('.project-top span').textContent=c.industry;
+    art.querySelector('h3').textContent=c.title;
+    art.querySelector('p').textContent=c.body;
+    const chain=art.querySelector('.chain');
+    chain.innerHTML='problem → <b>move</b> → result → <b>limits</b><br>'+c.chain;
+    host.appendChild(art);
+  });
+})();
+// principles
+(function(){
+  const host=document.getElementById('principleList'); if(!host) return;
+  window.SITE.principles.items.forEach((p,i)=>{
+    const art=document.createElement('article'); art.className='principle';
+    art.innerHTML='<b>'+String(i+1).padStart(2,'0')+'</b><div><h3></h3><p></p></div>';
+    art.querySelector('h3').textContent=p.title;
+    art.querySelector('p').textContent=p.body;
+    host.appendChild(art);
+  });
+})();
+// reasonbar label
+(function(){
+  const btn=document.querySelector('.reasonbar button');
+  if(!btn) return;
+  btn.addEventListener('click',()=>{ btn.textContent=document.body.classList.contains('reasons')?'Reasons: on':'Reasons: off'; });
+})();
+
+</script>
+</body>
+</html>
