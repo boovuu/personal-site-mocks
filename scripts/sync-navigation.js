@@ -9,12 +9,11 @@ const pages = {
   'atlas/index.html': ['/atlas/', 'page'],
   'dice.html': ['/dice.html', 'page'],
   'dice-story.html': ['/dice.html', 'location'],
-  'notes/index.html': ['/notes/', 'page'],
   'workbench.html': [],
   'archive.html': [],
 };
 for (const file of fs.readdirSync(path.join(root, 'notes'))) {
-  if (file.endsWith('.html') && file !== 'index.html') pages['notes/' + file] = ['/notes/', 'location'];
+  if (file.endsWith('.html')) pages['notes/' + file] = [];
 }
 for (const [file, [active, current]] of Object.entries(pages)) {
   const dest = path.join(root, file);
