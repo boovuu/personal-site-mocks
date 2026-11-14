@@ -204,7 +204,7 @@ function createTerritoryMap(ideas, definitions) {
     width = Math.max(260, frame.clientWidth);
     narrow = width < 620;
     const list = [...territories.values()];
-    height = narrow ? Math.max(840,list.length*140) : Math.max(580,Math.min(725,width*.55),list.length*94);
+    height = narrow ? Math.max(840,list.length*140,...list.map(t => t.mobileOverviewHeight || 0)) : Math.max(580,Math.min(725,width*.55),list.length*94);
     const selectedTerritory = territories.get(selected);
     height = Math.max(height, (narrow ? selectedTerritory?.mobileMapHeight : selectedTerritory?.mapHeight) || 0);
     frame.style.height = height + 'px';
@@ -217,7 +217,7 @@ function createTerritoryMap(ideas, definitions) {
     const occupied = centers.filter(Boolean);
     for (const [index,territory] of list.entries()) {
       const seed = index + 1;
-      const size = Math.sqrt(territory.stops.length/total);
+      const size = Math.sqrt(territory.stops.length/total) * (territory.sizeScale || 1);
       const w = width * Math.min(narrow ? .43 : .31, size*(narrow ? .64 : .38));
       const h = height * Math.min(.34, size*(narrow ? .24 : .38));
       const center = centers[index] || openPoint(occupied);

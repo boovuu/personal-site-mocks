@@ -170,25 +170,30 @@
       ['Proposed content', example.offer]
     ]) facts.append(element('dt', label), element('dd', value));
     section.append(choices, facts);
-    if (!withOffer) return section;
+    if (withOffer) section.append(abmOffer({...example, cta:entry === 'pain' ? 'Open the worksheet →' : 'Open the checklist →'}, 'abm-content-offer'));
+    return section;
+  }
+
+  function abmOffer(example, id, callbacks = {}) {
+    const section = element('div', '', 'abm-offer-widget');
     const trigger = element('button', 'Show the slide-in offer', 'route-next');
     trigger.type = 'button';
     trigger.disabled = true;
-    trigger.setAttribute('commandfor', 'abm-content-offer');
+    trigger.setAttribute('commandfor', id);
     trigger.setAttribute('command', 'show-popover');
-    trigger.setAttribute('aria-controls', 'abm-content-offer');
+    trigger.setAttribute('aria-controls', id);
     trigger.setAttribute('aria-expanded', 'false');
     const panel = element('aside', '', 'abm-slide-in');
-    panel.id = 'abm-content-offer';
+    panel.id = id;
     panel.setAttribute('popover', 'auto');
-    panel.setAttribute('aria-labelledby', 'abm-offer-title');
+    panel.setAttribute('aria-labelledby', id + '-title');
     const close = element('button', 'Close offer', 'abm-offer-close');
     close.type = 'button';
     close.setAttribute('commandfor', panel.id);
     close.setAttribute('command', 'hide-popover');
     const title = element('h2', example.offer);
-    title.id = 'abm-offer-title';
-    const open = element('button', 'Open the ' + (entry === 'pain' ? 'worksheet' : 'checklist') + ' →', 'route-next');
+    title.id = id + '-title';
+    const open = element('button', example.cta, 'route-next');
     open.type = 'button';
     panel.append(close, element('p', 'An example content offer', 'reader-kind'), title, element('p', example.reason), open, element('p', 'Read it here. No form or email required.', 'abm-offer-note'));
     const resource = element('section', '', 'abm-resource');
@@ -198,10 +203,14 @@
     const list = element('ol');
     for (const task of example.content) list.append(element('li', task));
     resource.append(resourceTitle, element('p', 'A short sample written for this demonstration. It shows what the offer actually delivers.'), list);
-    panel.addEventListener('toggle', event => trigger.setAttribute('aria-expanded', String(event.newState === 'open')));
+    panel.addEventListener('toggle', event => {
+      trigger.setAttribute('aria-expanded', String(event.newState === 'open'));
+      if (event.newState === 'open') callbacks.onShow?.();
+    });
     close.addEventListener('click', () => requestAnimationFrame(() => { if (trigger.isConnected) trigger.focus({preventScroll:true}); }));
     open.addEventListener('click', () => {
       resource.hidden = false;
+      callbacks.onRead?.();
       if (panel.hasAttribute('popover')) panel.hidePopover?.();
       resourceTitle.focus({preventScroll:true});
       resource.scrollIntoView({block:'center'});
@@ -218,6 +227,98 @@
       }
     });
     return section;
+  }
+
+  function abmReturnJourney() {
+    const journey = element('section', '', 'abm-journey');
+    journey.setAttribute('aria-label', 'Two visits from the same account');
+    const heading = element('h2', 'Northline Maintenance');
+    const intro = element('p', 'Interactive scenario · fictional account. The visit history below changes only when you take a step in this demonstration.', 'abm-demo-caption');
+    const stage = element('section', '', 'abm-visit');
+    const history = element('section', '', 'abm-history');
+    const historyTitle = element('h3', 'What this account has viewed');
+    const historyList = element('ol');
+    const status = element('p', '', 'abm-demo-status');
+    status.setAttribute('role', 'status');
+    const restart = element('button', 'Restart the two visits', 'abm-restart');
+    restart.type = 'button';
+    history.append(historyTitle, historyList, status);
+    journey.append(element('p', 'Same account throughout · DEMO-001', 'reader-kind'), heading, intro, stage, history, restart);
+    let events = [];
+    let page = 'pain';
+    function record(id, text) {
+      if (events.some(event => event.id === id)) return;
+      events.push({id, text});
+      historyList.append(element('li', text));
+      status.textContent = text;
+    }
+    function render(focus) {
+      const returning = page === 'solution';
+      const stageTitle = element('h3', returning ? 'Connect dispatch and job records' : 'Why does a technician have to return to the same job?');
+      stageTitle.tabIndex = -1;
+      stage.replaceChildren(element('p', returning ? 'Visit 2 · Return through the solution page' : 'Visit 1 · Arrive through the problem page', 'reader-kind'),
+        element('p', returning ? '/solutions/connected-job-records' : '/problems/repeat-visits', 'abm-page-address'), stageTitle,
+        element('p', returning ? 'Give dispatch and technicians access to the same equipment history, parts and access details. Explore how a connected job record could fit your existing process.' : 'A second visit can mean lost time for the team and another wait for the customer. Before choosing a tool, find out what was missing when the technician first arrived.'));
+      if (!returning) {
+        const read = element('button', 'Read the diagnosis', 'route-next');
+        read.type = 'button';
+        const diagnosis = element('div', '', 'abm-diagnosis');
+        diagnosis.hidden = true;
+        diagnosis.id = 'abm-diagnosis';
+        read.setAttribute('aria-controls', diagnosis.id);
+        read.setAttribute('aria-expanded', 'false');
+        diagnosis.append(element('h4', 'Check the information that arrived too late'), element('p', 'Review recent repeat visits. Was equipment history missing? Were the wrong parts brought? Did access instructions arrive after the appointment? Separate missing information from causes a better job record would not fix.'));
+        const offerSlot = element('div');
+        const returnButton = element('button', 'Return later to the solution page →', 'route-next abm-continue');
+        returnButton.type = 'button';
+        returnButton.hidden = true;
+        read.addEventListener('click', () => {
+          diagnosis.hidden = false;
+          read.setAttribute('aria-expanded', 'true');
+          read.textContent = 'Diagnosis opened';
+          record('diagnosis-read', 'Visit 1 · Read the diagnosis about missing job information.');
+          if (!offerSlot.childElementCount) {
+            const offer = selectAbmJourneyOffer(events, page);
+            offerSlot.append(element('p', offer.decision, 'abm-decision'), abmOffer(offer, 'abm-first-offer', {
+              onShow: () => record('worksheet-shown', 'Visit 1 · Saw the repeat-visit audit offer.'),
+              onRead: () => record('worksheet-opened', 'Visit 1 · Opened the repeat-visit audit worksheet.')
+            }));
+          }
+          returnButton.hidden = false;
+        });
+        returnButton.addEventListener('click', () => {
+          page = 'solution';
+          record('solution-visited', 'Visit 2 · Returned to the solution page about connected job records.');
+          render(true);
+        });
+        stage.append(read, diagnosis, offerSlot, returnButton);
+      } else {
+        const selected = selectAbmJourneyOffer(events, page);
+        const decision = element('section', '', 'abm-decision');
+        decision.append(element('h4', 'Why the offer changes'), element('p', selected.decision), element('p', events.some(event => event.id === 'worksheet-opened') ? 'The worksheet was already opened in visit 1. Keep it in the history; offer a way to act on the diagnosis now.' : 'The diagnosis was read, but the worksheet was not opened. The new offer uses the topic of that reading; it does not assume that an audit was completed.'));
+        const comparison = element('details', '', 'abm-comparison');
+        const generic = selectAbmJourneyOffer([], 'solution');
+        comparison.append(element('summary', 'What would this page offer without the earlier visit?'), element('h4', generic.offer), element('p', generic.reason), element('p', 'The current page alone selects this general checklist. The recorded diagnosis from visit 1 is what selects the more specific pilot plan above.'));
+        stage.append(decision, abmOffer(selected, 'abm-return-offer', {
+          onShow: () => record('pilot-shown', 'Visit 2 · Saw the pilot plan offer, selected using the earlier diagnosis.'),
+          onRead: () => record('pilot-opened', 'Visit 2 · Opened the pilot plan to reduce repeat visits.')
+        }), comparison);
+      }
+      if (focus) {
+        stageTitle.focus({preventScroll:true});
+        stage.scrollIntoView({block:'start'});
+      }
+    }
+    function reset(focus) {
+      events = [];
+      page = 'pain';
+      historyList.replaceChildren();
+      record('pain-visited', 'Visit 1 · Arrived on the page about repeat visits.');
+      render(focus);
+    }
+    restart.addEventListener('click', () => reset(true));
+    reset(false);
+    return journey;
   }
 
   function abmStudies(studies) {
@@ -286,6 +387,7 @@
     if (idea.id === 'dice-wolf') {
       reader.append(document.querySelector('#wolf-pair').content.cloneNode(true));
     }
+    if (idea.returnJourney) reader.append(abmReturnJourney());
     if (idea.studies) reader.append(abmStudies(idea.studies));
     for (const passage of idea.sections || []) reader.append(readingPassage(passage));
     if (idea.abmExample) reader.append(abmExample(entry, idea.id === 'abm-offer'));

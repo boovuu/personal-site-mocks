@@ -261,11 +261,11 @@ atlasIdeas.push(...[
     "mapLabel": "8 · Offer useful content",
     "mapPoint": [
       0.81,
-      0.94
+      0.86
     ],
     "mobilePoint": [
       0.27,
-      0.87
+      0.82
     ],
     "title": "Offer one piece of content that fits the visit",
     "summary": "The slide-in is a small invitation beside the page. Its job is to help with a recognisable question: diagnose a recurring problem, plan a change or evaluate a solution.",
@@ -285,8 +285,58 @@ atlasIdeas.push(...[
     ],
     "trailFrom": "abm-match",
     "detail": "",
-    "nextStop": "abm-evidence",
+    "nextStop": "abm-return",
     "abmExample": true
+  },
+  {
+    "id": "abm-return",
+    "trailFrom": "abm-offer",
+    "nextStop": "abm-evidence",
+    "mapLabel": "9 · Same account, second visit",
+    "mapPoint": [
+      0.5,
+      0.97
+    ],
+    "mobilePoint": [
+      0.26,
+      0.92
+    ],
+    "subject": "websites",
+    "kind": "ABM demonstration · November 14",
+    "title": "The same account returns. The offer remembers the first visit.",
+    "summary": "Northline Maintenance first arrives through a page about repeat visits. Later, it returns to a solution page. Walk through both visits and see how the earlier reading changes the content offered.",
+    "returnJourney": true,
+    "sections": [
+      [
+        "What changes between the two visits",
+        "The first page helps someone investigate a problem. The second helps them evaluate a way to address it. A useful response carries that earlier question forward: instead of another general introduction or the same worksheet, offer a small pilot plan aimed at the problem they have already explored."
+      ],
+      [
+        "What the account history actually means",
+        "This example assumes the returning browser is already associated with a fictional company record. In a real implementation, show which observations belong to the returning visitor and which are aggregated at company level. A colleague from the same company may need a different introduction."
+      ],
+      [
+        "The rule we are proposing",
+        "On the repeat-visit page, show the diagnostic worksheet after the relevant section has been read. On the solution page, a recorded reading of that diagnosis selects the repeat-visit pilot plan. Without that earlier reading, offer the general integration checklist. Opening the worksheet is recorded separately; it is not treated as proof that the worksheet was completed."
+      ]
+    ],
+    "detail": "The next stop compares published experiments and explains how to test whether these changing offers actually help.",
+    "sources": [
+      [
+        "Bogdan’s request for a returning-account demonstration · this conversation, November 14, 2026",
+        null
+      ]
+    ],
+    "related": [
+      [
+        "abm-pain",
+        "Revisit the problem page that starts this journey."
+      ],
+      [
+        "abm-solution",
+        "See how a solution page answers a different question."
+      ]
+    ]
   },
   {
     "subject": "websites",
@@ -308,14 +358,14 @@ atlasIdeas.push(...[
       ]
     ],
     "id": "abm-evidence",
-    "mapLabel": "9 · Check the evidence",
+    "mapLabel": "10 · Check the evidence",
     "mapPoint": [
-      0.25,
-      0.94
+      0.2,
+      0.96
     ],
     "mobilePoint": [
-      0.73,
-      0.97
+      0.74,
+      0.98
     ],
     "title": "What other teams tested — and what we should test here",
     "summary": "Published examples support parts of this idea. They do not prove the whole network, company identification and slide-in sequence as one system. Each result below belongs to its own experiment.",
@@ -337,7 +387,7 @@ atlasIdeas.push(...[
         "Choose one primary outcome, the smallest improvement worth detecting and the sample needed from the actual baseline. Keep the assignment and measurement period fixed. Follow account progression separately over time; more clicks alone do not establish a better sales outcome."
       ]
     ],
-    "trailFrom": "abm-offer",
+    "trailFrom": "abm-return",
     "detail": "",
     "studies": [
       {
@@ -371,3 +421,23 @@ atlasIdeas.push(...[
     ]
   }
 ]);
+
+// Demo events are explicit interactions within the fictional scenario, never visitor tracking.
+const abmPilotOffer = {
+  offer: 'A pilot plan to reduce repeat visits',
+  reason: 'Ready to test a connected job record? Start with one team and check whether better job information prevents unnecessary return visits.',
+  cta: 'Open the pilot plan →',
+  content: [
+    'Choose one team and one type of job that often needs a repeat visit.',
+    'Use recent repeat visits to identify the information most often missing.',
+    'Connect equipment history, parts and access details to that team’s job record.',
+    'Agree who maintains each field and how the team handles a missing record.',
+    'Compare similar jobs before and during the pilot, recording the reason for each return visit.',
+    'Review the result with dispatch and technicians before expanding to another team.'
+  ]
+};
+function selectAbmJourneyOffer(events, page) {
+  if (page === 'pain') return {...abmEntries.pain, cta:'Open the worksheet →', decision:'The diagnosis has been read. Offer a worksheet that helps the visitor examine their own repeat visits.'};
+  if (events.some(event => event.id === 'diagnosis-read')) return {...abmPilotOffer, decision:'Earlier: read the repeat-visit diagnosis. Now: returned to a solution page about connected job records. Offer a pilot aimed at that earlier problem, rather than a general integration introduction.'};
+  return {...abmEntries.solution, cta:'Open the checklist →', decision:'There is no earlier reading to connect to this visit. Offer the general integration planning checklist.'};
+}
