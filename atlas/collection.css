@@ -211,3 +211,13 @@ html {scroll-behavior:auto}
 .edition-plate {margin:18px 0 24px;max-width:960px}
 .edition-plate img {display:block;width:100%;height:auto;border:1px solid #aaa795}
 .edition-plate .source {display:inline-block;margin-top:9px;text-decoration:underline}
+
+.draw-record {list-style:none; padding:0; margin:32px 0; max-width:680px}
+.draw-record li {padding:24px; margin:0 0 20px; border:1px solid #b9ad8b; background:#fff9e9}
+.draw-record h2 {font:400 clamp(27px,4vw,38px)/1.15 Newsreader,Georgia,serif; margin:10px 0}
+.draw-record .card-meaning {font:italic 400 23px/1.45 Newsreader,Georgia,serif}
+.archived-draft {max-width:73ch; margin:36px 0; padding:24px clamp(16px,4vw,32px); border-left:3px solid #a66239; background:#fff9e9}
+.archived-draft h2 {font:400 30px/1.2 Newsreader,Georgia,serif; margin:0 0 24px}
+.archived-draft blockquote {margin:0; font:400 19px/1.7 Georgia,serif}
+.archived-draft blockquote p {margin:0 0 1.2em}
+.archived-draft blockquote p:last-child {margin:0}

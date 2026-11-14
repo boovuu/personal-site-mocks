@@ -1,0 +1,31 @@
+{
+  "seed_normalized": "ograda tutor cemer suncobran kikiriki",
+  "entropy_index": 7,
+  "deck_size": 78,
+  "draw": [
+    {
+      "position": 1,
+      "card": "XVIII The Moon",
+      "orientation": "reversed",
+      "raw_meaning": "deception — given or absorbed; fog weaponized against you"
+    },
+    {
+      "position": 2,
+      "card": "Six of Wands",
+      "orientation": "reversed",
+      "raw_meaning": "the return refused; generosity with strings"
+    },
+    {
+      "position": 3,
+      "card": "VI The Lovers",
+      "orientation": "upright",
+      "raw_meaning": "the crossroads; a values-revealing choice; true alignment"
+    },
+    {
+      "position": 4,
+      "card": "XII The Hanged Man",
+      "orientation": "reversed",
+      "raw_meaning": "stagnation dressed as sacrifice; martyrdom on layaway"
+    }
+  ]
+}

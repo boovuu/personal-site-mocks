@@ -153,6 +153,30 @@
       element('p', atlasSubjects[idea.subject] + ' · ' + idea.kind, 'reader-kind'),
       heading, element('p', idea.summary, 'lede')
     );
+    if (idea.seed) {
+      const words = element('div', '', 'fixed-seed');
+      words.setAttribute('aria-label', 'The five saved input words');
+      for (const word of idea.seed) words.append(element('span', word));
+      reader.append(words);
+    }
+    if (idea.cards) {
+      const cards = element('ol', '', 'draw-record');
+      for (const card of idea.cards) {
+        const item = element('li');
+        item.append(element('p', 'Position ' + card.position + ' · ' + card.orientation, 'reader-kind'),
+          element('h2', card.card), element('p', card.raw_meaning, 'card-meaning'));
+        cards.append(item);
+      }
+      reader.append(cards);
+    }
+    if (idea.draft) {
+      const draft = element('section', '', 'archived-draft');
+      draft.append(element('h2', 'The saved draft'));
+      const quote = element('blockquote');
+      for (const paragraph of idea.draft) quote.append(element('p', paragraph));
+      draft.append(quote);
+      reader.append(draft);
+    }
     if (idea.edition) {
       const [src, alt, original] = idea.edition;
       const figure = element('figure', '', 'edition-plate');
@@ -181,7 +205,7 @@
     if (idea.id === 'dice') reader.append(link('Follow the wolf experiment →','#idea/dice-wolf?map=dice','route-next'));
     if (idea.id === 'dice-wolf') reader.append(link('Continue to the homepage, game and orchid trials →','#idea/dice-trials?map=dice','route-next'));
     if (idea.id === 'dice-trials') reader.append(link('How the five words became a coin →','#idea/dice-coin?map=dice','route-next'));
-    if (idea.id === 'dice-coin') reader.append(link('Turn the finished coin on the map →','#map/dice?at=dice-coin&stage=coin','route-next'));
+    if (idea.id === 'dice-coin') reader.append(link('Turn the coin toward the personal website →','#map/dice?at=dice-coin&stage=coin','source'));
     if (idea.nextStop) {
       const next = byId.get(idea.nextStop);
       reader.append(link('Next · ' + next.mapLabel + ' →', '#idea/' + next.id + '?map=' + territory.root, 'route-next'));

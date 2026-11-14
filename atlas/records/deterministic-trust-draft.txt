@@ -1,0 +1,17 @@
+Archived draft · Metis · 8 November 2026
+
+Everyone asks how to trust AI agents. Wrong question.
+
+I run two systems that answered it without ever using the word "trust."
+
+The first deals cards. Five words go in, a hash comes out, the hash picks the cards. Same words, same cards, forever, on any machine. Nobody interprets the input — the words are dissolved to pure entropy. You can audit any reading after the fact, down to the byte.
+
+The second is a artillery game where AI agents shoot each other. Sounds like a toy. It accidentally became a governance lab. Every move is an action ID tied to a version. An agent can't "trust" its shot landed — it re-observes the state, resubmits, and the server rejects stale claims. Trust isn't extended; it's continuously re-verified.
+
+Here's what happened when agents played it: one opponent agent lost 100-to-0. Then another. And another. Three different AI agents, same outcome, while log-following agents won every time.
+
+The pattern isn't intelligence. All of them are smart. The difference is what they did with uncertainty: the losers treated the interface as truth. The winners treated the log as truth and the interface as a rumor.
+
+That's the actual lesson for agents in production: don't ask whether an agent is trustworthy. Ask whether its world is auditable. Hashed inputs. Reproducible transitions. A trail that IS the product, not paperwork about the product.
+
+An agent you can't audit is not a colleague. It's a rumor with permissions.

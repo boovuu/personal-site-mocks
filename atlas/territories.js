@@ -266,7 +266,7 @@ function createTerritoryMap(ideas, definitions) {
           if (!start) continue;
           const cx = (start.x + end.x)/2 - .16*(end.y-start.y)*w/h;
           const cy = (start.y + end.y)/2 + .16*(end.x-start.x)*h/w;
-          const main = ['dice-wolf','dice-trials','dice-coin','site-sailboat','site-hermes','site-dotted-sailboat','site-petar'].includes(note.id);
+          const main = ['dice-wolf','dice-trials','dice-coin','dice-seed','dice-draw','trust','site-sailboat','site-hermes','site-dotted-sailboat','site-petar'].includes(note.id);
           svgNode('path',{d:'M'+start.x+' '+start.y+' Q'+cx+' '+cy+' '+end.x+' '+end.y,class:main?'trail-line main-voyage':'trail-line'},island);
         }
       }

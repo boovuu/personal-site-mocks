@@ -79,7 +79,7 @@ const atlasIdeas = [
     related:[['healthcare','Return to the two groups that researchers screened in the original comparison.']]
   },
   {
-    id:'dice', mapPoint:[0.18,0.34], mapLabel:'1 · The first question',subject:'making',kind:'Working creative tool',
+    id:'dice', mapPoint:[0.16, 0.15], mobilePoint:[0.23, 0.06], mapLabel:'1 · The first question',subject:'making',kind:'Working creative tool',
     title:'How do you get AI to go beyond the words you give it?',
     summary:'“Do you know some creative processes for AI to commit creative output. Basic ai is not creative enough.” Bogdan wanted to change how an AI arrived at an idea. Gemini’s first reply proposed five ways to work on a brief (conversation, pp. 1–2).',
     sections:[
@@ -94,7 +94,7 @@ const atlasIdeas = [
     related:[['dice-wolf','Follow the image test: same request, same five words, different picture.'],['four-brothers','A proposed next experiment would have four reviewers examine what someone made with the cards.'],['trust','Read the later essay that compares a card draw with a recorded Banana Wars match.']]
   },
   {
-    id:'dice-wolf', mapPoint:[0.56,0.24], mapLabel:'2 · The wolf test', trailFrom:'dice',subject:'making',kind:'Gemini experiment',
+    id:'dice-wolf', mapPoint:[0.47, 0.1], mobilePoint:[0.74, 0.13], mapLabel:'2 · The wolf test', trailFrom:'dice',subject:'making',kind:'Gemini experiment',
     title:'Could the same five words lead to a different picture?',
     summary:'Bogdan asked Gemini to write a prompt he could paste into a fresh chat. His brief was “i want to create an image, visually striking, out of this world, never seen before, introducing new color, just beautiful”. He left the subject open. To see what the hidden card draw would suggest, he gave it five words to shuffle with.',
     detail:'What made the second prompt feel different was where the scene came from. In Gemini’s account of the draw, the Nine of Pentacles suggested an immaculate, secluded space. The Three of Swords gave that space a fracture. The High Priestess drew the camera close to a strange liquid catching the light inside it. Bogdan had asked for beauty and an unfamiliar colour. White stone and liquid metal were Gemini’s way of answering that request. His next message began, “This sounds good”.',
@@ -102,7 +102,7 @@ const atlasIdeas = [
     related:[['dice-trials','Follow the five-word method into a homepage, a game and another image.'],['dice','Go back to the five creative processes in the opening exchange.']]
   },
   {
-    id:'dice-trials', mapPoint:[0.83,0.39], mapLabel:'3 · Field tests', trailFrom:'dice-wolf',subject:'making',kind:'Gemini experiments',
+    id:'dice-trials', mapPoint:[0.79, 0.16], mobilePoint:[0.25, 0.24], mapLabel:'3 · Field tests', trailFrom:'dice-wolf',subject:'making',kind:'Gemini experiments',
     title:'Would the five-word method work on another brief?',
     summary:'The wolf and the white stone came from the same five words. After that, Bogdan kept the five-word procedure and supplied fresh words for each task. Changing both the brief and the words made these trials a way to find weaknesses. They could not, on their own, measure an improvement in creativity.',
     sections:[
@@ -117,7 +117,7 @@ const atlasIdeas = [
     related:[['dice-coin','See how the design gives the draw and the human decision a face each.'],['dice-wolf','Revisit the one trial that held the five words constant.']]
   },
   {
-    id:'dice-coin', mapPoint:[0.77,0.67], mapLabel:'4 · The coin', trailFrom:'dice-trials',subject:'making',kind:'Illustrated object',
+    id:'dice-coin', nextStop:'dice-seed', mapPoint:[0.88, 0.34], mobilePoint:[0.75, 0.3], mapLabel:'4 · The coin', trailFrom:'dice-trials',subject:'making',kind:'Illustrated object',
     title:'Who put Cassiopeia on the coin?',
     summary:'On 11 October 2026, Bogdan asked Claude to design a two-sided coin for his personal website. He had already chosen what belonged on each face. A compass would stand for the courage to choose a direction. A small constellation would stand for the starting point chance could give him in D.I.C.E. The constellation still had to be drawn.',
     sections:[
@@ -208,7 +208,7 @@ const atlasIdeas = [
     sources:[['November 6 · Source of the sailboat draft','site-editions/v10-night-canon.html'],['November 9 · The editorial homepage as it shipped','../index.html']],related:[['dice-coin','See how the idea of choosing a course appears on the compass face of the coin.']]
   },
   {
-    id:'four-brothers', mapPoint:[0.64,0.88], mapLabel:'Reviewing a draw', trailFrom:'dice',subject:'making',kind:'Review method',
+    id:'four-brothers', mapPoint:[0.32, 0.46], mobilePoint:[0.24, 0.42], mapLabel:'Reviewing a draw', trailFrom:'dice',subject:'making',kind:'Review method',
     title:'How would four different reviewers test the same idea?',
     summary:'Četiri brata gives each reviewer a job. One builds the case, one challenges it, one checks it, and one draws the findings together.',
     detail:'One suggestion was to use the four roles to evaluate the result of a D.I.C.E. experiment. The project note records the suggestion. A worked example is still missing.',
@@ -240,7 +240,7 @@ const atlasIdeas = [
     related:[['agent-interfaces','The next question goes from what a system can read on a website to what it can actually do there.'],['atlas-drawings','See the design decision behind the changing illustration.']]
   },
   {
-    id:'banana-wars', mapPoint:[0.14,0.86], mapLabel:'Banana Wars', trailFrom:'trust',subject:'agents',kind:'Game experiment',
+    id:'banana-wars', mapPoint:[0.12, 0.65], mobilePoint:[0.25, 0.88], mapLabel:'Banana Wars', trailFrom:'trust',subject:'agents',kind:'Game experiment',
     title:'Banana Wars: what did the AI player actually do?',
     summary:'In Banana Wars, each move leaves a record. Three saved matches let a reader compare what an agent attempted with what the game recorded.',
     detail:'The match records contain action identifiers, turn numbers and outcomes. A later draft used one of those matches alongside a D.I.C.E. draw to ask what another person could check afterward.',
@@ -248,13 +248,68 @@ const atlasIdeas = [
     related:[['trust','Read the draft that brought the two projects together.']]
   },
   {
-    id:'trust', mapPoint:[0.31,0.59], mapLabel:'A later essay about trust', trailFrom:'dice',subject:'agents',kind:'Unpublished draft',
-    title:'Could another person reconstruct what the agent did?',
-    summary:'A draft post about trust grew out of two records, a repeatable D.I.C.E. draw and a logged Banana Wars match.',
-    detail:'The proposed test is to give a second person the task of reconstructing the result, then see what they can recover after the logs are removed. The post is written. The test remains a proposal.',
-    sources:[['The draft post', null],['The proposed test', null]],
-    related:[['banana-wars','Examine the match record behind the draft.'],['dice','See how to reproduce the other half of the comparison.']]
-  },
+  "id": "trust",
+  "trailFrom": "dice-draw",
+  "nextStop": "banana-wars",
+  "mapPoint": [
+    0.3,
+    0.82
+  ],
+  "mobilePoint": [
+    0.74,
+    0.72
+  ],
+  "mapLabel": "7 · The written draft",
+  "subject": "agents",
+  "kind": "Archived writing draft · November 8",
+  "title": "The text that came out of the experiment",
+  "summary": "Metis saved this LinkedIn draft on 8 November 2026. Its opening challenges the question of trust, then brings a card draw and an AI game into the same argument. The draft is reproduced below as written.",
+  "draft": [
+    "Everyone asks how to trust AI agents. Wrong question.",
+    "I run two systems that answered it without ever using the word \"trust.\"",
+    "The first deals cards. Five words go in, a hash comes out, the hash picks the cards. Same words, same cards, forever, on any machine. Nobody interprets the input — the words are dissolved to pure entropy. You can audit any reading after the fact, down to the byte.",
+    "The second is a artillery game where AI agents shoot each other. Sounds like a toy. It accidentally became a governance lab. Every move is an action ID tied to a version. An agent can't \"trust\" its shot landed — it re-observes the state, resubmits, and the server rejects stale claims. Trust isn't extended; it's continuously re-verified.",
+    "Here's what happened when agents played it: one opponent agent lost 100-to-0. Then another. And another. Three different AI agents, same outcome, while log-following agents won every time.",
+    "The pattern isn't intelligence. All of them are smart. The difference is what they did with uncertainty: the losers treated the interface as truth. The winners treated the log as truth and the interface as a rumor.",
+    "That's the actual lesson for agents in production: don't ask whether an agent is trustworthy. Ask whether its world is auditable. Hashed inputs. Reproducible transitions. A trail that IS the product, not paperwork about the product.",
+    "An agent you can't audit is not a colleague. It's a rumor with permissions."
+  ],
+  "sections": [
+    [
+      "Where the draw entered the writing",
+      "The accompanying archive note explicitly connects intensity score 7 with the confrontational opening. It also says the five input words should shape the angle without appearing as imagery. None of the five words appears in the draft."
+    ],
+    [
+      "What the draft still needs",
+      "The game records show match outcomes. Establishing that following logs caused the wins would require a separate test. The draft’s claim that a draw is repeatable “forever, on any machine” also needs the engine version, deck order and normalization rules to remain fixed. Its claim about auditing a whole reading goes beyond reproducing the card selection. These are unresolved claims in the archived draft."
+    ],
+    [
+      "Where Banana Wars joins the story",
+      "The connection appears in this later piece of writing. It brings the independently developed game and D.I.C.E. together to ask what someone else can reconstruct from a record. Follow the next stop to the game note."
+    ]
+  ],
+  "detail": "The archive also proposes asking a second person to reconstruct the result, then comparing what they can recover when logs are removed. That test remains a proposal.",
+  "sources": [
+    [
+      "Read the archived draft as text",
+      "records/deterministic-trust-draft.txt"
+    ],
+    [
+      "Inspect the draw behind this example",
+      "records/draw-config01.json"
+    ]
+  ],
+  "related": [
+    [
+      "dice-draw",
+      "Compare the draft with its recorded cards."
+    ],
+    [
+      "four-brothers",
+      "Explore a proposed method for reviewing what the experiment produces."
+    ]
+  ]
+},
   {
     id:'agent-interfaces', mapPoint:[0.28,0.3], mapLabel:'An agent uses a site', trailFrom:'aeo',subject:'agents',kind:'Research question',
     title:'How can a person and an AI agent use the same website?',
@@ -262,7 +317,140 @@ const atlasIdeas = [
     detail:'The website research explores how a site might expose those actions. The game provides a smaller example to inspect today, because each turn has an explicit state and a recorded outcome.',
     sources:[['The webmcp website research', null]],
     related:[['banana-wars','Inspect an example where the available action and its result are both recorded.'],['aeo','Read the earlier question about how machines interpret website content.']]
-  }
+  },
+  {
+  "id": "dice-seed",
+  "trailFrom": "dice-coin",
+  "nextStop": "dice-draw",
+  "mapPoint": [
+    0.8,
+    0.49
+  ],
+  "mobilePoint": [
+    0.75,
+    0.4
+  ],
+  "mapLabel": "5 · Five words",
+  "subject": "making",
+  "kind": "Saved experiment · November 8",
+  "title": "What happened when someone used the coin?",
+  "summary": "On 8 November 2026, a saved D.I.C.E. experiment used five words to select cards. The archive pairs that draw with a draft about whether another person can check what an AI agent did.",
+  "seed": [
+    "ograda",
+    "tutor",
+    "cemer",
+    "suncobran",
+    "kikiriki"
+  ],
+  "sections": [
+    [
+      "A new task for the same method",
+      "The image experiments asked how to escape a literal reading of a prompt. This later example puts the method to work on a piece of writing. The subject is already there — a repeatable D.I.C.E. draw and recorded Banana Wars matches. The experiment looks for an angle from which to write about them."
+    ],
+    [
+      "The words choose the draw",
+      "The saved record contains the normalized input shown above. D.I.C.E. converts that input to a hash, which fixes the card selection, their orientations and an intensity score. The meaning of each word plays no part in this selection. These are the words from the later writing example. The earlier wolf experiment used its own five-word input."
+    ],
+    [
+      "A direction for the writing",
+      "The saved intensity score is 7 on a scale from 0 to 9. The rules assign scores 7–9 to a full teardown of the premise. The accompanying note says this shaped the draft’s attack on the familiar question of whether AI can be trusted."
+    ]
+  ],
+  "detail": "Continue to the three cards exactly as the experiment saved them.",
+  "sources": [
+    [
+      "Open the saved three-card draw",
+      "records/draw-config01.json"
+    ],
+    [
+      "Open the saved four-card variation",
+      "records/draw-config02.json"
+    ]
+  ],
+  "related": [
+    [
+      "dice-coin",
+      "Return to the object that brings the five words and a chosen direction together."
+    ]
+  ]
+},
+  {
+  "id": "dice-draw",
+  "trailFrom": "dice-seed",
+  "nextStop": "trust",
+  "mapPoint": [
+    0.61,
+    0.69
+  ],
+  "mobilePoint": [
+    0.25,
+    0.56
+  ],
+  "mapLabel": "6 · The cards",
+  "subject": "making",
+  "kind": "Recorded draw · November 8",
+  "title": "Three cards give the question a different shape",
+  "summary": "The saved three-card draw contains The Moon reversed, Six of Wands reversed and The Lovers upright, in that order. Below are the recorded meanings, followed by a present-day explanation of how those prompts can be read against the writing task.",
+  "cards": [
+    {
+      "position": 1,
+      "card": "XVIII The Moon",
+      "orientation": "reversed",
+      "raw_meaning": "deception — given or absorbed; fog weaponized against you"
+    },
+    {
+      "position": 2,
+      "card": "Six of Wands",
+      "orientation": "reversed",
+      "raw_meaning": "the return refused; generosity with strings"
+    },
+    {
+      "position": 3,
+      "card": "VI The Lovers",
+      "orientation": "upright",
+      "raw_meaning": "the crossroads; a values-revealing choice; true alignment"
+    }
+  ],
+  "sections": [
+    [
+      "How to read this example",
+      "The saved files contain the draw and the resulting draft. They also record the intensity score’s influence on the opening. The following reading of the individual cards is an editorial reconstruction. It explains a possible route between those two artifacts."
+    ],
+    [
+      "The Moon · What can you actually see?",
+      "The recorded meaning concerns deception and obscured information. Applied to the brief, it invites a question about evidence. When an agent reports that something happened, what lets another person check the report? The draft develops that concern through logs and repeatable results."
+    ],
+    [
+      "Six of Wands · What counts as success?",
+      "The reversed card unsettles a straightforward story of victory. Read against the game records, it prompts scrutiny of what a score establishes and how a win is explained. The draft moves from match outcomes toward a broader claim about agents. That step needs more support than a score alone provides."
+    ],
+    [
+      "The Lovers · Which standard do you choose?",
+      "The recorded meaning names a choice that reveals values. Here it can frame the choice of evaluation criteria. The draft asks the reader to judge an agent through evidence that can be examined afterward."
+    ],
+    [
+      "The four-card variation",
+      "A second saved run uses the same words and adds The Hanged Man reversed as its fourth card. Its recorded meaning concerns stagnation presented as sacrifice. The archive does not preserve a separate finished text for this variation. Both draw files are available below."
+    ]
+  ],
+  "detail": "Now read the actual draft and compare its opening, argument and ending with the choices described here.",
+  "sources": [
+    [
+      "Open the saved three-card draw",
+      "records/draw-config01.json"
+    ],
+    [
+      "Open the saved four-card variation",
+      "records/draw-config02.json"
+    ]
+  ],
+  "related": [
+    [
+      "dice-seed",
+      "Revisit the five words and the intensity score."
+    ]
+  ]
+}
 ];
 
 
@@ -270,7 +458,7 @@ const atlasIdeas = [
 const atlasTerritories = [
   {root:'market-shift', center:[0.19,0.25], mobileCenter:[0.24,0.12], title:'Looking for website demand', description:'A market selloff led to a comparison of 60 companies and a proposed way to test whether buyers need website help.'},
   {root:'quartermaster', center:[0.80,0.15], mobileCenter:[0.76,0.29], title:'Writing for buyers', description:'An essay about who makes decisions opens a website brief. Two companion essays ask how the site can help a buyer decide.'},
-  {root:'dice', center:[0.43,0.55], mobileCenter:[0.28,0.51], title:'D.I.C.E. and the Reckoning Coin', description:'How could an AI surprise the person writing the prompt? Follow the numbered path from the first question through the wolf and field tests to the finished coin.'},
+  {root:'dice', center:[0.43,0.55], mobileCenter:[0.28,0.51], title:'D.I.C.E. and the Reckoning Coin', description:'How could an AI surprise the person writing the prompt? Follow the numbered path from the first question and wolf experiment to the coin, a saved card draw and the text it produced.'},
   {root:'aeo', center:[0.15,0.82], mobileCenter:[0.76,0.70], title:'How AI reads websites', description:'An early mistake in an AI answer raised a question about what machines can read on a website and what they can do there.'},
   {root:'personal-site', center:[0.74,0.43], mobileCenter:[0.72,0.49], title:'The personal website', description:'Follow the sailboat through the Hermes references and Petar’s dotted drawing to the finished homepage.'},
   {root:'kata-vera', center:[0.83,0.74], mobileCenter:[0.32,0.89], title:'Thinking in drawings', description:'Read the story illustrations alongside the Atlas design study. In both, successive drawings let you see what changed.'}
