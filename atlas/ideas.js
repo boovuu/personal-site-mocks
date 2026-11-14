@@ -701,5 +701,5 @@ const atlasTerritories = [
   {root:'aeo', center:[0.15,0.82], mobileCenter:[0.76,0.68], title:'How AI reads websites', description:'An early mistake in an AI answer raised a question about what machines can read on a website and what they can do there.'},
   {root:'personal-site', center:[0.74,0.43], mobileCenter:[0.72,0.49], title:'The personal website', description:'Follow the sailboat through the Hermes references and Petar’s dotted drawing to the finished homepage.'},
   {root:'kata-vera', center:[0.83,0.74], mobileCenter:[0.25,0.85], title:'Thinking in drawings', description:'Read the story illustrations alongside the Atlas design study. In both, successive drawings let you see what changed.'},
-  {root:'abm', center:[0.48,0.83], mobileCenter:[0.75,0.88], title:'ABM: what happens next?', description:'Follow five stops from a question about content production to a proposed playbook for responding to a company’s interest. This is a concept in development.'}
+  {root:'abm', center:[0.48,0.78], mobileCenter:[0.75,0.88], title:'ABM: landing pages and personalised content', description:'Follow the first five steps of an ABM idea: attract companies through relevant landing pages, understand their visits and choose useful content to offer. The playbook is still being developed.'}
 ];
