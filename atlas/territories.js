@@ -205,6 +205,8 @@ function createTerritoryMap(ideas, definitions) {
     narrow = width < 620;
     const list = [...territories.values()];
     height = narrow ? Math.max(840,list.length*140) : Math.max(580,Math.min(725,width*.55),list.length*94);
+    const selectedTerritory = territories.get(selected);
+    height = Math.max(height, (narrow ? selectedTerritory?.mobileMapHeight : selectedTerritory?.mapHeight) || 0);
     frame.style.height = height + 'px';
     svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
     printChartMargins();
@@ -432,11 +434,12 @@ function createTerritoryMap(ideas, definitions) {
   return {
     territories, membership,
     show(root, note, stage) {
+      const previousSelection = selected;
       selected = territories.has(root) ? root : '';
       activeNote = note || '';
       crossing = selected === 'dice' && stage === 'bearing';
       coin.show(selected === 'dice' && (note === 'dice-coin' || Boolean(stage)), stage || 'coin');
-      if (frame.clientWidth && frame.clientWidth !== previousWidth) {
+      if (frame.clientWidth && (frame.clientWidth !== previousWidth || previousSelection !== selected)) {
         previousWidth = frame.clientWidth;
         buildChart();
       } else if (geometry.size) paint();

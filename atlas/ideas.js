@@ -455,12 +455,12 @@ const atlasIdeas = [
   "id": "abm",
   "mapLabel": "1 · More content?",
   "mapPoint": [
-    0.21,
-    0.24
+    0.18,
+    0.13
   ],
   "mobilePoint": [
-    0.27,
-    0.12
+    0.23,
+    0.08
   ],
   "title": "What if making more content is not the problem?",
   "summary": "A proposal for account-based marketing started a conversation about personalised website experiences. Account-based marketing, or ABM, means organising marketing around selected companies. The starting assumption was that producing enough content for those companies would be the hard part.",
@@ -501,12 +501,12 @@ const atlasIdeas = [
   "nextStop": "abm-account",
   "mapLabel": "2 · Question the bottleneck",
   "mapPoint": [
-    0.57,
-    0.15
+    0.51,
+    0.1
   ],
   "mobilePoint": [
-    0.71,
-    0.3
+    0.73,
+    0.17
   ],
   "title": "The technical part looked possible. The playbook was missing.",
   "summary": "“Tehnički deo je manje upitan” — the technical part is less in doubt. Bogdan thought the existing WOS website system could support much of the proposed experience. His concern was the substance of the process: what should the team do, for whom, and under which conditions?",
@@ -546,12 +546,12 @@ const atlasIdeas = [
   "nextStop": "abm-context",
   "mapLabel": "3 · Follow the company",
   "mapPoint": [
-    0.77,
-    0.48
+    0.83,
+    0.23
   ],
   "mobilePoint": [
-    0.28,
-    0.49
+    0.24,
+    0.27
   ],
   "title": "Choose a company and follow what happened on the site",
   "summary": "Bogdan pictured a list of companies in a left sidebar. Select one and inspect its visits: where it arrived from, which pages it opened, whether it returned and how its activity developed over time.",
@@ -591,12 +591,12 @@ const atlasIdeas = [
   "nextStop": "abm-playbook",
   "mapLabel": "4 · Add the missing context",
   "mapPoint": [
-    0.55,
-    0.78
+    0.52,
+    0.34
   ],
   "mobilePoint": [
-    0.71,
-    0.69
+    0.73,
+    0.36
   ],
   "title": "Connect the visit to what the team already knows",
   "summary": "The conversation named Brandfetch, 6sense, Salesforce and Salesloft as possible sources. Bogdan wanted to explore whether a selected company could bring its identity, account context and assigned sales owner into the same view.",
@@ -635,12 +635,12 @@ const atlasIdeas = [
   "trailFrom": "abm-context",
   "mapLabel": "5 · Decide the next step",
   "mapPoint": [
-    0.18,
-    0.66
+    0.19,
+    0.37
   ],
   "mobilePoint": [
-    0.27,
-    0.87
+    0.25,
+    0.45
   ],
   "title": "Write the playbook before scaling the pages",
   "summary": "A playbook describes what to do when a particular situation occurs. For this idea, it would connect an observed signal with relevant content, a responsible person, a proposed action and a way to judge whether that action helped.",
@@ -664,6 +664,10 @@ const atlasIdeas = [
     [
       "Where the archive ends",
       "The conversation records the idea and its first elaboration. It does not establish a deployed account system, a completed pilot or measured outcomes. The next chapter would need evidence from trying the playbook."
+    ],
+    [
+      "November 14 · A network of entrances",
+      "Bogdan expanded the idea into a net of landing pages: some organised around a vertical, some around a problem, others around a solution. The pages would bring companies into view; their subsequent activity would help the team choose relevant content. Explore one of the three entrances below. This is the next version of the proposal, not a completed pilot."
     ]
   ],
   "detail": "The original question has changed: from “How do we produce more content?” to “We can see a company showing interest. What should we do next, and how will we know it helped?”",
@@ -688,6 +692,11 @@ const atlasIdeas = [
       "Read the original conversation · November 12, 2026",
       "https://chatgpt.com/share/6af88bfd-b254-83ed-974c-014fcdaaf658"
     ]
+  ],
+  "nextStops": [
+    "abm-vertical",
+    "abm-pain",
+    "abm-solution"
   ]
 }
 ];
@@ -701,5 +710,5 @@ const atlasTerritories = [
   {root:'aeo', center:[0.15,0.82], mobileCenter:[0.76,0.68], title:'How AI reads websites', description:'An early mistake in an AI answer raised a question about what machines can read on a website and what they can do there.'},
   {root:'personal-site', center:[0.74,0.43], mobileCenter:[0.72,0.49], title:'The personal website', description:'Follow the sailboat through the Hermes references and Petar’s dotted drawing to the finished homepage.'},
   {root:'kata-vera', center:[0.83,0.74], mobileCenter:[0.25,0.85], title:'Thinking in drawings', description:'Read the story illustrations alongside the Atlas design study. In both, successive drawings let you see what changed.'},
-  {root:'abm', center:[0.48,0.78], mobileCenter:[0.75,0.88], title:'ABM: landing pages and personalised content', description:'Follow the first five steps of an ABM idea: attract companies through relevant landing pages, understand their visits and choose useful content to offer. The playbook is still being developed.'}
+  {root:'abm', mapHeight:900, mobileMapHeight:1550, center:[0.48,0.78], mobileCenter:[0.75,0.88], title:'ABM: landing pages and personalised content', description:'Start with the original question, then choose an entrance: industry, problem or solution. The three paths meet at an account and lead to a content offer you can try. Finish with published experiments and what they actually measured.'}
 ];

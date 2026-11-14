@@ -137,7 +137,102 @@
     return section;
   }
 
-  function showIdea(idea, viaBearing) {
+  let offerSupport;
+  function loadOfferSupport() {
+    if (!offerSupport) offerSupport = (async () => {
+      try {
+        if (!('popover' in HTMLElement.prototype)) await import('https://unpkg.com/@oddbird/popover-polyfill@latest/dist/popover.min.js');
+        if (!('commandForElement' in HTMLButtonElement.prototype)) await import('https://esm.run/invokers-polyfill');
+        return true;
+      } catch { return false; }
+    })();
+    return offerSupport;
+  }
+
+  function abmExample(entry, withOffer) {
+    const example = abmEntries[entry];
+    const section = element('section', '', 'abm-example');
+    section.append(element('p', 'Illustrative example · invented company and visits', 'reader-kind'),
+      element('h2', 'Follow the visit to the offer'));
+    const choices = element('nav', '', 'abm-choices');
+    choices.setAttribute('aria-label', 'Choose the landing-page entrance');
+    for (const [key, value] of Object.entries(abmEntries)) {
+      const a = link(value.label, '#idea/' + (withOffer ? 'abm-offer' : 'abm-match') + '?map=abm&entry=' + key);
+      if (entry === key) a.setAttribute('aria-current', 'true');
+      choices.append(a);
+    }
+    const facts = element('dl', '', 'abm-observations');
+    for (const [label, value] of [
+      ['Entrance', example.page],
+      ['Observed visits', example.visit],
+      ['Account match', 'Northline Maintenance · fictional company. In this scenario, a previously submitted work email links this visitor to an existing CRM account. The match does not establish their role or purchase intent.'],
+      ['Working hypothesis', example.inference],
+      ['Proposed content', example.offer]
+    ]) facts.append(element('dt', label), element('dd', value));
+    section.append(choices, facts);
+    if (!withOffer) return section;
+    const trigger = element('button', 'Show the slide-in offer', 'route-next');
+    trigger.type = 'button';
+    trigger.disabled = true;
+    trigger.setAttribute('commandfor', 'abm-content-offer');
+    trigger.setAttribute('command', 'show-popover');
+    trigger.setAttribute('aria-controls', 'abm-content-offer');
+    trigger.setAttribute('aria-expanded', 'false');
+    const panel = element('aside', '', 'abm-slide-in');
+    panel.id = 'abm-content-offer';
+    panel.setAttribute('popover', 'auto');
+    panel.setAttribute('aria-labelledby', 'abm-offer-title');
+    const close = element('button', 'Close offer', 'abm-offer-close');
+    close.type = 'button';
+    close.setAttribute('commandfor', panel.id);
+    close.setAttribute('command', 'hide-popover');
+    const title = element('h2', example.offer);
+    title.id = 'abm-offer-title';
+    const open = element('button', 'Open the ' + (entry === 'pain' ? 'worksheet' : 'checklist') + ' →', 'route-next');
+    open.type = 'button';
+    panel.append(close, element('p', 'An example content offer', 'reader-kind'), title, element('p', example.reason), open, element('p', 'Read it here. No form or email required.', 'abm-offer-note'));
+    const resource = element('section', '', 'abm-resource');
+    resource.hidden = true;
+    const resourceTitle = element('h3', example.offer);
+    resourceTitle.tabIndex = -1;
+    const list = element('ol');
+    for (const task of example.content) list.append(element('li', task));
+    resource.append(resourceTitle, element('p', 'A short sample written for this demonstration. It shows what the offer actually delivers.'), list);
+    panel.addEventListener('toggle', event => trigger.setAttribute('aria-expanded', String(event.newState === 'open')));
+    close.addEventListener('click', () => requestAnimationFrame(() => { if (trigger.isConnected) trigger.focus({preventScroll:true}); }));
+    open.addEventListener('click', () => {
+      resource.hidden = false;
+      if (panel.hasAttribute('popover')) panel.hidePopover?.();
+      resourceTitle.focus({preventScroll:true});
+      resource.scrollIntoView({block:'center'});
+    });
+    section.append(trigger, panel, resource);
+    loadOfferSupport().then(supported => {
+      if (!section.isConnected) return;
+      if (supported) trigger.disabled = false;
+      else {
+        // If a polyfill cannot load, keep the content offer available in the document.
+        panel.removeAttribute('popover');
+        panel.classList.add('abm-offer-inline');
+        trigger.hidden = close.hidden = true;
+      }
+    });
+    return section;
+  }
+
+  function abmStudies(studies) {
+    const section = element('section', '', 'abm-studies');
+    section.append(element('h2', 'Four published examples'));
+    for (const study of studies) {
+      const article = element('article', '', 'reading-passage');
+      article.append(element('h3', study.title), element('p', study.result, 'abm-study-result'), element('p', study.body), link(study.source + ' →', study.url, 'source'));
+      section.append(article);
+    }
+    return section;
+  }
+
+  function showIdea(idea, viaBearing, requestedEntry) {
+    const entry = idea.entry || (Object.hasOwn(abmEntries, requestedEntry) ? requestedEntry : "pain");
     const heading = element('h1', idea.title);
     heading.tabIndex = -1;
     const nav = element('nav', '', 'reading-navigation');
@@ -191,7 +286,9 @@
     if (idea.id === 'dice-wolf') {
       reader.append(document.querySelector('#wolf-pair').content.cloneNode(true));
     }
+    if (idea.studies) reader.append(abmStudies(idea.studies));
     for (const passage of idea.sections || []) reader.append(readingPassage(passage));
+    if (idea.abmExample) reader.append(abmExample(entry, idea.id === 'abm-offer'));
     if (idea.id === 'banana-wars') {
       const trace = element('section', '', 'match-excerpt');
       trace.append(element('h2', 'One move from the match record'),
@@ -208,7 +305,17 @@
     if (idea.id === 'dice-coin') reader.append(link('Turn the coin toward the personal website →','#map/dice?at=dice-coin&stage=coin','source'));
     if (idea.nextStop) {
       const next = byId.get(idea.nextStop);
-      reader.append(link('Next · ' + next.mapLabel + ' →', '#idea/' + next.id + '?map=' + territory.root, 'route-next'));
+      reader.append(link('Next · ' + next.mapLabel + ' →', '#idea/' + next.id + '?map=' + territory.root + (territory.root === 'abm' ? '&entry=' + entry : ''), 'route-next'));
+    }
+    if (idea.nextStops) {
+      const branches = element('nav', '', 'abm-branches');
+      branches.setAttribute('aria-label', 'Choose an entrance into the landing-page network');
+      branches.append(element('h2', 'Choose an entrance into the network'));
+      for (const id of idea.nextStops) {
+        const next = byId.get(id);
+        branches.append(link(next.mapLabel + ' →', '#idea/' + id + '?map=' + territory.root + '&entry=' + next.entry, 'route-next'));
+      }
+      reader.append(branches);
     }
     if (idea.comparison) {
       const panel = element('details', '', 'reading-passage');
@@ -235,7 +342,7 @@
     document.title = idea ? idea.title + ' · Digital Atlas' : 'Digital Atlas · Bogdan Vučković';
     if (idea) {
       readerMap = params.get('map') === map.membership.get(idea.id) ? params.get('map') : '';
-      const heading = showIdea(idea, idea.id === 'personal-site' && params.get('via') === 'bearing');
+      const heading = showIdea(idea, idea.id === 'personal-site' && params.get('via') === 'bearing', params.get('entry'));
       heading.focus({preventScroll:true});
       if (route === 'editions') reader.querySelector('.growth').scrollIntoView();
       else window.scrollTo(0, 0);
