@@ -176,7 +176,7 @@
 
   function abmOffer(example, id, callbacks = {}) {
     const section = element('div', '', 'abm-offer-widget');
-    const trigger = element('button', 'Show the slide-in offer', 'route-next');
+    const trigger = element('button', example.triggerLabel || 'Show the slide-in offer', 'route-next');
     trigger.type = 'button';
     trigger.disabled = true;
     trigger.setAttribute('commandfor', id);
@@ -229,6 +229,70 @@
     return section;
   }
 
+  function abmSalesReview(events) {
+    const panel = element('section', '', 'abm-sales');
+    panel.id = 'abm-sales-review';
+    const heading = element('h3', 'What sales sees for Northline Maintenance');
+    heading.tabIndex = -1;
+    panel.append(element('p', 'Sales view · DEMO-001 · illustrative account record', 'reader-kind'), heading,
+      element('p', 'Latest signal: the pilot plan was opened during the second visit. Review the account context before choosing a response.'));
+    const timeline = element('ol', '', 'abm-sales-timeline');
+    for (const event of events) timeline.append(element('li', event.text));
+    panel.append(element('h4', 'Observed website activity'), timeline,
+      element('h4', 'What the record does and does not tell us'),
+      element('p', 'This demonstration links one returning visitor to the same fictional account. Sales sees the sequence of pages and opened resources. Reading duration, completion of the audit, budget, authority and readiness to buy remain unknown.'),
+      element('p', 'Suggested review: the repeat-visit problem and the pilot may be relevant. Assigned owner: the account owner. Review status: needs context; no sales stage has been advanced.'));
+    const choices = element('fieldset', '', 'abm-sales-context');
+    choices.append(element('legend', 'What has the buyer told us in a conversation?'));
+    const help = element('p', 'Choose a simulated conversation note. These facts come from the chosen scenario, not from the page views.');
+    help.id = 'abm-sales-context-help';
+    choices.setAttribute('aria-describedby', help.id);
+    choices.append(help);
+    const recommendation = element('section', '', 'abm-sales-recommendation');
+    const announcement = element('p', '', 'abm-demo-status');
+    announcement.setAttribute('role', 'status');
+    const decisions = element('ol', '', 'abm-sales-decisions');
+    const decisionsTitle = element('h4', 'Sales decision log · separate from buyer activity');
+    const savedContexts = new Set();
+    let context = 'unknown';
+    function update() {
+      const offer = selectAbmSalesOffer(events, context);
+      if (!offer) return;
+      const facts = element('dl', '', 'abm-observations');
+      for (const [label, value] of [['Context source', offer.evidence], ['Why this offer', offer.decision], ['Where to offer it', offer.channel], ['Who owns it', offer.owner], ['What to check next', offer.success]]) facts.append(element('dt', label), element('dd', value));
+      const draft = element('blockquote', offer.draft, 'abm-offer-draft');
+      const recordDecision = element('button', savedContexts.has(context) ? 'Recommendation recorded in this demo' : 'Record this recommendation in the demo', 'route-next');
+      recordDecision.type = 'button';
+      recordDecision.disabled = savedContexts.has(context);
+      recordDecision.addEventListener('click', () => {
+        if (savedContexts.has(context)) return;
+        savedContexts.add(context);
+        decisions.append(element('li', 'Proposed · ' + offer.offer + '. Basis: ' + offer.label + '. Owner review required. Nothing sent; buyer acceptance not recorded.'));
+        recordDecision.textContent = 'Recommendation recorded in this demo';
+        recordDecision.disabled = true;
+        announcement.textContent = 'Recommendation recorded in the demo: ' + offer.offer + '. No message has been sent.';
+      });
+      recommendation.replaceChildren(element('h4', 'Proposed next offer'), element('h3', offer.offer), facts,
+        element('h4', context === 'unknown' ? 'The on-site invitation' : 'A draft for the existing conversation'), draft,
+        abmOffer({...offer, triggerLabel:'Preview the content offer'}, 'abm-sales-preview'),
+        element('p', 'This is an internal preview. Opening its sample content does not add a buyer event to the history.', 'abm-demo-caption'), recordDecision);
+      announcement.textContent = 'Proposed offer: ' + offer.offer;
+    }
+    for (const [key, option] of Object.entries(abmSalesContexts)) {
+      const row = element('div', '', 'abm-context-option');
+      const input = element('input');
+      input.type = 'radio'; input.name = 'abm-sales-context'; input.value = key; input.id = 'abm-context-' + key;
+      input.checked = key === context;
+      const label = element('label'); label.htmlFor = input.id;
+      label.append(element('span', option.label));
+      input.addEventListener('change', () => { if (input.checked) { context = key; update(); } });
+      row.append(input, label); choices.append(row);
+    }
+    panel.append(choices, recommendation, announcement, decisionsTitle, element('p', 'Recording a recommendation documents the owner’s proposed action. A response from the buyer would be a separate event.'), decisions);
+    update();
+    return panel;
+  }
+
   function abmReturnJourney() {
     const journey = element('section', '', 'abm-journey');
     journey.setAttribute('aria-label', 'Two visits from the same account');
@@ -236,6 +300,7 @@
     const intro = element('p', 'Interactive scenario · fictional account. The visit history below changes only when you take a step in this demonstration.', 'abm-demo-caption');
     const stage = element('section', '', 'abm-visit');
     const history = element('section', '', 'abm-history');
+    const salesSlot = element('div');
     const historyTitle = element('h3', 'What this account has viewed');
     const historyList = element('ol');
     const status = element('p', '', 'abm-demo-status');
@@ -243,7 +308,7 @@
     const restart = element('button', 'Restart the two visits', 'abm-restart');
     restart.type = 'button';
     history.append(historyTitle, historyList, status);
-    journey.append(element('p', 'Same account throughout · DEMO-001', 'reader-kind'), heading, intro, stage, history, restart);
+    journey.append(element('p', 'Same account throughout · DEMO-001', 'reader-kind'), heading, intro, stage, history, salesSlot, restart);
     let events = [];
     let page = 'pain';
     function record(id, text) {
@@ -299,10 +364,26 @@
         const comparison = element('details', '', 'abm-comparison');
         const generic = selectAbmJourneyOffer([], 'solution');
         comparison.append(element('summary', 'What would this page offer without the earlier visit?'), element('h4', generic.offer), element('p', generic.reason), element('p', 'The current page alone selects this general checklist. The recorded diagnosis from visit 1 is what selects the more specific pilot plan above.'));
+        const review = element('button', 'See what sales sees →', 'route-next abm-continue');
+        review.type = 'button';
+        review.hidden = !events.some(event => event.id === 'pilot-opened');
+        review.setAttribute('aria-controls', 'abm-sales-review');
+        review.setAttribute('aria-expanded', 'false');
+        review.addEventListener('click', () => {
+          if (!events.some(event => event.id === 'pilot-opened')) return;
+          if (!salesSlot.childElementCount) salesSlot.append(abmSalesReview(events));
+          review.setAttribute('aria-expanded', 'true');
+          const title = salesSlot.querySelector('h3');
+          title.focus({preventScroll:true});
+          salesSlot.scrollIntoView({block:'start'});
+        });
         stage.append(decision, abmOffer(selected, 'abm-return-offer', {
           onShow: () => record('pilot-shown', 'Visit 2 · Saw the pilot plan offer, selected using the earlier diagnosis.'),
-          onRead: () => record('pilot-opened', 'Visit 2 · Opened the pilot plan to reduce repeat visits.')
-        }), comparison);
+          onRead: () => {
+            record('pilot-opened', 'Visit 2 · Opened the pilot plan to reduce repeat visits.');
+            review.hidden = false;
+          }
+        }), review, comparison);
       }
       if (focus) {
         stageTitle.focus({preventScroll:true});
@@ -313,6 +394,7 @@
       events = [];
       page = 'pain';
       historyList.replaceChildren();
+      salesSlot.replaceChildren();
       record('pain-visited', 'Visit 1 · Arrived on the page about repeat visits.');
       render(focus);
     }

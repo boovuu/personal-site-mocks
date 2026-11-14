@@ -276,3 +276,26 @@ html {scroll-behavior:auto}
 .abm-comparison summary {cursor:pointer;text-decoration:underline;text-underline-offset:4px;line-height:1.5}
 .abm-restart {color:#1c3965;background:transparent;border:1px solid #8796a2;padding:10px 16px;cursor:pointer;font:500 15px/1.5 'Instrument Sans',Arial,sans-serif}
 .abm-demo-status {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+.abm-sales {margin:36px 0;padding:clamp(18px,3vw,32px);border:1px solid #9c9c8f;border-top:4px solid #914c2d;background:#fff9e9;scroll-margin-top:100px}
+.abm-sales h3 {font:400 clamp(28px,3vw,38px)/1.2 Newsreader,Georgia,serif;margin:12px 0 20px}
+.abm-sales p,.abm-sales li {line-height:1.65;max-width:72ch}
+.abm-sales-timeline,.abm-sales-decisions {padding-inline-start:24px}
+.abm-sales li {padding:7px 0 7px 6px}
+.abm-sales-context {margin:28px 0;padding:18px;border:1px solid #9c9c8f;min-width:0}
+.abm-sales-context legend {font:400 25px/1.25 Newsreader,Georgia,serif;padding:0 6px;max-width:100%}
+.abm-context-option {display:flex;align-items:center;gap:12px;position:relative;border-top:1px solid #d2c9b3}
+.abm-context-option input {flex:none;width:20px;height:20px;margin:0;accent-color:#1c3965}
+.abm-context-option label {min-height:48px;display:flex;align-items:center;padding:10px 0;cursor:pointer;line-height:1.5;flex:1}
+.abm-context-option input:focus-visible {outline:2px solid #1c3965;outline-offset:4px}
+.abm-offer-draft {margin:20px 0;padding:16px 20px;border-left:3px solid #914c2d;font:italic 400 23px/1.45 Newsreader,Georgia,serif}
+.abm-sales-recommendation {border-block:1px solid #b7af98;padding:16px 0 24px}
+.abm-sales .route-next:disabled {opacity:.65;cursor:default}
+.abm-journey>div:has(>.abm-sales) {scroll-margin-top:100px}
+@supports not (accent-color:#1c3965) {
+ .abm-context-option input {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);padding:0;margin:-1px;white-space:nowrap}
+ .abm-context-option label {padding-inline-start:32px}
+ .abm-context-option label span::before {content:'';position:absolute;inset-inline-start:0;top:50%;transform:translateY(-50%);width:20px;height:20px;border:2px solid #1c3965;border-radius:50%;box-sizing:border-box;background:#fff9e9}
+ .abm-context-option input:checked+label span::before {background:#1c3965;box-shadow:inset 0 0 0 4px #fff9e9}
+ .abm-context-option input:focus-visible+label span::before {outline:2px solid #1c3965;outline-offset:4px}
+}

@@ -304,7 +304,7 @@ atlasIdeas.push(...[
     "subject": "websites",
     "kind": "ABM demonstration · November 14",
     "title": "The same account returns. The offer remembers the first visit.",
-    "summary": "Northline Maintenance first arrives through a page about repeat visits. Later, it returns to a solution page. Walk through both visits and see how the earlier reading changes the content offered.",
+    "summary": "Northline Maintenance first arrives through a page about repeat visits. Later, it returns to a solution page. Walk through both visits, open the pilot plan, then switch to the sales view to choose a specific follow-up using the recorded activity and conversation context.",
     "returnJourney": true,
     "sections": [
       [
@@ -320,12 +320,13 @@ atlasIdeas.push(...[
         "On the repeat-visit page, show the diagnostic worksheet after the relevant section has been read. On the solution page, a recorded reading of that diagnosis selects the repeat-visit pilot plan. Without that earlier reading, offer the general integration checklist. Opening the worksheet is recorded separately; it is not treated as proof that the worksheet was completed."
       ]
     ],
-    "detail": "The next stop compares published experiments and explains how to test whether these changing offers actually help.",
+    "detail": "November 15 extension: after opening the pilot plan, use “See what sales sees” to review the actual demo history and compare three follow-up offers. The next map stop examines published evidence.",
     "sources": [
       [
         "Bogdan’s request for a returning-account demonstration · this conversation, November 14, 2026",
         null
-      ]
+      ],
+      ["Bogdan’s request for the sales history and next offer · this conversation, November 15, 2026", null]
     ],
     "related": [
       [
@@ -440,4 +441,51 @@ function selectAbmJourneyOffer(events, page) {
   if (page === 'pain') return {...abmEntries.pain, cta:'Open the worksheet →', decision:'The diagnosis has been read. Offer a worksheet that helps the visitor examine their own repeat visits.'};
   if (events.some(event => event.id === 'diagnosis-read')) return {...abmPilotOffer, decision:'Earlier: read the repeat-visit diagnosis. Now: returned to a solution page about connected job records. Offer a pilot aimed at that earlier problem, rather than a general integration introduction.'};
   return {...abmEntries.solution, cta:'Open the checklist →', decision:'There is no earlier reading to connect to this visit. Offer the general integration planning checklist.'};
+}
+
+// Proposed sales decisions for the fictional scenario; no CRM writes or outbound messages.
+const abmSalesContexts = {
+  unknown: {
+    label: 'No conversation yet; their constraints are unknown',
+    evidence: 'Website activity only. No confirmed team, systems, timing or request for a meeting.',
+    offer: 'Five questions to scope a one-team pilot',
+    reason: 'Thinking about a small pilot? Use five questions to choose a workflow, a team and a useful measure before arranging a session.',
+    decision: 'The plan was opened, but we still do not know what would make a pilot useful. Offer a short scoping worksheet on a relevant return visit. Ask the account owner to review the match and existing relationship before considering personal outreach.',
+    channel: 'On-site content offer on a relevant return visit. No personal outreach is queued.',
+    owner: 'Assigned account owner checks the match and CRM history; marketing owns the on-site offer.',
+    cta: 'Open the five questions →',
+    content: ['Which type of job most often needs a repeat visit?', 'Which team could test a change without involving the whole business?', 'What job information is missing today, and where is it kept?', 'Who would own a small test and review its result?', 'What outcome would make a pilot worth continuing?'],
+    draft: 'Want to turn the pilot outline into something your team could try? Start with these five scoping questions. You can work through them before deciding whether a conversation would help.',
+    success: 'A voluntary answer names a real constraint or someone asks for help scoping the pilot. Opening another document alone is still only an engagement signal.'
+  },
+  integration: {
+    label: 'They asked whether their dispatch system can connect',
+    evidence: 'Simulated conversation note: the buyer asked about compatibility with the existing dispatch system. Compatibility has not been verified.',
+    offer: 'A 20-minute integration mapping session',
+    reason: 'Map one job from dispatch to completion. Leave with a record of the systems, fields and questions that need checking before a pilot.',
+    decision: 'The website history suggests interest in a pilot, and the stated obstacle is integration. Resolve that obstacle before proposing a broader demo or a rollout. The session maps the unknowns; it does not promise compatibility.',
+    channel: 'The assigned owner replies in the existing conversation with an optional 20-minute session.',
+    owner: 'Account owner coordinates with a solutions specialist who can assess the data flow.',
+    cta: 'Open the mapping agenda →',
+    content: ['Bring one example job and the names of the systems it touches.', '0–5 minutes: identify where the job record starts and who updates it.', '5–12 minutes: map equipment history, parts and access information between systems.', '12–17 minutes: identify missing fields, permissions and supported connection methods to verify.', '17–20 minutes: agree the owner of each check and the next decision.', 'Take away a one-page system map and a list of unresolved compatibility questions.'],
+    draft: 'You mentioned the connection to your dispatch system. Would a 20-minute mapping session help? We could walk through one job, identify the records that need to move and list what we need to verify before a pilot.',
+    success: 'The buyer accepts the proposed session or clarifies the integration question. After the session, record what was verified and what still blocks a pilot.'
+  },
+  ready: {
+    label: 'They confirmed a team and asked for help starting a pilot',
+    evidence: 'Simulated conversation note: a team has been named and the buyer explicitly asked for help defining a pilot. Scope and timing are still to be agreed.',
+    offer: 'A 30-minute pilot scoping workshop',
+    reason: 'Choose one team, one job type and one useful measure. Leave with a one-page pilot brief that names the work, owners and review point.',
+    decision: 'The stronger evidence is the explicit request for help and a named team. Offer a focused scoping workshop that turns the outline into an agreed brief. The document open supports the context; it does not create readiness on its own.',
+    channel: 'The assigned owner proposes the workshop in the existing conversation and asks who should join.',
+    owner: 'Account owner brings a solutions specialist; the buyer nominates the operational owner.',
+    cta: 'Open the workshop agenda →',
+    content: ['Before the session: bring the named team, one recurring job type and available examples of repeat visits.', '0–10 minutes: define the problem, the team and what stays outside the pilot.', '10–20 minutes: agree the information needed, responsibilities and any technical checks.', '20–30 minutes: choose a baseline, a success measure and a review point.', 'Take away a one-page brief with scope, owners, open questions and the next agreed action.', 'Confirm timing and commitments with the buyer after the session; a workshop invitation is not an agreed pilot.'],
+    draft: 'Since you have a team in mind and want help getting started, shall we scope a small pilot together? In 30 minutes we can agree one job type, the owners and what we would measure, then capture it in a one-page brief.',
+    success: 'The buyer accepts or revises the scope. Record an agreed brief and next action before treating the pilot as committed.'
+  }
+};
+function selectAbmSalesOffer(events, context) {
+  if (!events.some(event => event.id === 'pilot-opened')) return null;
+  return abmSalesContexts[Object.hasOwn(abmSalesContexts, context) ? context : 'unknown'];
 }
