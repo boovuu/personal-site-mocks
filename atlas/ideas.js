@@ -20,7 +20,7 @@ const atlasIdeas = [
     summary:'A website brief starts with a person and a decision. Who is visiting, and what should they be able to decide after reading?',
     detail:'One example from the guide is an operations leader deciding whether to request a demonstration. That gives the writer something to work with. The page can show which problems the product solves, who already uses it, and what a demonstration covers.',
     sources:[['Read the website briefing guide','../notes/website-purpose.html']],
-    related:[['camouflage','Once you know what the buyer needs to decide, consider how much of the argument the homepage should make for them.'],['brand','A buyer who already knows the brand brings something different to that same page.']]
+    related:[['abm','Follow the ABM story: what changes when this brief concerns a specific company and the next step in its visit?'],['camouflage','Once you know what the buyer needs to decide, consider how much of the argument the homepage should make for them.'],['brand','A buyer who already knows the brand brings something different to that same page.']]
   },
   {
     id:'camouflage', mapPoint:[0.26,0.25], mapLabel:'Selling through evidence', trailFrom:'website-purpose', subject:'websites', kind:'Essay',
@@ -44,7 +44,7 @@ const atlasIdeas = [
     summary:'On the ships in this essay, the captain commanded in battle. The quartermaster handled provisions, distribution and disputes.',
     detail:'The division of responsibility gives the essay its modern question. After a team agrees on a marketing objective, who can allocate resources, resolve a disagreement and answer to the people doing the work?',
     sources:[['Read “The quartermaster’s place”','../notes/quartermaster.html']],
-    related:[['website-purpose','A website brief eventually reaches the same practical question. Who owns the decision and the outcome?']]
+    related:[['abm-playbook','The ABM playbook turns this ownership question into a proposed process: who reviews a signal, chooses a response and checks the result?'],['website-purpose','A website brief eventually reaches the same practical question. Who owns the decision and the outcome?']]
   },
   {
     id:'healthcare', mapPoint:[0.43,0.52], mapLabel:'Comparing 60 companies', trailFrom:'market-shift', subject:'research', kind:'Research in progress',
@@ -450,6 +450,245 @@ const atlasIdeas = [
       "Revisit the five words and the intensity score."
     ]
   ]
+},
+{
+  "id": "abm",
+  "mapLabel": "1 · More content?",
+  "mapPoint": [
+    0.21,
+    0.24
+  ],
+  "mobilePoint": [
+    0.27,
+    0.12
+  ],
+  "title": "What if making more content is not the problem?",
+  "summary": "A proposal for account-based marketing started a conversation about personalised website experiences. Account-based marketing, or ABM, means organising marketing around selected companies. The starting assumption was that producing enough content for those companies would be the hard part.",
+  "sections": [
+    [
+      "November 12 · The proposal as Bogdan described it",
+      "Bogdan brought a proposal into the conversation and asked to develop it further. In his account of the proposal, content creation was a bottleneck. Before accepting that diagnosis, he wanted to check what already existed and what the team would actually need to invent. The shared conversation preserves his description; it does not contain the original proposal itself."
+    ],
+    [
+      "A page is only one part of the visit",
+      "A team can make a page for a named company, add its logo and adapt the message. But that still leaves a question: what should this particular visitor learn or do next? Producing more versions does not answer that question on its own."
+    ],
+    [
+      "Where the story begins",
+      "At this point, the idea was a question to investigate. There was no recorded test showing that a shortage of content was the main constraint. Bogdan’s next move was to examine that assumption before committing to a build."
+    ]
+  ],
+  "detail": "Follow the next stop to see how the question moved from producing pages to deciding what should happen when a company visits.",
+  "nextStop": "abm-assumption",
+  "related": [
+    [
+      "website-purpose",
+      "This earlier guide asks what a visitor should be able to decide. The ABM conversation applies that question to a particular company and moment."
+    ]
+  ],
+  "subject": "websites",
+  "kind": "ABM concept · November 12",
+  "sources": [
+    [
+      "Read the original conversation · November 12, 2026",
+      "https://chatgpt.com/share/6af88bfd-b254-83ed-974c-014fcdaaf658"
+    ]
+  ]
+},
+{
+  "id": "abm-assumption",
+  "trailFrom": "abm",
+  "nextStop": "abm-account",
+  "mapLabel": "2 · Question the bottleneck",
+  "mapPoint": [
+    0.57,
+    0.15
+  ],
+  "mobilePoint": [
+    0.71,
+    0.3
+  ],
+  "title": "The technical part looked possible. The playbook was missing.",
+  "summary": "“Tehnički deo je manje upitan” — the technical part is less in doubt. Bogdan thought the existing WOS website system could support much of the proposed experience. His concern was the substance of the process: what should the team do, for whom, and under which conditions?",
+  "sections": [
+    [
+      "The change in the question",
+      "The discussion moved from “How do we make enough personalised pages?” to “How do we decide which response makes sense?” More writing might help, but so might choosing better from the material already available. These were competing explanations to investigate."
+    ],
+    [
+      "What Bogdan wanted to borrow",
+      "He asked whether other teams already had useful playbooks or workflows. Could the team start from a documented approach, understand the steps and adapt it? This was a request to examine existing practice before treating the idea as something entirely new."
+    ],
+    [
+      "Make the missing decision visible",
+      "For a useful playbook, the team would need to name the situation, choose a response and explain why that response fits. A visitor returning to a product page and a customer researching an additional service might need very different next steps. Those examples illustrate the question; they are not observed results from this project."
+    ]
+  ],
+  "detail": "Bogdan then described a concrete interface that could give the team enough context to make those decisions.",
+  "related": [
+    [
+      "abm",
+      "Return to the initial assumption about content production."
+    ]
+  ],
+  "subject": "websites",
+  "kind": "ABM concept · November 12",
+  "sources": [
+    [
+      "Read the original conversation · November 12, 2026",
+      "https://chatgpt.com/share/6af88bfd-b254-83ed-974c-014fcdaaf658"
+    ]
+  ]
+},
+{
+  "id": "abm-account",
+  "trailFrom": "abm-assumption",
+  "nextStop": "abm-context",
+  "mapLabel": "3 · Follow the company",
+  "mapPoint": [
+    0.77,
+    0.48
+  ],
+  "mobilePoint": [
+    0.28,
+    0.49
+  ],
+  "title": "Choose a company and follow what happened on the site",
+  "summary": "Bogdan pictured a list of companies in a left sidebar. Select one and inspect its visits: where it arrived from, which pages it opened, whether it returned and how its activity developed over time.",
+  "sections": [
+    [
+      "What he wanted to see",
+      "Was this just a click on an advertisement? Did the visitor reach the landing page and continue? Was the arrival organic? Had the company visited before? These were the questions behind his proposed account view."
+    ],
+    [
+      "From an isolated click to a sequence",
+      "A single page view provides little context. A sequence could help the team ask a better question: what has this company already encountered, and what information might help next? The sidebar would provide a way into that history. It was not intended to be the whole product."
+    ],
+    [
+      "An ambition that still needs checking",
+      "Bogdan imagined seeing companies currently on the site. That describes the desired experience. The conversation does not establish that reliable live identification or person-level tracking was available. Any implementation would first need to establish what the connected systems can actually identify and how current those signals are."
+    ]
+  ],
+  "detail": "The next step adds the context a page history cannot provide by itself: the relationship with the company and who is responsible for it.",
+  "related": [
+    [
+      "abm-assumption",
+      "Revisit why seeing activity matters only if it helps the team choose a response."
+    ]
+  ],
+  "subject": "websites",
+  "kind": "ABM concept · November 12",
+  "sources": [
+    [
+      "Read the original conversation · November 12, 2026",
+      "https://chatgpt.com/share/6af88bfd-b254-83ed-974c-014fcdaaf658"
+    ]
+  ]
+},
+{
+  "id": "abm-context",
+  "trailFrom": "abm-account",
+  "nextStop": "abm-playbook",
+  "mapLabel": "4 · Add the missing context",
+  "mapPoint": [
+    0.55,
+    0.78
+  ],
+  "mobilePoint": [
+    0.71,
+    0.69
+  ],
+  "title": "Connect the visit to what the team already knows",
+  "summary": "The conversation named Brandfetch, 6sense, Salesforce and Salesloft as possible sources. Bogdan wanted to explore whether a selected company could bring its identity, account context and assigned sales owner into the same view.",
+  "sections": [
+    [
+      "The proposed ingredients",
+      "Brandfetch came up as a possible source for the logo. 6sense came up when discussing account information and a possible persona. Sales data could potentially identify the person responsible for the relationship. These were integration ideas to check, not a record of completed connections."
+    ],
+    [
+      "Where should the information live?",
+      "Bogdan floated sending the information into Webflow CMS, then explicitly left the implementation open. The later written response proposed keeping customer records in the CRM, using WOS to coordinate decisions and using Webflow to present the selected content. That was an architectural proposal made in response to his question."
+    ],
+    [
+      "The useful handoff",
+      "With the relevant context available, the team could describe a handoff: what happened, what is known about the company, who should consider it and which response might help. Missing or uncertain data would still need to stay visible. A company’s logo alone cannot explain what its visitors need."
+    ]
+  ],
+  "detail": "The pieces now have a purpose. The final stop turns them into a proposed playbook: an explicit route from a signal to an action and a way to check the result.",
+  "related": [
+    [
+      "abm-account",
+      "Return to the visit history that this context would accompany."
+    ]
+  ],
+  "subject": "websites",
+  "kind": "ABM concept · November 12",
+  "sources": [
+    [
+      "Read the original conversation · November 12, 2026",
+      "https://chatgpt.com/share/6af88bfd-b254-83ed-974c-014fcdaaf658"
+    ]
+  ]
+},
+{
+  "id": "abm-playbook",
+  "trailFrom": "abm-context",
+  "mapLabel": "5 · Decide the next step",
+  "mapPoint": [
+    0.18,
+    0.66
+  ],
+  "mobilePoint": [
+    0.27,
+    0.87
+  ],
+  "title": "Write the playbook before scaling the pages",
+  "summary": "A playbook describes what to do when a particular situation occurs. For this idea, it would connect an observed signal with relevant content, a responsible person, a proposed action and a way to judge whether that action helped.",
+  "sections": [
+    [
+      "A worked example · proposed, not observed",
+      "Suppose a company with an active sales opportunity returns to security-related pages. A candidate playbook might ask its sales owner to review that activity, check the current conversation and select an appropriate security document. A follow-up could then address an actual outstanding question. The visits would be a reason to investigate, not proof that the company is ready to buy."
+    ],
+    [
+      "What each playbook needs",
+      "Define the trigger and the evidence needed to trust it. State the intended outcome, the approved material to use, who decides whether to act and how the action is recorded. Finally, name the result that would tell the team whether this was useful. This is an editorial expansion of the process discussed in the conversation."
+    ],
+    [
+      "Start with existing practice",
+      "Bogdan asked for workflows the team could learn from and adapt. The later written response suggested reviewing existing ABM products and playbooks, then trying a small pilot with a limited set of companies and a couple of clearly defined situations. It remained a proposed next step."
+    ],
+    [
+      "The question the pilot would answer",
+      "Does the process help the team make a more relevant response, sooner? Evidence might include whether sales used the recommendation, whether a buyer’s question was resolved and whether the relationship progressed. Counting newly generated pages would not, by itself, answer the question that started this story."
+    ],
+    [
+      "Where the archive ends",
+      "The conversation records the idea and its first elaboration. It does not establish a deployed account system, a completed pilot or measured outcomes. The next chapter would need evidence from trying the playbook."
+    ]
+  ],
+  "detail": "The original question has changed: from “How do we produce more content?” to “We can see a company showing interest. What should we do next, and how will we know it helped?”",
+  "related": [
+    [
+      "website-purpose",
+      "Continue to the website brief: what decision should the page help a visitor make?"
+    ],
+    [
+      "quartermaster",
+      "Follow the question of ownership: who can choose the next action and take responsibility for its result?"
+    ],
+    [
+      "abm",
+      "Return to the beginning and compare the final question with the starting assumption."
+    ]
+  ],
+  "subject": "websites",
+  "kind": "ABM concept · November 12",
+  "sources": [
+    [
+      "Read the original conversation · November 12, 2026",
+      "https://chatgpt.com/share/6af88bfd-b254-83ed-974c-014fcdaaf658"
+    ]
+  ]
 }
 ];
 
@@ -459,7 +698,8 @@ const atlasTerritories = [
   {root:'market-shift', center:[0.19,0.25], mobileCenter:[0.24,0.12], title:'Looking for website demand', description:'A market selloff led to a comparison of 60 companies and a proposed way to test whether buyers need website help.'},
   {root:'quartermaster', center:[0.80,0.15], mobileCenter:[0.76,0.29], title:'Writing for buyers', description:'An essay about who makes decisions opens a website brief. Two companion essays ask how the site can help a buyer decide.'},
   {root:'dice', center:[0.43,0.55], mobileCenter:[0.28,0.51], title:'D.I.C.E. and the Reckoning Coin', description:'How could an AI surprise the person writing the prompt? Follow the numbered path from the first question and wolf experiment to the coin, a saved card draw and the text it produced.'},
-  {root:'aeo', center:[0.15,0.82], mobileCenter:[0.76,0.70], title:'How AI reads websites', description:'An early mistake in an AI answer raised a question about what machines can read on a website and what they can do there.'},
+  {root:'aeo', center:[0.15,0.82], mobileCenter:[0.76,0.68], title:'How AI reads websites', description:'An early mistake in an AI answer raised a question about what machines can read on a website and what they can do there.'},
   {root:'personal-site', center:[0.74,0.43], mobileCenter:[0.72,0.49], title:'The personal website', description:'Follow the sailboat through the Hermes references and Petar’s dotted drawing to the finished homepage.'},
-  {root:'kata-vera', center:[0.83,0.74], mobileCenter:[0.32,0.89], title:'Thinking in drawings', description:'Read the story illustrations alongside the Atlas design study. In both, successive drawings let you see what changed.'}
+  {root:'kata-vera', center:[0.83,0.74], mobileCenter:[0.25,0.85], title:'Thinking in drawings', description:'Read the story illustrations alongside the Atlas design study. In both, successive drawings let you see what changed.'},
+  {root:'abm', center:[0.48,0.83], mobileCenter:[0.75,0.88], title:'ABM: what happens next?', description:'Follow five stops from a question about content production to a proposed playbook for responding to a company’s interest. This is a concept in development.'}
 ];
