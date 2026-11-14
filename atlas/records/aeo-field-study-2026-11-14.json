@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "id": "AEO-FS01",
+  "title": "What happened when Google fetched my page?",
+  "study_date": "2026-11-14",
+  "added_date": "2026-11-14",
+  "status": "reported-field-study-primary-logs-pending",
+  "source": {
+    "kind": "agent-authored-session-account",
+    "author": "Hermes (Ninja)",
+    "title": "Google Search Mechanics + Live Bot Trap — Full Session Record",
+    "date": "2026-11-14",
+    "sha256": "fac5d2bf048616f8c4c2da53f097e6174520881916b74ebf63906097fbf733c4",
+    "full_account_archive": "owner-private-source-archive",
+    "raw_request_logs_supplied": false,
+    "deployed_code_supplied": false,
+    "independent_event_verification": false
+  },
+  "reported_observations": [
+    {
+      "id": "O01",
+      "source_section": "3.1",
+      "trigger": "Rich Results Test",
+      "reported_time_utc": "2026-11-14T15:37:07.2Z",
+      "reported_requests": [
+        {
+          "time_utc": "15:37:07.2",
+          "resource": "page HTML"
+        },
+        {
+          "time_utc": "15:37:08.0",
+          "resource": "stylesheet"
+        },
+        {
+          "time_utc": "15:37:08.2",
+          "resource": "JavaScript-triggered pixel"
+        }
+      ],
+      "source_excerpt": "Google executed our JavaScript.",
+      "evidence_status": "reported-in-session-account; raw records not supplied",
+      "bounded_interpretation": "If the described beacon code and requests are authentic, JavaScript executed during this deliberately triggered test. This does not establish routine crawling, indexing or citation."
+    },
+    {
+      "id": "O02",
+      "source_section": "3.2",
+      "trigger": "Search Console URL Inspection live test",
+      "reported_time_utc": "2026-11-14T16:02:00Z",
+      "time_precision": "minute as given in the account",
+      "reported_request_count": 11,
+      "reported_duration_seconds": 29,
+      "source_excerpt": "11 requests in 29 seconds",
+      "reported_details": [
+        "Desktop and mobile user agents",
+        "Two beacon firings",
+        "A round timestamp on one beacon"
+      ],
+      "evidence_status": "reported-in-session-account; raw records not supplied",
+      "bounded_interpretation": "Multiple fetch/render activities are reported. Two render passes are an interpretation; a frozen clock is an unverified causal hypothesis."
+    },
+    {
+      "id": "O03",
+      "source_section": "5.4",
+      "source_excerpt": "the first \"RS vs US\" comparison was run twice from the US datacenter IP",
+      "evidence_status": "reported-method-correction",
+      "bounded_interpretation": "The initial comparison did not vary egress geography and cannot establish invariance across Serbia and the US."
+    },
+    {
+      "id": "O04",
+      "source_section": "8",
+      "source_excerpt": "Organic `Googlebot/2.1` catch — pending",
+      "evidence_status": "session-close-status-only",
+      "bounded_interpretation": "No organic Googlebot or AI-crawler catch was reported at session close. No later live status has been checked."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H01",
+      "claim": "Routine Googlebot crawling repeats the behaviour of the testing tools",
+      "status": "untested",
+      "needed_evidence": "Verified organic request records, trigger attribution and code matched to the deployment."
+    },
+    {
+      "id": "H02",
+      "claim": "Entity consistency increases AI citation likelihood",
+      "status": "untested",
+      "needed_evidence": "Fixed question set, saved responses and citations, baseline and documented intervention with repeated measurements."
+    },
+    {
+      "id": "H03",
+      "claim": "Query language outweighs IP geography, which outweighs the gl parameter",
+      "status": "unsupported-generalization-from-small-sample",
+      "needed_evidence": "Repeated controlled language, egress and parameter comparisons with environment metadata."
+    },
+    {
+      "id": "H04",
+      "claim": "The round beacon timestamp was caused by a frozen renderer clock",
+      "status": "cause-unknown",
+      "needed_evidence": "Beacon code, complete request records, repeat test and renderer diagnostics."
+    },
+    {
+      "id": "H05",
+      "claim": "The captcha and NavBoost share the same underlying behaviour machinery",
+      "status": "not-established",
+      "needed_evidence": "Authoritative architecture evidence; a captcha alone does not identify the ranking system."
+    }
+  ],
+  "outcomes": {
+    "organic_crawl": "pending-in-source-account",
+    "indexing": "not-established",
+    "ranking_change": "not-measured",
+    "ai_citation_change": "not-measured",
+    "qualified_visit_change": "not-measured"
+  },
+  "research_connections": [
+    {
+      "record": "AEO-R02",
+      "relation": "proposed-revisit",
+      "rationale": "Machine access can be observed separately from accurate representation."
+    },
+    {
+      "record": "AEO-R04",
+      "relation": "proposed-revisit",
+      "rationale": "Fetch evidence is one prerequisite for studying source selection; it does not explain selection."
+    },
+    {
+      "record": "AEO-R10",
+      "relation": "proposed-revisit",
+      "rationale": "Compare the site-specific account with official search guidance without treating the guidance as validation of the account."
+    }
+  ],
+  "reference_sources": [
+    {
+      "title": "JavaScript SEO basics",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+      "role": "context, not verification of the field events"
+    },
+    {
+      "title": "Google InspectionTool",
+      "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers#google-inspectiontool",
+      "role": "distinguishes testing crawler from ordinary Search"
+    },
+    {
+      "title": "AI features and your website",
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "role": "Google-specific eligibility and optimization guidance; not all answer engines"
+    }
+  ],
+  "preservation": {
+    "supplied_account": "byte-identical copy retained privately; SHA-256 above",
+    "public_extract": "selected verbatim excerpts and bounded editorial interpretations; not a raw telemetry export",
+    "missing_artifacts": [
+      "Raw KV hit records and original TTL metadata",
+      "Worker and beacon code with deployment revision",
+      "Reverse and forward DNS outputs and contemporaneous Google IP list snapshot",
+      "Search Console and Rich Results Test results",
+      "SERP captures with egress, language and country settings"
+    ],
+    "reported_log_ttl_days": 30,
+    "next_action": "Export existing records privately before expiration. Keep originals unchanged, hash each artifact, and publish only a redacted derivative. No export performed by adding this study."
+  },
+  "privacy": "Public extract omits infrastructure identifiers, raw IP records, cookies and visitor-level request headers. Original session account stays outside the public site checkout."
+}

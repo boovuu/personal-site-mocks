@@ -234,9 +234,9 @@ const atlasIdeas = [
   {
     id:'aeo', mapPoint:[0.69,0.71], mapLabel:'An AI misreads a site',subject:'agents',kind:'Illustrated research archive',
     title:'What happens when an AI answer disagrees with the website?',
-    summary:'In 2023, an early note recorded a mismatch between an AI answer and the site it described. The archive follows that question through ten source records from 2023 to 2026.',
+    summary:'In 2023, an early note recorded a mismatch between an AI answer and the site it described. The archive follows that question through ten source records from 2023 to 2026, followed by a field study of Google’s testing tools.',
     detail:'This became a study of answer engine optimization (AEO), or how websites appear in AI-generated answers. Choose a year in the illustrated archive to see which observations and sources had been recorded by then.',
-    sources:[['Explore the drawing by year','aeo.html#plate'],['Browse the ten source records','aeo.html#inventory']],
+    sources:[['Explore the drawing by year','aeo.html#plate'],['Browse the ten source records','aeo.html#inventory'],['Read the Google fetch field study','aeo.html#field-study']],
     related:[['agent-interfaces','The next question goes from what a system can read on a website to what it can actually do there.'],['atlas-drawings','See the design decision behind the changing illustration.']]
   },
   {
