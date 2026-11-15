@@ -104,7 +104,7 @@ function createTerritoryMap(ideas, definitions) {
     territories.set(territory.root, territory);
   }
 
-  function coast(seed) {
+  function coast(seed, route = []) {
     const points = [];
     for (let n = 0; n < 154; n++) {
       const t = 2 * Math.PI * n / 154;
@@ -114,7 +114,17 @@ function createTerritoryMap(ideas, definitions) {
       const bay = .48*Math.pow(Math.max(0,Math.cos(t-seed*1.48)),21) + inlet;
       const headland = .26*Math.pow(Math.max(0,Math.cos(t+seed*.91)),15);
       const radius = r - bay + headland;
-      points.push([radius*Math.cos(t) + .055*Math.sin(2*t+seed),radius*Math.sin(t) + .075*Math.cos(2*t-seed)]);
+      const px = radius*Math.cos(t) + .055*Math.sin(2*t+seed);
+      const py = radius*Math.sin(t) + .075*Math.cos(2*t-seed);
+      const angle = Math.atan2(py,px);
+      let reach = Math.hypot(px,py);
+      // Let the shore grow locally around the reading path, including its bends.
+      // The stops retain their positions at both map scales.
+      for (const point of route) {
+        const delta = Math.atan2(Math.sin(angle-point.angle),Math.cos(angle-point.angle));
+        reach = Math.max(reach, (point.radius+.18)*Math.exp(-.5*(delta/.28)**2));
+      }
+      points.push([reach*Math.cos(angle),reach*Math.sin(angle)]);
     }
     return 'M' + points.map(p => p.map(v => v.toFixed(4)).join(' ')).join('L') + 'Z';
   }
@@ -204,7 +214,7 @@ function createTerritoryMap(ideas, definitions) {
     width = Math.max(260, frame.clientWidth);
     narrow = width < 620;
     const list = [...territories.values()];
-    height = narrow ? Math.max(840,list.length*140,...list.map(t => t.mobileOverviewHeight || 0)) : Math.max(580,Math.min(725,width*.55),list.length*94);
+    height = narrow ? Math.max(840,list.length*140,...list.map(t => t.mobileOverviewHeight || 0)) : Math.max(580,Math.min(725,width*.55),list.length*108);
     const selectedTerritory = territories.get(selected);
     height = Math.max(height, (narrow ? selectedTerritory?.mobileMapHeight : selectedTerritory?.mapHeight) || 0);
     frame.style.height = height + 'px';
@@ -223,9 +233,35 @@ function createTerritoryMap(ideas, definitions) {
       const center = centers[index] || openPoint(occupied);
       if (!centers[index]) occupied.push(center);
       const x = center[0]*width, y = center[1]*height;
+      const stops = new Map();
+      const positions = new Map(territory.stops.filter(({note}) => note.mapPoint).map(({note}) => [note.id,(narrow && note.mobilePoint) || note.mapPoint]));
+      for (const {note} of territory.stops) {
+        if (!positions.has(note.id)) positions.set(note.id,openPoint([...positions.values()],positions.get(note.trailFrom) || [.5,.5]));
+        const [u,v] = positions.get(note.id);
+        stops.set(note.id,{x:x+(u-.5)*w,y:y+(v-.5)*h});
+      }
+      const route = [];
+      const include = (px,py) => {
+        const u = 2*(px-x)/w, v = 2*(py-y)/h;
+        route.push({angle:Math.atan2(v,u),radius:Math.hypot(u,v)});
+      };
+      for (const point of stops.values()) include(point.x,point.y);
+      for (const {note} of territory.stops) {
+        const end = stops.get(note.id);
+        for (const parent of [note.trailFrom,...(note.alsoFrom || [])]) {
+          const start = stops.get(parent);
+          if (!start) continue;
+          const cx = (start.x+end.x)/2-.16*(end.y-start.y)*w/h;
+          const cy = (start.y+end.y)/2+.16*(end.x-start.x)*h/w;
+          for (let i=1;i<24;i++) {
+            const t=i/24, a=1-t;
+            include(a*a*start.x+2*a*t*cx+t*t*end.x,a*a*start.y+2*a*t*cy+t*t*end.y);
+          }
+        }
+      }
       const island = svgNode('g', {'data-territory':territory.root}, world);
       const contours = svgNode('g', {transform:'translate('+x+' '+y+') scale('+w/2+' '+h/2+')'}, island);
-      const d = coast(seed);
+      const d = coast(seed, route);
       for (const [scale, fill, stroke] of [[1.13,'none','#a6aba0'],[1.085,'none','#92a19a'],[1.04,'none','#758c8b'],[1,'#dcc699','#4b5f61'],[.965,'url(#land-hatch)','#9e9277'],[.88,'#eee0bf','#a79776'],[.79,'none','#c2b392']]) {
         svgNode('path',{d, transform:'scale('+scale+')',fill,stroke,'vector-effect':'non-scaling-stroke','stroke-width':scale===1?1.25:.65},contours);
       }
@@ -253,13 +289,6 @@ function createTerritoryMap(ideas, definitions) {
           }
           svgNode('path',{d:'M'+points.join('L'),fill:'none',stroke:'#8b927e',opacity:.62,'stroke-width':.62,'vector-effect':'non-scaling-stroke'},contours);
         }
-      }
-      const stops = new Map();
-      const positions = new Map(territory.stops.filter(({note}) => note.mapPoint).map(({note}) => [note.id,(narrow && note.mobilePoint) || note.mapPoint]));
-      for (const {note} of territory.stops) {
-        if (!positions.has(note.id)) positions.set(note.id,openPoint([...positions.values()],positions.get(note.trailFrom) || [.5,.5]));
-        const [u,v] = positions.get(note.id);
-        stops.set(note.id,{x:x+(u-.5)*w,y:y+(v-.5)*h});
       }
       for (const {note} of territory.stops) {
         const end = stops.get(note.id);
@@ -332,7 +361,11 @@ function createTerritoryMap(ideas, definitions) {
     for (const group of world.children) group.classList.toggle('distant', !!t && group.dataset.territory !== selected);
     if (!t) {
       const scale = surveyScales[surveyLevel];
-      const dx = width*(1-scale)/2, dy = height*(1-scale)/2;
+      const dx = width*(1-scale)/2;
+      // Reserve a caption berth below the southernmost coast as islands grow.
+      const southernShore = Math.max(...[...geometry.values()].map(({extent}) => extent.y+extent.height));
+      const captionRoom = narrow ? 82 : Math.min(27,Math.max(17,width*.018))*2.08+46;
+      const dy = Math.min(height*(1-scale)/2,height-captionRoom-southernShore*scale);
       world.style.transform = 'matrix('+[scale,0,0,scale,dx,dy].join(',')+')';
       farther.disabled = surveyLevel === 0;
       closer.disabled = surveyLevel === surveyScales.length-1;
@@ -345,7 +378,7 @@ function createTerritoryMap(ideas, definitions) {
       for (const [index,region] of [...territories.values()].entries()) {
         const b = geometry.get(region.root);
         const a = mapLink(region.title,'#map/'+region.root,b.x*scale+dx,0,'region-label','Explore '+region.title);
-        a.style.maxWidth = (narrow ? Math.min(155,width/2-14) : Math.max(225,b.w*scale))+'px';
+        a.style.maxWidth = (narrow ? Math.min(155,width/2-14) : Math.max(Math.min(225,width*.21),b.w*scale))+'px';
         const count = document.createElement('small');
         count.textContent = region.stops.length + (region.stops.length===1?' idea':' ideas') + ' →';
         a.append(count);
@@ -357,7 +390,7 @@ function createTerritoryMap(ideas, definitions) {
         const above = shore.top-gap-h, below = shore.bottom+gap;
         const preference = b.y > height*.5 ? [above,below] : [below,above];
         const options = [];
-        for (const extra of [0,8,16,24]) {
+        for (const extra of [0,8,16,24,40,64]) {
           for (const y of preference) {
             const top = y + (y===above ? -extra : extra);
             const r = {left:x-w/2,right:x+w/2,top,bottom:top+h};
