@@ -748,7 +748,7 @@ if (modelContext?.registerTool) {
         .slice(0, 3)
         .map(({ item }) => item);
 
-      window.dataLayer?.push({
+      (window.dataLayer = window.dataLayer || []).push({
         event: 'webmcp_tool_completed',
         webmcp_tool: 'find_relevant_work',
         webmcp_capability: capability,
