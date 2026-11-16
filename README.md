@@ -1,6 +1,6 @@
 # Personal site
 
-- `index.html`: the homepage, using the current v9 surface and shared content.
+- `index.html`: the current homepage, a self-contained editorial page using Petar’s bitmap design. Its copy lives in this file.
 - `workbench.html`: Behind the site, the hub for explanations, design rules, and open decisions.
 - `v9-carries-the-work.html`: annotated companion to the homepage.
 - `archive.html`: earlier visual directions and identity exploration. Old URLs remain available.
@@ -9,7 +9,7 @@ The homepage links to Behind the site in its footer. Supporting pages provide a 
 
 ## Updating
 
-Copy stays in `site-content.js`; cases, principles, and exhibits are checked against `content.duckdb`. Run `node build-from-duckdb.js` and `node scripts/check-tokens.js`. The homepage and annotated companion currently share markup by convention: mirror layout changes in both.
+Edit current homepage copy in `index.html`. `site-content.js` and `content.duckdb` supply the earlier v9/v10 studies and the workbench; they do not render the current homepage. Use `node build-from-duckdb.js` when editing those legacy content sources. For current changes, run `node scripts/sync-navigation.js --check` and `node scripts/check-tokens.js .`, then review the page on desktop and mobile.
 
 ## Draft limitations
 

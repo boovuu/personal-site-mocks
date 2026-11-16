@@ -37,6 +37,9 @@ The homepage speaks to VP Marketing, CMO, and CEO readers. Begin with business d
 ## Research essays: academic register
 Use analytical exposition, precise concepts, and attributed evidence. Develop the argument directly. Remove diary framing such as “I find”, “I would”, and “the idea I keep”. Identify the distinction between historical findings and contemporary application in a concise source note. This governs research essays rather than the personal homepage introduction.
 
+## Professional homepage voice · Author revision · 16 November 2026
+Use Brian Andersen as a reference for concise commercial observations and composed reasoning. Bogdan’s own work supplies the substance. State what he takes responsibility for and show it through specific delivery examples. Keep client names private and credit the wider teams. Link to relevant Atlas research or demonstrations with their status clear; an independent concept is not a client result. Do not import illustrative metrics from voice studies as accomplishments.
+
 
 ## Atlas stories · Author revision · 16 November 2026
 Each story needs a point: show what the author wanted to happen, the moment that changed the inquiry, and what the result made possible or required next. Use the session archive and the author’s voice. Let the point come from the event rather than attaching a generic lesson to the ending.

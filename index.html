@@ -7,8 +7,8 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bogdan Vučković | Webflow Developer</title>
-<meta name="description" content="Bogdan Vučković works across marketing, Webflow, measurement and website systems, with an emphasis on clarity and continuity.">
+<title>Website delivery &amp; marketing systems · Bogdan Vučković</title>
+<meta name="description" content="I take responsibility for website delivery, from the marketing brief to Webflow implementation, measurement and ongoing improvement. Selected work by Bogdan Vučković.">
 <link rel="canonical" href="https://bogdanvuckovic.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,7 +84,7 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
 .work h2{grid-column:1/7;margin-top:20px}
 .work .sub{grid-column:8/13;align-self:end;color:var(--muted)}
 .posters{margin-top:72px;row-gap:56px}
-.poster{display:flex;flex-direction:column}
+.poster{display:flex;flex-direction:column;scroll-margin-top:96px}
 .poster .slot{aspect-ratio:3/2}
 .poster.lead{grid-column:1/8;grid-row:1/3}
 .poster.lead h3{font-size:40px}
@@ -94,6 +94,10 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
 .poster .no{font:300 20px/1 "Newsreader";color:var(--muted);margin-top:16px}
 .poster h3{font:300 32px/1.08 "Newsreader";letter-spacing:-.015em;margin-top:8px}
 .poster p{margin-top:16px;font-size:16px;color:var(--muted)}
+.poster .work-reading{margin-top:24px;padding-top:16px;border-top:1px solid var(--line)}
+.work-reading p{margin-top:0;font-size:14px}
+.work-reading a{display:inline-block;padding:8px 0;color:var(--bit-text);font-size:16px;text-decoration:underline;text-underline-offset:4px}
+.work-reading a:focus-visible{outline:2px solid var(--deep);outline-offset:4px}
 .chain{display:none;margin-top:20px;padding:14px 16px;background:var(--sky);font-size:14px;line-height:1.5;color:var(--ink);clip-path:var(--notch)}
 .chain b{display:block;font-weight:500;color:var(--bit);margin-bottom:6px;letter-spacing:.02em}
 .reasons-on .chain{display:block;animation:pop .35s ease}
@@ -230,8 +234,8 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
 
 <!-- social sharing -->
 <meta property="og:site_name" content="Bogdan Vučković">
-<meta property="og:title" content="Bogdan Vučković | Webflow Developer">
-<meta property="og:description" content="Bogdan Vučković works across marketing, Webflow, measurement and website systems, with an emphasis on clarity and continuity.">
+<meta property="og:title" content="Website delivery &amp; marketing systems · Bogdan Vučković">
+<meta property="og:description" content="From the marketing brief to a working website. Selected work in Webflow delivery, experimentation and publishing.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bogdanvuckovic.com/">
 <meta property="og:image" content="https://bogdanvuckovic.com/assets/og/home.png">
@@ -240,8 +244,8 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Bogdan Vučković. Blue compass with a red tip on a white background.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bogdan Vučković | Webflow Developer">
-<meta name="twitter:description" content="Bogdan Vučković works across marketing, Webflow, measurement and website systems, with an emphasis on clarity and continuity.">
+<meta name="twitter:title" content="Website delivery &amp; marketing systems · Bogdan Vučković">
+<meta name="twitter:description" content="From the marketing brief to a working website. Selected work in Webflow delivery, experimentation and publishing.">
 <meta name="twitter:image" content="https://bogdanvuckovic.com/assets/og/home.png">
 <meta name="twitter:image:alt" content="Bogdan Vučković. Blue compass with a red tip on a white background.">
 <!-- end social sharing -->
@@ -279,7 +283,7 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
     </button>
     <div class="inner">
       <h1 id="h1">The work behind<br><em>the website.</em></h1>
-      <p class="copy" id="heroCopy">A website brings business decisions, people and technology into one place. I work across marketing, Webflow and measurement to keep those parts coherent, including what happens after launch.</p>
+      <p class="copy" id="heroCopy">Marketing priorities need someone to carry them through. I take responsibility for the website work: shaping the brief, coordinating delivery and keeping the site working after launch.</p>
       <div class="ctas" id="heroCtas">
         <a class="btn line" href="#approach">Perspective ↗</a>
         <a class="btn ink" href="#work" data-role="primary-action">View work ↗</a>
@@ -293,10 +297,10 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
   <section class="perspective" id="approach">
     <div class="wrap grid">
       <p class="kicker label" style="grid-column:1/13">01 / Perspective</p>
-      <h2 class="serif rv">A website makes the decisions behind it visible.</h2>
+      <h2 class="serif rv">From marketing priorities to a working website.</h2>
       <div class="body rv">
-        <p>A brief may be clear, yet the work can still drift between strategy, content, engineering and the people responsible for each. A website makes that distance visible.</p>
-        <p>I pay attention to what sits between the parts: the decision that never reached implementation, the measurement no one quite trusts, the publishing system people work around. Good work needs clarity and continuity after launch.</p>
+        <p>I work with marketing leaders to decide what a visitor needs to understand and which decision the site should help them make. That becomes a practical brief for the people writing, designing and building it.</p>
+        <p>I carry that brief through implementation: the pages, the publishing structure, the forms and the measurement. I work across the team to resolve what is missing, check the release and keep the site moving as campaigns and priorities change.</p>
       </div>
     </div>
     <div class="wrap band rv">
@@ -308,40 +312,56 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
   <section class="work" id="work">
     <div class="wrap grid">
       <p class="kicker label" style="grid-column:1/13">02 / Selected client work</p>
-      <h2 class="serif rv">Work that carries forward.</h2>
-      <p class="sub rv">Selected website work across B2B software and enterprise marketing. The responsibilities and limits, stated plainly.</p>
+      <h2 class="serif rv">What that means in practice.</h2>
+      <p class="sub rv">Ongoing website delivery, audience experiments and publishing decisions. Three examples of the work I take on within client and agency teams.</p>
     </div>
     <div class="wrap grid posters">
-      <article class="poster lead rv" data-work-id="island" data-work-goals="website-ownership analytics consent aeo webflow enterprise-security" data-work-public-name="false">
+      <article class="poster lead rv" id="enterprise-website" data-work-id="island" data-work-goals="website-ownership analytics consent aeo webflow enterprise-security" data-work-public-name="false">
         <figure class="slot"><canvas data-slot="slot-02" data-focus="0.4,0.4" aria-hidden="true"></canvas></figure>
         <p class="ind label">Enterprise browser · 2023–present</p>
         <span class="no">01</span>
-        <h3>Keeping a complex site coherent</h3>
-        <p>Campaigns, content, consent and measurement move at different speeds. My role has been to keep the website usable across those changes, from Webflow architecture to the decisions between teams.</p>
-        <div class="chain"><b>problem → move → result → limits</b>problem: scattered decisions → move: coordinate platform, consent and measurement → result: continuity across releases → limits: internal outcomes are not public</div>
+        <h3>Owning the website work between launches</h3>
+        <p>A campaign page also needs a place in the CMS, a working enquiry form and a way to measure the response. Those decisions involve marketing, design, operations and security.</p>
+        <p>Within an agency team, I own the Webflow execution layer: campaign and product pages, reusable CMS templates, HubSpot forms, analytics and consent implementation. I take changes through to production and maintain them as the next campaign arrives.</p>
+        <div class="chain"><b>Scope and evidence</b>Ongoing Webflow delivery, forms, analytics and consent within a wider team. The example describes my responsibilities; it does not attribute the company’s commercial results to my work alone.</div>
+        <div class="work-reading">
+          <p>Related research in the Atlas</p>
+          <a href="atlas/#idea/aeo">How an AI answer can misread a website →</a>
+        </div>
       </article>
-      <article class="poster side rv" data-work-id="contractbook" data-work-goals="website-ownership analytics consent webflow b2b-saas" data-work-public-name="false">
+      <article class="poster side rv" id="audience-experiments" data-work-id="contractbook" data-work-goals="website-ownership analytics campaigns webflow b2b-saas" data-work-public-name="false">
         <figure class="slot"><canvas data-slot="slot-03" data-focus="0.35,0.65" aria-hidden="true"></canvas></figure>
         <p class="ind label">Contract management SaaS · 2020–2023</p>
         <span class="no">02</span>
-        <h3>The value of staying with the work</h3>
-        <p>Working on the same marketing site for three years gave me the context to see how small implementation choices affect the next release, the next campaign and the people maintaining it.</p>
-        <div class="chain"><b>problem → move → result → limits</b>problem: context is lost between releases → move: sustained delivery → result: accumulated system knowledge → limits: no quantitative results claimed</div>
+        <h3>Learning how different audiences respond</h3>
+        <p>Over three years, I took three website rebrands through to production and built regional demand-generation pages. Alongside those releases, I ran A/B tests and personalisation with Mutiny and VWO, with Plausible for website analytics.</p>
+        <p>The recurring question was which message and experience helped each audience. My role covered implementing the variants, setting up measurement and maintaining the site while the team tested.</p>
+        <div class="chain"><b>Scope and evidence</b>Three production rebrands, regional pages and an ongoing experimentation programme. The available records establish the work delivered, without a verified conversion lift for an individual test.</div>
+        <div class="work-reading">
+          <p>A later, independent exploration in the Atlas</p>
+          <a href="atlas/#idea/abm-return?map=abm">Try a returning visitor’s personalised offer →</a>
+        </div>
       </article>
-      
-      
+      <article class="poster side rv" id="publishing-decisions" data-work-id="ziptax" data-work-goals="publishing cms release-qa webflow" data-work-public-name="false">
+        <p class="ind label">Tax software · 2026</p>
+        <span class="no">03</span>
+        <h3>Deciding what is ready to publish</h3>
+        <p>In one reviewed batch, five state guides went live while two with broken source links stayed back. I handled the CMS publishing work and checked that the approved text, tables and code survived the move to the website.</p>
+        <p>I also checked the published pages and their FAQ interactions on desktop and mobile. Tax and product validation remained with the subject reviewers; my responsibility was the release and the pages people could actually use.</p>
+        <div class="chain"><b>Scope and evidence</b>The November 7 release record documents five published guides and two source-link holds. Publishing and page QA are separate from specialist approval of the tax and product content.</div>
+      </article>
     </div>
   </section>
 
   <!-- 03 WORKING PRINCIPLES -->
   <section class="principles">
     <div class="wrap">
-      <p class="kicker label">03 / Working principles</p>
-      <h2 class="serif rv">Direction. Judgement. Continuity.</h2>
+      <p class="kicker label">03 / What I take responsibility for</p>
+      <h2 class="serif rv">The brief, the release and what follows.</h2>
       <div class="grid pcols">
-        <div class="pcol rv"><div class="ico"><canvas data-gen="star" aria-hidden="true"></canvas></div><h3>Clarity of purpose.</h3><p>Name the decision before choosing the tool. What should someone understand, what should change, and what can the team maintain?</p></div>
-        <div class="pcol rv"><div class="ico"><canvas data-gen="level" aria-hidden="true"></canvas></div><h3>Judgement in context.</h3><p>Evidence matters, but so do constraints. A decision has to remain useful after the campaign ends.</p></div>
-        <div class="pcol rv"><div class="ico"><canvas data-gen="grow" aria-hidden="true"></canvas></div><h3>Room to grow.</h3><p>Good systems make the next necessary change easier. They leave room for learning without asking everyone to start again.</p></div>
+        <div class="pcol rv"><div class="ico"><canvas data-gen="star" aria-hidden="true"></canvas></div><h3>A brief people can act on.</h3><p>I help clarify the audience, the decision and the scope. The team can see what needs to change, who needs to contribute and how we will judge the work.</p></div>
+        <div class="pcol rv"><div class="ico"><canvas data-gen="level" aria-hidden="true"></canvas></div><h3>A release that has been checked.</h3><p>I build in Webflow, connect the CMS, forms and measurement, and check the complete journey before release. I bring unresolved content and specialist decisions back to their owners.</p></div>
+        <div class="pcol rv"><div class="ico"><canvas data-gen="grow" aria-hidden="true"></canvas></div><h3>A site the team can keep using.</h3><p>I maintain templates and integrations, document the work and implement experiments. The next campaign starts with a working system and the context from the last one.</p></div>
       </div>
     </div>
   </section>
@@ -385,8 +405,8 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
     <canvas class="edges" id="eEdges" aria-hidden="true"></canvas>
     <div class="wrap grid contact">
       <p class="kicker label" style="grid-column:1/13">A good place to start</p>
-      <h2 class="serif rv">Start with the question.</h2>
-      <p class="rv">A short note about what is changing, what is unclear, or what is not working is enough. The useful conversation usually begins before the solution is named.</p>
+      <h2 class="serif rv">What does the website need to do next?</h2>
+      <p class="rv">A campaign to launch, a site to take over, or a question the numbers cannot yet answer. Tell me what is changing and where the work is getting stuck. That is enough to begin.</p>
       <div class="cta rv"><a class="btn cream" href="https://www.linkedin.com/in/boovuu/" target="_blank" rel="noopener noreferrer">Find me on LinkedIn ↗</a></div>
     </div>
     <footer class="wrap">
@@ -689,43 +709,33 @@ window.SLOTS = {"slot-01": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4
 const workDirectory = [
   {
     id: 'enterprise-browser-ownership',
-    title: 'Ongoing enterprise website ownership',
+    title: 'Owning the website work between launches',
     context: 'Enterprise browser',
     period: '2023–present',
-    capabilities: ['webflow', 'cms', 'analytics', 'consent', 'aeo', 'website-ownership'],
-    summary: 'Long-term ownership across launches, campaigns, measurement, consent and cross-team website continuity.',
-    evidence_status: 'Selected public summary; detailed numbers available only when approved.',
-    href: '#work'
+    capabilities: ['webflow', 'cms', 'analytics', 'consent', 'integrations', 'campaigns', 'website-ownership'],
+    summary: 'Webflow delivery within an agency team: campaign and product pages, CMS templates, HubSpot forms, analytics and consent implementation, maintained between launches.',
+    evidence_status: 'Delivery responsibilities within a wider team; no individual attribution of company revenue or conversion results.',
+    href: '#enterprise-website'
   },
   {
     id: 'contract-management-saas',
-    title: 'Three years inside one SaaS website',
+    title: 'Learning how different audiences respond',
     context: 'Contract management SaaS',
     period: '2020–2023',
-    capabilities: ['webflow', 'cms', 'website-ownership', 'campaigns'],
-    summary: 'Sustained Webflow delivery across campaigns and the core marketing site, including the institutional knowledge that accumulates after launch.',
-    evidence_status: 'Project-level claims are being reconstructed before publication.',
-    href: '#work'
+    capabilities: ['webflow', 'analytics', 'website-ownership', 'campaigns'],
+    summary: 'Three production rebrands and regional demand-generation pages over three years, with A/B testing and personalisation using Mutiny and VWO and analytics in Plausible.',
+    evidence_status: 'Recorded delivery and experimentation responsibilities; no verified conversion lift claimed for an individual test.',
+    href: '#audience-experiments'
   },
   {
-    id: 'property-publishing-system',
-    title: 'A property portfolio with a common structure',
-    context: 'Travel and real estate',
-    period: 'Selected engagement',
-    capabilities: ['webflow', 'cms', 'schema', 'aeo', 'integrations'],
-    summary: 'A shared publishing system for property pages, structured content and agent-readable answers.',
-    evidence_status: 'Implementation summary; outcome volume still accruing.',
-    href: '#work'
-  },
-  {
-    id: 'cybersecurity-interaction-system',
-    title: 'Cybersecurity product website interactions',
-    context: 'Cybersecurity',
+    id: 'reviewed-guide-publishing',
+    title: 'Deciding what is ready to publish',
+    context: 'Tax software',
     period: '2026',
-    capabilities: ['webflow', 'frontend', 'interaction', 'cms'],
-    summary: 'Webflow implementation and reusable interaction behavior across product, editorial and careers surfaces.',
-    evidence_status: 'Public summary; individual component evidence available in the project record.',
-    href: '#work'
+    capabilities: ['webflow', 'cms'],
+    summary: 'Five reviewed state guides published while two with broken source links were held. CMS publishing preserved approved text, tables and code, followed by desktop and mobile page and FAQ checks.',
+    evidence_status: 'November 7 release record; tax and product validation belonged to subject reviewers.',
+    href: '#publishing-decisions'
   }
 ];
 
