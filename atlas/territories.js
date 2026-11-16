@@ -74,8 +74,9 @@ function createTerritoryMap(ideas, definitions) {
   const surveyControls = document.querySelector('#survey-controls');
   const farther = document.querySelector('#survey-out');
   const closer = document.querySelector('#survey-in');
-  const surveyScales = [.72,.80,.88,1];
-  let surveyLevel = 2;
+  const surveyReadout = document.querySelector('#survey-scale');
+  const surveyScales = [.40,.48,.56,.64,.72,.80,.90,1];
+  let surveyLevel = 4;
   farther.addEventListener('click', () => { if (surveyLevel > 0) { surveyLevel--; paint(); } });
   closer.addEventListener('click', () => { if (surveyLevel < surveyScales.length-1) { surveyLevel++; paint(); } });
 
@@ -339,6 +340,7 @@ function createTerritoryMap(ideas, definitions) {
     frame.classList.toggle('close-up', Boolean(t));
     labels.replaceChildren();
     svg.querySelector('#bearing-course')?.remove();
+    svg.querySelector('#survey-label-lines')?.remove();
     if (crossing) {
       const siteRoot = membership.get('personal-site');
       const from = geometry.get('dice').stops.get('dice-coin');
@@ -369,6 +371,7 @@ function createTerritoryMap(ideas, definitions) {
       world.style.transform = 'matrix('+[scale,0,0,scale,dx,dy].join(',')+')';
       farther.disabled = surveyLevel === 0;
       closer.disabled = surveyLevel === surveyScales.length-1;
+      if (surveyReadout) surveyReadout.textContent = Math.round(scale*100) + '%';
       caption.textContent = 'Each dot is an idea. As connected notes are added, their territory grows. Choose a territory to follow a path.';
       const land = [...geometry.values()].map(({extent}) => ({
         left:extent.x*scale+dx, right:(extent.x+extent.width)*scale+dx,
@@ -378,48 +381,69 @@ function createTerritoryMap(ideas, definitions) {
       for (const [index,region] of [...territories.values()].entries()) {
         const b = geometry.get(region.root);
         const a = mapLink(region.title,'#map/'+region.root,b.x*scale+dx,0,'region-label','Explore '+region.title);
-        a.style.maxWidth = (narrow ? Math.min(155,width/2-14) : Math.max(Math.min(225,width*.21),b.w*scale))+'px';
+        a.style.maxWidth = (narrow ? Math.min(150,width/2-18) : Math.min(240,Math.max(185,width*.18)))+'px';
+        a.style.setProperty('--survey-font',Math.max(narrow ? 16 : 17,Math.min(26,width*.018)*Math.sqrt(scale))+'px');
         const count = document.createElement('small');
         count.textContent = region.stops.length + (region.stops.length===1?' idea':' ideas') + ' →';
         a.append(count);
         const w = a.offsetWidth, h = a.offsetHeight;
-        const leftLimit = narrow && b.x >= width/2 ? width/2+4 : 6;
-        const rightLimit = narrow && b.x < width/2 ? width/2-4 : width-6;
-        const x = Math.max(leftLimit+w/2,Math.min(rightLimit-w/2,b.x*scale+dx));
-        const shore = land[index], gap = narrow ? 6 : 9;
+        const x = b.x*scale+dx, y = b.y*scale+dy;
+        const shore = land[index], gap = narrow ? 8 : 12;
         const above = shore.top-gap-h, below = shore.bottom+gap;
-        const preference = b.y > height*.5 ? [above,below] : [below,above];
         const options = [];
-        for (const extra of [0,8,16,24,40,64]) {
-          for (const y of preference) {
-            const top = y + (y===above ? -extra : extra);
-            const r = {left:x-w/2,right:x+w/2,top,bottom:top+h};
-            if (top >= 5 && r.bottom <= height-5 && land.every(o => apart(r,o))) options.push(r);
+        // Search lateral berths and open water, as well as above and below.
+        const xs = [x,shore.left-gap-w/2,shore.right+gap+w/2];
+        const ys = [above,below,y-h/2];
+        for (let cx = 14+w/2; cx <= width-14-w/2; cx += 28) xs.push(cx);
+        for (let top = 14; top <= height-14-h; top += 22) ys.push(top);
+        for (const cx of xs) {
+          for (const top of ys) {
+            const r = {left:cx-w/2,right:cx+w/2,top,bottom:top+h};
+            if (r.left<12 || r.right>width-12 || top<12 || r.bottom>height-12 || !land.every(o=>apart(r,o))) continue;
+            r.score = (cx-x)**2 + (top+h/2-y)**2;
+            options.push(r);
           }
         }
-        a.style.left = x+'px';
-        captions.push({a,options,fallback:preference[0]});
+        options.sort((a,b)=>a.score-b.score);
+        captions.push({a,options,shore,x,y,w,h});
       }
       function apart(a,b) {
-        return a.right+3<=b.left || a.left>=b.right+3 || a.bottom+3<=b.top || a.top>=b.bottom+3;
+        return a.right+8<=b.left || a.left>=b.right+8 || a.bottom+8<=b.top || a.top>=b.bottom+8;
       }
-      // Choose sides together so a label cannot cut off its neighbour's only berth.
       const placed = [];
+      const ordered = [...captions].sort((a,b)=>a.options.length-b.options.length || b.w*b.h-a.w*a.h);
+      let attempts = 0;
       function arrange(i) {
-        if (i === captions.length) return true;
-        for (const box of captions[i].options) {
-          if (!placed.every(other => apart(box,other))) continue;
+        if (i === ordered.length) return true;
+        if (++attempts > 50000) return false;
+        for (const box of ordered[i].options.slice(0,120)) {
+          if (!placed.every(other=>apart(box,other))) continue;
           placed.push(box);
           if (arrange(i+1)) return true;
           placed.pop();
         }
         return false;
       }
-      arrange(0);
-      captions.forEach(({a,options,fallback},i) => {
-        a.style.top = (placed[i]?.top ?? options[0]?.top ?? fallback)+'px';
-      });
-      placeSeaEngravings(land.concat(placed));
+      const fitted = arrange(0);
+      const occupied = [];
+      const leaders = svgNode('g',{id:'survey-label-lines','pointer-events':'none'},svg);
+      for (const [i,item] of ordered.entries()) {
+        const box = fitted ? placed[i] : item.options.find(candidate=>occupied.every(other=>apart(candidate,other)));
+        // Fall back to the full free-water grid, never to overlapping captions.
+        if (!box) { item.a.hidden = true; continue; }
+        occupied.push(box);
+        item.a.style.left = (box.left+item.w/2)+'px';
+        item.a.style.top = box.top+'px';
+        const endX = Math.max(box.left,Math.min(box.right,item.x));
+        const endY = Math.max(box.top,Math.min(box.bottom,item.y));
+        const startX = Math.max(item.shore.left,Math.min(item.shore.right,endX));
+        const startY = Math.max(item.shore.top,Math.min(item.shore.bottom,endY));
+        if (Math.hypot(endX-startX,endY-startY)>24) svgNode('path',{
+          d:'M'+startX+' '+startY+' L'+endX+' '+endY,fill:'none',stroke:'#607c7c',
+          'stroke-width':.8,'stroke-dasharray':'2 4',opacity:.6
+        },leaders);
+      }
+      placeSeaEngravings(land.concat(occupied));
       return;
     }
     const b = geometry.get(selected);

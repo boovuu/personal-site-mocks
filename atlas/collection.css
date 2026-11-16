@@ -85,7 +85,7 @@ html {scroll-behavior:auto}
 .chart-link {position:absolute;text-align:center;pointer-events:auto;color:#163560;line-height:1.15}
 .chart-link:hover .chart-name {text-decoration:underline;text-underline-offset:3px}
 .region-label {transform:translateX(-50%);padding:4px 7px;background:#f1ead7ed;border:1px solid #9a9d8973;box-shadow:0 2px 0 #6c7a7a22;width:max-content}
-.region-label .chart-name {display:block;font:500 clamp(17px,1.8vw,27px)/1.04 Newsreader,Georgia,serif}
+.region-label .chart-name {display:block;font:500 var(--survey-font,clamp(17px,1.8vw,27px))/1.08 Newsreader,Georgia,serif}
 .region-label small {display:block;font-size:12px;line-height:1.45;margin-top:3px}
 .stop-label {transform:translate(-50%,0);padding-top:14px;max-width:26%;width:max-content}
 .stop-label::before {content:'';position:absolute;top:-5px;left:calc(50% - 5px);width:10px;height:10px;border-radius:50%;background:#214579;outline:2px solid #fff2d6}
@@ -105,7 +105,7 @@ html {scroll-behavior:auto}
  .index-intro {margin-bottom:16px}
  .map-toolbar h3 {font-size:29px}
  #map-book {margin:20px 0 28px}
- .region-label .chart-name {font-size:17px}
+ .region-label .chart-name {font-size:var(--survey-font,17px)}
  .stop-label {max-width:40%;padding-top:12px}
  .stop-label .chart-name {font-size:17px}
 }
@@ -299,3 +299,5 @@ html {scroll-behavior:auto}
  .abm-context-option input:checked+label span::before {background:#1c3965;box-shadow:inset 0 0 0 4px #fff9e9}
  .abm-context-option input:focus-visible+label span::before {outline:2px solid #1c3965;outline-offset:4px}
 }
+
+.survey-controls output {min-width:46px;border-inline:1px solid #a6b0b0;text-align:center;font:500 11px/40px 'Instrument Sans',Arial,sans-serif;color:#1f4062}
