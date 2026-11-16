@@ -38,6 +38,18 @@ em{font-weight:inherit}
 h1{font-size:clamp(60px,6.8vw,108px);max-width:980px;color:var(--blue);line-height:.99}
 .opening-intro{display:flex;justify-content:space-between;align-items:end;gap:36px;margin-top:27px;color:var(--muted)}
 .opening-intro>p{font-size:16px;line-height:1.65}
+.origin-heading{margin-top:22px;padding-top:46px;border-top:1px solid var(--line);scroll-margin-top:18px}
+.origin-heading h2{font-size:clamp(40px,4.6vw,69px)}
+.origin-reading{padding-bottom:10px}
+.origin-prose h3{font-size:clamp(28px,3vw,39px);color:var(--blue);margin-block:34px 17px}
+.origin-prose .closing-thought{margin-block:26px}
+.origin-prose>.text-link{margin-top:20px}
+.process-proposals{padding-left:22px;margin-block:10px;font-size:14px;line-height:1.7}
+.process-proposals li{padding-block:6px;padding-left:5px}
+.process-proposals li::marker{color:var(--blue)}
+.process-proposals strong{font-weight:600;color:var(--blue)}
+#wolf>.opening-art{margin-bottom:0}
+#wolf>.seed-strip{margin-bottom:42px}
 .text-link{display:inline-flex;align-items:center;gap:28px;font-size:13px;padding-block:8px;text-decoration:none;border-bottom:1px solid var(--blue);color:var(--blue)}
 .opening-art img{width:100%;max-height:610px;object-fit:cover;object-position:center 50%}
 figcaption{font-size:11px;line-height:1.6;color:var(--muted)}

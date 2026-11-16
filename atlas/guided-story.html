@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="guided-story.css">
+  <link rel="stylesheet" href="guided-story.css?v=creative-process-origin">
   <script src="guided-story.js" defer></script>
   <script src="atlas-entrance.js" defer></script>
 </head>
@@ -41,23 +41,49 @@
       <div class="opening-heading page-width">
         <div class="eyebrow">Things I tried, built & kept asking about</div>
         <h1 id="story-title">Chance opens.<br><em>The bearing is yours.</em></h1>
-        <div class="opening-intro"><p>I asked an AI for something I hadn’t seen before.<br class="desktop-break"> It gave me back my own words.</p><a class="text-link" href="#wolf">Start with the wolf <span aria-hidden="true">↓</span></a></div>
+        <div class="opening-intro"><p>It started with a question:<br class="desktop-break"> could an AI follow a creative process?</p><a class="text-link" href="#creative-process">Start at the beginning <span aria-hidden="true">↓</span></a></div>
       </div>
-      <figure class="opening-art page-width">
-        <img src="dice-wolf-original.webp" width="1025" height="559" fetchpriority="high" alt="A woman faces a luminous wolf on an ornate rooftop above violet clouds.">
-        <figcaption><span>Fig. 01 <span aria-hidden="true">/</span> The wolf, the roof and Katarina</span><span>Original Gemini image · D.I.C.E. archive</span></figcaption>
-      </figure>
-      <div class="seed-strip page-width"><span class="eyebrow">Five words behind the picture</span><p>blessing <span>·</span> Wolf <span>·</span> roof <span>·</span> katarina <span>·</span> vera</p></div>
+      <div class="page-width chapter-heading origin-heading" id="creative-process">
+        <span class="chapter-index">00 <span>/</span> Before the wolf</span>
+        <h2>I was looking for<br><em>a creative process.</em></h2>
+      </div>
+      <div class="page-width editorial-grid origin-reading">
+        <aside class="margin-note"><span class="eyebrow">The first question</span><p>Could an AI use a process that helped it make something unexpected?</p><a href="dice-origin.txt">Read the opening exchange ↗</a></aside>
+        <div class="prose origin-prose">
+          <p class="lead">I asked Gemini what creative processes an AI could use. It gave me several suggestions.</p>
+          <p>Introduce a constraint. Have different reviewers challenge a draft. Borrow a structure from another field. Work in loops, or break a vague brief down into concrete effects. There were a few ways to approach it.</p>
+          <details class="source-note"><summary>The five approaches Gemini suggested</summary><ul class="process-proposals">
+            <li><strong>Oblique Strategies.</strong> Introduce a constraint that rules out the obvious answer.</li>
+            <li><strong>Multi-perspective critique.</strong> Let a pragmatist, an artist and a critic challenge the same draft.</li>
+            <li><strong>Re-classification.</strong> Borrow a structure from another field and apply it to the task.</li>
+            <li><strong>Recursive loops.</strong> Generate ideas, question their assumptions and try again.</li>
+            <li><strong>Semantic deconstruction.</strong> Turn a vague instruction into effects you can describe.</li>
+          </ul></details>
+          <h3>What if the process was a tarot reading?</h3>
+          <p>That idea came as we talked. A reading already has a structure: you bring a question, shuffle the cards and interpret what comes up. It seemed like something the AI could work with.</p>
+          <p>Gemini suggested five words as one way to take part in the shuffle. That felt worth keeping.</p>
+          <h3>The shuffle is part of the ritual.</h3>
+          <p>While you’re shuffling, you’re thinking about the question you’re asking and the answer you need to hear. I wanted the five words to be my part in that ritual: something I could put into the system to mix the cards.</p>
+          <p class="closing-thought">For me, randomness is a way of opening a door to the cosmos, so the reading can bring back the answer I need to hear.</p>
+          <p>The words had a specific job in that process. Their literal meanings weren’t supposed to shape the answer. AI tends to grab what you give it and put it into the output. I wanted a system that could get past that habit.</p>
+          <a class="text-link" href="#wolf">Then I tried it on an image <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
     </section>
 
     <section class="chapter paper-section" id="wolf" aria-labelledby="wolf-title" data-chapter="01">
-      <div class="page-width chapter-heading"><span class="chapter-index">01 <span>/</span> The experiment</span><h2 id="wolf-title">The picture looked good.<br><em>The idea was too obvious.</em></h2></div>
+      <div class="page-width chapter-heading"><span class="chapter-index">01 <span>/</span> The experiment</span><h2 id="wolf-title">The wolf showed us<br><em>what had to change.</em></h2></div>
+      <figure class="opening-art page-width">
+        <img src="dice-wolf-original.webp" width="1025" height="559" loading="lazy" alt="A woman faces a luminous wolf on an ornate rooftop above violet clouds.">
+        <figcaption><span>Fig. 01 <span aria-hidden="true">/</span> The wolf, the roof and Katarina</span><span>Original Gemini image · D.I.C.E. archive</span></figcaption>
+      </figure>
+      <div class="seed-strip page-width"><span class="eyebrow">The five words used to shuffle</span><p>blessing <span>·</span> Wolf <span>·</span> roof <span>·</span> katarina <span>·</span> vera</p></div>
       <div class="page-width editorial-grid">
         <aside class="margin-note"><span class="eyebrow">The question</span><p>How do you get an AI to go beyond the words you give it?</p><a href="index.html#idea/dice?map=dice">Inside D.I.C.E. <span aria-hidden="true">↗</span></a></aside>
-        <div class="prose"><p class="lead">I asked Gemini for a striking image I hadn’t seen before. Behind the prompt, I wanted a card draw to suggest a direction. The five words were my way of shuffling it.</p><p>Gemini put Wolf on a roof with Katarina. I could point to three of my words in the picture. That made the problem clear: the words were supposed to introduce chance, and the model was using their meanings to choose the subject.</p><figure class="quote"><blockquote cite="dice-origin.txt">“No try the same prompt<br>but with new system”</blockquote><figcaption>Bogdan · the archived exchange, p. 12</figcaption></figure><p>The first retry added streams of light between the woman and the wolf. More detail, same idea. I explained it again: the words were there to throw something into the mix. Their meanings didn’t have to appear in the answer.</p><p>We kept the brief and all five words. This time Gemini proposed white stone, a fracture and liquid metal.</p></div>
+        <div class="prose"><p class="lead">I tried the process on a brief for a striking image I hadn’t seen before. I gave Gemini five words: blessing, Wolf, roof, katarina, vera.</p><p>Gemini put a wolf on a roof with Katarina. There it was: three of the words, used literally. We now had a concrete example of what the system was doing and what needed to change.</p><figure class="quote"><blockquote cite="dice-origin.txt">“No try the same prompt<br>but with new system”</blockquote><figcaption>Bogdan · the archived exchange, p. 12</figcaption></figure><p>The first retry added streams of light between the woman and the wolf. It still used the words in the same way. That gave us something specific to work on: the words had to shuffle the cards, and the reading had to work with the cards and the question.</p><p>We kept the brief and all five words, and changed how the process used them. This time Gemini proposed white stone, a fracture and liquid metal.</p></div>
       </div>
       <figure class="stone-plate page-width"><img src="dice-stone-study.webp" width="1400" height="788" loading="lazy" alt="An iridescent ribbon of liquid metal emerges from a crystalline fracture in white stone."><figcaption><span>Fig. 02 <span aria-hidden="true">/</span> The next prompt: white stone and liquid metal.</span><span>Later illustration made from the archived prompt · p. 14</span></figcaption></figure>
-      <div class="page-width editorial-grid after-plate"><aside class="margin-note"><span class="eyebrow">The turning point</span><p>We were getting somewhere I hadn’t described.</p></aside><div class="prose"><p class="lead">That was the breakthrough I was after. We were starting to get randomness into the process. The five words could change where the answer went without becoming its subject.</p><p>It still needed work. In a later game brief, one of the new words was “sand”. Gemini made a game about driving across unstable sand. So I asked: why did you use sand?</p><p>I kept testing because that was the part D.I.C.E. had to get right. I asked for instructions I could take to another model. In the later rules, the words determine the draw; the cards and the brief give the reading its material.</p><p class="closing-thought">The seed’s job is to shuffle. Once the cards are down, the reading works with the cards and the brief.</p><details class="source-note"><summary>Follow the original experiments</summary><p><a href="dice-origin.txt">Read the transcript excerpts →</a><a href="index.html#idea/dice-trials?map=dice">Explore the later field tests →</a></p></details></div></div>
+      <div class="page-width editorial-grid after-plate"><aside class="margin-note"><span class="eyebrow">The turning point</span><p>We were getting somewhere I hadn’t described.</p></aside><div class="prose"><p class="lead">That was the turning point. The wolf gave us a concrete example of the problem. Once we could see it, we could define what the words were for and rebuild the process from there.</p><p>The brief and the five words stayed the same. Changing the system changed where the answer went. We were starting to get the randomness I wanted: something could come back that I hadn’t already put into the prompt.</p><p>Later tests helped us catch the old habit when it returned. In a game brief, one of the new words was “sand”. Gemini made a game about driving across unstable sand. So I asked: why did you use sand?</p><p>I kept testing because that was the part D.I.C.E. had to get right. I asked for instructions I could take to another model. In the later rules, the words determine the draw; the cards and the brief give the reading its material.</p><p class="closing-thought">The seed’s job is to shuffle. Once the cards are down, the reading works with the cards and the brief.</p><details class="source-note"><summary>Follow the original experiments</summary><p><a href="dice-origin.txt">Read the transcript excerpts →</a><a href="index.html#idea/dice-trials?map=dice">Explore the later field tests →</a></p></details></div></div>
       <a class="chapter-bridge page-width" href="#coin"><span class="eyebrow">The coin</span><span>What does the coin have<br><em>to do with this?</em> <span aria-hidden="true">↘</span></span></a>
     </section>
 

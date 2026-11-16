@@ -42,3 +42,9 @@ Use analytical exposition, precise concepts, and attributed evidence. Develop th
 Each story needs a point: show what the author wanted to happen, the moment that changed the inquiry, and what the result made possible or required next. Use the session archive and the author’s voice. Let the point come from the event rather than attaching a generic lesson to the ending.
 
 The wolf test is the turning point in the D.I.C.E. story. The author wanted the five words to introduce randomness into the draw instead of supplying literal subjects for an image. Holding the brief and words constant while moving from the wolf scene to white stone and liquid metal made that change visible. The author identifies this as the breakthrough. Later failures show why the rule still needed work; the archive’s source limits remain in the source material.
+
+
+### D.I.C.E. origin · Further author clarification · 16 November 2026
+Begin with the search for a creative process. Gemini offered several approaches; the tarot-reading idea emerged in the conversation. Gemini suggested five words as a way to shuffle. The author kept them for that role, while rejecting their literal use in the output. Shuffling is part of the reading ritual: the person holds the question and the answer they need to hear in mind. In the author’s philosophy, randomness opens a door to the cosmos through which the needed answer can emerge. Present that as the author’s philosophy of the ritual.
+
+The wolf test supplies the concrete turning point. Literal use of the words became visible in one strong example, making it possible to define the system and change the process at its root. Keep the brief and seed constant in the telling so the consequence of changing the rule is clear. The story starts with the creative-process question; the image experiment tests the process that grew from it.
