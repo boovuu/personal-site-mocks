@@ -1,6 +1,9 @@
 # Personal site
 
 - `index.html`: the current homepage, a self-contained editorial page using Petar’s bitmap design. Its copy lives in this file.
+- `work/wos.html`: the detailed WOS case, linked from the broader enterprise website example.
+- `work/hybrid-publishing.html`: the anonymised Sanity + Webflow hybrid publishing case.
+- `assets/work-case.css`: the shared case-page layout and typography.
 - `workbench.html`: Behind the site, the hub for explanations, design rules, and open decisions.
 - `v9-carries-the-work.html`: annotated companion to the homepage.
 - `archive.html`: earlier visual directions and identity exploration. Old URLs remain available.

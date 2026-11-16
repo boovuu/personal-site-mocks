@@ -90,11 +90,17 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
 .poster.lead h3{font-size:40px}
 .poster.side{grid-column:9/13}
 .poster.side .slot{aspect-ratio:16/9}
+.poster.platform{grid-column:1/13;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 var(--grid-gutter);padding-top:40px;border-top:1px solid var(--line)}
+.platform-heading{grid-column:1/6;min-width:0}
+.platform-body{grid-column:7/13;min-width:0}
+.poster.platform .ind{margin-top:0}
+.poster.platform h3{font-size:40px}
+.platform-body>p:first-child{margin-top:0}
 .poster .ind{margin-top:28px;color:var(--bit)}
 .poster .no{font:300 20px/1 "Newsreader";color:var(--muted);margin-top:16px}
 .poster h3{font:300 32px/1.08 "Newsreader";letter-spacing:-.015em;margin-top:8px}
 .poster p{margin-top:16px;font-size:16px;color:var(--muted)}
-.poster .work-reading{margin-top:24px;padding-top:16px;border-top:1px solid var(--line)}
+.poster .work-reading{display:grid;justify-items:start;gap:4px;margin-top:24px;padding-top:16px;border-top:1px solid var(--line)}
 .work-reading p{margin-top:0;font-size:14px}
 .work-reading a{display:inline-block;padding:8px 0;color:var(--bit-text);font-size:16px;text-decoration:underline;text-underline-offset:4px}
 .work-reading a:focus-visible{outline:2px solid var(--deep);outline-offset:4px}
@@ -199,6 +205,9 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
   .work h2,.work .sub{grid-column:1/5}
   .work .sub{margin-top:16px}
   .poster.lead,.poster.side{grid-column:1/5}
+  .poster.platform{grid-column:1/5;grid-template-columns:minmax(0,1fr);gap:24px}
+  .platform-heading,.platform-body{grid-column:1}
+  .poster.platform h3{font-size:30px}
   .poster.lead h3{font-size:30px}
   .work-more,.work-note{grid-column:1/5}
   .work-list{grid-template-columns:1fr}
@@ -313,24 +322,25 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
     <div class="wrap grid">
       <p class="kicker label" style="grid-column:1/13">02 / Selected client work</p>
       <h2 class="serif rv">What that means in practice.</h2>
-      <p class="sub rv">Website operations, audience experiments and new routes to discovery. Three examples of the work I take on within client and agency teams.</p>
+      <p class="sub rv">Website ownership, audience experiments, discovery and hybrid publishing. Four examples of the work I take on within client and agency teams.</p>
     </div>
     <div class="wrap grid posters">
-      <article class="poster lead rv" id="enterprise-website" data-work-id="island" data-work-goals="website-ownership integrations wos abm analytics consent aeo webflow enterprise-security" data-work-public-name="false">
+      <article class="poster lead rv" id="enterprise-website" data-work-id="enterprise-browser" data-work-goals="website-ownership integrations wos abm analytics consent aeo webflow enterprise-security" data-work-public-name="false">
         <figure class="slot"><canvas data-slot="slot-02" data-focus="0.4,0.4" aria-hidden="true"></canvas></figure>
         <p class="ind label">Enterprise browser</p>
         <span class="no">01</span>
-        <h3>WOS: a workspace for running the website</h3>
-        <p>Content, search visibility and campaign reporting sit across different systems. Alongside ongoing Webflow delivery within an agency team, I built WOS, a custom workspace for managing that work together.</p>
-        <p>I built integrations for Webflow, GA4, Google Search Console, Bing and Clarity. The tools cover Knowledge Hub publishing, content search, indexing checks, traffic and behaviour reporting, and job listings synced from Greenhouse into the CMS. On the public site, I also handle HubSpot forms and OneTrust consent implementation.</p>
-        <p>I am also developing an account-based marketing workflow: landing pages organised around an industry, problem or solution, followed by relevant content offers informed by earlier visits. The Atlas demonstration follows that journey through to the context sales needs to choose a useful follow-up.</p>
-        <div class="chain"><b>Scope and evidence</b>WOS implementation and integrations are documented in the code audit; the audit does not establish that every integration is configured in production. The ABM workflow is an independent concept and demonstration, without a completed client pilot or measured commercial outcome.</div>
+        <h3>Taking responsibility for the website between launches</h3>
+        <p>Within an agency team, I own ongoing Webflow delivery for an enterprise browser business: launches and campaign pages, reusable content systems, HubSpot forms, measurement and consent. I work across marketing, design, operations and security to carry changes through to production and keep the site working afterwards.</p>
+        <p>WOS grew out of that responsibility. I built a workspace for publishing, integrations, indexing and the checks after launch, connecting Webflow content with traffic, search, behaviour and hiring systems. It is the most substantial example of how I turn recurring website work into a system the team can use.</p>
+        <p>Alongside delivery, I am developing an account-based marketing workflow that connects landing pages, visitor context, relevant content offers and sales follow-up.</p>
+        <div class="chain"><b>Scope and evidence</b>Ongoing website delivery and WOS implementation within a wider team. The detailed case distinguishes implemented integrations from prototype work. ABM remains a developing workflow and demonstration.</div>
         <div class="work-reading">
-          <p>Explore the ABM demonstration in the Atlas</p>
+          <p>Explore the system and the developing workflow</p>
+          <a href="work/wos.html">Read the WOS case →</a>
           <a href="atlas/#idea/abm-return?map=abm">Try a returning visitor’s personalised offer →</a>
         </div>
       </article>
-      <article class="poster side rv" id="audience-experiments" data-work-id="contractbook" data-work-goals="website-ownership analytics seo experimentation campaigns webflow b2b-saas" data-work-public-name="false">
+      <article class="poster side rv" id="audience-experiments" data-work-id="contract-management" data-work-goals="website-ownership analytics seo experimentation campaigns webflow b2b-saas" data-work-public-name="false">
         <figure class="slot"><canvas data-slot="slot-03" data-focus="0.35,0.65" aria-hidden="true"></canvas></figure>
         <p class="ind label">Contract management SaaS</p>
         <span class="no">02</span>
@@ -339,7 +349,7 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
         <p>The recurring question was how different audiences responded: which message helped them understand the offer, which page supported their next decision, and what we should test next. My role covered the implementation, measurement and website work through each launch.</p>
         <div class="chain"><b>Scope and evidence</b>Three production rebrands, regional pages, analytics, SEO and experimentation. The example describes delivery responsibilities and the question behind the tests, without claiming a verified conversion lift for an individual experiment.</div>
       </article>
-      <article class="poster side rv" id="search-experiments" data-work-id="ziptax" data-work-goals="campaigns seo aeo schema cms webflow experimentation" data-work-public-name="false">
+      <article class="poster side rv" id="search-experiments" data-work-id="tax-software" data-work-goals="campaigns seo aeo schema cms webflow experimentation" data-work-public-name="false">
         <p class="ind label">Tax software</p>
         <span class="no">03</span>
         <h3>Testing how buyers find the product</h3>
@@ -349,6 +359,22 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
         <div class="work-reading">
           <p>Related AEO research in the Atlas</p>
           <a href="atlas/#idea/aeo">How an AI answer can misread a website →</a>
+        </div>
+      </article>
+      <article class="poster platform rv" id="hybrid-publishing" data-work-id="hybrid-rentals" data-work-goals="webflow cms integrations hybrid sanity content-at-scale localisation" data-work-public-name="false">
+        <div class="platform-heading">
+          <p class="ind label">Furnished rentals · hybrid platform</p>
+          <span class="no">04</span>
+          <h3>Sanity + Webflow, working as one website</h3>
+        </div>
+        <div class="platform-body">
+          <p>I work on the marketing and content layer of a hybrid Sanity + Webflow platform, alongside the application team. Vercel document rewrites serve selected Webflow pages through the main site’s URLs, alongside the React and Sanity experience.</p>
+          <p>The content work spans hundreds of CMS records and two languages. I build and check the templates, Sanity-backed apartment components, city and neighbourhood relationships, links and images that keep those pages coherent. Migration audits and release checks carry that work across the platform boundary.</p>
+          <div class="chain"><b>Scope and evidence</b>Shared platform architecture; my contribution covers Webflow implementation, content and CMS work, Sanity-backed components and verification. Document rewrite describes how pages are served under the main domain.</div>
+          <div class="work-reading">
+            <p>The architecture and the work at its boundaries</p>
+            <a href="work/hybrid-publishing.html">Read the hybrid publishing case →</a>
+          </div>
         </div>
       </article>
     </div>
@@ -710,11 +736,12 @@ window.SLOTS = {"slot-01": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4
 const workDirectory = [
   {
     id: 'enterprise-browser-ownership',
-    title: 'WOS: a workspace for running the website',
+    title: 'Taking responsibility for the website between launches',
     context: 'Enterprise browser',
     capabilities: ['webflow', 'cms', 'analytics', 'consent', 'integrations', 'campaigns', 'website-ownership'],
-    summary: 'Built WOS for website operations, with Webflow, GA4, Google Search Console, Bing, Clarity and Greenhouse integrations. Covers Knowledge Hub publishing, content search, indexing and reporting, alongside HubSpot forms, OneTrust consent and a developing ABM workflow demonstrated in the Atlas.',
+    summary: 'Ongoing Webflow ownership within an agency team: launches, campaign pages, content systems, forms, measurement and consent. Built WOS as a workspace for publishing, integrations and post-launch checks, with a separate detailed case. ABM is a developing workflow demonstrated in the Atlas.',
     evidence_status: 'Documented implementation within a wider team; integration code is not a claim of current production configuration. ABM is a concept and demonstration without a completed client pilot or measured outcome.',
+    case_study: '/work/wos.html',
     href: '#enterprise-website'
   },
   {
@@ -725,6 +752,16 @@ const workDirectory = [
     summary: 'Three rebrands taken to launch, regional demand-generation pages, SEO, A/B testing and personalisation using Mutiny and VWO, and analytics in Plausible. The recurring question was how different audiences responded to the message and experience.',
     evidence_status: 'Recorded delivery and experimentation responsibilities; no verified conversion lift claimed for an individual test.',
     href: '#audience-experiments'
+  },
+  {
+    id: 'hybrid-publishing-platform',
+    title: 'Sanity + Webflow, working as one website',
+    context: 'Furnished rentals and hybrid publishing',
+    capabilities: ['webflow', 'cms', 'integrations', 'frontend', 'website-ownership'],
+    summary: 'Webflow marketing and content work within a hybrid Sanity and React platform. Vercel document rewrites serve selected Webflow pages through the main domain. Work covers CMS templates, Sanity-backed apartment components, content migration audits, English and Spanish pages and release verification.',
+    evidence_status: 'Shared architecture with application and content teams; contribution is Webflow implementation, content systems, custom components and verification.',
+    case_study: '/work/hybrid-publishing.html',
+    href: '#hybrid-publishing'
   },
   {
     id: 'tax-discovery-experiments',

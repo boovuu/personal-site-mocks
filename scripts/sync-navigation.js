@@ -13,8 +13,10 @@ const pages = {
   'workbench.html': [],
   'archive.html': [],
 };
-for (const file of fs.readdirSync(path.join(root, 'notes'))) {
-  if (file.endsWith('.html')) pages['notes/' + file] = [];
+for (const directory of ['notes', 'work']) {
+  for (const file of fs.readdirSync(path.join(root, directory))) {
+    if (file.endsWith('.html')) pages[directory + '/' + file] = directory === 'work' ? ['/#work', 'location'] : [];
+  }
 }
 for (const [file, [active, current]] of Object.entries(pages)) {
   const dest = path.join(root, file);

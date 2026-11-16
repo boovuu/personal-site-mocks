@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WOS: carrying the work beyond launch · Bogdan Vučković</title>
+<meta name="description" content="How ongoing website responsibility became a workspace for content, integrations, search visibility and follow-up.">
+<link rel="canonical" href="https://bogdanvuckovic.com/work/wos.html">
+<link rel="icon" type="image/svg+xml" href="/favicon-white-red.svg" sizes="any">
+<link rel="icon" href="/favicon-white-red.ico" sizes="16x16 32x32 48x48 64x64">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/work-case.css">
+<link rel="stylesheet" href="/assets/site-header.css">
+<script defer src="/assets/site-header.js"></script>
+<script defer src="/assets/trackers.js"></script>
+<meta property="og:site_name" content="Bogdan Vučković">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WOS: carrying the work beyond launch · Bogdan Vučković">
+<meta property="og:description" content="How ongoing website responsibility became a workspace for content, integrations, search visibility and follow-up.">
+<meta property="og:url" content="https://bogdanvuckovic.com/work/wos.html">
+<meta property="og:image" content="https://bogdanvuckovic.com/assets/og/home.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip-link" href="#case-title">Skip to the case</a>
+<!-- shared navigation -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-home" href="/" aria-label="Bogdan Vučković, homepage">
+      <span class="site-name">Bogdan Vučković</span>
+      <span class="site-byline">Marketing · direction · systems</span>
+    </a>
+    <button type="button" class="site-menu-toggle" aria-expanded="false" aria-controls="site-destinations" hidden>Menu</button>
+    <nav id="site-destinations" aria-label="Main navigation">
+      <a href="/#approach">Perspective</a>
+      <a href="/#work" aria-current="location">Work</a>
+      <a href="/atlas/">Digital Atlas</a>
+      <a href="/dice.html">D.I.C.E.</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<!-- end shared navigation -->
+<main class="case-shell">
+<header class="case-intro">
+<a class="case-back" href="/#work">← Selected work</a>
+<p class="case-kicker">Enterprise website · A system built from ongoing work</p>
+<h1 id="case-title" tabindex="-1">WOS: carrying the work beyond launch</h1>
+<p class="case-lede">I could see what had shipped. Understanding what happened afterwards meant opening several tools and recovering the context. WOS grew out of the work needed to connect those two moments.</p>
+</header>
+<dl class="case-facts"><div><dt>My role</dt><dd>Website delivery, custom application work and integrations within an agency and client team.</dd></div><div><dt>The setting</dt><dd>An enterprise marketing site with campaigns, a Knowledge Hub, analytics, consent and hiring workflows.</dd></div><div><dt>The work</dt><dd>A workspace connecting content operations with evidence and follow-up.</dd></div></dl>
+<div class="case-layout">
+<nav class="case-toc" aria-label="Case sections"><p>In this case</p><ul><li><a href="#context">The responsibility</a></li><li><a href="#knowledge-hub">The Knowledge Hub</a></li><li><a href="#integrations">The integrations</a></li><li><a href="#follow-up">After publication</a></li><li><a href="#responsibility">What I owned</a></li><li><a href="#abm">The developing ABM work</a></li><li><a href="#scope">Evidence and scope</a></li></ul></nav>
+<article class="case-reading">
+<section id="context"><h2>The website still needs an owner after launch.</h2><p>My responsibility for the website includes campaign and product pages, reusable Webflow templates, forms, measurement and consent implementation. Marketing, design, operations and security each bring decisions that have to reach the finished page.</p>
+<p>That work continues after publication. Is the page available to search engines? Has its content reached the Knowledge Hub? Can someone find it? What does the traffic tell us? Answering those questions repeatedly exposed the same gaps between systems.</p>
+<p>I built WOS as a workspace around those jobs. The starting point was the work people needed to carry through.</p></section>
+<section id="knowledge-hub"><h2>A publishing button carries several decisions.</h2><p>A request to include content in the Knowledge Hub looked small on the surface. The control needed to know which content qualified, where its image came from, which date and format to use, how topics and industries connected, and what should happen if an item was already present.</p>
+<p>I turned those decisions into content rules, an editing workflow and checks around the operation. Blog posts and customer stories could have different source fields while contributing to a common destination.</p>
+<ol class="case-decisions">
+<li><strong>Eligibility.</strong> Define which source collections can contribute and which publishing event should trigger a change.</li>
+<li><strong>Metadata and imagery.</strong> Carry the title, publication date, format and cover image, with an explicit fallback where needed.</li>
+<li><strong>Relationships.</strong> Keep industry and topic references connected to the right collections.</li>
+<li><strong>Duplication.</strong> Check whether the destination item exists before creating another copy.</li>
+<li><strong>Control.</strong> Make inclusion, exclusion and the result of the operation visible to the person doing the work.</li>
+</ol>
+<p>Content search followed the same logic. I built it around a stored index of the Knowledge Hub pages, with related terms and ranked results. It gave the publishing work another question to answer: can a reader retrieve the material once it is there?</p></section>
+<section id="integrations"><h2>Each connection needs a job.</h2><p>I built integrations around specific questions and operations. Some read evidence from another system. Others move content or respond to a publishing event. Keeping those roles clear matters when a team needs to understand what a control will change.</p>
+<figure class="case-flow"><ol>
+<li><strong>Content and publishing</strong>Webflow pages, CMS records, assets and Knowledge Hub relationships.</li>
+<li><strong>Evidence around the page</strong>Traffic, indexing, behaviour and AI-answer visibility from the connected systems.</li>
+<li><strong>Work to follow up</strong>Review a finding, check a change, inspect a sync or decide what needs attention.</li>
+</ol><figcaption>A schematic of the responsibilities represented in WOS.</figcaption></figure>
+<dl class="case-integrations">
+<div><dt>Webflow</dt><dd>Pages, CMS items, assets and publishing operations, with write controls governed by roles and configuration.</dd></div>
+<div><dt>GA4</dt><dd>Traffic and behaviour data associated with the live site and individual pages.</dd></div>
+<div><dt>Google Search Console + Bing</dt><dd>Search and indexing evidence, kept alongside live-page checks so conflicting signals can be inspected.</dd></div>
+<div><dt>Microsoft Clarity</dt><dd>Behaviour signals, including recorded rage and dead clicks that can inform a page review.</dd></div>
+<div><dt>AirOps + Profound</dt><dd>AI-answer visibility and citation data, connected to page and topic investigations.</dd></div>
+<div><dt>Greenhouse</dt><dd>Job-board data connected to the careers CMS through webhook handling and reconciliation workflows.</dd></div>
+<div><dt>Slack + GitHub</dt><dd>Feedback, activity reporting, change history and scheduled checks.</dd></div>
+</dl>
+<p>HubSpot forms and OneTrust consent are also part of my public-site responsibilities. They have their own role in the visitor journey; they are separate from the WOS integration catalogue.</p></section>
+<section id="follow-up"><h2>Carry the page’s context into the review.</h2><p>I developed Smart Indexing and Launch Report work around the evidence those connections make available. A page may be published, present in a sitemap and still have a different indexing verdict. Those observations need to remain distinguishable.</p>
+<p>The indexing work brings the page, live checks and search-engine responses into one review. The launch-report work brings together available traffic, search, behaviour and citation signals around a page over time.</p>
+<p>A report is useful when it helps someone decide what to inspect or change. Missing data needs to remain visible, and a change in traffic needs context before it becomes a claim about the effect of a release.</p></section>
+<section id="responsibility"><h2>Build the connections and the operating rules.</h2><p>I built the application features and integrations while continuing the website work. That includes the content relationships, sync behaviour, checks, permissions and feedback that make a workflow understandable to the next person using it.</p>
+<p>The wider team supplies the commercial priorities, content, design and specialist decisions. My work is to carry those decisions into an implementation, expose the dependencies and preserve enough context for the team to continue.</p></section>
+<section id="abm"><h2>Use the context to choose a relevant response.</h2><p>The developing account-based marketing work asks a related question: once we can inspect a company’s path through the site, which content or follow-up would actually help?</p>
+<p>I am exploring landing pages organised around an industry, a problem or a solution, then content offers that carry the visitor’s earlier question forward. The Atlas demonstration follows a returning account through a personalised offer and into the context sales needs to choose its next response.</p>
+<p>This is a developing workflow with a fictional account demonstration. A client pilot and measured commercial results would be the next evidence to add.</p>
+<div class="case-links"><a href="/atlas/#idea/abm-return?map=abm">Try the returning-account demonstration →</a></div></section>
+<section id="scope"><h2>What this case establishes.</h2><p class="case-note">The case is based on the implementation history, content-workflow rules and integration audit. The catalogue establishes code and workflow coverage; current production configuration depends on the client environment. Smart Indexing and Launch Report include prototype and demonstration work. Commercial impact is not quantified here.</p>
+<p>For another example of work across platform boundaries, the hybrid publishing case follows a Sanity + Webflow website through content, routing and release decisions.</p>
+<div class="case-links"><a href="hybrid-publishing.html">Read the hybrid publishing case →</a><a href="/#enterprise-website">Return to the website ownership example →</a></div></section>
+
+</article>
+</div>
+<footer class="case-footer"><a href="/#work">← Selected work</a><a href="/atlas/">Explore the Digital Atlas →</a><a href="/#contact">Start a conversation →</a></footer>
+</main>
+</body>
+</html>

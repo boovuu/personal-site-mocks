@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>One website, two publishing systems · Bogdan Vučković</title>
+<meta name="description" content="Marketing and content work across a hybrid Sanity + Webflow platform, joined through Vercel document rewrites.">
+<link rel="canonical" href="https://bogdanvuckovic.com/work/hybrid-publishing.html">
+<link rel="icon" type="image/svg+xml" href="/favicon-white-red.svg" sizes="any">
+<link rel="icon" href="/favicon-white-red.ico" sizes="16x16 32x32 48x48 64x64">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/work-case.css">
+<link rel="stylesheet" href="/assets/site-header.css">
+<script defer src="/assets/site-header.js"></script>
+<script defer src="/assets/trackers.js"></script>
+<meta property="og:site_name" content="Bogdan Vučković">
+<meta property="og:type" content="article">
+<meta property="og:title" content="One website, two publishing systems · Bogdan Vučković">
+<meta property="og:description" content="Marketing and content work across a hybrid Sanity + Webflow platform, joined through Vercel document rewrites.">
+<meta property="og:url" content="https://bogdanvuckovic.com/work/hybrid-publishing.html">
+<meta property="og:image" content="https://bogdanvuckovic.com/assets/og/home.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip-link" href="#case-title">Skip to the case</a>
+<!-- shared navigation -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-home" href="/" aria-label="Bogdan Vučković, homepage">
+      <span class="site-name">Bogdan Vučković</span>
+      <span class="site-byline">Marketing · direction · systems</span>
+    </a>
+    <button type="button" class="site-menu-toggle" aria-expanded="false" aria-controls="site-destinations" hidden>Menu</button>
+    <nav id="site-destinations" aria-label="Main navigation">
+      <a href="/#approach">Perspective</a>
+      <a href="/#work" aria-current="location">Work</a>
+      <a href="/atlas/">Digital Atlas</a>
+      <a href="/dice.html">D.I.C.E.</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<!-- end shared navigation -->
+<main class="case-shell">
+<header class="case-intro">
+<a class="case-back" href="/#work">← Selected work</a>
+<p class="case-kicker">Furnished rentals · Hybrid publishing and content at scale</p>
+<h1 id="case-title" tabindex="-1">One website, two publishing systems</h1>
+<p class="case-lede">I work on a website where the application, property data and marketing content do not all live in the same system. The visitor still needs a coherent route from a city guide to a relevant apartment.</p>
+</header>
+<dl class="case-facts"><div><dt>Platform context</dt><dd>Sanity and React alongside Webflow marketing and editorial surfaces.</dd></div><div><dt>Delivery layer</dt><dd>Selected Webflow documents served through Vercel rewrites under the main domain.</dd></div><div><dt>My contribution</dt><dd>Webflow implementation, content systems, Sanity-backed components and verification, alongside the application and content teams.</dd></div></dl>
+<div class="case-layout">
+<nav class="case-toc" aria-label="Case sections"><p>In this case</p><ul><li><a href="#architecture">The hybrid architecture</a></li><li><a href="#rewrite">Document rewrites</a></li><li><a href="#scale">Content at scale</a></li><li><a href="#components">Publishing components</a></li><li><a href="#bulk-changes">Bulk content changes</a></li><li><a href="#scope">Evidence and scope</a></li></ul></nav>
+<article class="case-reading">
+<section id="architecture"><h2>Give each system a clear responsibility.</h2><p>Sanity supplies apartment content to the application. Webflow carries marketing pages and localised editorial guides. My work sits on the marketing and content side of that shared platform, coordinating with the people responsible for the application.</p>
+<p>A page can combine Webflow editorial content with apartment cards backed by Sanity. That makes the agreement between the systems part of the page: identifiers, neighbourhood matches, images, destinations and what to show when there is no suitable result.</p>
+<figure class="case-flow"><ol>
+<li><strong>Sanity + React</strong>Application and apartment content, including the data used by listing components.</li>
+<li><strong>Webflow</strong>Marketing pages, CMS templates, travel guides and localised editorial content.</li>
+<li><strong>Vercel routing</strong>Selected Webflow documents presented under the main website’s URLs.</li>
+</ol><figcaption>Shared platform context. My implementation work covers the Webflow and content boundary.</figcaption></figure></section>
+<section id="rewrite"><h2>The public URL and the publishing origin are different.</h2><p>A visitor can request a guide on the main domain while Vercel retrieves its document from Webflow. The page remains at the public URL. Here, document rewrite describes how the page is served.</p>
+<p>That has a practical consequence: publishing to the Webflow origin can change what a reader sees on the main site for a rewritten route. I treat that as a shared release boundary and check the route, locale, links and metadata with that relationship in mind.</p>
+<p>The mapping applies to selected paths. A page working on the Webflow origin does not establish that its route exists on the main domain. The application team owns that routing layer; I coordinate the page and publishing work with them.</p></section>
+<section id="scale"><h2>Keep the relationships intact as content grows.</h2><p>The publishing work spans hundreds of CMS records across city, district, neighbourhood and editorial collections, with English and Spanish content. A reusable template needs the correct content bindings and destinations for each of those contexts.</p>
+<p>I audited migrated guides against their Sanity sources, comparing the article body, images, embedded content, metadata and translations. That lets the team distinguish a page that exists in the destination CMS from a page that has retained the information it needs.</p>
+<p>I also work on the relationships that make a guide useful. Related neighbourhoods need to belong to the appropriate district. Apartment components need matching Sanity data. An empty collection needs a deliberate presentation in each language.</p></section>
+<section id="components"><h2>Let the content model drive the page.</h2><p>My Webflow work includes CMS templates and custom components that bring Sanity-backed apartment content into the page. The layouts reuse the site’s card and typography conventions while the runtime handles the data-dependent behaviour.</p>
+<p>For travel-guide hubs, I worked through collection bindings, featured articles, locale-aware destinations and native pagination. Server-rendered page states and links that survive a reload make the behaviour easier to check and maintain as the article set grows.</p>
+<p>The checks cover the experience in both languages: which articles appear, where a card leads, how the page behaves on a phone and what happens at the end of a list. A shared template still needs that context checked.</p></section>
+<section id="bulk-changes"><h2>A small field change can affect the whole list.</h2><p>Images copied from another content system can bring unnecessary file weight into Webflow. I audited those references, replaced oversized assets in the affected content and checked the resulting pages.</p>
+<p>At this scale, preserving the content includes preserving its behaviour. A CMS edit can affect a list sorted by modification time. I compared the rendered card order, image references and localised text around bulk changes, with recovery material retained before the updates.</p>
+<p>That is the kind of work I take responsibility for: tracing a visible page back through its source content, rendering and publication path, then carrying the change through with the relevant teams.</p></section>
+<section id="scope"><h2>My contribution within a shared platform.</h2><p class="case-note">This case draws on the documented publishing topology, source-to-CMS migration audit, component records, pagination checks and image-replacement verification. The Sanity, React and Vercel architecture is shared platform context. My contribution covers Webflow and content implementation, Sanity-backed components, audits and release checks.</p>
+<div class="case-links"><a href="wos.html">See how WOS addresses another set of website operations →</a><a href="/#hybrid-publishing">Return to the hybrid platform example →</a></div></section>
+
+</article>
+</div>
+<footer class="case-footer"><a href="/#work">← Selected work</a><a href="/atlas/">Explore the Digital Atlas →</a><a href="/#contact">Start a conversation →</a></footer>
+</main>
+</body>
+</html>
