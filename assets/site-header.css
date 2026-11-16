@@ -13,8 +13,7 @@ html { scroll-padding-top: 76px; }
   margin: 0; border: 0; background: transparent; color: inherit; text-decoration: none;
 }
 .site-header .site-home { display: grid; gap: 3px; padding: 6px 0; }
-.site-name { display: flex; align-items: center; gap: 9px; font: 400 22px/1.12 Georgia, serif; letter-spacing: -.025em; }
-.site-mark { display: block; flex: none; width: 26px; height: 26px; }
+.site-name { font: 400 22px/1.12 Georgia, serif; letter-spacing: -.025em; }
 .site-byline, #site-destinations, .site-menu-toggle {
   font: 500 13px/1.25 system-ui, sans-serif; letter-spacing: .07em; text-transform: uppercase;
 }
