@@ -3,7 +3,7 @@ name: token-lint
 on:
   push:
     branches: [main]
-    paths: ['*.html', 'atlas/index.html', 'notes/*.html', 'assets/site-header.*', 'scripts/sync-navigation.js', 'site-content.js', 'tokens.json', 'token-exceptions.json']
+    paths: ['*.html', 'atlas/index.html', 'notes/*.html', 'work/*.html', 'assets/work-case.css', 'assets/site-header.*', 'scripts/sync-navigation.js', 'site-content.js', 'tokens.json', 'token-exceptions.json']
   pull_request:
 
 jobs:

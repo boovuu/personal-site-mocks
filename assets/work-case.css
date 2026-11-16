@@ -39,6 +39,17 @@ p{margin:0 0 1.25em;text-wrap:pretty}
 .case-integrations dt{font-weight:500}
 .case-integrations dd{margin:0;color:var(--muted);font-size:1rem}
 .case-note{border-inline-start:2px solid var(--blue);padding-inline-start:1.25rem;color:var(--muted);font-size:1rem}
+.case-visual{grid-template-columns:minmax(0,1fr);gap:3rem}
+.case-visual .case-toc{position:static;border-block-end:1px solid var(--line);padding-block-end:1.5rem}
+.case-visual .case-toc ul{display:flex;flex-wrap:wrap;gap:.35rem 1.75rem;padding-inline-start:1.2rem}
+.case-visual .case-reading{max-inline-size:none}
+.case-visual .case-reading section>p,.case-visual .case-reading h2,.case-visual .case-decisions,.case-visual .case-integrations,.case-visual .case-flow,.case-visual .case-links{max-inline-size:48rem;margin-inline:auto}
+.case-screen{margin:2rem 0 2.5rem}
+.case-screen img{display:block;inline-size:100%;block-size:auto;border:1px solid var(--line);border-radius:4px;background:#f4f5f7}
+.case-screen figcaption{max-inline-size:48rem;margin:1rem auto 0;color:var(--muted);font-size:1rem;line-height:1.6}
+.case-screen figcaption strong{display:block;color:var(--ink);font-weight:500;margin-block-end:.35rem}
+.case-screen-status{display:block;font-size:.875rem;margin-block-start:.5rem}
+.case-screen figcaption a{display:inline-block;padding-block:.5rem}
 .case-links{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;margin-block:1.5rem}
 .case-footer{border-block-start:1px solid var(--line);margin-block-start:2rem;padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:1rem 2rem;font-size:.9rem}
 .skip-link{position:absolute;inset-block-start:1rem;inset-inline-start:1rem;transform:translateY(-200%);z-index:100;background:var(--paper);padding:.75rem}
