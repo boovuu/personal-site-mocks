@@ -36,3 +36,9 @@ The homepage speaks to VP Marketing, CMO, and CEO readers. Begin with business d
 
 ## Research essays: academic register
 Use analytical exposition, precise concepts, and attributed evidence. Develop the argument directly. Remove diary framing such as “I find”, “I would”, and “the idea I keep”. Identify the distinction between historical findings and contemporary application in a concise source note. This governs research essays rather than the personal homepage introduction.
+
+
+## Atlas stories · Author revision · 16 November 2026
+Each story needs a point: show what the author wanted to happen, the moment that changed the inquiry, and what the result made possible or required next. Use the session archive and the author’s voice. Let the point come from the event rather than attaching a generic lesson to the ending.
+
+The wolf test is the turning point in the D.I.C.E. story. The author wanted the five words to introduce randomness into the draw instead of supplying literal subjects for an image. Holding the brief and words constant while moving from the wolf scene to white stone and liquid metal made that change visible. The author identifies this as the breakthrough. Later failures show why the rule still needed work; the archive’s source limits remain in the source material.
