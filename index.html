@@ -316,6 +316,8 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
  }
 ]
 </script>
+<link rel="stylesheet" href="/assets/quiet-signals.css">
+<script src="/assets/quiet-signals.js" defer></script>
 </head>
 <body>
 <!-- shared navigation -->
@@ -894,5 +896,12 @@ if (modelContext?.registerTool) {
   console.info('[WebMCP] document.modelContext is not available; the human website remains fully functional.');
 }
 </script>
+<aside id="quiet-signals" class="quiet-signals" aria-labelledby="qs-title" hidden>
+  <button type="button" class="qs-close" aria-label="Dismiss website operations suggestion">×</button>
+  <span class="label">Inside the work</span>
+  <h2 id="qs-title">What happens after the launch?</h2>
+  <p>A practical look at the workspace behind content, integrations and ongoing website delivery.</p>
+  <a href="/work/wos.html?from=quiet-signals" class="qs-link">Explore the WOS case →</a>
+</aside>
 </body>
 </html>

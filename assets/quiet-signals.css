@@ -1,0 +1,11 @@
+.quiet-signals[hidden]{display:none!important}
+.quiet-signals{position:fixed;z-index:40;right:24px;bottom:24px;width:min(360px,calc(100vw - 32px));padding:28px;background:var(--paper);color:var(--ink);border:1px solid var(--line);box-shadow:0 12px 40px color-mix(in srgb,var(--ink) 12%,transparent);animation:qs-enter .35s ease-out}
+.quiet-signals h2{font:400 28px/1.15 "Newsreader",serif;letter-spacing:-.01em;margin:16px 20px 16px 0}
+.quiet-signals p{font-size:15px;line-height:1.5;margin:0 0 20px;color:var(--muted)}
+.quiet-signals .label{color:var(--bit-text);font-size:10px}
+.quiet-signals .qs-close{position:absolute;top:8px;right:8px;width:44px;height:44px;font-size:24px}
+.quiet-signals .qs-link{font-size:15px;text-decoration:underline;text-underline-offset:4px;display:inline-block;padding:8px 0;color:var(--bit-text)}
+.quiet-signals :focus-visible{outline:2px solid var(--bit-text);outline-offset:4px}
+@keyframes qs-enter{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media(max-width:600px){.quiet-signals{right:16px;bottom:16px;padding:20px}.quiet-signals h2{font-size:25px}}
+@media(prefers-reduced-motion:reduce){.quiet-signals{animation:none}}
