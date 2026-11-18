@@ -42,3 +42,40 @@
 .essay-illustration{margin:0;min-inline-size:0}
 .essay-illustration img{display:block;inline-size:100%;block-size:auto;aspect-ratio:3/2}
 @media(max-width:900px){.essay-hero-illustrated{grid-template-columns:minmax(0,1fr);gap:1.5rem}.essay-hero-illustrated h1{max-inline-size:14ch}.essay-illustration{inline-size:min(100%,36rem);margin-inline:auto}}
+
+/* Reading layouts share the Atlas foundation; the format changes, the identity does not. */
+body{background:var(--cream);font-family:var(--sans)}
+.essay-reading{color:var(--reading)}
+.essay-hero h1,.essay-reading h2,.essay-reading h3{color:var(--blue)}
+.essay-breadcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;min-block-size:2.75rem;margin-block-start:1.75rem;font-size:.875rem}
+.essay-breadcrumb a{text-decoration:none;padding-block:.5rem}
+.essay-breadcrumb a:hover{text-decoration:underline}
+.essay-breadcrumb>span{color:var(--muted)}
+.essay-hero-text{grid-template-columns:minmax(0,1fr);max-inline-size:67rem}
+.essay-hero-text h1{max-inline-size:20ch;font-size:clamp(2.75rem,1.5rem + 4.3vw,5.75rem)}
+.essay-hero-text .essay-lede{max-inline-size:49ch}
+.essay-illustration{mix-blend-mode:multiply}
+.essay-reading h2{scroll-margin-block-start:7rem}
+.essay-reading ul,.essay-reading ol{padding-inline-start:1.35rem;line-height:1.75}
+.essay-reading li{padding-inline-start:.3rem;margin-block-end:.9rem}
+.essay-reading .source{font-size:.9375rem;color:var(--muted);border-inline-start:2px solid var(--blue);padding-inline-start:1.25rem;margin-block:1.5rem}
+.essay-reading .essay-sources .source{border:0;padding:0;margin:0}
+.essay-reading table{inline-size:100%;border-collapse:collapse;font-size:.9375rem;line-height:1.6}
+.essay-reading th,.essay-reading td{padding:1rem .75rem;border-block-end:1px solid var(--line);text-align:start;vertical-align:top;overflow-wrap:anywhere}
+.essay-reading th{color:var(--blue);font-weight:600}
+.table-wrap{max-inline-size:100%;margin-block:1.75rem}
+.brief{background:var(--paper);border:1px solid var(--line);padding:clamp(1.25rem,3vw,2rem);margin-block:1.75rem}
+.brief h3{font-size:1.75rem}
+.brief li:last-child{margin-block-end:0}
+.essay-index{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-block-start:1px solid var(--line);margin-block-end:2.5rem}
+.essay-index-entry{padding-block:2rem;border-block-end:1px solid var(--line);min-inline-size:0;display:flex;flex-direction:column;align-items:start}
+.essay-index-entry:nth-child(odd){padding-inline-end:3rem;border-inline-end:1px solid var(--line)}
+.essay-index-entry:nth-child(even){padding-inline-start:3rem}
+.essay-index-number{font-size:.75rem;letter-spacing:.08em;color:var(--blue);text-transform:uppercase}
+.essay-index-entry h2{font-size:clamp(2rem,1.5rem + 1.5vw,3rem);max-inline-size:20ch}
+.essay-index-entry h2 a{color:var(--blue);text-decoration:none}
+.essay-index-entry h2 a:hover{text-decoration:underline}
+.essay-index-entry>p:not(.essay-index-number){color:var(--muted);max-inline-size:45ch;font-size:1rem}
+.essay-index-read{display:inline-flex;gap:2rem;align-items:center;min-block-size:2.75rem;margin-block-start:auto;font-size:.875rem}
+.essay-index-note{font-size:.9375rem;max-inline-size:65ch;color:var(--muted);margin-block-end:3rem}
+@media(max-width:750px){.essay-breadcrumb{margin-block-start:1rem}.essay-hero-text{grid-template-columns:minmax(0,1fr)}.essay-hero-text h1{max-inline-size:20ch}.essay-index{grid-template-columns:minmax(0,1fr)}.essay-index-entry:nth-child(n){padding:1.75rem 0;border-inline:0}.essay-reading th,.essay-reading td{padding:.75rem .5rem}.essay-reading table{font-size:.875rem}.essay-toc ol{grid-template-columns:minmax(0,1fr)}}

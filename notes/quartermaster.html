@@ -6,7 +6,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/work-case.css">
-<link rel="stylesheet" href="/assets/notes-essay.css?v=2"><script src="/assets/trackers.js" defer></script>
+<link rel="stylesheet" href="/assets/atlas-foundation.css?v=1">
+<link rel="stylesheet" href="/assets/notes-essay.css?v=3"><script src="/assets/trackers.js" defer></script>
 <link rel="stylesheet" href="/assets/site-header.css">
 <script defer src="/assets/site-header.js"></script>
 
@@ -56,7 +57,7 @@
   "url": "https://bogdanvuckovic.com/notes/quartermaster.html",
   "name": "The quartermaster’s place · Bogdan Vučković",
   "isPartOf": {
-   "@id": "https://bogdanvuckovic.com/#website"
+   "@id": "https://bogdanvuckovic.com/atlas/"
   },
   "about": {
    "@id": "https://bogdanvuckovic.com/#person"
@@ -85,7 +86,10 @@
   "dateModified": "2026-11-17",
   "inLanguage": "en",
   "description": "Strategic direction, accountable authority, and the organisation of coordinated work.",
-  "image": "https://bogdanvuckovic.com/assets/og/notes-quartermaster.png"
+  "image": "https://bogdanvuckovic.com/assets/og/notes-quartermaster.png",
+  "isPartOf": {
+   "@id": "https://bogdanvuckovic.com/atlas/"
+  }
  },
  {
   "@type": "BreadcrumbList",
@@ -99,12 +103,18 @@
    {
     "@type": "ListItem",
     "position": 2,
-    "name": "Notes",
-    "item": "https://bogdanvuckovic.com/notes/"
+    "name": "Digital Atlas",
+    "item": "https://bogdanvuckovic.com/atlas/"
    },
    {
     "@type": "ListItem",
     "position": 3,
+    "name": "Essays & guides",
+    "item": "https://bogdanvuckovic.com/notes/"
+   },
+   {
+    "@type": "ListItem",
+    "position": 4,
     "name": "The quartermaster’s place",
     "item": "https://bogdanvuckovic.com/notes/quartermaster.html"
    }
@@ -133,10 +143,10 @@
 </header>
 <!-- end shared navigation -->
 <main class="essay-shell">
-<a class="essay-back" href="/notes/">← All notes</a>
+<div class="essay-breadcrumb"><a href="/atlas/">← Digital Atlas</a><span aria-hidden="true">/</span><a href="/notes/">Essays &amp; guides</a></div>
 <header class="essay-hero essay-hero-illustrated">
   <div>
-    <p class="essay-kicker">Notes on direction · Essay</p>
+    <p class="essay-kicker">Digital Atlas · Essay</p>
     <h1 id="essay-title" tabindex="-1">The quartermaster’s place</h1>
     <p class="essay-lede">Strategic direction, accountable authority, and the organisation of coordinated work.</p>
   </div>
@@ -173,7 +183,7 @@
   </article>
 </div>
 <aside class="essay-next" aria-label="Related notes"><p>Continue reading</p><div class="essay-next-links"><a href="/notes/brand-and-website.html">When does the brand sell? When does the website? <span aria-hidden="true">↗</span></a><a href="/notes/website-purpose.html">What should your website actually do? <span aria-hidden="true">↗</span></a></div></aside>
-<footer class="essay-footer"><a href="/notes/">← All notes</a><p>© Bogdan Vučković</p><a href="/">Homepage ↗</a></footer>
+<footer class="essay-footer essay-shell"><p>© Bogdan Vučković</p><a href="/atlas/">Return to the Atlas ↗</a></footer>
 </main>
 </body>
 </html>
