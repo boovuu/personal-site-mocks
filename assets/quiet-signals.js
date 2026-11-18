@@ -2,6 +2,8 @@
    The destination marker describes arrival provenance, not verified clicks. */
 (function () {
   'use strict';
+  // Explicit link opt-in only. Do not infer origin from referrers or persist eligibility.
+  if (new URLSearchParams(window.location.search).get('entry') !== 'linkedin-quiet-signals') return;
   var panel = document.getElementById('quiet-signals');
   var work = document.getElementById('work');
   if (!panel || !work || !('IntersectionObserver' in window)) return;
