@@ -79,3 +79,5 @@ body{background:var(--cream);font-family:var(--sans)}
 .essay-index-read{display:inline-flex;gap:2rem;align-items:center;min-block-size:2.75rem;margin-block-start:auto;font-size:.875rem}
 .essay-index-note{font-size:.9375rem;max-inline-size:65ch;color:var(--muted);margin-block-end:3rem}
 @media(max-width:750px){.essay-breadcrumb{margin-block-start:1rem}.essay-hero-text{grid-template-columns:minmax(0,1fr)}.essay-hero-text h1{max-inline-size:20ch}.essay-index{grid-template-columns:minmax(0,1fr)}.essay-index-entry:nth-child(n){padding:1.75rem 0;border-inline:0}.essay-reading th,.essay-reading td{padding:.75rem .5rem}.essay-reading table{font-size:.875rem}.essay-toc ol{grid-template-columns:minmax(0,1fr)}}
+
+.essay-hero-long h1{font-size:clamp(2.75rem,1.25rem + 3.2vw,4.5rem);max-inline-size:18ch}
