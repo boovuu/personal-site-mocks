@@ -81,3 +81,11 @@ body{background:var(--cream);font-family:var(--sans)}
 @media(max-width:750px){.essay-breadcrumb{margin-block-start:1rem}.essay-hero-text{grid-template-columns:minmax(0,1fr)}.essay-hero-text h1{max-inline-size:20ch}.essay-index{grid-template-columns:minmax(0,1fr)}.essay-index-entry:nth-child(n){padding:1.75rem 0;border-inline:0}.essay-reading th,.essay-reading td{padding:.75rem .5rem}.essay-reading table{font-size:.875rem}.essay-toc ol{grid-template-columns:minmax(0,1fr)}}
 
 .essay-hero-long h1{font-size:clamp(2.75rem,1.25rem + 3.2vw,4.5rem);max-inline-size:18ch}
+
+.essay-index-entry h2.essay-index-heading{inline-size:100%;max-inline-size:none}
+.essay-index-heading a{display:block}
+.essay-index-title{display:block;max-inline-size:20ch}
+.essay-index-entry .essay-index-heading a:hover{text-decoration:none}
+.essay-index-heading a:hover .essay-index-title{text-decoration:underline;text-underline-offset:.15em}
+.essay-index-sketch{display:block;inline-size:100%;aspect-ratio:3/2;margin-block-end:1.5rem;mix-blend-mode:multiply}
+.essay-index-sketch img{display:block;inline-size:100%;block-size:auto;aspect-ratio:3/2}
