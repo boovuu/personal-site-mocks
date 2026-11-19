@@ -135,6 +135,88 @@ class SitemapTests(unittest.TestCase):
                  date="2026-11-15T13:00:00+00:00")
         self.assertEqual(self.update(base), {"/": "2026-11-15"})
 
+    def test_discover_public_pages_and_keep_exclusions(self):
+        self.page("index.html", "Home")
+        base = self.initial("/")
+        self.page("feature.html", "Feature", f'<link rel="canonical" href="{ORIGIN}/feature.html">')
+        self.commit("Publish standalone canonical feature", "2026-11-11T23:15:00+00:00")
+
+        excluded = {
+            "private.html": '<meta name="robots" content="follow, noindex">',
+            "hidden.html": '<meta name="robots" content="none">',
+            "moved.html": '<meta http-equiv="refresh" content="0;url=/feature.html">',
+            "duplicate.html": f'<link rel="canonical" href="{ORIGIN}/feature.html">',
+            "syndicated.html": '<link rel="canonical" href="https://example.org/story">',
+            "notes/how-google-search-works.html": "",
+        }
+        for path, head in excluded.items():
+            self.page(path, "Excluded", head)
+        self.page("orphan.html", "Unlinked experiment")
+        self.page("notes/read.html", '<a href="part%201/">Next chapter</a>')
+        self.page("notes/part 1/index.html", '<a href="../read.html#intro">Back to start</a>')
+        links = ["/notes/read.html", "/notes/read.html#intro", *("/" + p for p in excluded)]
+        self.page("index.html", "".join(f'<a href="{link}">Read</a>' for link in links))
+        self.commit("Publish linked story and chapter", "2026-11-14T12:00:00+00:00")
+
+        expected = {
+            "/": "2026-11-14", "/feature.html": "2026-11-12",
+            "/notes/read.html": "2026-11-14", "/notes/part%201/": "2026-11-14",
+        }
+        self.assertEqual(self.update(base), expected)
+        sitemap = self.root / "sitemap.xml"
+        self.assertEqual(len(ET.parse(sitemap).getroot().findall("{*}url")), len(expected))
+        first_run = sitemap.read_bytes()
+        self.commit("Publish sitemap entries", "2026-11-16T12:00:00+00:00")
+        self.assertEqual(self.update(base), expected)
+        self.assertEqual(sitemap.read_bytes(), first_run)
+
+    def test_rename_removes_only_the_previously_repo_backed_url(self):
+        self.page("index.html", '<a href="/old.html">Article</a>')
+        self.page("old.html", "Article body")
+        base = self.initial("/", "/old.html", "/worker-only.html")
+        (self.root / "old.html").rename(self.root / "new.html")
+        self.page("index.html", '<a href="/new.html">Article</a>')
+        self.commit("Move published article", "2026-11-13T07:30:00+00:00")
+        self.assertEqual(self.update(base), {
+            "/": "2026-11-13", "/new.html": "2026-11-13", "/worker-only.html": INITIAL_DATE,
+        })
+
+    def test_first_public_link_and_later_withdrawal(self):
+        self.page("index.html", "Home")
+        self.page("topic/index.html", "Written before publication")
+        self.write("handout.pdf", "A separately listed download")
+        base = self.initial("/", "/handout.pdf")
+        self.page("index.html", '<a href="/topic">Read the topic</a>')
+        self.commit("Link the newly public section", "2026-11-13T10:00:00+00:00")
+        expected = {"/": "2026-11-13", "/topic/": "2026-11-13", "/handout.pdf": INITIAL_DATE}
+        self.assertEqual(self.update(base), expected)
+        self.commit("Publish discovery results", "2026-11-14T10:00:00+00:00")
+        self.assertEqual(self.update(base), expected)
+        self.write("topic/index.html", '<!doctype html><meta name="robots" content="noindex"><body>Withdrawn')
+        self.commit("Withdraw topic from indexing", "2026-11-15T11:00:00+00:00")
+        self.assertEqual(self.update(base), {"/": "2026-11-13", "/handout.pdf": INITIAL_DATE})
+
+
+    def test_robots_resolves_specific_groups_and_longest_path_rules(self):
+        self.page("index.html", "Home")
+        base = self.initial("/")
+        for path in ("hidden/one.html", "hidden/ok.html", "café.html", "public.html"):
+            self.page(path, "Article", f'<link rel="canonical" href="/{path}">')
+        self.write("robots.txt", """User-agent: *
+Disallow: /
+User-agent: Googlebot
+Allow: /
+Disallow: /hidden/
+Disallow: /*é.html$
+User-agent: Googlebot
+Allow: /hidden/ok.html$
+Disallow: /hidden/ok.html$
+""")
+        self.commit("Publish pages with crawl rules", "2026-11-13T08:00:00+00:00")
+        self.assertEqual(self.update(base), {
+            "/": INITIAL_DATE, "/hidden/ok.html": "2026-11-13", "/public.html": "2026-11-13",
+        })
+
 
 if __name__ == "__main__":
     unittest.main()

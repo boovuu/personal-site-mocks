@@ -1,4 +1,4 @@
-name: Update sitemap dates
+name: Update sitemap
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Update dates for published pages
+      - name: Discover published pages and update dates
         id: sync
         shell: bash
         run: |
@@ -38,7 +38,7 @@ jobs:
               exit 0
             fi
 
-            git commit --only -m 'Update sitemap dates for published pages' \
+            git commit --only -m 'Sync sitemap with published pages' \
               -m 'Sitemap-Dates-Synced: yes' -- sitemap.xml
             if git push origin HEAD:refs/heads/main; then
               echo 'pushed=true' >> "$GITHUB_OUTPUT"
