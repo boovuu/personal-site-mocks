@@ -1,0 +1,66 @@
+name: Update sitemap dates
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: sitemap-dates-main
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  update:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Update dates for published pages
+        id: sync
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          for attempt in 1 2 3; do
+            base=$(git rev-parse HEAD)
+            python3 scripts/test-update-sitemap.py
+            python3 scripts/update-sitemap.py
+            if git diff --quiet HEAD -- sitemap.xml; then
+              exit 0
+            fi
+
+            git commit --only -m 'Update sitemap dates for published pages' \
+              -m 'Sitemap-Dates-Synced: yes' -- sitemap.xml
+            if git push origin HEAD:refs/heads/main; then
+              echo 'pushed=true' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            # Another publish may have advanced main while we were computing dates.
+            git fetch origin main
+            latest=$(git rev-parse FETCH_HEAD)
+            if [[ "$latest" == "$(git rev-parse HEAD)" ]]; then
+              echo 'pushed=true' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            if [[ "$latest" == "$base" || "$attempt" == 3 ]]; then
+              exit 1
+            fi
+            git switch --detach "$latest"
+          done
+
+      # A push using GITHUB_TOKEN does not start a branch-based Pages build.
+      - name: Request GitHub Pages build
+        if: steps.sync.outputs.pushed == 'true' || github.event_name == 'workflow_dispatch' || github.run_attempt > 1
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"

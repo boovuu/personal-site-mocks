@@ -14,6 +14,8 @@ The homepage links to Behind the site in its footer. Supporting pages provide a 
 
 Edit current homepage copy in `index.html`. `site-content.js` and `content.duckdb` supply the earlier v9/v10 studies and the workbench; they do not render the current homepage. Use `node build-from-duckdb.js` when editing those legacy content sources. For current changes, run `node scripts/sync-navigation.js --check` and `node scripts/check-tokens.js .`, then review the page on desktop and mobile.
 
+Keep the URL list in `sitemap.xml` curated. After a push to `main`, the **Update sitemap dates** workflow checks each listed page against Git history and updates its `lastmod` when the page's text, links, search metadata, embedded data, or referenced local media and application scripts change. Dates use the mainline commit date in Belgrade time. CSS, favicons, and the shared analytics script are excluded. When dates change, the workflow commits the sitemap and requests a GitHub Pages build. You can rerun the workflow from Actions to retry a publish.
+
 ## Draft limitations
 
 The contact address is a placeholder, D.I.C.E. has no live artifact, and price and identity decisions remain open. Workbench status is manually maintained, not live telemetry.
