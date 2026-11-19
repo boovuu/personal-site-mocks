@@ -2,10 +2,10 @@
   'use strict';
   const stops = {
     opening: ['00', 'The question'],
-    wolf: ['01', 'The experiment'],
-    coin: ['02', 'The bearing'],
+    wolf: ['01', 'The wolf test'],
+    coin: ['02', 'The coin'],
     website: ['03', 'The website'],
-    answers: ['04', 'The answer'],
+    answers: ['04', 'AI answers'],
     visitor: ['05', 'The visitor'],
     crossing: ['06', 'Open water']
   };

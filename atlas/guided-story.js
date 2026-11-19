@@ -32,6 +32,9 @@
     document.getElementById('coin-face-label').textContent = bearing
       ? 'Bearing · the direction you choose, 022.5°'
       : 'Seed · the starting point chance gives you';
+    document.getElementById('coin-face-note').textContent = bearing
+      ? 'The compass points at 022.5°, north-northeast: a chosen heading.'
+      : 'The five stars connect to Cassiopeia, a constellation that helps you find north.';
   });
 
   const periods = {
