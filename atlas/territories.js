@@ -266,16 +266,32 @@ function createTerritoryMap(ideas, definitions) {
       for (const [scale, fill, stroke] of [[1.13,'none','#a6aba0'],[1.085,'none','#92a19a'],[1.04,'none','#758c8b'],[1,'#dcc699','#4b5f61'],[.965,'url(#land-hatch)','#9e9277'],[.88,'#eee0bf','#a79776'],[.79,'none','#c2b392']]) {
         svgNode('path',{d, transform:'scale('+scale+')',fill,stroke,'vector-effect':'non-scaling-stroke','stroke-width':scale===1?1.25:.65},contours);
       }
-      // Small offshore outcrops belong to the same shore at both scales.
+      // Growing shores can reach the old, fixed outcrop positions. Reserve the
+      // complete contour extent, then find a separate berth for each outcrop.
+      // The groups remain attached to their island at both map scales.
+      const coastExtent = contours.getBBox();
+      const occupiedCoast = [coastExtent];
+      const coastGap = 8 / Math.min(w, h);
       const outcropAngle = seed*2.15;
       for (let i = 0; i < 2 + seed%3; i++) {
         const angle = outcropAngle + i*(.31+.065*Math.cos(seed+i));
-        const reach = 1.08 + .14*i + .06*Math.sin(seed);
+        let reach = 1.08 + .14*i + .06*Math.sin(seed);
         const scale = (.16+.035*Math.cos(seed)) / (1+.46*i);
-        svgNode('path', {
-          d:coast(seed+i+2), transform:'translate('+Math.cos(angle)*reach+' '+Math.sin(angle)*reach+') rotate('+seed*17+') scale('+scale+' '+scale*.69+')',
+        const outcrop = svgNode('g', {class:'offshore-outcrop'}, contours);
+        const drawing = svgNode('path', {
+          d:coast(seed+i+2),
           fill:'#e9dfc4',stroke:'#738b91','vector-effect':'non-scaling-stroke','stroke-width':.75
-        },contours);
+        },outcrop);
+        let extent;
+        do {
+          drawing.setAttribute('transform','translate('+Math.cos(angle)*reach+' '+Math.sin(angle)*reach+') rotate('+seed*17+') scale('+scale+' '+scale*.69+')');
+          extent = outcrop.getBBox();
+          reach += .08;
+        } while (occupiedCoast.some(other =>
+          extent.x < other.x+other.width+coastGap && extent.x+extent.width+coastGap > other.x &&
+          extent.y < other.y+other.height+coastGap && extent.y+extent.height+coastGap > other.y
+        ));
+        occupiedCoast.push(extent);
       }
       // Fine relief marks give the coastline the same engraved finish at both scales.
       for (let ridge = 0; ridge < 3; ridge++) {
@@ -362,12 +378,23 @@ function createTerritoryMap(ideas, definitions) {
     }
     for (const group of world.children) group.classList.toggle('distant', !!t && group.dataset.territory !== selected);
     if (!t) {
-      const scale = surveyScales[surveyLevel];
-      const dx = width*(1-scale)/2;
+      const extents = [...geometry.values()].map(({extent}) => extent);
+      const westernShore = Math.min(...extents.map(b => b.x));
+      const easternShore = Math.max(...extents.map(b => b.x+b.width));
+      const northernShore = Math.min(...extents.map(b => b.y));
+      const southernShore = Math.max(...extents.map(b => b.y+b.height));
+      const margin = 18;
+      // Include offshore groups in the survey bounds, even at maximum zoom.
+      const scale = Math.min(surveyScales[surveyLevel],
+        (width-2*margin)/(easternShore-westernShore),
+        (height-2*margin)/(southernShore-northernShore));
+      const dx = Math.max(margin-westernShore*scale,
+        Math.min(width*(1-scale)/2,width-margin-easternShore*scale));
       // Reserve a caption berth below the southernmost coast as islands grow.
-      const southernShore = Math.max(...[...geometry.values()].map(({extent}) => extent.y+extent.height));
+      // When space is tight, keep every shore visible and let captions use open water.
       const captionRoom = narrow ? 82 : Math.min(27,Math.max(17,width*.018))*2.08+46;
-      const dy = Math.min(height*(1-scale)/2,height-captionRoom-southernShore*scale);
+      const dy = Math.max(margin-northernShore*scale,
+        Math.min(height*(1-scale)/2,height-captionRoom-southernShore*scale));
       world.style.transform = 'matrix('+[scale,0,0,scale,dx,dy].join(',')+')';
       farther.disabled = surveyLevel === 0;
       closer.disabled = surveyLevel === surveyScales.length-1;
