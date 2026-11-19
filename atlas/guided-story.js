@@ -38,10 +38,10 @@
   });
 
   const periods = {
-    '2023': ['An observation', 'An answer that did not match its source.', 'An early note records an AI getting a website wrong. The archive preserves the note. The original exchange hasn’t been reproduced in this study.'],
-    '2024': ['More questions', 'What did the answer use?', 'The notes and article drafts start looking at retrieval, citations and comparisons between sources. If a later article repeats a number, that’s still the same underlying evidence.'],
-    '2025': ['An operating model', 'What should we actually measure?', 'The playbook moves into visibility, sentiment, citations and measurement. It describes what to track. The KPIs listed here are proposed targets.'],
-    '2026': ['A field study', 'What did Google actually fetch?', 'The session account reports requests from Google’s testing tools. I still need the original request logs to check that account. It doesn’t yet tell us what routine crawling, indexing or AI citations did.']
+    '2023': ['An observation', 'It got some features wrong, too.', 'My July note is the record I have. I’d need the original exchange to check those details again.'],
+    '2024': ['More questions', 'What did the answer use?', 'I started following citations back to their sources. When two articles give me the same number, I want to see where the first one got it.'],
+    '2025': ['The playbook', 'What should we actually measure?', 'I proposed tracking where a business shows up, how the answers describe it and who gets cited. The targets in the playbook still need testing.'],
+    '2026': ['A field study', 'What did Google actually fetch?', 'The session notes describe requests from Google’s testing tools. I’d check them against the original request logs first. Routine crawling, indexing and AI citations would each need their own test.']
   };
   for (const button of document.querySelectorAll('[data-year]')) {
     button.addEventListener('click', () => {
