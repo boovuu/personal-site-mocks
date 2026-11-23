@@ -17,7 +17,20 @@
 .field-study summary:focus-visible { outline: 3px solid var(--sea); outline-offset: 5px; }
 .field-study details > div { padding: 12px 0 0; }
 .field-study code { overflow-wrap: anywhere; font-size: .85em; }
+.study-followup { scroll-margin-top: 110px; border-top: 1px solid var(--line); padding: 32px 0 24px; }
+.field-study .study-followup h3 { font-size: clamp(32px, 4vw, 48px); }
+.return-visits-evidence { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: start; gap: 24px 38px; margin: 24px 0; }
+.return-visits-evidence figure { margin: 0; }
+.return-visits-evidence img { display: block; width: 100%; height: auto; }
+.return-visits-evidence figcaption, .field-study .study-source { font-size: .9rem; color: var(--muted); }
+.return-visits-evidence figcaption { margin-top: 8px; }
+.return-visits-evidence table { width: 100%; border-collapse: collapse; margin-bottom: 18px; font-variant-numeric: tabular-nums; }
+.return-visits-evidence caption { text-align: left; font-weight: 600; padding-bottom: 10px; }
+.return-visits-evidence th, .return-visits-evidence td { padding: 8px 0; border-bottom: 1px solid var(--line); text-align: left; }
+.return-visits-evidence tbody th { font-weight: 400; }
+.return-visits-evidence tr > :last-child { text-align: right; }
 @media (max-width: 800px) {
   .field-study .study-grid { grid-template-columns: 1fr; gap: 24px; }
+  .return-visits-evidence { grid-template-columns: 1fr; }
   .topbar nav a:nth-child(4)::before { content: '04'; }
 }
