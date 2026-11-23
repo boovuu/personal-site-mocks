@@ -24,7 +24,7 @@ The workflow updates `lastmod` when a page first becomes public or when its text
 
 The contact address is a placeholder, D.I.C.E. has no live artifact, and price and identity decisions remain open. Workbench status is manually maintained, not live telemetry.
 
-The header and favicon use the identity study’s small Bearing coin. The favicon keeps its white needle and red tip legible on light and dark surfaces with a filled disk. Use `<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">` on public pages. Keep that URL stable and export the PNG and the browser fallback `/favicon.ico` from `favicon.svg` when the artwork changes.
+The header and favicon use the identity study’s small Bearing coin. The favicon keeps its white needle and red tip legible on light and dark surfaces with a filled disk. Use `<link rel="icon" type="image/png" sizes="96x96" href="/favicon-compass.png">` on public pages. Keep that URL stable and export the PNG and the browser fallback `/favicon.ico` from `favicon.svg` when the artwork changes.
 
 ## Editorial revision · 11 October 2026
 
