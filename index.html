@@ -74,6 +74,8 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
 .perspective .body{grid-column:7/13;margin-top:20px;display:grid;gap:20px}
 .perspective .body p:first-child{font:300 26px/1.38 "Newsreader";letter-spacing:-.01em}
 .perspective .body p+p{color:var(--muted)}
+.perspective .btn{justify-self:start}
+.perspective .btn:focus-visible{outline:2px solid currentColor;outline-offset:-4px}
 .band{margin-top:96px;height:560px}
 .band .slot{height:100%}
 
@@ -369,6 +371,7 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
       <div class="body rv">
         <p>I work with marketing leaders to decide what a visitor needs to understand and which decision the site should help them make. That becomes a practical brief for the people writing, designing and building it.</p>
         <p>I carry that brief through implementation: the pages, the publishing structure, the forms and the measurement. I work across the team to resolve what is missing, check the release and keep the site moving as campaigns and priorities change.</p>
+        <a class="btn line" href="/atlas/">Explore Atlas <span aria-hidden="true">→</span></a>
       </div>
     </div>
     <div class="wrap band rv">
@@ -458,7 +461,6 @@ body:has(.site-menu-toggle:not([hidden])) > .site-header { position: fixed; }
       <div class="top">
         <div><p class="kicker label">04 / Notes on direction</p><h2 class="serif rv">Questions worth keeping open.</h2></div>
         <div class="notes-links">
-          <a class="btn line" href="atlas/#map/personal-site">See how this website took shape →</a>
           <a class="btn line" href="notes/">All notes ↗</a>
         </div>
       </div>
