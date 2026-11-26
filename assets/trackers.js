@@ -1,6 +1,6 @@
 /* bogdanvuckovic.com - tracker activation file.
-   One file drives every tracker on the site. Fill an ID below and the tracker
-   switches on site-wide on the next deploy; an empty string keeps it off.
+   One file configures the trackers. Empty IDs disable them. Clarity also
+   requires a visitor's opt-in on the canonical public website.
    Wired into every canon page as: <script src="/assets/trackers.js" defer></script> */
 (function () {
   "use strict";
@@ -21,13 +21,14 @@
        verbatim in the RB2B section below. */
     rb2b: "E63P0HYRYDOW",
 
+    /* Public Digital Atlas project ID from its Clarity tracking code.
+       An empty ID disables recording and its opt-in control. Never put an export token here. */
+    clarity: "",
+
     /* Any additional tracker script URLs (MoltSets needs none: it is an
        agent-side API, not a site pixel). */
     extra: []
   };
-
-  var active = [CONFIG.gtm, CONFIG.ga4, CONFIG.rb2b].concat(CONFIG.extra).filter(Boolean);
-  if (!active.length) return; /* nothing configured: page stays untouched */
 
   function inject(src) {
     var s = document.createElement("script");
@@ -35,6 +36,76 @@
     s.src = src;
     document.head.appendChild(s);
   }
+
+  function installClarity(projectId) {
+    if (!/^[a-z0-9]+$/i.test(projectId) || !projectId || window.location.origin !== "https://bogdanvuckovic.com" ||
+        window.top !== window || document.getElementById("atlas-recording-settings")) return;
+
+    var key = "atlas.clarity-consent.v1";
+    var started = false;
+    var panel = document.createElement("details");
+    panel.id = "atlas-recording-settings";
+    panel.style.cssText = "font:normal .85rem/1.5 system-ui,sans-serif;letter-spacing:normal;text-transform:none;max-width:42ch;text-align:start;";
+    panel.innerHTML = '<summary style="cursor:pointer">Session recording</summary>' +
+      '<p>Microsoft Clarity can record clicks and scrolling on this site and use cookies to link your visits. ' +
+      '<a href="https://privacy.microsoft.com/privacystatement">Microsoft privacy statement</a>.</p>' +
+      '<label><input type="checkbox"> Allow session recording</label><p role="status"></p>';
+    var checkbox = panel.querySelector("input");
+    var message = panel.querySelector('[role="status"]');
+    var footers = document.querySelectorAll("footer");
+    var footer = footers[footers.length - 1];
+    (footer || document.body).appendChild(panel);
+
+    function allowed() {
+      if (navigator.globalPrivacyControl === true) return false;
+      try { return localStorage.getItem(key) === "granted"; } catch (_) { return false; }
+    }
+
+    function applyChoice() {
+      var granted = allowed();
+      checkbox.checked = granted;
+      if (granted && !started) {
+        started = true;
+        window.clarity = window.clarity || function () {
+          (window.clarity.q = window.clarity.q || []).push(arguments);
+        };
+        window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "granted" });
+        inject("https://www.clarity.ms/tag/" + projectId);
+      } else if (!granted && started) {
+        started = false;
+        window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
+        // With denied storage the SDK can restart in cookieless mode. A fresh page
+        // enforces the saved choice and also cancels any still-loading tag.
+        window.location.reload();
+      }
+    }
+
+    checkbox.disabled = navigator.globalPrivacyControl === true;
+    if (checkbox.disabled) message.textContent = "Recording is off because your browser signals Global Privacy Control.";
+    checkbox.addEventListener("change", function () {
+      try {
+        localStorage.setItem(key, checkbox.checked ? "granted" : "denied");
+      } catch (_) {
+        checkbox.checked = false;
+        message.textContent = "Your browser could not save this choice. Recording is off.";
+        if (started) {
+          window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
+          window.location.reload();
+        }
+        return;
+      }
+      applyChoice();
+    });
+    window.addEventListener("storage", function (event) {
+      if (event.key === key || event.key === null) applyChoice();
+    });
+    window.addEventListener("pageshow", applyChoice);
+    applyChoice();
+  }
+
+  installClarity(CONFIG.clarity);
+  // These pages previously had no GTM or RB2B tags. They opt in only to the recording settings.
+  if (document.currentScript && document.currentScript.hasAttribute("data-clarity-only")) return;
 
   /* GA4 (gtag.js) */
   if (CONFIG.ga4) {
