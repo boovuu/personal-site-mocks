@@ -23,7 +23,7 @@
 
     /* Public Digital Atlas project ID from its Clarity tracking code.
        An empty ID disables recording and its opt-in control. Never put an export token here. */
-    clarity: "",
+    clarity: "zjxc30ib05",
 
     /* Any additional tracker script URLs (MoltSets needs none: it is an
        agent-side API, not a site pixel). */
