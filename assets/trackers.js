@@ -61,6 +61,18 @@
       try { return localStorage.getItem(key) === "granted"; } catch (_) { return false; }
     }
 
+    var linkedinCta = document.querySelector('#contact a[data-atlas-cta="linkedin"]');
+    if (linkedinCta) {
+      function recordLinkedInClick(event) {
+        var activationButton = event.type === "auxclick" ? 1 : 0;
+        if (event.button !== activationButton || !event.isTrusted || event.defaultPrevented || !started || !allowed()) return;
+        window.clarity("upgrade", "linkedin_cta_click");
+        window.clarity("event", "linkedin_cta_click");
+      }
+      linkedinCta.addEventListener("click", recordLinkedInClick);
+      linkedinCta.addEventListener("auxclick", recordLinkedInClick);
+    }
+
     function applyChoice() {
       var granted = allowed();
       checkbox.checked = granted;
